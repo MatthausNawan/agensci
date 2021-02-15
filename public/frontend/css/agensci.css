@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;
-
-0,400;0,700;1,300;1,400;1,700&display=swap);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:700,900);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -8,6 +6,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --blue: #008cba;
   --indigo: #6610f2;
@@ -11396,6 +11395,10 @@ label,
 .popover-header {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+body {
+  background-color: #eee;
 }
 
 

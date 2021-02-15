@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             CountriesTableSeeder::class,
+            SegmentsTableSeeder::class,
+            CategoriesTableSeeder::class
         ]);
     }
 }

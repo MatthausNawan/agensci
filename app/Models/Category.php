@@ -26,6 +26,17 @@ class Category extends Model
         'deleted_at',
     ];
 
+
+
+    const C_ARTIGOS = 1;
+    const C_ORGAOS_EDUCACIONAIS = 2;
+    const C_ORGAOS_DE_PESQUISA = 3;
+    const C_UNIVERSIDADES_PUBLICAS = 4;
+    const C_UNIVERSIDADES_PRIVADAS = 5;
+    const C_UNIVERSIDADES_INTERNACIONAIS = 6;
+    const C_LABORATORIOS_DE_PESQUISAS = 7;
+
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
