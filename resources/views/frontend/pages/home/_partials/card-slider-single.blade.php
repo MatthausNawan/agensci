@@ -1,4 +1,5 @@
-<div class="card-group {{ $class }}">
+<div class="card-group {{ $class ?? 'carrousel' }}">
+    @if(isset($manchete))
     @foreach($manchete as $e)
     <div class="card">
         <img class="card-img-top img-responsive" src="{{$e->banner->getUrl()}}" alt="Card image cap" style="height: 200px">
@@ -8,4 +9,5 @@
         </div>
     </div>
     @endforeach
+    @endif
 </div>

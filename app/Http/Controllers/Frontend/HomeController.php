@@ -8,7 +8,12 @@ use App\Models\Country;
 use App\Models\Event;
 use App\Models\ExternalLik;
 use App\Models\Headline;
+use App\Models\Job;
+use App\Models\Post;
+use App\Models\Promotion;
 use App\Models\Segment;
+use App\Models\Speaker;
+use App\Models\StudentProfile;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -43,8 +48,8 @@ class HomeController extends Controller
             'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
-            'se' => Segment::whereHas('events')->get(),
-            'events' => Event::whereHas('segment')->get()->groupBy('segment_id')
+            'news' => Post::all(),
+            'speakers' => Speaker::all(),
         ]);
     }
 
@@ -58,7 +63,9 @@ class HomeController extends Controller
             'segments' => Segment::all(),
             'categories' => Category::all(),
             'se' => Segment::whereHas('events')->get(),
-            'events' => Event::whereHas('segment')->get()->groupBy('segment_id')
+            'news' => Post::all(),
+            'jobs' => Job::all(),
+            'profiles' => StudentProfile::all()
         ]);
     }
 
