@@ -15,6 +15,9 @@ class Headline extends Model implements HasMedia
 
     public $table = 'headlines';
 
+    const TYPE_MAGAZINE = 'MAGAZINE';
+    const TYPE_SITE = 'SITE';
+
     protected $appends = [
         'banner',
     ];

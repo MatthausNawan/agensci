@@ -33,21 +33,21 @@
 
 
 
-        @include('frontend.pages.home._partials.card-slider',['segments'=>$segments,'class'=>'carrousel-card'])
+        @include('frontend.pages.home._partials.card-slider',['segments'=>$segments])
 
 
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
-                <div class="my-2 px-4">
-                    @include('frontend.pages.home._partials.card-slider-single',['manchete'=>$machete_cientifica,'class'=>'carrousel','name'=>'cientifica'])
+                <div class="my-2">
+                    @include('frontend.pages.home._partials.card-slider',['segments'=>$segments])
                 </div>
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
-                <div class="my-2 px-4">
-                    @include('frontend.pages.home._partials.card-slider-single',['manchete'=>$site_cientifica,'class'=>'carrousel','name'=>'site'])
+                <div class="my-2">
+                    @include('frontend.pages.home._partials.card-slider',['segments'=>$segments])
                 </div>
             </div>
             <div class="col-md-3 col-sm-12">
@@ -57,47 +57,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-
-@section('js')
-<script>
-    $('.carrousel-card').slick({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-
-    $('.carrousel').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true,
-    });
-</script>
 @endsection

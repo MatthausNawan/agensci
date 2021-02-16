@@ -34,4 +34,9 @@ class Segment extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    public function headlines()
+    {
+        return $this->hasMany(Headline::class);
+    }
 }

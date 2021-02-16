@@ -27,8 +27,48 @@ class HomeController extends Controller
                 'segments' => Segment::all(),
                 'categories' => Category::all(),
                 'se' => Segment::whereHas('events')->get(),
-                'events' => Event::whereHas('segment')->get()->groupBy('segment_id')
+                'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
+                'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->get(),
+                'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->get()
             ]
         );
+    }
+
+    public function showTeachersPage()
+    {
+        return view('frontend.pages.teachers.index', [
+            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->get(),
+            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->get(),
+            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->get(),
+            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->get(),
+            'segments' => Segment::all(),
+            'categories' => Category::all(),
+            'se' => Segment::whereHas('events')->get(),
+            'events' => Event::whereHas('segment')->get()->groupBy('segment_id')
+        ]);
+    }
+
+    public function showStudentsPage()
+    {
+        return view('frontend.pages.students.index', [
+            'cursos' => ExternalLik::where("category_id", Category::C_CURSOS)->get(),
+            'entidades' => ExternalLik::where("category_id", Category::C_ENTIDADES_ESTUDANTIS)->get(),
+            'bibliotecas' => ExternalLik::where("category_id", Category::C_BIBLIOTECAS_DIGITAIS)->get(),
+            'museus' => ExternalLik::where("category_id", Category::C_MUSEUS_DIGITAIS)->get(),
+            'segments' => Segment::all(),
+            'categories' => Category::all(),
+            'se' => Segment::whereHas('events')->get(),
+            'events' => Event::whereHas('segment')->get()->groupBy('segment_id')
+        ]);
+    }
+
+    public function showCompaniesPage()
+    {
+        return view('frontend.pages.companies.index', []);
+    }
+
+    public function showAdvertisePage()
+    {
+        return view('frontend.pages.advertise.index', []);
     }
 }

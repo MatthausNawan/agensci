@@ -15,6 +15,8 @@
 
 
     <link href="{{ asset('frontend/css/agensci.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}">
     @yield('styles')
 </head>
 
@@ -24,11 +26,11 @@
     <div class="container mt-1">
         <div class="nav-scroller bg-dark">
             <nav class="nav d-flex justify-content-start">
-                <a class="p-3 text-white" href="#">Home</a>
-                <a class="p-3 text-white" href="#">Professores</a>
-                <a class="p-3 text-white" href="#">Estudantes</a>
-                <a class="p-3 text-white" href="#">Empresas</a>
-                <a class="p-3 text-white" href="#">Anuncie</a>
+                <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
+                <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
+                <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
+                <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
+                <a class="p-3 text-white" href="{{ route('site.advertise') }}">Anuncie</a>
             </nav>
         </div>
     </div>
@@ -49,7 +51,8 @@
 
     <script src="{{ asset('frontend/js/jquery.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
-    @yield('scrips')
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    @yield('js')
 </body>
 
 </html>
