@@ -1,3 +1,11 @@
+@import "./variables";
+
 @import "~bootstrap/scss/bootstrap";
 
+@import "./bootswatch";
+
 @import "./custom";
+
+body {
+    background-color: #eee;
+}
