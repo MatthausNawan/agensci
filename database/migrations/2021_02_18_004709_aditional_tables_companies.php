@@ -34,7 +34,7 @@ class AditionalTablesCompanies extends Migration
             $table->string('logomarca', 255)->nullable();
             $table->string('requester-name');
             $table->string('requester-cpf');
-            $table->string('request-date', 255);
+            $table->date('request-date');
             $table->string('signature', 255)->nullable();
             $table->string('stamp', 255)->nullable();
         });

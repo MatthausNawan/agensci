@@ -5,17 +5,33 @@
     <form method="POST" action="{{ route("site.companies.store") }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
             <div class="card-header">Cadastre-se</div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="razao">Razao social:</label>
-                    <input type="text" name="fantasy-name" class="form-control">
+                    <label for="razao">Razão social:</label>
+                    <input type="text" name="name" class="form-control">
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <label for="Nome fantasia">Nome fantasia:</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="fantasy-name" class="form-control">
                     </div>
                     <div class="col">
                         <label for="CPNJ">CNPJ:</label>
@@ -30,7 +46,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Numero">Numero:</label>
-                        <input type="text" class="form-control" name="address-number">
+                        <input type="number" class="form-control" name="address-number">
                     </div>
                 </div>
                 <div class="form-row">
@@ -106,18 +122,18 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="Estado">Data:</label>
-                        <input type="text" class="form-control" name="request-date" value="{{ date('d/m/Y') }}"s>
+                        <input type="date" class="form-control" name="request-date" value="{{ date('Y-m-d') }}" s>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <label for="Nome fantasia">Assinatura:</label>
-                        <input type="text" name="assinatura" style="height:120px" class="form-control">
+                        <input type="text" name="signature" style="height:120px" class="form-control">
                     </div>
                     <div class="col">
                         <label for="CPNJ">Carimbo da empresa:</label>
-                        <input type="text" name="carimbo" style="height:120px" class="form-control">
+                        <input type="text" name="stamp" style="height:120px" class="form-control">
                     </div>
                 </div>
 
@@ -137,7 +153,7 @@
                 </div>
                 <div class="form-group">
                     <label for="razao">Repetir Senha</label>
-                    <input type="password" class="form-control" name="password-confirmation">
+                    <input type="password" class="form-control" name="password_confirmation">
                 </div>
             </div>
             <div class="card-footer">
