@@ -106,7 +106,7 @@ class CompanyController extends Controller
             'password' => 'required|confirmed',
         ], $mensagens);
 
-        $imageName = time().'.'.$request->logomarca->extension();  
+        $imageName = time().'.'.$request->logomarca->extension();
         $request->logomarca->move(public_path('images'), $imageName);
 
         $input['logomarca'] = $imageName;
@@ -116,7 +116,7 @@ class CompanyController extends Controller
         $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => $input['password']
+            'password' => bcrypt($input['password'])
         ]);
 
         $user->roles()->attach(3);
