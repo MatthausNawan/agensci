@@ -96,7 +96,7 @@ class CompanyController extends Controller
             'instagram'  => 'required|max:255',
             'twitter'  => 'required|max:255',
             'youtube'  => 'required|max:255',
-            'logomarca'  => '',
+            'logomarca'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'requester-name'  => 'required|max:255',
             'requester-cpf'  => 'required|max:255',
             'request-date'  => 'required',
@@ -105,6 +105,11 @@ class CompanyController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed',
         ], $mensagens);
+
+        $imageName = time().'.'.$request->logomarca->extension();  
+        $request->logomarca->move(public_path('images'), $imageName);
+
+        $input['logomarca'] = $imageName;
 
         $company = Company::create($input);
 
