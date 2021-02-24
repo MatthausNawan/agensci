@@ -14,29 +14,29 @@ class AditionalTablesCompanies extends Migration
     public function up()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->string('fantasy-name', 255);
-            $table->string('cnpj', 20);
-            $table->string('address', 255);
-            $table->string('address-number', 255);
-            $table->string('postal-code', 20);
-            $table->string('district', 255);
-            $table->string('city', 255);
-            $table->string('uf', 20);
-            $table->string('phone', 20);
-            $table->string('cell-number', 20);
-            $table->string('email', 255);
-            $table->string('linkedin', 255);
-            $table->string('facebook', 255);
-            $table->string('whatsapp', 255);
-            $table->string('instagram', 255);
-            $table->string('twitter', 255);
-            $table->string('youtube', 255);
-            $table->string('logomarca', 255)->nullable();
-            $table->string('requester-name');
-            $table->string('requester-cpf');
-            $table->date('request-date');
-            $table->string('signature', 255)->nullable();
-            $table->string('stamp', 255)->nullable();
+            $table->string('fantasy-name')->nullable();
+            $table->string('cnpj')->unique()->nullable();
+            $table->string('address')->nullable();
+            $table->string('address-number')->nullable();
+            $table->string('postal-code')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('uf')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('cell-number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('logomarca')->nullable();
+            $table->string('requester-name')->nullable();
+            $table->string('requester-cpf')->nullable();
+            $table->date('request-date')->nullable();
+            $table->string('signature')->nullable();
+            $table->string('stamp')->nullable();
         });
     }
 }
