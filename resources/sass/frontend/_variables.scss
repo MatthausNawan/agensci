@@ -28,86 +28,99 @@ $green: #43ac6a !default;
 $teal: #20c997 !default;
 $cyan: #5bc0de !default;
 
+$agency-dark: #0e274c;
+$agency-light: #52647f;
+$agency-primary: #00abff;
+$agency-secondary: #b07b2d;
+
+$agency-gray: #ececec;
+
 $primary: $blue !default;
 $secondary: $gray-200 !default;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
+
 $danger: $red !default;
-$light: $gray-200 !default;
-$dark: $gray-900 !default;
+$light: $agency-light !default;
+$dark: $agency-dark !default;
 $black: $black;
 
-$yiq-contrasted-threshold: 200 !default;
+$theme-colors: (
+    "primary": $agency-primary,
+    "secondary": $agency-secondary
+);
 
-// Components
+// $yiq-contrasted-threshold: 200 !default;
 
-$border-radius: 0 !default;
-$border-radius-lg: 0 !default;
-$border-radius-sm: 0 !default;
+// // Components
 
-// Fonts
+// $border-radius: 0 !default;
+// $border-radius-lg: 0 !default;
+// $border-radius-sm: 0 !default;
 
-// stylelint-disable-next-line value-keyword-case
-$font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-size-base: 0.9375rem !default;
-$font-size-sm: $font-size-base * 0.88 !default;
-$headings-font-weight: 300 !default;
+// // Fonts
 
-// Buttons
+// // stylelint-disable-next-line value-keyword-case
+// $font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont,
+//     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+//     "Segoe UI Emoji", "Segoe UI Symbol" !default;
+// $font-size-base: 0.9375rem !default;
+// $font-size-sm: $font-size-base * 0.88 !default;
+// $headings-font-weight: 300 !default;
 
-$input-btn-padding-x: 0.5rem !default;
-$btn-font-weight: 300 !default;
+// // Buttons
 
-// Dropdowns
+// $input-btn-padding-x: 0.5rem !default;
+// $btn-font-weight: 300 !default;
 
-$dropdown-border-color: rgba($black, 0.1) !default;
-$dropdown-divider-bg: rgba($black, 0.1) !default;
+// // Dropdowns
 
-// Navs
+// $dropdown-border-color: rgba($black, 0.1) !default;
+// $dropdown-divider-bg: rgba($black, 0.1) !default;
 
-$nav-link-disabled-color: $gray-400 !default;
-$nav-tabs-border-color: $dropdown-border-color !default;
-$nav-tabs-link-hover-border-color: $nav-tabs-border-color !default;
-$nav-tabs-link-active-border-color: $nav-tabs-border-color !default;
+// // Navs
 
-// Navbar
+// $nav-link-disabled-color: $gray-400 !default;
+// $nav-tabs-border-color: $dropdown-border-color !default;
+// $nav-tabs-link-hover-border-color: $nav-tabs-border-color !default;
+// $nav-tabs-link-active-border-color: $nav-tabs-border-color !default;
 
-$navbar-dark-color: rgba($white, 0.7) !default;
-$navbar-dark-hover-color: $white !default;
+// // Navbar
 
-// Pagination
+// $navbar-dark-color: rgba($white, 0.7) !default;
+// $navbar-dark-hover-color: $white !default;
 
-$pagination-color: $gray-600 !default;
-$pagination-border-color: $nav-tabs-border-color !default;
-$pagination-active-border-color: darken($primary, 5%) !default;
-$pagination-disabled-color: $gray-200 !default;
+// // Pagination
 
-// Jumbotron
+// $pagination-color: $gray-600 !default;
+// $pagination-border-color: $nav-tabs-border-color !default;
+// $pagination-active-border-color: darken($primary, 5%) !default;
+// $pagination-disabled-color: $gray-200 !default;
 
-$jumbotron-padding: 4rem !default;
+// // Jumbotron
 
-// Cards
+// $jumbotron-padding: 4rem !default;
 
-$card-inner-border-radius: 0 !default;
+// // Cards
 
-// Badges
+// $card-inner-border-radius: 0 !default;
 
-$badge-font-weight: 300 !default;
-$badge-padding-x: 1rem !default;
+// // Badges
 
-// Progress bars
+// $badge-font-weight: 300 !default;
+// $badge-padding-x: 1rem !default;
 
-$progress-bg: $gray-400 !default;
-$progress-bar-color: $white !default;
+// // Progress bars
 
-// List group
+// $progress-bg: $gray-400 !default;
+// $progress-bar-color: $white !default;
 
-$list-group-disabled-bg: $gray-200 !default;
+// // List group
 
-// Close
+// $list-group-disabled-bg: $gray-200 !default;
 
-$close-color: $gray-600 !default;
-$close-text-shadow: none !default;
+// // Close
+
+// $close-color: $gray-600 !default;
+// $close-text-shadow: none !default;

@@ -33,8 +33,9 @@ class HomeController extends Controller
                 'categories' => Category::all(),
                 'se' => Segment::whereHas('events')->get(),
                 'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
-                'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->get(),
-                'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->get()
+                'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->latest()->first(),
+                'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->latest()->first(),
+                'featured_event' => Event::latest()->first()
             ]
         );
     }
@@ -49,6 +50,7 @@ class HomeController extends Controller
             'segments' => Segment::all(),
             'categories' => Category::all(),
             'news' => Post::all(),
+            'calls' => Post::all(),
             'speakers' => Speaker::all(),
         ]);
     }

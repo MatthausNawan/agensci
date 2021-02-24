@@ -17,15 +17,21 @@
     <link href="{{ asset('frontend/css/agensci.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     @yield('styles')
+    <style>
+        .slick-prev:before,
+        .slick-next:before {
+            color: #0E274C
+        }
+    </style>
 </head>
 
 <body>
-
-
-    <div class="container mt-1">
-        <div class="nav-scroller bg-dark">
-            <nav class="nav d-flex justify-content-start">
+    <div class="nav-scroller bg-dark">
+        <div class="container">
+            <nav class="nav d-flex justify-content-start align-items-center">
+                <img src="{{ asset('assets/images/logo.png')}}" alt="agency-logo" class="logo">
                 <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
                 <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
                 <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
@@ -34,20 +40,30 @@
             </nav>
         </div>
     </div>
-
     <main role="main" class="container">
-
-
         <div class="main-banner mb-2 p-3">
             <img src="https://via.placeholder.com/1366x200" alt="" class="img-rounded" width="100%" height="200">
         </div>
+        @include('layouts._partials.messages')
+
         @yield('content')
 
-    </main><!-- /.container -->
+        <div class="footer-banner">
+            <img src="https://via.placeholder.com/1366x200" alt="" class="img-rounded" width="100%" height="200">
+        </div>
+    </main>
 
 
-
-
+    <footer class="bg-dark mt-1">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav class="nav">
+                <a class="p-3 text-white" href="#">Quem somos</a>
+                <a class="p-3 text-white" href="#">Termos de Uso</a>
+                <a class="p-3 text-white" href="#">Politica de Privacidade</a>
+                <a class="p-3 text-white" href="#">Contato</a>
+            </nav>
+        </div>
+    </footer>
 
     <script src="{{ asset('frontend/js/jquery.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
