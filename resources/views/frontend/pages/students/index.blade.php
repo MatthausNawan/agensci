@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-2 col-sm-12">
-        @include('auth.login_column')
+    <div class="col-md-3 col-sm-12 p-1">
+        @include('auth.login_column',['title'=>'Painel do Estudante'])
 
         <div class="my-2">
             <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
@@ -16,46 +16,26 @@
 
     </div>
 
-    <div class="col-md-10 col-sm-12">
+    <div class="col-md-9 col-sm-12 p-1">
         @include('frontend.pages.students._partials.painel')
 
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
-                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-
-                <div class="my-2 px-4">
-                    <h5 class="text-bold d-flex bg-dark text-white p-2">Noticias</h5>
-                    @include('frontend.pages.teachers._partials.news',['news'=>$news])
-                </div>
-
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-                <div class="my-2 px-4">
-                    <h5 class="text-bold d-flex bg-dark text-white p-2">Portifolios de Estudantes</h5>
-                    @include('frontend.pages.students._partials.profiles',['profiles'=>$profiles])
-                </div>
-
+                @include('frontend.pages.teachers._partials.news',['news'=>$news,'title'=>'Notícias'])
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-                <div class="my-2 px-4">
-                    <h5 class="text-bold d-flex bg-dark text-white p-2">Vagas Estágio/Trainee</h5>
-                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs])
-                </div>
+                @include('frontend.pages.students._partials.profiles',['profiles'=> $profiles,'title'=>'Portifólios de Estudantes'])
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-                <div class="my-2 px-4">
-                    <h5 class="text-bold d-flex bg-dark text-white p-2">Vagas Emprego</h5>
-                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs])
-                </div>
+                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas Estágio/Trainee'])
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
+                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
+
+                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Concursos'])
             </div>
         </div>
     </div>

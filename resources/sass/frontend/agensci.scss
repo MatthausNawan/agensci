@@ -2,10 +2,40 @@
 
 @import "~bootstrap/scss/bootstrap";
 
-@import "./bootswatch";
-
 @import "./custom";
 
 body {
-    background-color: #eee;
+    background-color: #d2d4dd;
+}
+
+img .logo {
+    height: 50px;
+    width: auto;
+}
+
+.section-title {
+    text-transform: uppercase;
+    color: $agency-dark;
+    border-bottom: 5px solid $agency-dark;
+}
+
+.details-text {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.external-button {
+    font-size: 12px;
+    cursor: pointer;
+    &:hover {
+        text-decoration: none;
+    }
+}
+.external-link-title {
+    text-transform: uppercase;
+}
+
+.links-wrapper {
+    background-color: $agency-gray;
+    border: 2px solid #efefef;
 }

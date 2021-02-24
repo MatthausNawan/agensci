@@ -1,27 +1,10 @@
 @extends('layouts.frontend')
 
 @section('content')
-<div class="col-lg-8 offset-2">
+<div class="col-lg-8 offset-2 mb-2">
     <form method="POST" action="{{ route("site.companies.store") }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-            </div>
-            @endif
-            <div class="card-header">Cadastre-se</div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="razao">Razão social:</label>
@@ -126,7 +109,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col">
                         <label for="Nome fantasia">Assinatura:</label>
                         <input type="text" name="signature" style="height:120px" class="form-control">
@@ -135,7 +118,7 @@
                         <label for="CPNJ">Carimbo da empresa:</label>
                         <input type="text" name="stamp" style="height:120px" class="form-control">
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -157,7 +140,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                <button type="submit" class="btn btn-dark btn-block">Cadastrar</button>
             </div>
         </div>
     </form>
