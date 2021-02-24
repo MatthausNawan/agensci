@@ -78,6 +78,6 @@ class HomeController extends Controller
 
     public function showAdvertisePage()
     {
-        return view('frontend.pages.advertise.index', []);
+        return view('frontend.pages.advertise.index');
     }
 }
