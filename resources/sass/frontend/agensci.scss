@@ -4,13 +4,20 @@
 
 @import "./custom";
 
+@import "./inputs";
+
 body {
     background-color: #d2d4dd;
 }
 
-img .logo {
-    height: 50px;
+nav a :hover {
+    text-decoration: none;
+}
+
+.nav-logo {
+    height: 70px;
     width: auto;
+    padding: 10px;
 }
 
 .section-title {

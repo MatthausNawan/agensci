@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="row">
+    <div class="col-lg-12 m-2">
+        <img src="https://via.placeholder.com/1200x200" alt="" class="img-rounded" width="100%" height="200">
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-3 col-sm-12 p-1">
 
         @include('auth.login_column',['title'=>'Painel do Professor'])
@@ -33,6 +39,11 @@
                 <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 m-2">
+        <img src="https://via.placeholder.com/1200x200" alt="" class="img-rounded" width="100%" height="200">
     </div>
 </div>
 @endsection

@@ -31,7 +31,7 @@
     <div class="nav-scroller bg-dark">
         <div class="container">
             <nav class="nav d-flex justify-content-start align-items-center">
-                <img src="{{ asset('assets/images/logo.png')}}" alt="agency-logo" class="logo">
+                <img src="{{ asset('assets/images/logo-branco.png')}}" alt="agency-logo" class="nav-logo">
                 <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
                 <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
                 <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
@@ -41,16 +41,9 @@
         </div>
     </div>
     <main role="main" class="container">
-        <div class="main-banner mb-2 p-3">
-            <img src="https://via.placeholder.com/1366x200" alt="" class="img-rounded" width="100%" height="200">
-        </div>
         @include('layouts._partials.messages')
 
         @yield('content')
-
-        <div class="footer-banner">
-            <img src="https://via.placeholder.com/1366x200" alt="" class="img-rounded" width="100%" height="200">
-        </div>
     </main>
 
 
