@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-2 col-sm-12">
+    <div class="col-md-3 col-sm-12 p-1">
 
-        @include('auth.login_column')
+        @include('auth.login_column',['title'=>'Painel do Professor'])
 
         <div class="my-2">
             <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
@@ -17,24 +17,16 @@
 
     </div>
 
-    <div class="col-md-10 col-sm-12">
+    <div class="col-md-9 col-sm-12 p-1">
         @include('frontend.pages.teachers._partials.painel')
-
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-                <div class="my-2 px-4">
-                    @include('frontend.pages.teachers._partials.news',['news'=>$news])
-                </div>
-
+                @include('frontend.pages.teachers._partials.news',['news'=>$news,'title'=>'Notícias'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-                <div class="my-2 px-4">
-                    @include('frontend.pages.teachers._partials.speakers',['speakers'=>$speakers])
-                </div>
-
+                @include('frontend.pages.teachers._partials.speakers',['speakers'=> $speakers,'title'=>'Palestrantes'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @include('frontend.pages.teachers._partials.calls',['calls'=> $calls,'title'=>'Chamadas de Publicações'])
             </div>
             <div class="col-md-3 col-sm-12">
                 <!-- TODO: produtos/servicos -->
