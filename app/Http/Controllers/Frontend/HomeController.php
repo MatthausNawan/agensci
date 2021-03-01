@@ -55,6 +55,10 @@ class HomeController extends Controller
         ]);
     }
 
+    public function registerTeacherPage(){
+        return view('frontend.pages.teachers.register', []);
+    }
+
     public function showStudentsPage()
     {
         return view('frontend.pages.students.index', [
@@ -69,6 +73,10 @@ class HomeController extends Controller
             'jobs' => Job::all(),
             'profiles' => StudentProfile::all()
         ]);
+    }
+
+    public function registerStudentPage(){
+        return view('frontend.pages.students.register', []);
     }
 
     public function showCompaniesPage()
