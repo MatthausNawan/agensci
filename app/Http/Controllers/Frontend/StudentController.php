@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudent;
+use App\Models\Category;
+use App\Models\ExternalLik;
 use App\Models\Student;
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Role;
 use App\Services\StudentService;
 
 class StudentController extends Controller
@@ -19,6 +18,19 @@ class StudentController extends Controller
         StudentService::createUserStudent($request);
 
         return  redirect()->back()->with('success', 'Registro inserido com sucesso');
+
+    }
+
+    // Area Administrativa
+    public function home()
+    {
+
+        return view(
+            'frontend.pages.students.painel',
+            [
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+            ]
+        );
 
     }
 }

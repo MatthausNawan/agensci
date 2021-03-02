@@ -25,3 +25,10 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     #anuncie
     Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 });
+
+Route::group(['prefix'=>'painel','namespace'=>'Frontend'],function(){
+
+    Route::group(['prefix'=>'estudante'],function(){
+        Route::get('/','StudentController@home');
+    });
+});
