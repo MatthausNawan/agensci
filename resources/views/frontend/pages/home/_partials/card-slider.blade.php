@@ -11,10 +11,10 @@
         <div class="tab-pane px-4 fade {{ $loop->first ? 'show active' : '' }}" id="tab{{$key}}" role="tabpanel" aria-labelledby="{{$key}}-tab">
             <div class="card-group {{ $event->count() >= 4 ? $class : ' '  }}">
                 @foreach($event as $e)
-                <div class="card ">
-                    <img class="card-img-top" src="{{$e->banner->getUrl()}}" alt="Card image cap" style="height: 200px">
+                <div class="card">
+                    <img class="card-img-top" src="{{$e->banner->getUrl()}}" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-title">{{ $e->title }}</p>
+                        <p class="card-title small text-bold card-text">{{ $e->title }}</p>
                         <div class="details d-flex flex-column">
                             <span class="details-text">Data Evento: {{$e->start_date }}</span>
                             <span class="details-text">Local: {{ $e->location ?? 'Local do Evento' }}</span>

@@ -20,6 +20,6 @@
 
     <hr>
 
-    <a href="{{ route('register') }}" class="btn btn-secondary btn-block btn-sm">Cadastre-se</a>
+    <a href="{{ route($route) }}" class="btn btn-secondary btn-block btn-sm">Cadastre-se</a>
 
 </div>

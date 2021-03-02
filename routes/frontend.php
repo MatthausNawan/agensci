@@ -3,21 +3,25 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('/test', 'layouts.frontend');
+Route::redirect('/', 'layouts.frontend');
 
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
-
+    #home
     Route::get('/', 'HomeController@home')->name('site.home');
 
+    #professor
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
-    Route::get('/registerTeacher', 'HomeController@registerTeacherPage')->name('site.teachers.register');
+    Route::get('/cadastro/professor', 'HomeController@registerTeacherPage')->name('site.teachers.register');
 
+    #estudantes
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
-    Route::get('/registerStudent', 'HomeController@registerStudentPage')->name('site.students.register');
-    Route::post('/newStudent', 'StudentController@store')->name('site.students.register.form');
+    Route::get('/cadastro/estudante', 'HomeController@registerStudentPage')->name('site.students.register');
+    Route::post('/estudante', 'StudentController@store')->name('site.students.register.form');
 
-    Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
-    Route::post('/newCompany', 'CompanyController@store')->name('site.companies.store');
+    #empresas
+    Route::get('/cadastro/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
+    Route::post('/empresas', 'CompanyController@store')->name('site.companies.store');
 
-    Route::get('/anuncia', 'HomeController@showAdvertisePage')->name('site.advertise');
+    #anuncie
+    Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 });

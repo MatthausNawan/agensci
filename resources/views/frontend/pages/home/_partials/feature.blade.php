@@ -1,5 +1,6 @@
 <div class="row links-wrapper">
     <div class="col-md-8 p-1">
+        <a href="">
         <div class="card">
             <img class="card-img-top" src="{{$featured_event->banner->getUrl()}}" alt="Card image cap">
             <div class="card-body">
@@ -7,6 +8,7 @@
                 <p class="card-text">{!! $featured_event->details !!}</p>
             </div>
         </div>
+        </a>
     </div>
     <div class="col-md-4 p-1">
         <div class="search">

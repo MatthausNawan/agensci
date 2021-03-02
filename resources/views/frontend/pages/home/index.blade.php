@@ -24,9 +24,9 @@
             Consulte Instituições
         </p>
 
-        @include('frontend.pages.home._partials.external-links',['title'=>'Públicas','links'=>$uni_publicas])
-        @include('frontend.pages.home._partials.external-links',['title'=>'Particulares','links'=>$uni_privadas])
-        @include('frontend.pages.home._partials.external-links',['title'=>'Internacionais','links'=>$uni_internacionais])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Públicas','links'=>$uni_publicas])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Particulares','links'=>$uni_privadas])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Internacionais','links'=>$uni_internacionais])
 
     </div>
 
@@ -76,34 +76,35 @@
 @section('js')
 <script>
     $('.carrousel-card').slick({
-        infinite: true,
+        infinite: false,
         slidesToShow: 3,
         slidesToScroll: 3,
         dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+        adaptiveHeight:true
+        // responsive: [{
+        //         breakpoint: 1024,
+        //         settings: {
+        //             slidesToShow: 5,
+        //             slidesToScroll: 5,
+        //             infinite: true,
+        //             dots: true
+        //         }
+        //     },
+        //     {
+        //         breakpoint: 600,
+        //         settings: {
+        //             slidesToShow: 5,
+        //             slidesToScroll: 5
+        //         }
+        //     },
+        //     {
+        //         breakpoint: 480,
+        //         settings: {
+        //             slidesToShow: 1,
+        //             slidesToScroll: 1
+        //         }
+        //     }
+        // ]
     });
 
     $('.carrousel').slick({

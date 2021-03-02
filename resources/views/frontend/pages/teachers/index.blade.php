@@ -10,16 +10,16 @@
 <div class="row">
     <div class="col-md-3 col-sm-12 p-1">
 
-        @include('auth.login_column',['title'=>'Painel do Professor'])
+        @include('auth.login_column',['title'=>'Painel do Professor','route'=>'site.companies'])
 
         <div class="my-2">
             <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
         </div>
 
-        @include('frontend.pages.home._partials.external-links',['title'=>'Laboratorios de Pesquisa','links'=>$laboratorios])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Laboratorios de Pesquisa','links'=>$laboratorios])
         @include('frontend.pages.home._partials.external-links',['title'=>'Ongs','links'=>$ongs])
-        @include('frontend.pages.home._partials.external-links',['title'=>'Sociedades','links'=>$sociedades])
-        @include('frontend.pages.home._partials.external-links',['title'=>'Conselhos de Classe','links'=>$conselhos])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Sociedades','links'=>$sociedades])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Conselhos de Classe','links'=>$conselhos])
 
     </div>
 
