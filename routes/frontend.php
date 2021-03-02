@@ -28,7 +28,18 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
 
 Route::group(['prefix'=>'painel','namespace'=>'Frontend'],function(){
 
+    #rotas restritas estudantes
     Route::group(['prefix'=>'estudante'],function(){
         Route::get('/','StudentController@home');
+    });
+
+    #rotas restritas empresas
+    Route::group(['prefix'=>'empresa'],function(){
+        Route::get('/','CompanyController@home');
+    });
+
+    #rotas restritas professor
+    Route::group(['prefix'=>'professor'],function(){
+        Route::get('/','TeacherController@home');
     });
 });

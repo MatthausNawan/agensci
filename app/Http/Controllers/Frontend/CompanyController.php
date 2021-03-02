@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanies;
+use App\Models\Category;
 use App\Models\Company;
+use App\Models\ExternalLik;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -24,5 +26,17 @@ class CompanyController extends Controller
         CompanieService::createUserCompanie($request);
 
         return  redirect()->back()->with('success', 'Registro inserido com sucesso');
+    }
+
+    // Area Administrativa
+    public function home()
+    {
+        return view(
+            'frontend.pages.companies.painel',
+            [
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+            ]
+        );
+
     }
 }
