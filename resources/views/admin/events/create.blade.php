@@ -31,6 +31,14 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.event.fields.title_helper') }}</span>
                         </div>
+                        <div class="form-group {{ $errors->has('link') ? 'has-error' : '' }}">
+                            <label for="link">{{ trans('cruds.event.fields.link') }}</label>
+                            <input class="form-control" type="text" name="link" id="link" value="{{ old('link', '') }}">
+                            @if($errors->has('link'))
+                                <span class="help-block" role="alert">{{ $errors->first('link') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.event.fields.link_helper') }}</span>
+                        </div>
                         <div class="form-group {{ $errors->has('start_date') ? 'has-error' : '' }}">
                             <label for="start_date">{{ trans('cruds.event.fields.start_date') }}</label>
                             <input class="form-control date" type="text" name="start_date" id="start_date" value="{{ old('start_date') }}">
@@ -38,6 +46,15 @@
                                 <span class="help-block" role="alert">{{ $errors->first('start_date') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.event.fields.start_date_helper') }}</span>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('end_date') ? 'has-error' : '' }}">
+                            <label for="end_date">{{ trans('cruds.event.fields.end_date') }}</label>
+                            <input class="form-control date" type="text" name="end_date" id="end_date" value="{{ old('end_date') }}">
+                            @if($errors->has('end_date'))
+                                <span class="help-block" role="alert">{{ $errors->first('end_date') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.event.fields.end_date_helper') }}</span>
                         </div>
                         <div class="form-group {{ $errors->has('subscripition_period') ? 'has-error' : '' }}">
                             <label for="subscripition_period">{{ trans('cruds.event.fields.subscripition_period') }}</label>
@@ -66,6 +83,15 @@
                                 <span class="help-block" role="alert">{{ $errors->first('enabled') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.event.fields.enabled_helper') }}</span>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('location') ? 'has-error' : '' }}">
+                            <label for="location">{{ trans('cruds.event.fields.location') }}</label>
+                            <input class="form-control" type="text" name="location" id="location" value="{{ old('location', '') }}">
+                            @if($errors->has('location'))
+                                <span class="help-block" role="alert">{{ $errors->first('location') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.event.fields.location_helper') }}</span>
                         </div>
                         <div class="form-group {{ $errors->has('details') ? 'has-error' : '' }}">
                             <label for="details">{{ trans('cruds.event.fields.details') }}</label>

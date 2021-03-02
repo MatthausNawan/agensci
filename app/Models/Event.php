@@ -22,6 +22,7 @@ class Event extends Model implements HasMedia
 
     protected $dates = [
         'start_date',
+        'end_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,8 +32,11 @@ class Event extends Model implements HasMedia
         'segment_id',
         'title',
         'start_date',
+        'end_date',
         'subscripition_period',
         'enabled',
+        'location',
+        'link',
         'details',
         'creator_id',
         'created_at',
@@ -64,6 +68,16 @@ class Event extends Model implements HasMedia
     public function setStartDateAttribute($value)
     {
         $this->attributes['start_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getEndDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setEndDateAttribute($value)
+    {
+        $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getBannerAttribute()

@@ -36,6 +36,9 @@
                                     {{ trans('cruds.event.fields.start_date') }}
                                 </th>
                                 <th>
+                                    {{ trans('cruds.event.fields.end_date') }}
+                                </th>
+                                <th>
                                     {{ trans('cruds.event.fields.subscripition_period') }}
                                 </th>
                                 <th>
@@ -110,6 +113,7 @@
 { data: 'segment_name', name: 'segment.name' },
 { data: 'title', name: 'title' },
 { data: 'start_date', name: 'start_date' },
+{ data: 'end_date', name: 'end_date' },
 { data: 'subscripition_period', name: 'subscripition_period' },
 { data: 'banner', name: 'banner', sortable: false, searchable: false },
 { data: 'enabled', name: 'enabled' },
@@ -125,7 +129,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 });
 
 </script>
