@@ -8,7 +8,7 @@
 </div>
 
 <div class="col-lg-8 offset-2 mb-2">
-    <form method="POST" action="{{ route("site.companies.store") }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route("site.students.register.form") }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -35,7 +35,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="curso">Curso:</label>
-                        <input type="text" class="form-control" name="couse_name">
+                        <input type="text" class="form-control" name="course-name">
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="instituicao estuda">Instituição estuda:</label>
-                        <input type="text" class="form-control" name="univerity_name">
+                        <input type="text" class="form-control" name="university-name">
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="curriculo lattes">Curriculo lattes:</label>
-                        <input type="text" class="form-control" name="lattes_link">
+                        <input type="text" class="form-control" name="lattes-link">
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="celular">Celular:</label>
-                        <input type="text" class="form-control" name="cell-number">
+                        <input type="text" class="form-control" name="phone">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="whatsapp">Whatsapp:</label>

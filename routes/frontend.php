@@ -14,6 +14,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
 
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
     Route::get('/registerStudent', 'HomeController@registerStudentPage')->name('site.students.register');
+    Route::post('/newStudent', 'StudentController@store')->name('site.students.register.form');
 
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
     Route::post('/newCompany', 'CompanyController@store')->name('site.companies.store');
