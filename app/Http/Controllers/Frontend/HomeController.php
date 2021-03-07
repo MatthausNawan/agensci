@@ -29,6 +29,13 @@ class HomeController extends Controller
                 'uni_internacionais' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_INTERNACIONAIS)->get(),
                 'orgaos_educacionais' => ExternalLik::where('category_id', Category::C_ORGAOS_EDUCACIONAIS)->get(),
                 'orgaos_pesquisas' => ExternalLik::where('category_id', Category::C_ORGAOS_DE_PESQUISA)->get(),
+                'segments' => Segment::all(),
+                'categories' => Category::all(),
+                'se' => Segment::whereHas('events')->get(),
+                'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
+                'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->latest()->first(),
+                'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->latest()->first(),
+                'featured_event' => Event::latest()->first()
             ]
         );
     }
