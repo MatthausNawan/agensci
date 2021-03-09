@@ -11,14 +11,18 @@ use App\Services\StudentService;
 
 class StudentController extends Controller
 {
+    public function showRegisterStudentPage()
+    {
+        return view('frontend.pages.students.register', []);
+    }
+
     public function store(StoreStudent $request)
     {
         $student = Student::create($request->all());
 
-        StudentService::createUserStudent($request);
+        StudentService::createUserStudent($request, $student);
 
-        return  redirect()->back()->with('success', 'Registro inserido com sucesso');
-
+        return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
     }
 
     // Area Administrativa
@@ -31,6 +35,5 @@ class StudentController extends Controller
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
             ]
         );
-
     }
 }

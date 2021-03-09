@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
 
+    public function showRegisterTeacherPage(){
+        return view('frontend.pages.teachers.register', []);
+    }
 
 
 

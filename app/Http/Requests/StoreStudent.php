@@ -35,7 +35,7 @@ class StoreStudent extends FormRequest
             'cpf'  => 'required|max:255',
             'email'  => 'required|max:50|email',
             'phone' => 'required|max:20',
-            'whatsapp'  => 'required|max:20',
+            // 'whatsapp'  => 'required|max:20',
             'city' => 'required|max:30',
             'uf'  => 'required|max:5',
             'country'  => 'required|max:255',
@@ -46,7 +46,7 @@ class StoreStudent extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'O campo razão social é obrigatório!',
+            'name.required' => 'O campo nome é obrigatório!',
             'name.max' => 'Você ultrapassou o limite maximo de caracteres em Razão Social',
 
             'genre.required' => 'O campo genero é obrigatório!',
@@ -70,33 +70,33 @@ class StoreStudent extends FormRequest
 
             'occupation-lattes.required' => 'O campo atuação lattes é obrigatorio.',
             'occupation-lattes.max' => 'Você ultrapassou o limite maximo de caracteres em atuação lattes',
-            
+
             'lattes-link.required' => 'O campo link lattes é obrigatorio.',
             'lattes-link.max' => 'Você ultrapassou o limite maximo de caracteres em link lattes',
-            
+
             'cpf.required' => 'O campo de CPF do responsavel pela solicitação é obrigatorio.',
             'cpf.max' => 'Você ultrapassou o limite maximo de caracteres no CPF do responsavel pela solicitação',
-            
+
             'email.required' => 'O campo de email é obrigatorio.',
             'email.max' => 'Você ultrapassou o limite maximo de caracteres em email',
             'email.email' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
-            
+
             'phone.required' => 'O campo telefone é obrigatorio.',
             'phone.max' => 'Você ultrapassou o limite maximo de caracteres em telefone',
-            
+
             'whatsapp.required' => 'O campo número de celular é obrigatorio.',
             'whatsapp.max' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
-            
-            
+
+
             'city.required' => 'O campo cidade é obrigatorio.',
             'city.max' => 'Você ultrapassou o limite maximo de caracteres em cidade',
 
             'uf.required' => 'O campo UF é obrigatorio.',
             'uf.max' => 'Você ultrapassou o limite maximo de caracteres em UF',
-            
+
             'country.required' => 'O campo País é obrigatorio.',
             'country.max' => 'Você ultrapassou o limite maximo de caracteres em País',
-            
+
             'password.required' => 'O campo de senha é obrigatorio.',
             'password.max' => 'Você ultrapassou o limite maximo de caracteres em senha',
             'password.confirmed' => 'As senhas não conferem',

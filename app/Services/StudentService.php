@@ -4,16 +4,20 @@ namespace App\Services;
 
 use App\Models\User;
 
-class StudentService {
+class StudentService
+{
 
 
-    public static function createUserStudent($request)
+    public static function createUserStudent($request, $student)
     {
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+
+        $student->user_id = $user->id;
+        $student->save();
 
         $user->roles()->attach(4);
     }

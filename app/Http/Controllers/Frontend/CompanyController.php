@@ -15,6 +15,11 @@ use Spatie\MediaLibrary\Models\Media;
 
 class CompanyController extends Controller
 {
+    public function showRegisterCompaniesPage()
+    {
+        return view('frontend.pages.companies.index', []);
+    }
+
     public function store(StoreCompanies $request)
     {
         $company = Company::create($request->all());
@@ -23,9 +28,9 @@ class CompanyController extends Controller
             $company->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
         }
 
-        CompanieService::createUserCompanie($request);
+        CompanieService::createUserCompanie($request, $company);
 
-        return  redirect()->back()->with('success', 'Registro inserido com sucesso');
+        return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
     }
 
     // Area Administrativa
@@ -37,6 +42,5 @@ class CompanyController extends Controller
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
             ]
         );
-
     }
 }

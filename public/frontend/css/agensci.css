@@ -10975,5 +10975,10 @@ nav a :hover {
   -webkit-box-orient: vertical;
 }
 
+.form-group .required::after {
+  content: " *";
+  color: red;
+}
+
 
 /*# sourceMappingURL=agensci.css.map*/

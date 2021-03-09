@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-3 col-sm-12 p-1">
 
-        @include('auth.login_column',['title'=>'Painel do Professor','route'=>'site.companies'])
+        @include('auth.login_column',['title'=>'Painel do Professor','route'=>'site.teachers.register'])
 
         <div class="my-2">
             <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
