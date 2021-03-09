@@ -12,6 +12,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     #professor
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/cadastro/professor', 'HomeController@registerTeacherPage')->name('site.teachers.register');
+    Route::post('/professor', 'TeacherController@store')->name('site.teacher.register.form');
 
     #estudantes
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
