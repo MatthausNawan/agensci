@@ -18,22 +18,18 @@ class CheckPanelRouteMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::check())
-        {
-            return redirect()->route('site.home');
+
+        if(Auth::check()){
+
+            if( Auth::user()->painel['route'] == $request->path()){
+
+                return $next($request);
+            };
+            return redirect()->back();
         }
+        return $next($request);
 
-        if($this->checkRoutePermission($request)){
-
-            return $next($request);
-        }
-
-        return redirect()->route('site.home');
     }
 
-    protected function checkRoutePermission($request)
-    {
 
-       return Auth::user()->painel['route'] == $request->path();
-    }
 }
