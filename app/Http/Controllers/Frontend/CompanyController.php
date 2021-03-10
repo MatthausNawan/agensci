@@ -7,14 +7,21 @@ use App\Http\Requests\StoreCompanies;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\ExternalLik;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use App\Services\CompanieService;
 use Spatie\MediaLibrary\Models\Media;
+use Gate;
 
 class CompanyController extends Controller
 {
+    // public function __construct()
+    // {
+    //     abort_if(Gate::denies('company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // }
+
     public function showRegisterCompaniesPage()
     {
         return view('frontend.pages.companies.index', []);

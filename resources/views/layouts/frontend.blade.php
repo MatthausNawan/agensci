@@ -37,6 +37,9 @@
                 <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
                 <a class="p-3 text-white" href="{{ route('site.companies.register') }}">Empresas</a>
                 <a class="p-3 text-white" href="{{ route('site.advertise') }}">Anuncie</a>
+                @auth
+                <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel {{Auth::user()->painel['name']}}</a>
+                @endauth
             </nav>
         </div>
     </div>
