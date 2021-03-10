@@ -17,10 +17,10 @@ use Gate;
 
 class CompanyController extends Controller
 {
-    // public function __construct()
-    // {
-    //     abort_if(Gate::denies('company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-    // }
+    public function __construct()
+    {
+        $this->middleware('check-panel');
+    }
 
     public function showRegisterCompaniesPage()
     {

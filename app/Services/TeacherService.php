@@ -5,11 +5,10 @@ namespace App\Services;
 use App\Models\Role;
 use App\Models\User;
 
-class StudentService
-{
+class TeacherService {
 
 
-    public static function createUserStudent($request, $student)
+    public static function createUserTeacher($request, $teacher)
     {
         $user = User::create([
             'name' => $request->name,
@@ -17,9 +16,9 @@ class StudentService
             'password' => bcrypt($request->password)
         ]);
 
-        $student->user_id = $user->id;
-        $student->save();
+        $teacher->user_id = $user->id;
+        $teacher->save;
 
-        $user->roles()->attach(Role::ROLE_STUDENT);
+        $user->roles()->attach(Role::ROLE_TEACHER);
     }
 }

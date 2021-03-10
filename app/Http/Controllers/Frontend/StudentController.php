@@ -11,6 +11,11 @@ use App\Services\StudentService;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('check-panel');
+    }
+
     public function showRegisterStudentPage()
     {
         return view('frontend.pages.students.register', []);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -17,18 +18,22 @@ class CheckPanelRouteMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(!Auth::check())
+        {
+            return redirect()->route('site.home');
+        }
+
+        if($this->checkRoutePermission($request)){
+
+            return $next($request);
+        }
+
+        return redirect()->route('site.home');
     }
 
-    protected function getRoutePanel($role)
+    protected function checkRoutePermission($request)
     {
-        $routes =  [
-            1 => RouteServiceProvider::ADMIN_PANEL,
-            3 => RouteServiceProvider::COMPANY_PANEL,
-            4 => RouteServiceProvider::STUDENT_PANEL,
-            5 => RouteServiceProvider::TEACHER_PANEL
-        ];
 
-        return $routes[$role];
+       return Auth::user()->painel['route'] == $request->path();
     }
 }

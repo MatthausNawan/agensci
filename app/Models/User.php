@@ -132,21 +132,23 @@ class User extends Authenticatable
         $user_role = $this->roles()->first()->id;
 
         $routes = [
-            1 => [
-                'route' => '/admin',
+            Role::ROLE_ADMIN => [
+                'route' => 'admin',
                 'name' => 'Painel Admin'
             ],
-            3 => [
-                'route' => '/painel/estudante',
+            Role::ROLE_STUDENT => [
+                'route' => 'painel/estudante',
                 'name' => 'Painel estudante'
             ],
-            4 => [
-                'route' => '/painel/empresa',
+            Role::ROLE_COMPANY => [
+                'route' => 'painel/empresa',
                 'name' => 'Painel Empresa'
             ],
+            Role::ROLE_TEACHER => [
+                'route' => 'painel/professor',
+                'name' => 'Painel professor'
+            ],
         ];
-
-        // dd($routes[$user_role]);
         return $routes[$user_role];
     }
 }

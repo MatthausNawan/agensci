@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Role;
 use App\Models\User;
 
 class CompanieService
@@ -19,6 +20,6 @@ class CompanieService
         $company->user_id = $user->id;
         $company->save();
 
-        $user->roles()->attach(3);
+        $user->roles()->attach(Role::ROLE_COMPANY);
     }
 }
