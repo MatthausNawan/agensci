@@ -66,7 +66,7 @@ class StoreCompanies extends FormRequest
             'fantasy-name.required' => 'O campo nome fantasia é obrigatório!',
             'fantasy-name.max' => 'Você ultrapassou o limite maximo de caracteres em Nome Fantasia',
 
-            'cnpj.required' => 'O campo nome CNPJ é obrigatório!',
+            'cnpj.required' => 'O campo CNPJ é obrigatório!',
             'cnpj.max' => 'Você ultrapassou o limite maximo de caracteres em CNPJ',
             'cnpj.numeric' => 'Formato incorreto em CNPJ',
 

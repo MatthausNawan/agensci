@@ -1,12 +1,18 @@
 <div class="row links-wrapper">
     <div class="col-md-8 p-1">
-        <div class="card">
-            <img class="card-img-top" src="{{$featured_event->banner->getUrl()}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{$featured_event->title}}</h5>
-                <p class="card-text">{!! $featured_event->details !!}</p>
+
+            <div class="card">
+                <a href="{{$featured_event->link ?? '#'}}" target="_blank">
+                    <img class="card-img-top" src="{{$featured_event->banner->getUrl()}}" alt="Card image cap">
+                </a>
+                <div class="card-body">
+                    <a href="{{$featured_event->link }}" target="_blank">
+                        <h5 class="card-title text-dark">{{$featured_event->title}}</h5>
+                    </a>
+                    <p class="card-text">{!! $featured_event->details !!}</p>
+                </div>
             </div>
-        </div>
+
     </div>
     <div class="col-md-4 p-1">
         <div class="search">

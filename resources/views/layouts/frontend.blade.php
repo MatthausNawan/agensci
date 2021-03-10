@@ -29,17 +29,29 @@
 
 <body>
     <div class="nav-scroller bg-dark">
-        <div class="container">
+        <div class="container d-flex flex-row">
             <nav class="nav d-flex justify-content-start align-items-center">
                 <img src="{{ asset('assets/images/logo-branco.png')}}" alt="agency-logo" class="nav-logo">
                 <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
                 <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
                 <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
-                <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
+                <a class="p-3 text-white" href="{{ route('site.companies.register') }}">Empresas</a>
                 <a class="p-3 text-white" href="{{ route('site.advertise') }}">Anuncie</a>
+
             </nav>
+            @auth
+                <nav class="nav d-flex justify-content-start align-items-center ml-auto">
+                        <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
+                        <a class="btn text-secondary">{{ Auth::user()->name }}</a>
+                        <a class="btn text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
+                </nav>
+            @endauth
         </div>
     </div>
+
+    <form action="{{ route('logout') }}" id="logout-form" method="post" style="display:none">
+        @csrf()
+    </form>
     <main role="main" class="container">
         @include('layouts._partials.messages')
 

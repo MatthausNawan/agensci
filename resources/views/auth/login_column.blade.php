@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <div class="label">Senha</div>
-            <input type="password" name="email" class="form-control input-sm">
+            <input type="password" name="password" class="form-control input-sm">
         </div>
 
         <div class="d-flex flex-column">
@@ -20,6 +20,6 @@
 
     <hr>
 
-    <a href="{{ route('register') }}" class="btn btn-secondary btn-block btn-sm">Cadastre-se</a>
+    <a href="{{ route($route) }}" class="btn btn-secondary btn-block btn-sm">Cadastre-se</a>
 
 </div>

@@ -71,13 +71,12 @@ class HomeController extends Controller
         ]);
     }
 
-    public function showCompaniesPage()
-    {
-        return view('frontend.pages.companies.index', []);
-    }
+
 
     public function showAdvertisePage()
     {
         return view('frontend.pages.advertise.index');
     }
+
+
 }

@@ -25,6 +25,12 @@ class Role extends Model
         'deleted_at',
     ];
 
+    const ROLE_ADMIN = 1;
+    const ROLE_USER = 2;
+    const ROLE_COMPANY = 3;
+    const ROLE_STUDENT = 4;
+    const ROLE_TEACHER = 5;
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

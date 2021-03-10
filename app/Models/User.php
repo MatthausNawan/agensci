@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\VerifyUserNotification;
+use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -124,5 +125,30 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function getPainelAttribute()
+    {
+        $user_role = $this->roles()->first()->id;
+
+        $routes = [
+            Role::ROLE_ADMIN => [
+                'route' => 'admin',
+                'name' => 'Painel Admin'
+            ],
+            Role::ROLE_STUDENT => [
+                'route' => 'painel/estudante',
+                'name' => 'Painel estudante'
+            ],
+            Role::ROLE_COMPANY => [
+                'route' => 'painel/empresa',
+                'name' => 'Painel Empresa'
+            ],
+            Role::ROLE_TEACHER => [
+                'route' => 'painel/professor',
+                'name' => 'Painel professor'
+            ],
+        ];
+        return $routes[$user_role];
     }
 }
