@@ -48,7 +48,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
 });
 
-Route::group(['prefix' => 'painel', 'namespace' => 'Frontend'], function () {
+Route::group(['prefix' => 'painel', 'namespace' => 'Frontend','middleware'=>'auth'], function () {
 
     #rotas restritas estudantes
     Route::group(['prefix' => 'estudante'], function () {

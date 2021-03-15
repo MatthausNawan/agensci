@@ -129,7 +129,7 @@ class User extends Authenticatable
 
     public function getPainelAttribute()
     {
-        $user_role = $this->roles()->first()->id;
+        $user_role = $this->roles()->whereNotIn('id',[2])->first()->id;
 
         $routes = [
             Role::ROLE_ADMIN => [
