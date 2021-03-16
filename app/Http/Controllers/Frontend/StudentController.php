@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\ExternalLik;
 use App\Models\Student;
 use App\Services\StudentService;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -40,5 +41,22 @@ class StudentController extends Controller
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
             ]
         );
+    }
+
+    public function getPersonalLinks()
+    {
+        // $speakers = Speaker::all();
+        return view('frontend.pages.students.personal-links.index');
+    }
+
+    public function createPersonalLinks()
+    {
+        // $segments = Segment::all();
+        return view('frontend.pages.students.personal-links.create');
+    }
+
+    public function storePersonalLinks(Request $request)
+    {
+        dd($request->all());
     }
 }

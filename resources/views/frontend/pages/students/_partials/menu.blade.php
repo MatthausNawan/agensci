@@ -7,7 +7,7 @@
             <a class="nav-link text-dark" href="#">Galeria de Fotos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Links Importantes</a>
+            <a class="nav-link text-dark" href="{{ route('student.personal-links.index') }}">Links Importantes</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" href="#">Portfólio</a>

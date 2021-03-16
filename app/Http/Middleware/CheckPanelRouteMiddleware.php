@@ -19,17 +19,14 @@ class CheckPanelRouteMiddleware
     public function handle($request, Closure $next)
     {
 
-        if(Auth::check()){
-
-            if( Auth::user()->painel['route'] == $request->path()){
+        if (Auth::check()) {
+            // dump(Auth::user()->painel['role'] == $request->segment(2));
+            if (Auth::user()->painel['role'] == $request->segment(2)) {
 
                 return $next($request);
             };
             return redirect()->back();
         }
         return $next($request);
-
     }
-
-
 }
