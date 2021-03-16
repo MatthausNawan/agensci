@@ -50,4 +50,38 @@ class CompanyController extends Controller
             ]
         );
     }
+
+    public function getJobs()
+    {
+        // $speakers = Speaker::all();
+        return view('frontend.pages.companies.jobs.index');
+    }
+
+    public function createJobs()
+    {
+
+        return view('frontend.pages.companies.jobs.create');
+    }
+
+    public function storeJobs(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function getPersonalLinks()
+    {
+        // $speakers = Speaker::all();
+        return view('frontend.pages.companies.personal-links.index');
+    }
+
+    public function createPersonalLinks()
+    {
+        // $segments = Segment::all();
+        return view('frontend.pages.companies.personal-links.create');
+    }
+
+    public function storePersonalLinks(Request $request)
+    {
+        dd($request->all());
+    }
 }

@@ -20,6 +20,7 @@ class CheckPanelRouteMiddleware
     {
 
         if (Auth::check()) {
+            // dump(Auth::user()->painel['role'] == $request->segment(2));
             if (Auth::user()->painel['role'] == $request->segment(2)) {
 
                 return $next($request);

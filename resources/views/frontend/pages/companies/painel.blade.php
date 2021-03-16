@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-    @include('frontend.pages.students._partials.menu')
+    @include('frontend.pages.companies._partials.menu')
 </div>
 
 <div class="row">
@@ -18,7 +18,6 @@
     </div>
 
     <div class="col-md-9 col-sm-12 p-1">
-        @include('frontend.pages.students._partials.painel')
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">

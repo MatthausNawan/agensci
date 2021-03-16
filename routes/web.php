@@ -53,11 +53,20 @@ Route::group(['prefix' => 'painel', 'namespace' => 'Frontend', 'middleware' => '
     #rotas restritas estudantes
     Route::group(['prefix' => 'estudante'], function () {
         Route::get('/', 'StudentController@home');
+
+        Route::get('meus-links', 'StudentController@getPersonalLinks')->name('student.personal-links.index');
+        Route::get('meus-links/cadastrar', 'StudentController@createPersonalLinks')->name('student.personal-links.create');
     });
 
     #rotas restritas empresas
     Route::group(['prefix' => 'empresa'], function () {
         Route::get('/', 'CompanyController@home');
+
+        Route::get('vagas', 'CompanyController@getJobs')->name('companies.jobs.index');
+        Route::get('vagas/cadastrar', 'CompanyController@createJobs')->name('companies.jobs.create');
+
+        Route::get('meus-links', 'CompanyController@getPersonalLinks')->name('companies.personal-links.index');
+        Route::get('meus-links/cadastrar', 'CompanyController@createPersonalLinks')->name('companies.personal-links.create');
     });
 
     #rotas restritas professor
