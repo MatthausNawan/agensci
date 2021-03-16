@@ -133,18 +133,22 @@ class User extends Authenticatable
 
         $routes = [
             Role::ROLE_ADMIN => [
+                'role'  => 'admin',
                 'route' => 'admin',
                 'name' => 'Painel Admin'
             ],
             Role::ROLE_STUDENT => [
+                'role' => 'estudante',
                 'route' => 'painel/estudante',
                 'name' => 'Painel estudante'
             ],
             Role::ROLE_COMPANY => [
+                'role' => 'empresa',
                 'route' => 'painel/empresa',
                 'name' => 'Painel Empresa'
             ],
             Role::ROLE_TEACHER => [
+                'role' => 'professor',
                 'route' => 'painel/professor',
                 'name' => 'Painel professor'
             ],
