@@ -47,8 +47,14 @@
     </div>
 </div>
 @endsection
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+@endsection
 
 @section('js')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="{{asset('js/main.js')}}"></script>
 <script>
     $('.carrousel-card').slick({
         infinite: true,

@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
-
 // Route::redirect('/', '/login');
 
 Route::get('/home', function () {
@@ -48,7 +46,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
 });
 
-Route::group(['prefix' => 'painel', 'namespace' => 'Frontend', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     #rotas restritas estudantes
     Route::group(['prefix' => 'estudante'], function () {
@@ -70,20 +68,12 @@ Route::group(['prefix' => 'painel', 'namespace' => 'Frontend', 'middleware' => '
     });
 
     #rotas restritas professor
-    Route::group(['prefix' => 'professor'], function () {
+    Route::group(['prefix' => 'professor','as'=>'teachers.','namespace'=>'Painel\Teachers'], function () {
         Route::get('/', 'TeacherController@home');
 
-        Route::get('noticias', 'TeacherController@getPosts')->name('teachers.posts.index');
-        Route::get('noticias/cadastrar', 'TeacherController@createPost')->name('teachers.posts.create');
-
-        Route::get('eventos', 'TeacherController@getEvents')->name('teachers.events.index');
-        Route::get('eventos/cadastrar', 'TeacherController@createEvents')->name('teachers.events.create');
-
-        Route::get('palestrantes', 'TeacherController@getSpeakers')->name('teachers.speakers.index');
-        Route::get('palestrantes/cadastrar', 'TeacherController@createSpeakers')->name('teachers.speakers.create');
-
-        Route::get('meus-links', 'TeacherController@getPersonalLinks')->name('teachers.personal-links.index');
-        Route::get('meus-links/cadastrar', 'TeacherController@createPersonalLinks')->name('teachers.personal-links.create');
+        Route::resource('speakers', 'SpeakerController');
+        Route::resource('posts', 'PostController');
+        Route::resource('events', 'EventController');
     });
 });
 

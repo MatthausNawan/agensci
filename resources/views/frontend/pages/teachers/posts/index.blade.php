@@ -7,22 +7,35 @@
     @include('frontend.pages.teachers._partials.menu')
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <a href="{{ route('teachers.posts.create') }}" class="btn btn-primary">Adicionar Notícia</a>
-    </div>
-    <div class="row">
-        <table class="table table-bordered table-striped table-hover">
-            <tr>
-                <td>Codigo</td>
-                <td>Titulo</td>
-                <td>Categoria</td>
-                <td>Statud</td>
-                <td>Acões</td>
-            </tr>
 
-        </table>
+<div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <a href="{{ route('teachers.posts.create') }}" class="btn btn-secondary">Adicionar Noticia</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <td>Codigo</td>
+                            <td>Titulo</td>
+                            <td>Acões</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($posts as $post)
+                        <tr>
+                            <td>{{ $post->id}}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>
+                                <a href="{{route('teachers.posts.edit',$post->id)}}" class="btn btn-sm btn-dark">Ver</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-
 @endsection

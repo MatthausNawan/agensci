@@ -28,7 +28,7 @@
                             <td>{{ $speaker->id}}</td>
                             <td>{{ $speaker->name }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-dark">Ver</a>
+                                <a href="{{route('teachers.speakers.edit',$speaker->id)}}" class="btn btn-sm btn-dark">Ver</a>
                             </td>
                         </tr>
                         @endforeach
