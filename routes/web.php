@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/', 'HomeController@home')->name('site.home');
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
+    Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
     Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 
 
@@ -57,14 +58,16 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     });
 
     #rotas restritas empresas
-    Route::group(['prefix' => 'empresa'], function () {
+    Route::group(['prefix' =>'empresa', 'as' => 'companies.', 'namespace' => 'Painel\Companies'], function () {
         Route::get('/', 'CompanyController@home');
 
-        Route::get('vagas', 'CompanyController@getJobs')->name('companies.jobs.index');
-        Route::get('vagas/cadastrar', 'CompanyController@createJobs')->name('companies.jobs.create');
+        Route::resource('jobs', 'JobController');
 
-        Route::get('meus-links', 'CompanyController@getPersonalLinks')->name('companies.personal-links.index');
-        Route::get('meus-links/cadastrar', 'CompanyController@createPersonalLinks')->name('companies.personal-links.create');
+        /*Route::get('vagas', 'CompanyController@getJobs')->name('companies.jobs.index');
+        Route::get('vagas/cadastrar', 'CompanyController@createJobs')->name('companies.jobs.create');*/
+        
+        Route::get('meus-links', 'CompanyController@getPersonalLinks')->name('personal-links.index');
+        Route::get('meus-links/cadastrar', 'CompanyController@createPersonalLinks')->name('personal-links.create');
     });
 
     #rotas restritas professor

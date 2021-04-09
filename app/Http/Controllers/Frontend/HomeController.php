@@ -71,6 +71,20 @@ class HomeController extends Controller
         ]);
     }
 
+    public function showCompaniesPage()
+    {
+        return view('frontend.pages.companies.index', [
+            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->get(),
+            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->get(),
+            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->get(),
+            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->get(),
+            'segments' => Segment::all(),
+            'categories' => Category::all(),
+            'news' => Post::all(),
+            'calls' => Post::all(),
+        ]);
+    }
+
 
 
     public function showAdvertisePage()

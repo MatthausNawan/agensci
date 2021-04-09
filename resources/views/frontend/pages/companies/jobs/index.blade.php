@@ -18,29 +18,33 @@
                     <thead>
                         <tr>
                             <td>Codigo</td>
-                            <td>Nome</td>
+                            <td>Empresa</td>
+                            <td>Área</td>
+                            <td>Tipo</td>
+                            <td>Formação</td>
+                            <td>Salário</td>
+                            <td>Vagas</td>
+                            <td>Data de Expiração</td>
                             <td>Acões</td>
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach($jobs as $job)
                         <tr>
-                            <td>1</td>
-                            <td>Link 1</td>
+                            <td>{{ $job->id}}</td>
+                            <td>{{ $job->companies->name }}</td>
+                            <td>{{ $job->segment->name }}</td>
+                            <td>{{ $job->type }}</td>
+                            <td>{{ $job->formation }}</td>
+                            <td>{{ $job->salary }}</td>
+                            <td>{{ $job->qty_jobs }}</td>
+                            <td>{{ $job->expiration_date }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-dark">Ver</a>
+                                <a href="{{route('companies.jobs.edit',$job->id)}}" class="btn btn-sm btn-dark">Editar</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Link 2</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-dark">Ver</a>
-                            </td>
-                        </tr>
-
+                        @endforeach
                     </tbody>
-
                 </table>
 
             </div>

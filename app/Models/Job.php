@@ -27,6 +27,9 @@ class Job extends Model
 
     protected $fillable = [
         'company',
+        'company_id',
+        'creator_id',
+        'segment_id',
         'area',
         'type',
         'formation',
@@ -48,11 +51,27 @@ class Job extends Model
 
     public function getExpirationDateAttribute($value)
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format')) : null;
     }
 
     public function setExpirationDateAttribute($value)
     {
-        $this->attributes['expiration_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+        //$this->attributes['expiration_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+        $this->attributes['expiration_date'] = $value ? Carbon::createFromFormat('Y-m-d', $value)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function companies()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function segment()
+    {
+        return $this->belongsTo(Segment::class, 'segment_id');
     }
 }
