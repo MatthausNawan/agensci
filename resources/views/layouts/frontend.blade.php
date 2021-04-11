@@ -35,7 +35,7 @@
                 <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
                 <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
                 <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
-                <a class="p-3 text-white" href="{{ route('site.companies.register') }}">Empresas</a>
+                <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
                 <a class="p-3 text-white" href="{{ route('site.advertise') }}">Anuncie</a>
 
             </nav>
