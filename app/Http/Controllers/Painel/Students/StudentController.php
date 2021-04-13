@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Painel\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudent;

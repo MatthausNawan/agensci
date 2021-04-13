@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
-
 // Route::redirect('/', '/login');
 
 Route::get('/home', function () {
@@ -26,64 +24,60 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/', 'HomeController@home')->name('site.home');
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
+    Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
     Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 
-
-    #professor
-    Route::get('/cadastro/professor', 'TeacherController@showRegisterTeacherPage')->name('site.teachers.register');
-    Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
-    Route::post('/professor', 'TeacherController@store')->name('site.teacher.register.form');
-
-    #estudantes
-    Route::get('/cadastro/estudante', 'StudentController@showRegisterStudentPage')->name('site.students.register');
-    Route::post('/cadastro/estudante', 'StudentController@store')->name('site.students.register');
-
-    #empresas
-    Route::get('/cadastro/empresas', 'CompanyController@showRegisterCompaniesPage')->name('site.companies.register');
-    Route::post('/cadastro/empresas', 'CompanyController@store')->name('site.companies.store');
-
-    #anuncie
-
-    #static
+    #statics
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
 });
 
-Route::group(['prefix' => 'painel', 'namespace' => 'Frontend', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'cadastro', 'namespace' => 'Painel'], function () {
+    #professor
+    Route::get('professor', 'Teachers\TeacherController@showRegisterTeacherPage')->name('site.teachers.register');
+    Route::post('professor', 'Teachers\TeacherController@store')->name('site.teacher.register.form');
+
+    #estudantes
+    Route::get('estudante', 'Students\StudentController@showRegisterStudentPage')->name('site.students.register');
+    Route::post('estudante', 'Students\StudentController@store')->name('site.students.register');
+
+    #empresas
+    Route::get('empresas', 'Companies\CompanyController@showRegisterCompaniesPage')->name('site.companies.register');
+    Route::post('empresas', 'Companies\CompanyController@store')->name('site.companies.store');
+});
+
+
+
+Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     #rotas restritas estudantes
-    Route::group(['prefix' => 'estudante'], function () {
+    Route::group(['prefix' => 'estudante', 'as' => 'students.', 'namespace' => 'Painel\Students'], function () {
         Route::get('/', 'StudentController@home');
 
-        Route::get('meus-links', 'StudentController@getPersonalLinks')->name('student.personal-links.index');
-        Route::get('meus-links/cadastrar', 'StudentController@createPersonalLinks')->name('student.personal-links.create');
+        Route::resource('meus-links', 'PersonalLinkController');
+        Route::post('students/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 
     #rotas restritas empresas
-    Route::group(['prefix' => 'empresa'], function () {
+    Route::group(['prefix' => 'empresa', 'as' => 'companies.', 'namespace' => 'Painel\Companies'], function () {
         Route::get('/', 'CompanyController@home');
 
-        Route::get('vagas', 'CompanyController@getJobs')->name('companies.jobs.index');
-        Route::get('vagas/cadastrar', 'CompanyController@createJobs')->name('companies.jobs.create');
+        Route::resource('jobs', 'JobController');       
+        Route::resource('personal-links','PersonalLinkController');
 
-        Route::get('meus-links', 'CompanyController@getPersonalLinks')->name('companies.personal-links.index');
-        Route::get('meus-links/cadastrar', 'CompanyController@createPersonalLinks')->name('companies.personal-links.create');
+        Route::post('companies/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 
     #rotas restritas professor
-    Route::group(['prefix' => 'professor'], function () {
+    Route::group(['prefix' => 'professor', 'as' => 'teachers.', 'namespace' => 'Painel\Teachers'], function () {
         Route::get('/', 'TeacherController@home');
 
-        Route::get('noticias', 'TeacherController@getPosts')->name('teachers.posts.index');
-        Route::get('noticias/cadastrar', 'TeacherController@createPost')->name('teachers.posts.create');
+        Route::resource('speakers', 'SpeakerController');
+        Route::resource('posts', 'PostController');
+        Route::resource('events', 'EventController');
+        Route::resource('personal-links','PersonalLinkController');
 
-        Route::get('eventos', 'TeacherController@getEvents')->name('teachers.events.index');
-        Route::get('eventos/cadastrar', 'TeacherController@createEvents')->name('teachers.events.create');
-
-        Route::get('palestrantes', 'TeacherController@getSpeakers')->name('teachers.speakers.index');
-        Route::get('palestrantes/cadastrar', 'TeacherController@createSpeakers')->name('teachers.speakers.create');
-
-        Route::get('meus-links', 'TeacherController@getPersonalLinks')->name('teachers.personal-links.index');
-        Route::get('meus-links/cadastrar', 'TeacherController@createPersonalLinks')->name('teachers.personal-links.create');
+        Route::post('teachers/ckmedia', 'PostController@storeCKEditorImages')->name('teachers.storeCKEditorImages');
+        Route::post('teachers/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 });
 

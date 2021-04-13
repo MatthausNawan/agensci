@@ -17,28 +17,24 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <td>Codigo</td>
-                            <td>Nome</td>
+                            <td>Imagem</td>
+                            <td>Titulo</td>
+                            <td>Link</td>
                             <td>Acões</td>
                         </tr>
                     </thead>
                     <tbody>
 
+                        @foreach($personalLinks as $personalLink)
                         <tr>
-                            <td>1</td>
-                            <td>Link 1</td>
+                            <td><img src="{{$personalLink->photo->getUrl()}}" alt="{{ $personalLink->title ?? '' }}" style="width:50px; height:60px"></td>
+                            <td>{{ $personalLink->title ?? '' }}</td>
+                            <td><a href="{{ $personalLink->link ?? '' }}" target="_blank">{{ $personalLink->link ?? '' }}</a></td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-dark">Ver</a>
+                                <a href="{{ route('teachers.personal-links.edit',$personalLink->id) }}" class="btn btn-sm btn-dark">Ver</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Link 2</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-dark">Ver</a>
-                            </td>
-                        </tr>
-
+                        @endforeach
                     </tbody>
 
                 </table>

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Painel\Teachers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTeacher;
+use App\Http\Requests\Teacher\SpeakerStoreRequest;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\ExternalLik;
@@ -40,7 +41,6 @@ class TeacherController extends Controller
     // Area Administrativa
     public function home()
     {
-
         return view(
             'frontend.pages.teachers.painel',
             [
@@ -82,22 +82,8 @@ class TeacherController extends Controller
         dd($request->all());
     }
 
-    public function getSpeakers()
-    {
-        $speakers = Speaker::all();
-        return view('frontend.pages.teachers.speakers.index', compact('speakers'));
-    }
 
-    public function createSpeakers()
-    {
-        $segments = Segment::all();
-        return view('frontend.pages.teachers.speakers.create', compact('segments'));
-    }
 
-    public function storeSpeaker(Request $request)
-    {
-        dd($request->all());
-    }
 
     public function getPersonalLinks()
     {

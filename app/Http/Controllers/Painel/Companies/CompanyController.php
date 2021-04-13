@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Painel\Companies;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanies;
@@ -24,7 +24,7 @@ class CompanyController extends Controller
 
     public function showRegisterCompaniesPage()
     {
-        return view('frontend.pages.companies.index', []);
+        return view('frontend.pages.companies.register', []);
     }
 
     public function store(StoreCompanies $request)
@@ -43,6 +43,12 @@ class CompanyController extends Controller
     // Area Administrativa
     public function home()
     {
+        /*return view(
+            'frontend.pages.companies.painel',
+            [
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+            ]
+        );*/
         return view(
             'frontend.pages.companies.painel',
             [
