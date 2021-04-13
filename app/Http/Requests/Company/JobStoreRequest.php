@@ -27,7 +27,6 @@ class JobStoreRequest extends FormRequest
     {
         return [
             'type'              => 'required',
-            'segment_id'        => 'required',
             'ocuppation'        => 'required',
             'qty_jobs'          => 'required',
             'salary'            => 'required',

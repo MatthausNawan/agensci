@@ -14,8 +14,9 @@ class Job extends Model
     public $table = 'jobs';
 
     const TYPE_SELECT = [
-        '1' => 'Estágio/Treinee',
+        '1' => 'Estágio',
         '2' => 'Vaga',
+        '3' => 'Treinee'
     ];
 
     protected $dates = [

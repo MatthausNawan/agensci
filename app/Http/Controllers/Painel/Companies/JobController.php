@@ -20,7 +20,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with(['companies', 'segment', 'creator'])->where('creator_id', Auth::user()->id)->get();
+        $jobs = Job::with(['companies', 'segment', 'creator'])
+            ->where('creator_id', Auth::user()->id)->get();
         return view('frontend.pages.companies.jobs.index', compact('jobs'));
     }
 
@@ -31,12 +32,9 @@ class JobController extends Controller
      */
     public function create(Request $request)
     {
-        $job_type = $this->fetchJobType($request->job_type);
-
         $segments = Segment::all();
-        $companies = Company::all();
 
-        return view('frontend.pages.companies.jobs.create', compact('job_type', 'segments', 'companies'));
+        return view('frontend.pages.companies.jobs.create', compact('segments'));
     }
 
     /**
@@ -50,7 +48,8 @@ class JobController extends Controller
         $data = $request->all();
         $data['company_id'] = Auth::user()->company->id;
         $data['creator_id'] = Auth::user()->id;
-        //$data['creator_id'] = Auth::user()->id;
+        $data['company'] = Auth::user()->company->name;
+        $data['area'] = "teste";
 
         Job::create($data);
 
@@ -110,7 +109,10 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+
+        return redirect()->route('companies.jobs.index');
     }
 
     public function fetchJobType($type)

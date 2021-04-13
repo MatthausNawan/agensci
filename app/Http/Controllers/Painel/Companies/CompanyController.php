@@ -24,7 +24,7 @@ class CompanyController extends Controller
 
     public function showRegisterCompaniesPage()
     {
-        return view('frontend.pages.companies.index', []);
+        return view('frontend.pages.companies.register', []);
     }
 
     public function store(StoreCompanies $request)

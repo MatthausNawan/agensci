@@ -11,18 +11,19 @@
     <div class="col-lg-6 offset-3">
         <div class="card">
             <div class="card-header">
-                <h4 class="title"> Cadastrar Link</h4>
+                <h4 class="title"> Editar Link</h4>
             </div>
-            <form action="{{route('students.meus-links.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('students.meus-links.update',$personalLink->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title" class="required">Nome</label>
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control" name="title" value="{{ $personalLink->title ?? old('title') }}">
                     </div>
                     <div class="form-group">
                         <label for="title" class="required">Link</label>
-                        <input type="text" class="form-control" name="link">
+                        <input type="text" class="form-control" name="link" value="{{ $personalLink->link ?? old('link') }}">
                     </div>
 
                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
@@ -36,8 +37,13 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                    <button type="submit" class="btn btn-secondary">Atualizar</button>                   
                 </div>
+            </form>
+            <form action="{{route('students.meus-links.destroy',$personalLink->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-transparent pull-right"><i class="fa fa-trash"></i></a>
             </form>
         </div>
     </div>

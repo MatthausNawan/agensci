@@ -91,6 +91,4 @@ class HomeController extends Controller
     {
         return view('frontend.pages.advertise.index');
     }
-
-
 }

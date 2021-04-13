@@ -11,7 +11,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <a href="{{ route('companies.personal-links.create') }}" class="btn btn-secondary">Adicionar Link</a>
+                <a href="{{ route('companies.jobs.create') }}" class="btn btn-secondary">Adicionar Vaga </a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped table-hover">
@@ -33,8 +33,8 @@
                         <tr>
                             <td>{{ $job->id}}</td>
                             <td>{{ $job->companies->name }}</td>
-                            <td>{{ $job->segment->name }}</td>
-                            <td>{{ $job->type }}</td>
+                            <td>{{ $job->area }}</td>
+                            <td>{{ App\Models\Job::TYPE_SELECT[$job->type] }}</td>
                             <td>{{ $job->formation }}</td>
                             <td>{{ $job->salary }}</td>
                             <td>{{ $job->qty_jobs }}</td>
