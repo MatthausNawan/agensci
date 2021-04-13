@@ -13,7 +13,7 @@
             <a class="nav-link text-dark" href="{{ route('teachers.personal-links.index') }}">Links Importantes</a>
         </li>      
         <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Galeria de Fotos</a>
+            <a class="nav-link text-dark disabled" href="#">Galeria de Fotos <span class="badge badge-secondary">em breve</span></a>
         </li>
     </ul>
 </div>

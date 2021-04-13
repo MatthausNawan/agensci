@@ -17,7 +17,7 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <td>Codigo</td>
+                            <td>thumb</td>
                             <td>Titulo</td>
                             <td>Acões</td>
                         </tr>
@@ -25,7 +25,7 @@
                     <tbody>
                         @foreach($posts as $post)
                         <tr>
-                            <td>{{ $post->id}}</td>
+                            <td><img src="{{$post->banner ? $post->banner->getUrl('thumb') : ''}}" alt=""></td>
                             <td>{{ $post->title }}</td>
                             <td>
                                 <a href="{{route('teachers.posts.edit',$post->id)}}" class="btn btn-sm btn-dark">Ver</a>

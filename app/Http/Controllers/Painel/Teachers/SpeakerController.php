@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Painel\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\Teacher\SpeakerStoreRequest;
 use App\Models\Segment;
 use App\Models\Speaker;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 class SpeakerController extends Controller
 {
+
+    use MediaUploadingTrait;
     /**
      * Display a listing of the resource.
      *
@@ -41,10 +44,15 @@ class SpeakerController extends Controller
      */
     public function store(SpeakerStoreRequest $request)
     {
+        
         $data = $request->all();
         $data['creator_id'] = Auth::user()->id;
 
-        Speaker::create($data);
+        $speaker = Speaker::create($data);
+        
+        if ($request->input('photo', false)) {
+            $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+        }
 
         return redirect()->route('teachers.speakers.index');
     }
@@ -82,10 +90,26 @@ class SpeakerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $data = $request->all();
         $data['creator_id'] = Auth::user()->id;
 
-        Speaker::find($id)->update($data);
+        $speaker = Speaker::find($id);
+        
+        $speaker->update($data);
+
+        if ($request->input('photo', false)) {
+          
+            if (!$speaker->photo || $request->input('photo') !== $speaker->photo->file_name) {
+                if ($speaker->photo) {
+                    $speaker->photo->delete();
+                }
+
+                $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+            }
+        } elseif ($speaker->photo) {
+            $speaker->photo->delete();
+        }
 
         return redirect()->route('teachers.speakers.index');
     }

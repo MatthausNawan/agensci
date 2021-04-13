@@ -62,6 +62,9 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
         Route::get('/', 'CompanyController@home');
 
         Route::resource('jobs', 'JobController');       
+        Route::resource('personal-links','PersonalLinkController');
+
+        Route::post('companies/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 
     #rotas restritas professor
@@ -73,6 +76,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
         Route::resource('events', 'EventController');
         Route::resource('personal-links','PersonalLinkController');
 
+        Route::post('teachers/ckmedia', 'PostController@storeCKEditorImages')->name('teachers.storeCKEditorImages');
         Route::post('teachers/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 });

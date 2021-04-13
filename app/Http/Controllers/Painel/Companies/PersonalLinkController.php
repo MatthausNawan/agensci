@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Painel\Teachers;
+namespace App\Http\Controllers\Painel\Companies;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -15,12 +15,12 @@ class PersonalLinkController extends Controller
     public function index()
     {
         $personalLinks = PersonalLink::where('user_id', Auth::user()->id)->get();
-        return view('frontend.pages.teachers.personal-links.index', compact('personalLinks'));
+        return view('frontend.pages.companies.personal-links.index', compact('personalLinks'));
     }
 
     public function create()
     {
-        return view('frontend.pages.teachers.personal-links.create');
+        return view('frontend.pages.companies.personal-links.create');
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class PersonalLinkController extends Controller
         }
 
 
-        return redirect()->route('teachers.personal-links.index')
+        return redirect()->route('companies.personal-links.index')
             ->with('message', trans('Link cadastrado com sucesso!'));
     }
 
@@ -46,7 +46,7 @@ class PersonalLinkController extends Controller
     {
         $personalLink = PersonalLink::find($id);
 
-        return view('frontend.pages.teachers.personal-links.edit',compact('personalLink'));
+        return view('frontend.pages.companies.personal-links.edit',compact('personalLink'));
     }
 
     public function update(Request $request, $id)
@@ -67,17 +67,17 @@ class PersonalLinkController extends Controller
             $personalLink->photo->delete();
         }
 
-        return redirect()->route('teachers.personal-links.index')
+        return redirect()->route('companies.personal-links.index')
         ->with('message', trans('Link atualizado com sucesso!'));
     }
 
     public function destroy($id)
     {
-       
+        dd("oi");
         $personalLink = PersonalLink::find($id);
         $personalLink->delete();
 
-        return redirect()->route('teachers.personal-links.index')
+        return redirect()->route('companies.personal-links.index')
         ->with('message', trans('Link removido com sucesso!'));
     }
 }

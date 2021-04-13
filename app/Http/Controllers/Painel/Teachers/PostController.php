@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Painel\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\Teacher\PostStoreRequest;
 use App\Models\Post;
 use App\Models\Segment;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Spatie\MediaLibrary\Models\Media;
 
 class PostController extends Controller
 {
+    use MediaUploadingTrait;
     /**
      * Display a listing of the resource.
      *
@@ -39,14 +44,24 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostStoreRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
         $data['author_id'] = Auth::user()->id;
 
-        Post::create($data);
+        $post = Post::create($data);
 
-        return redirect()->route('teachers.posts.index');
+        if ($request->input('banner', false)) {
+            $post->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $post->id]);
+        }
+
+
+        return redirect()->route('teachers.posts.index')
+        ->with('message', trans('Noticia cadastrada com sucesso!'));
     }
 
     /**
@@ -85,9 +100,24 @@ class PostController extends Controller
         $data = $request->all();
         $data['author_id'] = Auth::user()->id;
 
-        Post::find($id)->update($data);
+       $post =  Post::find($id);
+       $post->update($data);
 
-        return redirect()->route('teachers.posts.index');
+        if ($request->input('banner', false)) {
+            if (!$post->banner || $request->input('banner') !== $post->banner->file_name) {
+                if ($post->banner) {
+                    $post->banner->delete();
+                }
+
+                $post->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');
+            }
+        } elseif ($post->banner) {
+            $post->banner->delete();
+        }
+
+
+        return redirect()->route('teachers.posts.index')
+        ->with('message', trans('Noticia atualiza com sucesso!'));
     }
 
     /**
@@ -99,5 +129,16 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {       
+
+        $model         = new Post();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }
