@@ -13,8 +13,9 @@
             <div class="card-header">
                 <h4 class="title"> Cadastrar Evento</h4>
             </div>
-            <form action="{{ route('teachers.events.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('teachers.events.update',$event->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="card-body">
                     <div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
                         <label for="banner">{{ trans('cruds.event.fields.banner') }}</label>
@@ -27,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title" class="required">Titulo</label>
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control" name="title" value="{{$event->title ?? old('title')}}">
                         @if($errors->has('title'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('title') }}</span>
                         @endif
@@ -37,7 +38,7 @@
                         <select name="segment_id" id="" class="form-control">
                             <option value="">Selecione</option>
                             @foreach($segments as $segment)
-                            <option value="{{  $segment->id}}">{{$segment->name}} </option>
+                            <option value="{{$segment->id}}">{{$segment->name}} </option>
                             @endforeach
                         </select>
                         @if($errors->has('segment_id'))
@@ -46,14 +47,14 @@
                     </div>
                     <div class="form-group">
                         <label for="location" class="required">Localização</label>
-                        <input type="text" class="form-control" name="location">
+                        <input type="text" class="form-control" name="location" value="{{$event->location ?? old('location')}}">
                         @if($errors->has('location'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('location') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="link" class="required">Link</label>
-                        <input type="text" class="form-control" name="link">
+                        <input type="text" class="form-control" name="link" value="{{$event->link ?? old('link')}}">
                         @if($errors->has('link'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('link') }}</span>
                         @endif
@@ -62,7 +63,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="start_date" class="required">Data Inicio Evento</label>
-                            <input type="text" class="form-control date" name="start_date">
+                            <input type="text" class="form-control date" name="start_date" value="{{$event->start_date ?? old('start_date')}}">
                             @if($errors->has('start_date'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('start_date') }}</span>
                             @endif
@@ -70,7 +71,7 @@
 
                         <div class="form-group col-lg-6">
                             <label for="end_date" class="required">Data Final Evento</label>
-                            <input type="text" class="form-control date" name="end_date">
+                            <input type="text" class="form-control date" name="end_date" value="{{$event->end_date ?? old('end_date')}}">
                             @if($errors->has('end_date'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('end_date') }}</span>
                             @endif
@@ -80,7 +81,7 @@
 
                     <div class="form-group">
                         <label for="title" class="required">Período de Inscrição</label>
-                        <input type="text" class="form-control" name="subscription_period">
+                        <input type="text" class="form-control" name="subscription_period" value="{{$event->subscription_period ?? old('subscription_period')}}">
                         @if($errors->has('subscription_period'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('subscription_period') }}</span>
                         @endif
@@ -88,14 +89,14 @@
 
                     <div class="form-group">
                         <label for="details" class="required">Detalhes</label>
-                        <textarea name="details" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="details" id="" cols="30" rows="10" class="form-control">{{$event->details ?? old('details')}}</textarea>
                         @if($errors->has('details'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('details') }}</span>
                         @endif
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                    <button type="submit" class="btn btn-secondary">Atualizar</button>
                 </div>
             </form>
         </div>
@@ -138,8 +139,8 @@
       }
     },
     init: function () {
-@if(isset($post) && $post->banner)
-      var file = {!! json_encode($post->banner) !!}
+@if(isset($event) && $event->banner)
+      var file = {!! json_encode($event->banner) !!}
           this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Painel\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\Teacher\EventStoreRequest;
 use App\Models\Event;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
+    use MediaUploadingTrait;
     /**
      * Display a listing of the resource.
      *
@@ -45,9 +47,14 @@ class EventController extends Controller
         $data = $request->all();
         $data['creator_id'] = Auth::user()->id;
 
-        Event::create($data);
+        $event = Event::create($data);
 
-        return redirect()->route('teachers.evets.index');
+        if ($request->input('banner', false)) {
+            $event->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');
+        }      
+
+        return redirect()->route('teachers.events.index')
+        ->with('message', trans('Evento cadastrado com sucesso!'));
     }
 
     /**
@@ -70,8 +77,8 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-
-        return view('frontend.pages.teachers.events.edit', compact('event'));
+        $segments = Segment::all();
+        return view('frontend.pages.teachers.events.edit', compact('event','segments'));
     }
 
     /**
@@ -84,11 +91,27 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
         $data['creator_id'] = Auth::user()->id;
 
-        Event::find($id)->update($data);
+        $event =  Event::find($id);
+        $event->update($data);
 
-        return redirect()->route('teachers.events.index');
+        if ($request->input('banner', false)) {
+            if (!$event->banner || $request->input('banner') !== $event->banner->file_name) {
+                if ($event->banner) {
+                    $event->banner->delete();
+                }
+
+                $event->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');
+            }
+        } elseif ($event->banner) {
+            $event->banner->delete();
+        }
+
+
+        return redirect()->route('teachers.events.index')
+        ->with('message', trans('Evento atualizado com sucesso!'));
     }
 
     /**

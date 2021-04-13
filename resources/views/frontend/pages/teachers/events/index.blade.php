@@ -17,20 +17,24 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <td>Codigo</td>
+                            <td>Banner</td>
                             <td>Titulo</td>
                             <td>Segmento</td>
+                            <td>Inicio</td>
+                            <td>Data Encerramento</td>
                             <td>Acões</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($events as $event)
                         <tr>
-                            <td>{{ $event->id}}</td>
+                            <td><img src="{{$event->banner? $event->banner->getUrl('thumb') : '' }}" alt=""></td>
                             <td>{{ $event->title }}</td>
                             <td>{{ $event->segment->name }}</td>
+                            <td>{{ $event->start_date }}</td>
+                            <td>{{ $event->end_date }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-dark">Ver</a>
+                                <a href="{{route('teachers.events.edit',$event->id)}}" class="btn btn-sm btn-dark">Ver</a>
                             </td>
                         </tr>
                         @endforeach
