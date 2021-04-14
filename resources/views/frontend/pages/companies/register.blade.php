@@ -26,10 +26,10 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="Nome fantasia" class="required">Nome fantasia:</label>
-                            <input type="text" name="fantasy-name" class="form-control {{ $errors->has('fantasy-name') ? 'is-invalid' : '' }} " value="{{ old('fantasy-name', '') }}">
-                            @if($errors->has('fantasy-name'))
+                            <input type="text" name="fantasy_name" class="form-control {{ $errors->has('fantasy_name') ? 'is-invalid' : '' }} " value="{{ old('fantasy_name', '') }}">
+                            @if($errors->has('fantasy_name'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('fantasy-name') }}
+                                {{ $errors->first('fantasy_name') }}
                             </div>
                             @endif
                         </div>
@@ -59,10 +59,10 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Numero">Numero:</label>
-                        <input type="number" class="form-control {{ $errors->has('address-number') ? 'is-invalid' : '' }}" name="address-number" value="{{ old('address-number', '') }}">
-                        @if($errors->has('address-number'))
+                        <input type="number" class="form-control {{ $errors->has('address_number') ? 'is-invalid' : '' }}" name="address_number" value="{{ old('address_number', '') }}">
+                        @if($errors->has('address_number'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('address-number') }}
+                            {{ $errors->first('address_number') }}
                         </div>
                         @endif
                     </div>
@@ -70,10 +70,10 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="CEP" class="required">CEP:</label>
-                        <input type="text" class="form-control {{ $errors->has('postal-code') ? 'is-invalid' : '' }}" name="postal-code" value="{{ old('postal-code', '') }}">
-                        @if($errors->has('postal-code'))
+                        <input type="text" class="form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" name="postal_code" value="{{ old('postal_code', '') }}">
+                        @if($errors->has('postal_code'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('postal-code') }}
+                            {{ $errors->first('postal_code') }}
                         </div>
                         @endif
                     </div>
@@ -121,10 +121,10 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="Celular" class="required">Celular:</label>
-                        <input type="text" class="form-control {{ $errors->has('cell-number') ? 'is-invalid' : '' }}" name="cell-number" value="{{ old('cell-number', '') }}">
-                        @if($errors->has('cell-number'))
+                        <input type="text" class="form-control {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" name="cell_number" value="{{ old('cell_number', '') }}">
+                        @if($errors->has('cell_number'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('cell-number') }}
+                            {{ $errors->first('cell_number') }}
                         </div>
                         @endif
                     </div>
@@ -161,10 +161,10 @@
 
                 <div class="form-group">
                     <label for="Site" class="required">Responsável pela solicitação:</label>
-                    <input type="text" name="requester-name" class="form-control {{ $errors->has('requester-name') ? 'is-invalid' : '' }} " value="{{ old('requester-name', '') }}">
-                    @if($errors->has('requester-name'))
+                    <input type="text" name="requester_name" class="form-control {{ $errors->has('requester_name') ? 'is-invalid' : '' }} " value="{{ old('requester_name', '') }}">
+                    @if($errors->has('requester_name'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('requester-name') }}
+                        {{ $errors->first('requester_name') }}
                     </div>
                     @endif
                 </div>
@@ -172,34 +172,23 @@
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         <label for="Cidade" class="required">CPF:</label>
-                        <input type="text" class="form-control {{ $errors->has('requester-cpf') ? 'is-invalid' : '' }}" name="requester-cpf" value="{{ old('requester-cpf', '') }}">
-                        @if($errors->has('requester-cpf'))
+                        <input type="text" class="form-control {{ $errors->has('requester_cpf') ? 'is-invalid' : '' }}" name="requeste_-cpf" value="{{ old('requester_cpf', '') }}">
+                        @if($errors->has('requester-_pf'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('requester-cpf') }}
+                            {{ $errors->first('requester_cpf') }}
                         </div>
                         @endif
                     </div>
                     <div class="form-group col-md-4">
                         <label for="Estado">Data:</label>
-                        <input type="date" class="form-control {{ $errors->has('requester-date') ? 'is-invalid' : '' }}" name="request-date" value="{{ date('Y-m-d') }}" readonly>
-                        @if($errors->has('requester-date'))
+                        <input type="date" class="form-control {{ $errors->has('requester_date') ? 'is-invalid' : '' }}" name="request-date" value="{{ date('Y-m-d') }}" readonly>
+                        @if($errors->has('requester_date'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('requester-date') }}
+                            {{ $errors->first('requester_date') }}
                         </div>
                         @endif
                     </div>
-                </div>
-
-                <!-- <div class="row">
-                    <div class="col">
-                        <label for="Nome fantasia">Assinatura:</label>
-                        <input type="text" name="signature" style="height:120px" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}">
-                    </div>
-                    <div class="col">
-                        <label for="CPNJ">Carimbo da empresa:</label>
-                        <input type="text" name="stamp" style="height:120px" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}">
-                    </div>
-                </div> -->
+                </div>              
 
             </div>
         </div>

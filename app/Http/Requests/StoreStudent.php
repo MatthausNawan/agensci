@@ -26,12 +26,12 @@ class StoreStudent extends FormRequest
         return [
             'name' => 'required|max:255',
             'genre' => 'required|max:255',
-            'course-name' => 'required|max:255',
+            'course_name' => 'required|max:255',
             'cpf' => 'required|max:255',
             'specialization' => 'required|max:255',
-            'university-name' => 'required|max:10',
+            'university_name' => 'required|max:10',
             'matriculation' => 'required|max:20',
-            'lattes-link' => 'required|max:30',
+            'lattes_link' => 'required|max:30',
             'cpf'  => 'required|max:255',
             'email'  => 'required|max:50|email',
             'phone' => 'required|max:20',
@@ -52,27 +52,27 @@ class StoreStudent extends FormRequest
             'genre.required' => 'O campo genero é obrigatório!',
             'genre.max' => 'Você ultrapassou o limite maximo de caracteres em Genero',
 
-            'course-name.required' => 'O campo nome do curso é obrigatório!',
-            'course-name.max' => 'Você ultrapassou o limite maximo de caracteres em Nome do Curso',
+            'course_name.required' => 'O campo nome do curso é obrigatório!',
+            'course_name.max' => 'Você ultrapassou o limite maximo de caracteres em Nome do Curso',
 
             'cpf.required' => 'O campo nome CPF é obrigatório!',
             'cpf.max' => 'Você ultrapassou o limite maximo de caracteres em CPF',
             'cpf.numeric' => 'Formato incorreto em CPF',
 
-            'specialization.required' => 'O campo pós-graduação é obrigatorio.',
-            'specialization.max' => 'Você ultrapassou o limite maximo de caracteres em pós-graduação',
+            'specialization.required' => 'O campo pós_graduação é obrigatorio.',
+            'specialization.max' => 'Você ultrapassou o limite maximo de caracteres em pós_graduação',
 
-            'university-name.required' => 'O campo nome da universidade é obrigatorio.',
-            'university-name.max' => 'Você ultrapassou o limite maximo de caracteres em nome da universidade',
+            'university_name.required' => 'O campo nome da universidade é obrigatorio.',
+            'university_name.max' => 'Você ultrapassou o limite maximo de caracteres em nome da universidade',
 
             'matriculation.required' => 'O campo matricula é obrigatorio.',
             'matriculation.max' => 'Você ultrapassou o limite maximo de caracteres em matricula',
 
-            'occupation-lattes.required' => 'O campo atuação lattes é obrigatorio.',
-            'occupation-lattes.max' => 'Você ultrapassou o limite maximo de caracteres em atuação lattes',
+            'occupation_lattes.required' => 'O campo atuação lattes é obrigatorio.',
+            'occupation_lattes.max' => 'Você ultrapassou o limite maximo de caracteres em atuação lattes',
 
-            'lattes-link.required' => 'O campo link lattes é obrigatorio.',
-            'lattes-link.max' => 'Você ultrapassou o limite maximo de caracteres em link lattes',
+            'lattes_link.required' => 'O campo link lattes é obrigatorio.',
+            'lattes_link.max' => 'Você ultrapassou o limite maximo de caracteres em link lattes',
 
             'cpf.required' => 'O campo de CPF do responsavel pela solicitação é obrigatorio.',
             'cpf.max' => 'Você ultrapassou o limite maximo de caracteres no CPF do responsavel pela solicitação',

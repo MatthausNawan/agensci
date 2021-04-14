@@ -26,16 +26,16 @@ class StoreCompanies extends FormRequest
         return [
             'name' => 'required|max:255',
             'site' => 'required|max:255',
-            'fantasy-name' => 'required|max:255',
+            'fantasy_name' => 'required|max:255',
             'cnpj' => 'required|max:255',
             'address' => 'required|max:255',
-            'address-number' => 'required|max:10',
-            'postal-code' => 'required|max:20',
+            'address_number' => 'required|max:10',
+            'postal_code' => 'required|max:20',
             'district' => 'required|max:30',
             'city' => 'required|max:30',
             'uf'  => 'required|max:5',
             'phone' => 'required|max:20',
-            'cell-number'  => 'required|max:20',
+            'cell_number'  => 'required|max:20',
             'email'  => 'required|max:50|email',
             // 'linkedin'  => 'required|max:255',
             // 'facebook'  => 'required|max:255',
@@ -44,9 +44,9 @@ class StoreCompanies extends FormRequest
             // 'twitter'  => 'required|max:255',
             // 'youtube'  => 'required|max:255',
             // 'logomarca'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'requester-name'  => 'required|max:255',
-            'requester-cpf'  => 'required|max:255',
-            // 'request-date'  => 'required',
+            'requester_name'  => 'required|max:255',
+            'requester_cpf'  => 'required|max:255',
+            // 'request_date'  => 'required',
             // 'signature'  =>  'required',
             // 'stamp' =>  'required',
             'email' => 'required|email|max:255',
@@ -63,8 +63,8 @@ class StoreCompanies extends FormRequest
             'site.required' => 'O campo site é obrigatório!',
             'site.max' => 'Você ultrapassou o limite maximo de caracteres em Site',
 
-            'fantasy-name.required' => 'O campo nome fantasia é obrigatório!',
-            'fantasy-name.max' => 'Você ultrapassou o limite maximo de caracteres em Nome Fantasia',
+            'fantasy_name.required' => 'O campo nome fantasia é obrigatório!',
+            'fantasy_name.max' => 'Você ultrapassou o limite maximo de caracteres em Nome Fantasia',
 
             'cnpj.required' => 'O campo CNPJ é obrigatório!',
             'cnpj.max' => 'Você ultrapassou o limite maximo de caracteres em CNPJ',
@@ -73,11 +73,11 @@ class StoreCompanies extends FormRequest
             'address.required' => 'O campo endereço é obrigatorio.',
             'address.max' => 'Você ultrapassou o limite maximo de caracteres em Endereço',
 
-            'address-number.required' => 'O campo numero de endereço é obrigatorio.',
-            'address-number.max' => 'Você ultrapassou o limite maximo de caracteres em numero de endereço',
+            'address_number.required' => 'O campo numero de endereço é obrigatorio.',
+            'address_number.max' => 'Você ultrapassou o limite maximo de caracteres em numero de endereço',
 
-            'postal-code.required' => 'O campo CEP é obrigatorio.',
-            'postal-code.max' => 'Você ultrapassou o limite maximo de caracteres em CEP',
+            'postal_code.required' => 'O campo CEP é obrigatorio.',
+            'postal_code.max' => 'Você ultrapassou o limite maximo de caracteres em CEP',
 
             'district.required' => 'O campo bairro é obrigatorio.',
             'district.max' => 'Você ultrapassou o limite maximo de caracteres em bairro',
@@ -91,20 +91,20 @@ class StoreCompanies extends FormRequest
             'phone.required' => 'O campo telefone é obrigatorio.',
             'phone.max' => 'Você ultrapassou o limite maximo de caracteres em telefone',
 
-            'cell-number.required' => 'O campo número de celular é obrigatorio.',
-            'cell-number.max' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
+            'cell_number.required' => 'O campo número de celular é obrigatorio.',
+            'cell_number.max' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
 
             'email.required' => 'O campo de email é obrigatorio.',
             'email.max' => 'Você ultrapassou o limite maximo de caracteres em email',
             'email.email' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
 
-            'requester-name.required' => 'O campo de nome do responsavel pela solicitação é obrigatorio.',
-            'requester-name.max' => 'Você ultrapassou o limite maximo de caracteres em responsavel pela solicitação',
+            'requester_name.required' => 'O campo de nome do responsavel pela solicitação é obrigatorio.',
+            'requester_name.max' => 'Você ultrapassou o limite maximo de caracteres em responsavel pela solicitação',
 
-            'requester-cpf.required' => 'O campo de CPF do responsavel pela solicitação é obrigatorio.',
-            'requester-cpf.max' => 'Você ultrapassou o limite maximo de caracteres no CPF do responsavel pela solicitação',
+            'requester_cpf.required' => 'O campo de CPF do responsavel pela solicitação é obrigatorio.',
+            'requester_cpf.max' => 'Você ultrapassou o limite maximo de caracteres no CPF do responsavel pela solicitação',
 
-            'requester-date.required' => 'O campo de data da solicitação é obrigatorio.',
+            'requester_date.required' => 'O campo de data da solicitação é obrigatorio.',
 
             'signature.required' => 'O campo de assinatura é obrigatorio.',
 

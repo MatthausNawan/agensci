@@ -41,10 +41,10 @@
                     <div class="col">
                         <div class="form-group">
                             <label class="required" for="Data de nascimento">Data de nascimento:</label>
-                            <input type="date" class="form-control {{ $errors->has('birth-date') ? 'is-invalid' : '' }}" value="{{ old('birth-date') ?? '' }}" name="birth-date">
-                            @if($errors->has('birth-date'))
+                            <input type="date" class="form-control {{ $errors->has('birth_date') ? 'is-invalid' : '' }}" value="{{ old('birth_date') ?? '' }}" name="birth_date">
+                            @if($errors->has('birth_date'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('birth-date') }}
+                                {{ $errors->first('birth_date') }}
                             </div>
                             @endif
                         </div>
@@ -54,10 +54,10 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="required" for="curso">Curso:</label>
-                        <input type="text" class="form-control {{ $errors->has('course-name') ? 'is-invalid' : '' }}" value="{{ old('course-name') ?? '' }}" name="course-name">
-                        @if($errors->has('course-name'))
+                        <input type="text" class="form-control {{ $errors->has('course_name') ? 'is-invalid' : '' }}" value="{{ old('course_name') ?? '' }}" name="course_name">
+                        @if($errors->has('course_name'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('course-name') }}
+                            {{ $errors->first('course_name') }}
                         </div>
                         @endif
                     </div>
@@ -78,10 +78,10 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="required" for="instituicao estuda">Instituição estuda:</label>
-                        <input type="text" class="form-control {{ $errors->has('university-name') ? 'is-invalid' : '' }}" value="{{ old('university-name') ?? '' }}" name="university-name">
-                        @if($errors->has('university-name'))
+                        <input type="text" class="form-control {{ $errors->has('university_name') ? 'is-invalid' : '' }}" value="{{ old('university_name') ?? '' }}" name="university_name">
+                        @if($errors->has('university_name'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('university-name') }}
+                            {{ $errors->first('university_name') }}
                         </div>
                         @endif
                     </div>
@@ -102,10 +102,10 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="required" for="area de atuacao">Área de atuação(Lattes):</label>
-                        <input type="text" class="form-control {{ $errors->has('occupation-lattes') ? 'is-invalid' : '' }}" value="{{ old('occupation-lattes') ?? '' }}" name="occupation-lattes">
-                        @if($errors->has('occupation-lattes'))
+                        <input type="text" class="form-control {{ $errors->has('occupation_lattes') ? 'is-invalid' : '' }}" value="{{ old('occupation_lattes') ?? '' }}" name="occupation_lattes">
+                        @if($errors->has('occupation_lattes'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('occupation-lattes') }}
+                            {{ $errors->first('occupation_lattes') }}
                         </div>
                         @endif
 
@@ -115,10 +115,10 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="required" for="curriculo lattes">Curriculo lattes:</label>
-                        <input type="text" class="form-control {{ $errors->has('lattes-link') ? 'is-invalid' : '' }}" value="{{ old('lattes-link') ?? '' }}" name=" lattes-link">
-                        @if($errors->has('lattes-link'))
+                        <input type="text" class="form-control {{ $errors->has('lattes_link') ? 'is-invalid' : '' }}" value="{{ old('lattes_link') ?? '' }}" name=" lattes_link">
+                        @if($errors->has('lattes_link'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('lattes-link') }}
+                            {{ $errors->first('lattes_link') }}
                         </div>
                         @endif
                     </div>
