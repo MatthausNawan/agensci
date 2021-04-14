@@ -3,49 +3,49 @@
     <div class="data d-flex flex-column">
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">CNPJ</span>
-            <span class="small">{{Auth::user()->company->cnpj}}</span>
+            <span class="small">{{$company->cnpj}}</span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Email</span>
-            <span class="small">{{Auth::user()->company->email}}</span>
+            <span class="small">{{$company->email}}</span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Site</span>
             <span class="small">
-                <a target="_blank" href="{{Auth::user()->company->site}}">{{Auth::user()->company->site}}</a>
+                <a target="_blank" href="{{$company->site}}">{{$company->site}}</a>
             </span>
         </div>
 
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Midias Sociais</span>
             <div class="socials">
-                @if (Auth::user()->company->facebook)
-                    <a target="_blank" href="{{Auth::user()->company->facebook}}">
+                @if ($company->facebook)
+                    <a target="_blank" href="{{$company->facebook}}">
                         <img src="{{asset('images/social_media/facebook.png')}}" width="30px" alt="Facebook">
                     </a>
                 @endif
-                @if (Auth::user()->company->twitter)
-                    <a target="_blank" href="{{Auth::user()->company->twitter}}">
+                @if ($company->twitter)
+                    <a target="_blank" href="{{$company->twitter}}">
                         <img src="{{asset('images/social_media/twitter.png')}}" width="30px" alt="Twitter">
                     </a>
                 @endif
-                @if (Auth::user()->company->instagram)
-                    <a target="_blank" href="{{Auth::user()->company->instagram}}">
+                @if ($company->instagram)
+                    <a target="_blank" href="{{$company->instagram}}">
                         <img src="{{asset('images/social_media/instagram.png')}}" width="30px" alt="Instagram">
                     </a>
                 @endif
-                @if (Auth::user()->company->linkedin)
-                    <a target="_blank" href="{{Auth::user()->company->linkedin}}">
+                @if ($company->linkedin)
+                    <a target="_blank" href="{{$company->linkedin}}">
                         <img src="{{asset('images/social_media/linkedin.png')}}" width="30px" alt="Linkedin">
                     </a>
                 @endif
-                @if (Auth::user()->company->youtube)
-                    <a target="_blank" href="{{Auth::user()->company->youtube}}">
+                @if ($company->youtube)
+                    <a target="_blank" href="{{$company->youtube}}">
                         <img src="{{asset('images/social_media/youtube.png')}}" width="30px" alt="Youtube">
                     </a>
                 @endif
-                @if (Auth::user()->company->whatsapp)
-                    <a target="_blank" href="https://api.whatsapp.com/send?phone={{Auth::user()->company->whatsapp}}">
+                @if ($company->whatsapp)
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone={{$company->whatsapp}}">
                         <img src="{{asset('images/social_media/whatsapp.png')}}" width="30px" alt="Whatsapp">
                     </a>
                 @endif

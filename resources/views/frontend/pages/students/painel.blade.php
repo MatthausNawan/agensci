@@ -7,24 +7,19 @@
 </div>
 
 <div class="row">
-
-
     <div class="col-md-3 col-sm-12 p-1">
-        @include('frontend.pages.students._partials.dashboard')
-
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Links Importantes','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links',['title'=>'Tvs Universitárias','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$articles])
+        @include('frontend.pages.students._partials.dashboard')        
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Tvs Universitárias','links'=>$high_school_tvs])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$high_school_radios])
     </div>
 
     <div class="col-md-9 col-sm-12 p-1">
         @include('frontend.pages.students._partials.painel')
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
+                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
             </div>

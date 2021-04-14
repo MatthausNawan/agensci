@@ -125,12 +125,7 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
-    }
-
-    public function company()
-    {
-        return $this->belongsTo(Company::class, 'id', 'user_id', 'companies');
-    }
+    }    
 
     public function getPainelAttribute()
     {
@@ -159,5 +154,23 @@ class User extends Authenticatable
             ],
         ];
         return $routes[$user_role];
+    }
+
+    public function teacher()
+    {
+
+        return $this->hasOne(Teacher::class,'user_id');
+    }
+
+    public function student()
+    {
+
+        return $this->hasOne(Student::class,'user_id');
+    }
+
+    public function company()
+    {
+
+        return $this->hasOne(Company::class,'user_id');
     }
 }

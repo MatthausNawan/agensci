@@ -9,17 +9,18 @@
 <div class="row">
     <div class="col-md-3 col-sm-12 p-1">
         @include('frontend.pages.teachers._partials.dashboard')
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Programas de Estatística','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Aplicativos Úteis','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$articles])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Programas de Estatística','links'=>$statistics_softwares])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Aplicativos Úteis','links'=>$util_apps])
+        
     </div>
 
     <div class="col-md-9 col-sm-12 p-1">
         @include('frontend.pages.teachers._partials.painel')
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
+                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
+                
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">

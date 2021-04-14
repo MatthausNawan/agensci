@@ -24,9 +24,9 @@ class HomeController extends Controller
             'frontend.pages.home.index',
             [
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
-                'uni_publicas' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_PUBLICAS)->get(),
-                'uni_privadas' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_PRIVADAS)->get(),
-                'uni_internacionais' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_INTERNACIONAIS)->get(),
+                'uni_publicas' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_PUBLICAS)->take(4)->get(),
+                'uni_privadas' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_PRIVADAS)->take(4)->get(),
+                'uni_internacionais' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_INTERNACIONAIS)->take(4)->get(),
                 'orgaos_educacionais' => ExternalLik::where('category_id', Category::C_ORGAOS_EDUCACIONAIS)->get(),
                 'orgaos_pesquisas' => ExternalLik::where('category_id', Category::C_ORGAOS_DE_PESQUISA)->get(),
                 'segments' => Segment::all(),
@@ -43,10 +43,10 @@ class HomeController extends Controller
     public function showTeachersPage()
     {
         return view('frontend.pages.teachers.index', [
-            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->get(),
-            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->get(),
-            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->get(),
-            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->get(),
+            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->take(4)->get(),
+            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->take(4)->get(),
+            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->take(4)->get(),
+            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->take(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
             'news' => Post::all(),
@@ -58,10 +58,10 @@ class HomeController extends Controller
     public function showStudentsPage()
     {
         return view('frontend.pages.students.index', [
-            'cursos' => ExternalLik::where("category_id", Category::C_CURSOS)->get(),
-            'entidades' => ExternalLik::where("category_id", Category::C_ENTIDADES_ESTUDANTIS)->get(),
-            'bibliotecas' => ExternalLik::where("category_id", Category::C_BIBLIOTECAS_DIGITAIS)->get(),
-            'museus' => ExternalLik::where("category_id", Category::C_MUSEUS_DIGITAIS)->get(),
+            'cursos' => ExternalLik::where("category_id", Category::C_CURSOS)->take(4)->get(),
+            'entidades' => ExternalLik::where("category_id", Category::C_ENTIDADES_ESTUDANTIS)->take(4)->get(),
+            'bibliotecas' => ExternalLik::where("category_id", Category::C_BIBLIOTECAS_DIGITAIS)->take(4)->get(),
+            'museus' => ExternalLik::where("category_id", Category::C_MUSEUS_DIGITAIS)->take(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
             'se' => Segment::whereHas('events')->get(),
@@ -74,10 +74,10 @@ class HomeController extends Controller
     public function showCompaniesPage()
     {
         return view('frontend.pages.companies.index', [
-            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->get(),
-            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->get(),
-            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->get(),
-            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->get(),
+            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->take(4)->get(),
+            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->take(4)->get(),
+            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->take(4)->get(),
+            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->take(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
             'news' => Post::all(),

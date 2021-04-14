@@ -10,7 +10,7 @@ use \DateTimeInterface;
 
 class Student extends Model
 {
-    use SoftDeletes, HasMediaTrait;
+    use HasMediaTrait;
 
     public $table = 'students';
 

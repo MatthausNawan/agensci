@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Painel\Companies;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreCompanies;
 use App\Models\Category;
 use App\Models\Company;
@@ -14,9 +15,12 @@ use App\Models\Role;
 use App\Services\CompanieService;
 use Spatie\MediaLibrary\Models\Media;
 use Gate;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function __construct()
     {
         $this->middleware('check-panel');
@@ -39,55 +43,16 @@ class CompanyController extends Controller
 
         return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
     }
-
-    // Area Administrativa
+    
     public function home()
     {
-        /*return view(
-            'frontend.pages.companies.painel',
-            [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
-            ]
-        );*/
+        $user = Auth::user();
         return view(
             'frontend.pages.companies.painel',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),                
+                'company' => $user->company
             ]
         );
-    }
-
-    public function getJobs()
-    {
-        // $speakers = Speaker::all();
-        return view('frontend.pages.companies.jobs.index');
-    }
-
-    public function createJobs()
-    {
-
-        return view('frontend.pages.companies.jobs.create');
-    }
-
-    public function storeJobs(Request $request)
-    {
-        dd($request->all());
-    }
-
-    public function getPersonalLinks()
-    {
-        // $speakers = Speaker::all();
-        return view('frontend.pages.companies.personal-links.index');
-    }
-
-    public function createPersonalLinks()
-    {
-        // $segments = Segment::all();
-        return view('frontend.pages.companies.personal-links.create');
-    }
-
-    public function storePersonalLinks(Request $request)
-    {
-        dd($request->all());
-    }
+    }    
 }

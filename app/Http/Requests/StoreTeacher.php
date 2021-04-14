@@ -44,6 +44,7 @@ class StoreTeacher extends FormRequest
             'city' => 'required|max:30',
             'uf'  => 'required|max:5',
             'password' => 'required|confirmed',
+            'email' => 'required|unique:users'
         ];
     }
 

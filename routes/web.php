@@ -51,7 +51,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     #rotas restritas estudantes
     Route::group(['prefix' => 'estudante', 'as' => 'students.', 'namespace' => 'Painel\Students'], function () {
-        Route::get('/', 'StudentController@home');
+        Route::get('/', 'StudentController@home')->name('home');
 
         Route::resource('meus-links', 'PersonalLinkController');
         Route::post('students/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
@@ -59,7 +59,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     #rotas restritas empresas
     Route::group(['prefix' => 'empresa', 'as' => 'companies.', 'namespace' => 'Painel\Companies'], function () {
-        Route::get('/', 'CompanyController@home');
+        Route::get('/', 'CompanyController@home')->name('home');
 
         Route::resource('jobs', 'JobController');       
         Route::resource('personal-links','PersonalLinkController');
@@ -69,7 +69,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     #rotas restritas professor
     Route::group(['prefix' => 'professor', 'as' => 'teachers.', 'namespace' => 'Painel\Teachers'], function () {
-        Route::get('/', 'TeacherController@home');
+        Route::get('/', 'TeacherController@home')->name('home');
 
         Route::resource('speakers', 'SpeakerController');
         Route::resource('posts', 'PostController');

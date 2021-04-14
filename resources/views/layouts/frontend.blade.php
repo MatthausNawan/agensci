@@ -44,10 +44,12 @@
 
             </nav>
             @auth
-                <nav class="nav d-flex justify-content-start align-items-center ml-auto">
-                        <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
-                        <a class="btn text-secondary">{{ Auth::user()->name }}</a>
-                        <a class="btn text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
+                <nav class="nav d-flex justify-content-start align-items-center ml-auto">                        
+                    @if(count(Request::segments()) < 2)
+                    <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
+                    @endif
+                    <a class="btn text-secondary">{{ Auth::user()->name }}</a>
+                    <a class="btn text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
                 </nav>
             @endauth
         </div>
