@@ -12,9 +12,9 @@
     <div class="col-md-3 col-sm-12 p-1">
         @include('frontend.pages.companies._partials.dashboard')
 
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Links Importantes','links'=>$articles])
+        {{--@include('frontend.pages.home._partials.external-links-icon',['title'=>'Links Importantes','links'=>$articles])
         @include('frontend.pages.home._partials.external-links',['title'=>'Tvs Universitárias','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$articles])
+        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$articles])--}}
     </div>
 
     <div class="col-md-9 col-sm-12 p-1">

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudent;
 use App\Models\Category;
 use App\Models\ExternalLik;
+use App\Models\Post;
 use App\Models\Student;
 use App\Services\StudentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -34,29 +36,17 @@ class StudentController extends Controller
     // Area Administrativa
     public function home()
     {
-
+        $user = Auth::user();
         return view(
             'frontend.pages.students.painel',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),                
+                'high_school_tvs' => ExternalLik::where('category_id', Category::C_TV_UNIVERSITARIAS)->take(5)->get(),
+                'high_school_radios' => ExternalLik::where('category_id', Category::C_RADIOS_UNIVERSITARIAS)->take(5)->get(),
+                'posts' => Post::latest()->take(5)->get(),
+                'student' => $user->student
             ]
         );
     }
-
-    public function getPersonalLinks()
-    {
-        // $speakers = Speaker::all();
-        return view('frontend.pages.students.personal-links.index');
-    }
-
-    public function createPersonalLinks()
-    {
-        // $segments = Segment::all();
-        return view('frontend.pages.students.personal-links.create');
-    }
-
-    public function storePersonalLinks(Request $request)
-    {
-        dd($request->all());
-    }
+   
 }

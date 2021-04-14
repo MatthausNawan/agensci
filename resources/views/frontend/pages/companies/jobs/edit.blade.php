@@ -84,13 +84,14 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-secondary">Atualizar</button>
-                    <form action="{{route('companies.jobs.destroy',$job->id) }}" method="post">
+                   
+                </div>
+            </form>
+            <form action="{{route('companies.jobs.destroy',$job->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-transparent pull-right"><i class="fa fa-trash"></i></a>
                     </form>
-                </div>
-            </form>
         </div>
     </div>
 </div>

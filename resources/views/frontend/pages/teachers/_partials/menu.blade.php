@@ -1,6 +1,9 @@
 <div class="col-lg-12 py-1">
     <ul class="nav nav-pills">
         <li class="nav-item">
+            <a class="nav-link text-dark" href="{{route('teachers.home')}}">Home</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-dark" href="{{route('teachers.events.index')}}">Eventos</a>
         </li>
         <li class="nav-item">

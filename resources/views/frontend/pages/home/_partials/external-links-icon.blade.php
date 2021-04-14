@@ -8,7 +8,7 @@
         @foreach($links as $link)
         <div class="image m-2 d-flex flex-row border-bottom">
             <a href="{{$link->site }}" target="_blank">
-                <img src="{{$link->logo->getUrl()}}" alt="{{$link->name}}" height="50px" width="50px" class="img-responsive">
+                <img src="{{$link->logo->getUrl()}}" alt="{{$link->name}}" height="70px" width="50px" class="img-responsive">
             </a>
             <a href="{{$link->site }}" class="ml-1 small align-self-center text-dark" target="_blank"><span>{{$link->name}}</span></a>
         </div>

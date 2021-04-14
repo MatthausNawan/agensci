@@ -8,6 +8,7 @@ use App\Http\Requests\Teacher\SpeakerStoreRequest;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\ExternalLik;
+use App\Models\Post;
 use App\Models\Segment;
 use App\Models\Speaker;
 use App\Models\Teacher;
@@ -37,68 +38,21 @@ class TeacherController extends Controller
         return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
     }
 
-
-    // Area Administrativa
     public function home()
     {
+       $user = Auth::user();
+
         return view(
             'frontend.pages.teachers.painel',
             [
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+                'statistics_softwares' => ExternalLik::where('category_id',Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->get(),
+                'util_apps' => ExternalLik::where('category_id',Category::C_APLICATIVOS_UTEIS)->take(5)->get(),                
+                'teacher' => $user->teacher,
+                'posts' =>Post::latest()->take(5)->get()
             ]
         );
     }
 
-    public function getPosts()
-    {
-        return view('frontend.pages.teachers.posts.index');
-    }
-
-    public function createPost()
-    {
-        return view('frontend.pages.teachers.posts.create');
-    }
-
-    public function storePost(Request $request)
-    {
-        dd($request->all());
-    }
-
-
-    public function getEvents()
-    {
-        $events = Event::all();
-        return view('frontend.pages.teachers.events.index', compact('events'));
-    }
-
-    public function createEvents()
-    {
-        $segments = Segment::all();
-        return view('frontend.pages.teachers.events.create', compact('segments'));
-    }
-
-    public function storeEvents(Request $request)
-    {
-        dd($request->all());
-    }
-
-
-
-
-    public function getPersonalLinks()
-    {
-        // $speakers = Speaker::all();
-        return view('frontend.pages.teachers.personal-links.index');
-    }
-
-    public function createPersonalLinks()
-    {
-        // $segments = Segment::all();
-        return view('frontend.pages.teachers.personal-links.create');
-    }
-
-    public function storePersonalLinks(Request $request)
-    {
-        dd($request->all());
-    }
+    
 }

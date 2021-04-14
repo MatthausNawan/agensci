@@ -15,7 +15,7 @@ class Job extends Model
 
     const TYPE_SELECT = [
         '1' => 'Estágio',
-        '2' => 'Vaga',
+        '2' => 'Emprego',
         '3' => 'Treinee'
     ];
 
