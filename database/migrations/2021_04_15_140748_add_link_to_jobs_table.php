@@ -26,7 +26,7 @@ class AddLinkToJobsTable extends Migration
     public function down()
     {
         Schema::table('jobs', function (Blueprint $table) {
-            $table->dropColumn('link')
+            $table->dropColumn('link');
         });
     }
 }
