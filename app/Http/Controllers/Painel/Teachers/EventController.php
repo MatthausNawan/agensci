@@ -46,12 +46,13 @@ class EventController extends Controller
     {
         $data = $request->all();
         $data['creator_id'] = Auth::user()->id;
+        $data['enabled'] = false;
 
         $event = Event::create($data);
 
         if ($request->input('banner', false)) {
             $event->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');
-        }      
+        }
 
         return redirect()->route('teachers.events.index')
         ->with('message', trans('Evento cadastrado com sucesso!'));
@@ -78,7 +79,7 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $segments = Segment::all();
-        return view('frontend.pages.teachers.events.edit', compact('event','segments'));
+        return view('frontend.pages.teachers.events.edit', compact('event', 'segments'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Painel\Teachers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
+use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\Teacher\PostStoreRequest;
 use App\Models\Post;
 use App\Models\Segment;
@@ -44,10 +45,11 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         $data = $request->all();
         $data['author_id'] = Auth::user()->id;
+        $data['status'] = 5; //Em Análise
 
         $post = Post::create($data);
 
@@ -64,16 +66,7 @@ class PostController extends Controller
         ->with('message', trans('Noticia cadastrada com sucesso!'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -100,8 +93,8 @@ class PostController extends Controller
         $data = $request->all();
         $data['author_id'] = Auth::user()->id;
 
-       $post =  Post::find($id);
-       $post->update($data);
+        $post =  Post::find($id);
+        $post->update($data);
 
         if ($request->input('banner', false)) {
             if (!$post->banner || $request->input('banner') !== $post->banner->file_name) {
@@ -132,8 +125,7 @@ class PostController extends Controller
     }
 
     public function storeCKEditorImages(Request $request)
-    {       
-
+    {
         $model         = new Post();
         $model->id     = $request->input('crud_id', 0);
         $model->exists = true;

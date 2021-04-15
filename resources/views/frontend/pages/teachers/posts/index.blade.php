@@ -19,6 +19,7 @@
                         <tr>
                             <td>thumb</td>
                             <td>Titulo</td>
+                            <td>Status</td>
                             <td>Acões</td>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                         <tr>
                             <td><img src="{{$post->banner ? $post->banner->getUrl('thumb') : ''}}" alt=""></td>
                             <td>{{ $post->title }}</td>
+                            <td>{{ \App\Models\Post::STATUS_SELECT[$post->status] }}</td>
                             <td>
                                 <a href="{{route('teachers.posts.edit',$post->id)}}" class="btn btn-sm btn-dark">Ver</a>
                             </td>

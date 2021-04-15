@@ -76,15 +76,22 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="salary" class="required">Salário</label>
-                            <input type="number" class="form-control" step="0.50" min="0.00" value="{{old('salary')}}" value="0.00" name="salary">
+                            <input class="form-control" type="number" name="salary" id="salary" value="{{ old('salary', '') }}" step="0.01">
                             @if($errors->has('salary'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('salary') }}</span>
                             @endif
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="link" class="required">Endereço para inscrição(LINK DO SITE)</label>
+                        <input type="text" class="form-control" value="{{old('link')}}" name="link">
+                        @if($errors->has('link'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('link') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label for="expiration_date" class="required">Data Final de Inscrição</label>
-                        <input type="date" class="form-control date" value="{{old('expiration_date')}}" name="expiration_date">
+                        <input type="text" class="form-control date" value="{{old('expiration_date')}}" name="expiration_date">
                         @if($errors->has('expiration_date'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('expiration_date') }}</span>
                         @endif

@@ -40,6 +40,7 @@ class Job extends Model
         'qty_jobs',
         'salary',
         'expiration_date',
+        'link',
         'created_at',
         'updated_at',
         'deleted_at',

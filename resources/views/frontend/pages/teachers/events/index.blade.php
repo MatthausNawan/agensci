@@ -22,6 +22,7 @@
                             <td>Segmento</td>
                             <td>Inicio</td>
                             <td>Data Encerramento</td>
+                            <td>Ativo</td>
                             <td>Acões</td>
                         </tr>
                     </thead>
@@ -33,6 +34,7 @@
                             <td>{{ $event->segment->name }}</td>
                             <td>{{ $event->start_date }}</td>
                             <td>{{ $event->end_date }}</td>
+                            <td>{{ $event->enabled ? 'Sim' : 'Não' }}</td>
                             <td>
                                 <a href="{{route('teachers.events.edit',$event->id)}}" class="btn btn-sm btn-dark">Ver</a>
                             </td>
