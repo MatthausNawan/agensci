@@ -5,9 +5,8 @@ namespace App\Services;
 use App\Models\Role;
 use App\Models\User;
 
-class TeacherService {
-
-
+class TeacherService
+{
     public static function createUserTeacher($request, $teacher)
     {
         $user = User::create([
@@ -17,7 +16,7 @@ class TeacherService {
         ]);
 
         $teacher->user_id = $user->id;
-        $teacher->save;
+        $teacher->save();
 
         $user->roles()->attach(Role::ROLE_TEACHER);
     }

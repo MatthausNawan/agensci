@@ -21,7 +21,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-   
+
     @yield('styles')
     <style>
         .slick-prev:before,
@@ -44,7 +44,7 @@
 
             </nav>
             @auth
-                <nav class="nav d-flex justify-content-start align-items-center ml-auto">                        
+                <nav class="nav d-flex justify-content-start align-items-center ml-auto">
                     @if(count(Request::segments()) < 2)
                     <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
                     @endif
@@ -83,6 +83,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     @yield('js')
 </body>
 

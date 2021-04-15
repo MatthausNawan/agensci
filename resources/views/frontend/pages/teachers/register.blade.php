@@ -8,9 +8,12 @@
 </div>
 
 <div class="col-lg-8 offset-2 mb-2">
-    <form method="POST" action="{{ route("site.teacher.register.form") }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('site.teacher.register.form') }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
+            <div class="card-header bg-dark">
+                <h5 class="cart-title text-white">Cadastre-se como Professor</h5>
+            </div>
             <div class="card-body">
                 <div class="form-group">
                     <label class="required" for="nome">Nome:</label>
@@ -23,7 +26,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="form-group col-6">
                         <label for="sexo">Sexo:</label>
                         <select class="form-control" name="genre">
                             <option value="M">Masculino</option>
@@ -31,7 +34,7 @@
                             <option value="OTHER">Outro</option>
                         </select>
                     </div>
-                    <div class="col">
+                    <div class="form-group col-6">
                         <label for="Data de nascimento">Data de nascimento:</label>
                         <input type="date" class="form-control" name="birth_date" value="{{ date('Y-m-d') }}" s>
                     </div>
@@ -71,7 +74,7 @@
 
                 <div class="form-group">
                     <label class="required" for="curriculo lattes">Curriculo lattes:</label>
-                    <input type="text" name="resume-link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ old('resume_link') ?? '' }}">
+                    <input type="text" name="resume_link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ old('resume_link') ?? '' }}">
                     @if($errors->has('resume_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('resume_link') }}
@@ -81,10 +84,10 @@
 
                 <div class="form-group">
                     <label class="required" for="profissao">Profissão:</label>
-                    <input type="text" name="job" class="form-control {{ $errors->has('job') ? 'is-invalid' : '' }}" value="{{ old('job') ?? '' }}">
-                    @if($errors->has('job'))
+                    <input type="text" name="profession" class="form-control {{ $errors->has('profession') ? 'is-invalid' : '' }}" value="{{ old('profession') ?? '' }}">
+                    @if($errors->has('profession'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('job') }}
+                        {{ $errors->first('profession') }}
                     </div>
                     @endif
                 </div>
@@ -118,8 +121,8 @@
                     </div>
                     @endif
                 </div>
-
-                <div class="form-group">
+            <div class="row">
+                <div class="form-group col-6">
                     <label class="required" for="matricula">Matricula:</label>
                     <input type="text" name="enrollment_number" class="form-control {{ $errors->has('enrollment_number') ? 'is-invalid' : '' }}" value="{{ old('enrollment_number') ?? '' }}">
                     @if($errors->has('enrollment_number'))
@@ -129,21 +132,22 @@
                     @endif
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-6">
                     <label class="required" for="cpf">CPF:</label>
-                    <input type="text" name="cpf" class="form-control {{ $errors->has('cpf') ? 'is-invalid' : '' }}" value="{{ old('cpf') ?? '' }}">
+                    <input type="text" name="cpf" class="cpf form-control {{ $errors->has('cpf') ? 'is-invalid' : '' }}" value="{{ old('cpf') ?? '' }}" placeholder="000.000.000-99">
                     @if($errors->has('cpf'))
                     <div class="invalid-feedback">
                         {{ $errors->first('cpf') }}
                     </div>
                     @endif
                 </div>
+                </div>
 
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="required" for="celular">Celular:</label>
-                        <input type="text" name="cell_number" class="form-control {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" value="{{ old('cell_number') ?? '' }}">
+                        <input type="text" name="cell_number" class="mobile form-control {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" value="{{ old('cell_number') ?? '' }}" placeholder="(DDD)99999-9999">
                         @if($errors->has('cell_number'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cell_number') }}
@@ -152,7 +156,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="required" for="whatsapp">Whatsapp:</label>
-                        <input type="text" name="whatsapp" class="form-control {{ $errors->has('whatsapp') ? 'is-invalid' : '' }}" value="{{ old('whatsapp') ?? '' }}">
+                        <input type="text" name="whatsapp" class="mobile form-control {{ $errors->has('whatsapp') ? 'is-invalid' : '' }}" value="{{ old('whatsapp') ?? '' }}" placeholder="(DDD)99999-9999">
                         @if($errors->has('whatsapp'))
                         <div class="invalid-feedback">
                             {{ $errors->first('whatsapp') }}
@@ -164,7 +168,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="required" for="nome">CEP:</label>
-                        <input type="text" name="postal_code" class="form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" value="{{ old('postal_code') ?? '' }}">
+                        <input type="text" id="cep" name="postal_code" class="cep form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" value="{{ old('postal_code') ?? '' }}" placeholder="00.000-000">
                         @if($errors->has('postal_code'))
                         <div class="invalid-feedback">
                             {{ $errors->first('postal_code') }}
@@ -173,7 +177,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="required" for="bairro">Bairro:</label>
-                        <input type="text" name="district" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" value="{{ old('district') ?? '' }}">
+                        <input type="text" id="bairro" name="district" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" value="{{ old('district') ?? '' }}">
                         @if($errors->has('district'))
                         <div class="invalid-feedback">
                             {{ $errors->first('district') }}
@@ -183,9 +187,14 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group  col-md-4">
+                    <div class="form-group col-md-4">
                         <label class="required" for="pais">País:</label>
-                        <input type="text" name="country" class="form-control {{ $errors->has('country') ? 'is-invalid' : '' }}" value="{{ old('country') ?? '' }}">
+                        <select name="country" id="" class="form-control">
+                                <option value="">Selecione...</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->name }}">{{ $country->name}}</option>
+                            @endforeach
+                        </select>
                         @if($errors->has('country'))
                         <div class="invalid-feedback">
                             {{ $errors->first('country') }}
@@ -194,7 +203,7 @@
                     </div>
                     <div class="form-group  col-md-4">
                         <label class="required" for="uf">UF:</label>
-                        <input type="text" name="uf" class="form-control {{ $errors->has('uf') ? 'is-invalid' : '' }}" value="{{ old('uf') ?? '' }}">
+                        <input type="text" id="uf" name="uf" class="form-control {{ $errors->has('uf') ? 'is-invalid' : '' }}" value="{{ old('uf') ?? '' }}">
                         @if($errors->has('uf'))
                         <div class="invalid-feedback">
                             {{ $errors->first('uf') }}
@@ -203,7 +212,7 @@
                     </div>
                     <div class="form-group  col-md-4">
                         <label class="required" for="cidade">Cidade:</label>
-                        <input type="text" name="city" class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" value="{{ old('city') ?? '' }}">
+                        <input type="text" id="cidade" name="city" class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" value="{{ old('city') ?? '' }}">
                         @if($errors->has('city'))
                         <div class="invalid-feedback">
                             {{ $errors->first('city') }}
@@ -221,11 +230,11 @@
             <div class="card-body">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <input type="text" class="form-control" name="linkedin" placeholder="Link do Likedin">
-                        <input type="text" class="form-control" name="facebook" placeholder="Link do Facebook">
-                        <input type="text" class="form-control" name="instagram" placeholder="Link do Instagram">
-                        <input type="text" class="form-control" name="twitter" placeholder="Link do Twitter">
-                        <input type="text" class="form-control" name="youtube" placeholder="Link do YouTube">
+                        <input type="text" class="form-control" name="linkedin" placeholder="Link do Likedin" value="{{ old('linkedin') }}">
+                        <input type="text" class="form-control" name="facebook" placeholder="Link do Facebook" value="{{ old('facebook') }}">
+                        <input type="text" class="form-control" name="instagram" placeholder="Link do Instagram" value="{{ old('instagram') }}">
+                        <input type="text" class="form-control" name="twitter" placeholder="Link do Twitter" value="{{ old('twitter') }}">
+                        <input type="text" class="form-control" name="youtube" placeholder="Link do YouTube" value="{{ old('youtube') }}">
                     </div>
                 </div>
             </div>
@@ -245,7 +254,7 @@
                 </div>
                 <div class="form-group">
                     <label for="senha">Senha</label>
-                    <input type="password" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password" placeholder="Deve ter no mínimo 8 caracteres">
                 </div>
                 <div class="form-group">
                     <label for="senha">Repetir Senha</label>
@@ -258,4 +267,17 @@
         </div>
     </form>
 </div>
+@endsection
+
+@section('js')
+<script src="{{ asset('js/viaCep.js') }}"></script>
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script>
+    $('.cnpj').mask('00.000.000/0000-00');
+    $('.cpf').mask('000.000.000-00');
+    $('.cep').mask('00.000-000');
+    $('.phone').mask('(00)9999-9999')
+    $('.mobile').mask('(00)99999-9999')
+</script>
+
 @endsection

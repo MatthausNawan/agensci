@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Painel\Students;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudent;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Post;
 use App\Models\Student;
@@ -21,7 +22,8 @@ class StudentController extends Controller
 
     public function showRegisterStudentPage()
     {
-        return view('frontend.pages.students.register', []);
+        $countries = Country::all();
+        return view('frontend.pages.students.register', compact('countries'));
     }
 
     public function store(StoreStudent $request)
@@ -40,7 +42,7 @@ class StudentController extends Controller
         return view(
             'frontend.pages.students.painel',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),                
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
                 'high_school_tvs' => ExternalLik::where('category_id', Category::C_TV_UNIVERSITARIAS)->take(5)->get(),
                 'high_school_radios' => ExternalLik::where('category_id', Category::C_RADIOS_UNIVERSITARIAS)->take(5)->get(),
                 'posts' => Post::latest()->take(5)->get(),
@@ -48,5 +50,4 @@ class StudentController extends Controller
             ]
         );
     }
-   
 }

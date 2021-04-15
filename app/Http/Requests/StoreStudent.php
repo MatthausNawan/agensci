@@ -24,21 +24,20 @@ class StoreStudent extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'genre' => 'required|max:255',
-            'course_name' => 'required|max:255',
-            'cpf' => 'required|max:255',
-            'specialization' => 'required|max:255',
-            'university_name' => 'required|max:10',
-            'matriculation' => 'required|max:20',
-            'lattes_link' => 'required|max:30',
-            'cpf'  => 'required|max:255',
-            'email'  => 'required|max:50|email',
-            'phone' => 'required|max:20',
-            // 'whatsapp'  => 'required|max:20',
-            'city' => 'required|max:30',
-            'uf'  => 'required|max:5',
-            'country'  => 'required|max:255',
+            'name' => 'required',
+            'genre' => 'required',
+            'course_name' => 'required',
+            'cpf' => 'required',
+            'specialization' => 'required',
+            'university_name' => 'required',
+            'matriculation' => 'required',
+            'lattes_link' => 'required',
+            'cpf'  => 'required',
+            'email'  => 'required|unique:users',
+            'phone' => 'required',
+            'city' => 'required',
+            'uf'  => 'required',
+            'country'  => 'required',
             'password' => 'required|confirmed',
         ];
     }
@@ -46,60 +45,11 @@ class StoreStudent extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'O campo nome é obrigatório!',
-            'name.max' => 'Você ultrapassou o limite maximo de caracteres em Razão Social',
-
-            'genre.required' => 'O campo genero é obrigatório!',
-            'genre.max' => 'Você ultrapassou o limite maximo de caracteres em Genero',
-
-            'course_name.required' => 'O campo nome do curso é obrigatório!',
-            'course_name.max' => 'Você ultrapassou o limite maximo de caracteres em Nome do Curso',
-
-            'cpf.required' => 'O campo nome CPF é obrigatório!',
-            'cpf.max' => 'Você ultrapassou o limite maximo de caracteres em CPF',
-            'cpf.numeric' => 'Formato incorreto em CPF',
-
-            'specialization.required' => 'O campo pós_graduação é obrigatorio.',
-            'specialization.max' => 'Você ultrapassou o limite maximo de caracteres em pós_graduação',
-
-            'university_name.required' => 'O campo nome da universidade é obrigatorio.',
-            'university_name.max' => 'Você ultrapassou o limite maximo de caracteres em nome da universidade',
-
-            'matriculation.required' => 'O campo matricula é obrigatorio.',
-            'matriculation.max' => 'Você ultrapassou o limite maximo de caracteres em matricula',
-
-            'occupation_lattes.required' => 'O campo atuação lattes é obrigatorio.',
-            'occupation_lattes.max' => 'Você ultrapassou o limite maximo de caracteres em atuação lattes',
-
-            'lattes_link.required' => 'O campo link lattes é obrigatorio.',
-            'lattes_link.max' => 'Você ultrapassou o limite maximo de caracteres em link lattes',
-
-            'cpf.required' => 'O campo de CPF do responsavel pela solicitação é obrigatorio.',
-            'cpf.max' => 'Você ultrapassou o limite maximo de caracteres no CPF do responsavel pela solicitação',
-
-            'email.required' => 'O campo de email é obrigatorio.',
-            'email.max' => 'Você ultrapassou o limite maximo de caracteres em email',
-            'email.email' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
-
-            'phone.required' => 'O campo telefone é obrigatorio.',
-            'phone.max' => 'Você ultrapassou o limite maximo de caracteres em telefone',
-
-            'whatsapp.required' => 'O campo número de celular é obrigatorio.',
-            'whatsapp.max' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
-
-
-            'city.required' => 'O campo cidade é obrigatorio.',
-            'city.max' => 'Você ultrapassou o limite maximo de caracteres em cidade',
-
-            'uf.required' => 'O campo UF é obrigatorio.',
-            'uf.max' => 'Você ultrapassou o limite maximo de caracteres em UF',
-
-            'country.required' => 'O campo País é obrigatorio.',
-            'country.max' => 'Você ultrapassou o limite maximo de caracteres em País',
-
-            'password.required' => 'O campo de senha é obrigatorio.',
-            'password.max' => 'Você ultrapassou o limite maximo de caracteres em senha',
-            'password.confirmed' => 'As senhas não conferem',
+            'required' => 'O campo :attribute é obrigatório',
+            'max' => 'O campo :attribute é muito longo',
+            'email' => 'O campo :attribute deve ser um e-mail válido',
+            'unique' => 'O campo :attribute digitado já está em uso, utilize outro',
+            'confirmed' => 'O campo senha não confere',
         ];
     }
 }

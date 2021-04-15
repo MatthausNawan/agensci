@@ -25,7 +25,7 @@ class Teacher extends Model
         'genre',
         'birth_date',
         'formation',
-        'specialty',
+        'speciality',
         'occupation_lattes',
         'resume_link',
         'profession',
