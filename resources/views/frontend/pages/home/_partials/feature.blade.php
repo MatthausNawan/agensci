@@ -3,7 +3,7 @@
 
             <div class="card">
                 <a href="{{$featured_event->link ?? '#'}}" target="_blank">
-                    <img class="card-img-top" src="{{$featured_event->banner->getUrl()}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{$featured_event->banner ? $featured_event->banner->getUrl() : ''}}" alt="Card image cap">
                 </a>
                 <div class="card-body">
                     <a href="{{$featured_event->link }}" target="_blank">

@@ -44,6 +44,8 @@ class Event extends Model implements HasMedia
         'deleted_at',
     ];
 
+
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

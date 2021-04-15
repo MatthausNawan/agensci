@@ -18,11 +18,17 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title" class="required">Nome</label>
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                        @if($errors->has('title'))
+                            <span class="text-danger" role="alert">{{ $errors->first('title') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="title" class="required">Link</label>
-                        <input type="text" class="form-control" name="link">
+                        <input type="text" class="form-control" name="link" value="{{ old('link') }}">
+                        @if($errors->has('link'))
+                            <span class="text-danger" role="alert">{{ $errors->first('link') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
@@ -30,9 +36,9 @@
                         <div class="needsclick dropzone" id="photo-dropzone">
                         </div>
                         @if($errors->has('photo'))
-                            <span class="help-block" role="alert">{{ $errors->first('photo') }}</span>
+                            <span class="text-danger" role="alert">{{ $errors->first('photo') }}</span>
                         @endif
-                        <span class="help-block">{{ trans('cruds.speaker.fields.photo_helper') }}</span>
+                        <span class="text-danger">{{ trans('cruds.speaker.fields.photo_helper') }}</span>
                     </div>
                 </div>
                 <div class="card-footer">

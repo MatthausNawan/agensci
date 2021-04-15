@@ -50,7 +50,7 @@ class TeacherController extends Controller
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
                 'statistics_softwares' => ExternalLik::where('category_id', Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->get(),
                 'util_apps' => ExternalLik::where('category_id', Category::C_APLICATIVOS_UTEIS)->take(5)->get(),
-                'teacher' => $user->teacher,
+                'teacher' => $user->teacher ?? false,
                 'posts' =>Post::latest()->take(5)->get()
             ]
         );

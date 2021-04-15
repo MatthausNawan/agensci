@@ -30,6 +30,7 @@ class Post extends Model implements HasMedia
         '2' => 'Publicado',
         '3' => 'Negado',
         '4' => 'Arquivado',
+        '5' => 'Em Análise'
     ];
 
     protected $fillable = [

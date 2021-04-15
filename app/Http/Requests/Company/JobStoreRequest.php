@@ -31,6 +31,7 @@ class JobStoreRequest extends FormRequest
             'qty_jobs'          => 'required',
             'salary'            => 'required',
             'expiration_date'   => 'required',
+            'link'              => 'required'
         ];
     }
 

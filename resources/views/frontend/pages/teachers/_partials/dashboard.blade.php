@@ -1,5 +1,6 @@
 <div class="links-wrapper p-2">
     <h6>Olá, {{Auth::user()->name ?? 'Professor'}}</h6>
+    @if($teacher)
     <div class="data d-flex flex-column">
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Instituição</span>
@@ -11,10 +12,8 @@
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Curriculo Lattes</span>
-            <span class="small"><a href="{{ $teacher->resume_link }}">{{ $teacher->resume_link ?? 'nao informado' }}</a></span>
+            <span class="small"><a href="{{ $teacher->resume_link ?? '#' }}">{{ $teacher->resume_link ?? 'nao informado' }}</a></span>
         </div>
-
-        
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Midias Sociais</span>
             <div class="socials">
@@ -51,5 +50,6 @@
             </div>
         </div>
     </div>
+    @endif
     <a href="#" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
 </div>

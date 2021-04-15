@@ -11,7 +11,7 @@
                             <span>{{$new->created_at->format('d/m/Y h:m')}}</span>
                         </div>
                     </div>
-                    <img class="card-img-top" src="{{$new->banner->getUrl()}}" alt="Card image cap" height="300px">
+                    <img class="card-img-top" src="{{$new->banner ? $new->banner->getUrl() : ''}}" alt="Card image cap" height="300px">
                     <div class="card-body">
                         <span class="card-text">{!!$new->detail !!}</span>
                         <div class="flex-end mt-2">
