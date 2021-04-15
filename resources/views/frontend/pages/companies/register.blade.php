@@ -8,9 +8,12 @@
 </div>
 
 <div class="col-lg-8 offset-2 mb-2">
-    <form method="POST" action="{{ route("site.companies.store") }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('site.companies.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
+            <div class="card-header bg-dark">
+                <h5 class="card-title text-white">Cadastre sua Empresa</h5>
+            </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="razao" class="required">Razão social:</label>
@@ -23,34 +26,53 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="Nome fantasia" class="required">Nome fantasia:</label>
-                            <input type="text" name="fantasy_name" class="form-control {{ $errors->has('fantasy_name') ? 'is-invalid' : '' }} " value="{{ old('fantasy_name', '') }}">
-                            @if($errors->has('fantasy_name'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('fantasy_name') }}
-                            </div>
-                            @endif
+                    <div class="form-group col-8 col-sm-6">
+                        <label for="Nome fantasia" class="required">Nome fantasia:</label>
+                        <input type="text" name="fantasy_name" class="form-control {{ $errors->has('fantasy_name') ? 'is-invalid' : '' }} " value="{{ old('fantasy_name', '') }}">
+                        @if($errors->has('fantasy_name'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('fantasy_name') }}
                         </div>
+                        @endif
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="CPNJ" class="required">CNPJ:</label>
-                            <input type="text" name="cnpj" class="form-control {{ $errors->has('cnpj') ? 'is-invalid' : '' }}" value="{{ old('cnpj', '') }}">
-                            @if($errors->has('cnpj'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('cnpj') }}
-                            </div>
-                            @endif
+
+                    <div class="form-group col-4 col-sm-6">
+                        <label for="CPNJ" class="required">CNPJ:</label>
+                        <input type="text"  name="cnpj" class="cnpj form-control {{ $errors->has('cnpj') ? 'is-invalid' : '' }}" value="{{ old('cnpj', '') }}" placeholder="00.000.000/0000-00">
+                        @if($errors->has('cnpj'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cnpj') }}
                         </div>
+                        @endif
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="CEP" class="required">CEP:</label>
+                        <input type="text" id="cep" class="cep form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" name="postal_code" value="{{ old('postal_code', '') }}" placeholder="58.000-000">
+                        @if($errors->has('postal_code'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('postal_code') }}
+                        </div>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label for="Bairro">Bairro:</label>
+                        <input type="text" id="bairro" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" name="district" value="{{ old('district', '') }}">
+                        @if($errors->has('district'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('district') }}
+                        </div>
+                        @endif
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <label for="Endereco" class="required">Endereço:</label>
-                        <input type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" value="{{ old('address', '') }}">
+                        <input type="text" id="rua" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" value="{{ old('address', '') }}">
                         @if($errors->has('address'))
                         <div class="invalid-feedback">
                             {{ $errors->first('address') }}
@@ -67,31 +89,12 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="CEP" class="required">CEP:</label>
-                        <input type="text" class="form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" name="postal_code" value="{{ old('postal_code', '') }}">
-                        @if($errors->has('postal_code'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('postal_code') }}
-                        </div>
-                        @endif
-                    </div>
-                    <div class="form-group col-md-8">
-                        <label for="Bairro">Bairro:</label>
-                        <input type="text" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" name="district" value="{{ old('district', '') }}">
-                        @if($errors->has('district'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('district') }}
-                        </div>
-                        @endif
-                    </div>
-                </div>
+
 
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <label for="Cidade">Cidade:</label>
-                        <input type="text" class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city" value="{{ old('city', '') }}">
+                        <input type="text" id="cidade" class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city" value="{{ old('city', '') }}">
                         @if($errors->has('city'))
                         <div class="invalid-feedback">
                             {{ $errors->first('city') }}
@@ -100,7 +103,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Estado">UF:</label>
-                        <input type="text" class="form-control {{ $errors->has('uf') ? 'is-invalid' : '' }}" name="uf" value="{{ old('uf', '') }}">
+                        <input type="text" id="uf" class="form-control {{ $errors->has('uf') ? 'is-invalid' : '' }}" name="uf" value="{{ old('uf', '') }}">
                         @if($errors->has('uf'))
                         <div class="invalid-feedback">
                             {{ $errors->first('uf') }}
@@ -112,7 +115,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="Fone" class="required">Fone:</label>
-                        <input type="text" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" name="phone" value="{{ old('phone', '') }}">
+                        <input type="text" class="phone form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" name="phone" value="{{ old('phone', '') }}" placeholder="(DD) 9999-9999">
                         @if($errors->has('phone'))
                         <div class="invalid-feedback">
                             {{ $errors->first('phone') }}
@@ -121,7 +124,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="Celular" class="required">Celular:</label>
-                        <input type="text" class="form-control {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" name="cell_number" value="{{ old('cell_number', '') }}">
+                        <input type="text" class="mobile form-control {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" name="cell_number" value="{{ old('cell_number', '') }}" placeholder="(DD) 99999-9999">
                         @if($errors->has('cell_number'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cell_number') }}
@@ -172,8 +175,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         <label for="Cidade" class="required">CPF:</label>
-                        <input type="text" class="form-control {{ $errors->has('requester_cpf') ? 'is-invalid' : '' }}" name="requeste_-cpf" value="{{ old('requester_cpf', '') }}">
-                        @if($errors->has('requester-_pf'))
+                        <input type="text" class="cpf form-control {{ $errors->has('requester_cpf') ? 'is-invalid' : '' }}" name="requester_cpf" value="{{ old('requester_cpf', '') }}" placeholder="123.456.123-99">
+                        @if($errors->has('requester_cpf'))
                         <div class="invalid-feedback">
                             {{ $errors->first('requester_cpf') }}
                         </div>
@@ -188,21 +191,28 @@
                         </div>
                         @endif
                     </div>
-                </div>              
+                </div>
 
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header">Dados de Acesso</div>
+            <div class="card-header bg-dark">
+                <h5 class="cart-title text-white">Dados de Acesso</h5>
+            </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="razao" class="required">Email</label>
                     <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email', '') }}">
+                    @if($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="razao" class="required">Senha</label>
-                    <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password">
+                    <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="deve ter no mínino 8 caracteres">
                 </div>
                 <div class="form-group">
                     <label for="razao">Repetir Senha</label>
@@ -215,4 +225,17 @@
         </div>
     </form>
 </div>
+@endsection
+
+@section('js')
+<script src="{{ asset('js/viaCep.js') }}"></script>
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script>
+    $('.cnpj').mask('00.000.000/0000-00');
+    $('.cpf').mask('000.000.000-00');
+    $('.cep').mask('00.000-000');
+    $('.phone').mask('(00)9999-9999')
+    $('.mobile').mask('(00)99999-9999')
+</script>
+
 @endsection

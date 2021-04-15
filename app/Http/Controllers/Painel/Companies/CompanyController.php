@@ -43,16 +43,16 @@ class CompanyController extends Controller
 
         return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
     }
-    
+
     public function home()
     {
         $user = Auth::user();
         return view(
             'frontend.pages.companies.painel',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),                
+                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
                 'company' => $user->company
             ]
         );
-    }    
+    }
 }
