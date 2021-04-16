@@ -26,8 +26,6 @@ class Category extends Model
         'deleted_at',
     ];
 
-
-
     const C_ARTIGOS = 1;
     const C_ORGAOS_EDUCACIONAIS = 2;
     const C_ORGAOS_DE_PESQUISA = 3;
@@ -42,13 +40,12 @@ class Category extends Model
     const C_ENTIDADES_ESTUDANTIS = 12;
     const C_BIBLIOTECAS_DIGITAIS = 13;
     const C_MUSEUS_DIGITAIS = 14;
-    #teachers
     const C_PROGRAMAS_DE_ESTATISTICAS = 15;
     const C_APLICATIVOS_UTEIS = 16;
     const C_TV_UNIVERSITARIAS = 17;
     const C_RADIOS_UNIVERSITARIAS = 18;
 
-        
+
 
 
 

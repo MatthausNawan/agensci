@@ -29,6 +29,8 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
 
     Route::get('/noticia/{slug}','HomeController@showPost')->name('site.post');
 
+    Route::get('/pesquisar/categoria/{category}','HomeController@searchLink')->name('site.search-links');
+
     #statics
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
 });
