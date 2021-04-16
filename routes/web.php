@@ -56,6 +56,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
         Route::put('/minha-conta', 'StudentController@updateProfile')->name('profile.update');
 
         Route::resource('meus-links', 'PersonalLinkController');
+        Route::resource('student-profiles', 'StudentProfileController');
         Route::post('students/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 

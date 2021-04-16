@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4">
-                                <img src="{{ $profile->photo->getUrl()}}" alt="" class="img-thumbnail" style="height:150px;">
+                                <img src="{{ $profile->photo ? $profile->photo->getUrl() : ''}}" alt="" class="img-thumbnail" style="height:150px;">
                             </div>
                             <div class="col-8">
                                 <p>{{$profile->name}}</p>

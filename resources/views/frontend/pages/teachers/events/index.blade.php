@@ -14,16 +14,16 @@
                 <a href="{{ route('teachers.events.create') }}" class="btn btn-secondary">Adicionar Evento</a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead>
+                <table class="table table-condensed table-striped table-hover">
+                    <thead class="bg-dark">
                         <tr>
-                            <td>Banner</td>
-                            <td>Titulo</td>
-                            <td>Segmento</td>
-                            <td>Inicio</td>
-                            <td>Data Encerramento</td>
-                            <td>Ativo</td>
-                            <td>Acões</td>
+                            <th class="text-white">Banner</th>
+                            <th class="text-white">Titulo</th>
+                            <th class="text-white">Segmento</th>
+                            <th class="text-white">Inicio</th>
+                            <th class="text-white">Data Encerramento</th>
+                            <th class="text-white">Ativo</th>
+                            <th class="text-white">Acões</th>
                         </tr>
                     </thead>
                     <tbody>
