@@ -85,10 +85,15 @@ class HomeController extends Controller
         ]);
     }
 
-
-
     public function showAdvertisePage()
     {
         return view('frontend.pages.advertise.index');
+    }
+
+    public function showPost($slug)
+    {
+        $post = Post::where('slug',$slug)->firstOrFail();
+
+        return view('frontend.pages.static.post-single',compact('post'));
     }
 }

@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
     Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 
+    Route::get('/noticia/{slug}','HomeController@showPost')->name('site.post');
+
     #statics
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
 });
