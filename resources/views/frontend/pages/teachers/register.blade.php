@@ -84,7 +84,7 @@
 
                 <div class="form-group">
                     <label class="required" for="curriculo lattes">Curriculo lattes:</label>
-                    <input type="text" name="resume_link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ old('resume_link') ?? '' }}">
+                    <input type="text" name="resume_link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ old('resume_link') ?? '' }}" placeholder="Link do seu curriculo lattes.">
                     @if($errors->has('resume_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('resume_link') }}

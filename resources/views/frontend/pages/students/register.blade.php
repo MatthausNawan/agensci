@@ -68,7 +68,7 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label class="required" for="pos graduacao">Pós-graduação:</label>
+                        <label for="specialization">Pós-graduação:</label>
                         <input type="text" class="form-control {{ $errors->has('specialization') ? 'is-invalid' : '' }}" value="{{ old('specialization') ?? '' }}" name="specialization">
                         @if($errors->has('specialization'))
                         <div class="invalid-feedback">
@@ -118,7 +118,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="required" for="curriculo lattes">Link Curriculo lattes:</label>
-                        <input type="text" class="form-control {{ $errors->has('lattes_link') ? 'is-invalid' : '' }}" value="{{ old('lattes_link') ?? '' }}" name=" lattes_link">
+                        <input type="text" class="form-control {{ $errors->has('lattes_link') ? 'is-invalid' : '' }}" value="{{ old('lattes_link') ?? '' }}" name="lattes_link" placeholder="Link do seu curriculo lattes">
                         @if($errors->has('lattes_link'))
                         <div class="invalid-feedback">
                             {{ $errors->first('lattes_link') }}
