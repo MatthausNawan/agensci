@@ -96,4 +96,15 @@ class HomeController extends Controller
 
         return view('frontend.pages.static.post-single',compact('post'));
     }
+
+    public function searchLink($category)
+    {
+        $category = Category::findOrFail($category);
+
+        $links = ExternalLik::orderBy('name','ASC')
+            ->where('category_id', $category->id)
+            ->paginate(10);
+
+        return view('frontend.pages.static.search-link',compact('links','category'));
+    }
 }
