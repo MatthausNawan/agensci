@@ -52,5 +52,5 @@
             </div>
         </div>
     </div>
-    <a href="#" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
+    <a href="{{route('companies.profile')}}" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
 </div>

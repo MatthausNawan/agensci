@@ -50,5 +50,5 @@
             </div>
         </div>
     </div>
-    <a href="#" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
+    <a href="{{route('students.profile.update')}}" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
 </div>

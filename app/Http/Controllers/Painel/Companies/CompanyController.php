@@ -55,4 +55,34 @@ class CompanyController extends Controller
             ]
         );
     }
+
+    public function getProfile()
+    {
+        $user = Auth::user();
+        $profile = $user->company;
+
+        return view('frontend.pages.companies.profile', compact('profile'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        $company = $user->company;
+
+        $company->update($request->all());
+
+        if ($request->input('logo', false)) {
+            if (!$company->logo || $request->input('logo') !== $company->logo->file_name) {
+                if ($company->logo) {
+                    $company->logo->delete();
+                }
+
+                $company->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
+            }
+        } elseif ($company->logo) {
+            $company->logo->delete();
+        }
+
+        return  redirect()->back()->with('success', 'Dados Atualizados!');
+    }
 }

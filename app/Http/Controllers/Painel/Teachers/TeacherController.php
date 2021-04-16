@@ -3,23 +3,22 @@
 namespace App\Http\Controllers\Painel\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreTeacher;
-use App\Http\Requests\Teacher\SpeakerStoreRequest;
 use App\Models\Category;
 use App\Models\Country;
-use App\Models\Event;
 use App\Models\ExternalLik;
 use App\Models\Post;
-use App\Models\Segment;
-use App\Models\Speaker;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
+
 
 class TeacherController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function __construct()
     {
         $this->middleware('check-panel');
@@ -38,6 +37,36 @@ class TeacherController extends Controller
         TeacherService::createUserTeacher($request, $teacher);
 
         return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
+    }
+
+    public function getProfile()
+    {
+        $user = Auth::user();
+        $profile = $user->teacher;
+        $countries = Country::all();
+        return view('frontend.pages.teachers.profile', compact('profile','countries'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        $teacher = $user->teacher;
+
+        $teacher->update($request->all());
+
+        if ($request->input('logo', false)) {
+            if (!$teacher->logo || $request->input('logo') !== $teacher->logo->file_name) {
+                if ($teacher->logo) {
+                    $teacher->logo->delete();
+                }
+
+                $teacher->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
+            }
+        } elseif ($teacher->logo) {
+            $teacher->logo->delete();
+        }
+
+        return  redirect()->back()->with('success', 'Dados Atualizados!');
     }
 
     public function home()

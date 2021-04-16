@@ -22,6 +22,9 @@ class ChangePasswordController extends Controller
     {
         auth()->user()->update($request->validated());
 
+        if ($request->has('redirect')) {
+            return redirect()->back()->with('message', __('global.change_password_success'));
+        }
         return redirect()->route('profile.password.edit')->with('message', __('global.change_password_success'));
     }
 

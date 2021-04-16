@@ -51,5 +51,5 @@
         </div>
     </div>
     @endif
-    <a href="#" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
+    <a href="{{route('teachers.profile')}}" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
 </div>
