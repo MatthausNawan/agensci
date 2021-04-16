@@ -13,7 +13,7 @@
             <a class="nav-link text-dark" href="{{ route('students.meus-links.index') }}">Links Importantes</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Portfólio</a>
+            <a class="nav-link text-dark" href="{{route('students.student-profiles.index')}}">Portfólio</a>
         </li>
     </ul>
 </div>

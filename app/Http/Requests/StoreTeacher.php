@@ -60,57 +60,57 @@ class StoreTeacher extends FormRequest
 
             'speciality.required' => 'O campo especialização é obrigatorio.',
             'speciality.max' => 'Você ultrapassou o limite maximo de caracteres em especialização',
-            
+
             'occupation_lattes.required' => 'O campo ocupação lattes é obrigatorio.',
             'occupation_lattes.max' => 'Você ultrapassou o limite maximo de caracteres em ocupação lattes',
-            
+
             'office.required' => 'O campo trabalho é obrigatorio.',
             'office.max' => 'Você ultrapassou o limite maximo de caracteres em trabalho',
-            
+
             'institution_works.required' => 'O campo institução é obrigatorio.',
             'institution_works.max' => 'Você ultrapassou o limite maximo de caracteres em institução',
-            
+
             'class_council.required' => 'O campo conselho de classe é obrigatorio.',
             'class_council.max' => 'Você ultrapassou o limite maximo de caracteres em conselho de classe',
-            
+
             'formation.required' => 'O campo especialização é obrigatorio.',
             'formation.max' => 'Você ultrapassou o limite maximo de caracteres em especialização',
 
             'enrollment_number.required' => 'O campo matricula é obrigatorio.',
             'enrollment_number.max' => 'Você ultrapassou o limite maximo de caracteres em matricula',
-            
+
             'job.required' => 'O campo profissão é obrigatorio.',
             'job.max' => 'Você ultrapassou o limite maximo de caracteres em profissão',
 
             'resume_link.required' => 'O campo link lattes é obrigatorio.',
             'resume_link.max' => 'Você ultrapassou o limite maximo de caracteres em link lattes',
-            
+
             'postal_code.required' => 'O campo codigo postal é obrigatorio.',
             'postal_code.max' => 'Você ultrapassou o limite maximo de caracteres em codigo postal',
-            
+
             'district.required' => 'O campo distrito é obrigatorio.',
             'district.max' => 'Você ultrapassou o limite maximo de caracteres em distrito',
-             
+
             'email.required' => 'O campo de email é obrigatorio.',
             'email.max' => 'Você ultrapassou o limite maximo de caracteres em email',
             'email.email' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
-            
+
             'cell_number.required' => 'O campo telefone é obrigatorio.',
             'cell_number.max' => 'Você ultrapassou o limite maximo de caracteres em telefone',
-            
+
             'whatsapp.required' => 'O campo número de celular é obrigatorio.',
             'whatsapp.max' => 'Você ultrapassou o limite maximo de caracteres em numero do celular',
-            
-            
+
+
             'city.required' => 'O campo cidade é obrigatorio.',
             'city.max' => 'Você ultrapassou o limite maximo de caracteres em cidade',
 
             'uf.required' => 'O campo UF é obrigatorio.',
             'uf.max' => 'Você ultrapassou o limite maximo de caracteres em UF',
-            
+
             'country.required' => 'O campo País é obrigatorio.',
             'country.max' => 'Você ultrapassou o limite maximo de caracteres em País',
-            
+
             'password.required' => 'O campo de senha é obrigatorio.',
             'password.max' => 'Você ultrapassou o limite maximo de caracteres em senha',
             'password.confirmed' => 'As senhas não conferem',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Painel\Students;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreStudent;
 use App\Models\Category;
 use App\Models\Country;
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function __construct()
     {
         $this->middleware('check-panel');
@@ -35,7 +38,37 @@ class StudentController extends Controller
         return  redirect()->route('site.static.success-register')->with('success', 'Registro inserido com sucesso');
     }
 
-    // Area Administrativa
+    public function getProfile()
+    {
+        $user = Auth::user();
+        $profile = $user->student;
+        $countries = Country::all();
+        return view('frontend.pages.students.profile', compact('profile','countries'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        $student = $user->student;
+
+        $student->update($request->all());
+
+        if ($request->input('logo', false)) {
+            if (!$student->logo || $request->input('logo') !== $student->logo->file_name) {
+                if ($student->logo) {
+                    $student->logo->delete();
+                }
+
+                $student->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
+            }
+        } elseif ($student->logo) {
+            $student->logo->delete();
+        }
+
+        return  redirect()->back()->with('success', 'Dados Atualizados!');
+    }
+
+
     public function home()
     {
         $user = Auth::user();

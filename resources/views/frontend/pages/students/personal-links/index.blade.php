@@ -14,13 +14,13 @@
                 <a href="{{ route('students.meus-links.create') }}" class="btn btn-secondary">Adicionar Link</a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-condensed table-striped table-hover">
                     <thead>
                         <tr>
-                            <td>Imagem</td>
-                            <td>Titulo</td>
-                            <td>Link</td>
-                            <td>Acões</td>
+                            <th>Imagem</th>
+                            <th>Titulo</th>
+                            <th>Link</th>
+                            <th>Acões</th>
                         </tr>
                     </thead>
                     <tbody>

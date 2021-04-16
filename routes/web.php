@@ -52,17 +52,21 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     #rotas restritas estudantes
     Route::group(['prefix' => 'estudante', 'as' => 'students.', 'namespace' => 'Painel\Students'], function () {
         Route::get('/', 'StudentController@home')->name('home');
+        Route::get('/minha-conta', 'StudentController@getProfile')->name('profile');
+        Route::put('/minha-conta', 'StudentController@updateProfile')->name('profile.update');
 
         Route::resource('meus-links', 'PersonalLinkController');
+        Route::resource('student-profiles', 'StudentProfileController');
         Route::post('students/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 
     #rotas restritas empresas
     Route::group(['prefix' => 'empresa', 'as' => 'companies.', 'namespace' => 'Painel\Companies'], function () {
         Route::get('/', 'CompanyController@home')->name('home');
-
-        Route::resource('jobs', 'JobController');       
-        Route::resource('personal-links','PersonalLinkController');
+        Route::get('/minha-conta', 'CompanyController@getProfile')->name('profile');
+        Route::put('/minha-conta', 'CompanyController@updateProfile')->name('profile.update');
+        Route::resource('jobs', 'JobController');
+        Route::resource('personal-links', 'PersonalLinkController');
 
         Route::post('companies/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
@@ -70,11 +74,13 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     #rotas restritas professor
     Route::group(['prefix' => 'professor', 'as' => 'teachers.', 'namespace' => 'Painel\Teachers'], function () {
         Route::get('/', 'TeacherController@home')->name('home');
+        Route::get('/minha-conta', 'TeacherController@getProfile')->name('profile');
+        Route::put('/minha-conta', 'TeacherController@updateProfile')->name('profile.update');
 
         Route::resource('speakers', 'SpeakerController');
         Route::resource('posts', 'PostController');
         Route::resource('events', 'EventController');
-        Route::resource('personal-links','PersonalLinkController');
+        Route::resource('personal-links', 'PersonalLinkController');
 
         Route::post('teachers/ckmedia', 'PostController@storeCKEditorImages')->name('teachers.storeCKEditorImages');
         Route::post('teachers/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
@@ -162,6 +168,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('contests/destroy', 'ContestController@massDestroy')->name('contests.massDestroy');
     Route::resource('contests', 'ContestController');
 });
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {

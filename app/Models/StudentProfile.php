@@ -28,7 +28,7 @@ class StudentProfile extends Model implements HasMedia
 
     protected $fillable = [
         'name',
-        'couse_name',
+        'course_name',
         'period',
         'university_name',
         'lattes_link',
@@ -38,7 +38,13 @@ class StudentProfile extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+        'user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

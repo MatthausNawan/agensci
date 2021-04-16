@@ -33,10 +33,20 @@
                             <option value="F">Feminino</option>
                             <option value="OTHER">Outro</option>
                         </select>
+                        @if($errors->has('genre'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('genre') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="form-group col-6">
                         <label for="Data de nascimento">Data de nascimento:</label>
-                        <input type="date" class="form-control" name="birth_date" value="{{ date('Y-m-d') }}" s>
+                        <input type="date" class="form-control" name="birth_date" value="{{ old('birth_date') }}">
+                        @if($errors->has('birth_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('birth_date') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -74,7 +84,7 @@
 
                 <div class="form-group">
                     <label class="required" for="curriculo lattes">Curriculo lattes:</label>
-                    <input type="text" name="resume_link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ old('resume_link') ?? '' }}">
+                    <input type="text" name="resume_link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ old('resume_link') ?? '' }}" placeholder="Link do seu curriculo lattes.">
                     @if($errors->has('resume_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('resume_link') }}
@@ -83,11 +93,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="required" for="profissao">Profissão:</label>
-                    <input type="text" name="profession" class="form-control {{ $errors->has('profession') ? 'is-invalid' : '' }}" value="{{ old('profession') ?? '' }}">
-                    @if($errors->has('profession'))
+                    <label class="required" for="job">Profissão:</label>
+                    <input type="text" name="job" class="form-control {{ $errors->has('job') ? 'is-invalid' : '' }}" value="{{ old('job') ?? '' }}">
+                    @if($errors->has('job'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('profession') }}
+                        {{ $errors->first('job') }}
                     </div>
                     @endif
                 </div>
