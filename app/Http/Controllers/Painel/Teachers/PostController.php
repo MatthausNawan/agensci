@@ -11,7 +11,7 @@ use App\Models\Segment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Models\Media;
 
 class PostController extends Controller
@@ -50,7 +50,7 @@ class PostController extends Controller
         $data = $request->all();
         $data['author_id'] = Auth::user()->id;
         $data['status'] = 5; //Em Análise
-
+        $data['slug'] = Str::kebab($request->title);
         $post = Post::create($data);
 
         if ($request->input('banner', false)) {

@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <span class="card-text">{!!$new->detail !!}</span>
                         <div class="flex-end mt-2">
-                            <a href="" class="btn btn-sm btn-secondary">Continuar Lendo...</a>
+                            <a href="{{ route('site.post',$new->slug) }}" class="btn btn-sm btn-secondary">Continuar Lendo...</a>
                         </div>
                     </div>
                 </div>
