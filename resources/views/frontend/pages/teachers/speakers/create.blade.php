@@ -49,9 +49,41 @@
                         @endif
                     </div>
 
+                    <div class="form-group">
+                        <label for="articles" class="required">Artigos</label>
+                        <textarea name="articles" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('articles')}}</textarea>
+                        @if($errors->has('articles'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('articles') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="speeches" class="required">Palestras</label>
+                        <textarea name="speeches" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('speeches')}}</textarea>
+                        @if($errors->has('speeches'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('speeches') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="books" class="required">Livros</label>
+                        <textarea name="books" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('books')}}</textarea>
+                        @if($errors->has('books'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('books') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="awards" class="required">Premiações</label>
+                        <textarea name="awards" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('awards')}}</textarea>
+                        @if($errors->has('awards'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('awards') }}</span>
+                        @endif
+                    </div>
+
                     <div class="form-group {{ $errors->has('areas') ? 'has-error' : ''}}">
-                        <label for="areas" class="required">Areas</label>
-                        <textarea name="areas" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <label for="areas" class="required">Areas de Atuação</label>
+                        <textarea name="areas" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; "></textarea>
                         @if($errors->has('areas'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('areas') }}</span>
                         @endif

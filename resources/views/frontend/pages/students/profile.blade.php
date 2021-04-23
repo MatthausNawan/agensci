@@ -173,8 +173,8 @@
                         @endif
                     </div>
                     <div class="form-group col-md-8">
-                        <label for="Bairro">Bairro:</label>
-                        <input type="text" id="bairro" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" name="district" value="{{ $profile->district ?? old('district', '') }}">
+                        <!-- <label for="Bairro">Bairro:</label> -->
+                        <input type="hidden" id="bairro" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" name="district" value="{{ $profile->district ?? old('district', '') }}">
                         @if($errors->has('district'))
                         <div class="invalid-feedback">
                             {{ $errors->first('district') }}
@@ -185,8 +185,8 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-10">
-                        <label for="Endereco" class="required">Endereço:</label>
-                        <input type="text" id="rua" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" value="{{ $profile->address ?? old('address', '') }}">
+                        <!-- <label for="Endereco" class="required">Endereço:</label> -->
+                        <input type="hidden" id="rua" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" value="{{ $profile->address ?? old('address', '') }}">
                         @if($errors->has('address'))
                         <div class="invalid-feedback">
                             {{ $errors->first('address') }}
@@ -194,8 +194,8 @@
                         @endif
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="Numero">Número:</label>
-                        <input type="number" class="form-control {{ $errors->has('address_number') ? 'is-invalid' : '' }}" name="address_number" value="{{ $profile->address_number ?? old('address_number', '') }}">
+                        <!-- <label for="Numero">Número:</label> -->
+                        <input type="hidden" class="form-control {{ $errors->has('address_number') ? 'is-invalid' : '' }}" name="address_number" value="{{ $profile->address_number ?? old('address_number', '') }}">
                         @if($errors->has('address_number'))
                         <div class="invalid-feedback">
                             {{ $errors->first('address_number') }}

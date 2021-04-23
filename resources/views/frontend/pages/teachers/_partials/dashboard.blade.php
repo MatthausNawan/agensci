@@ -12,7 +12,7 @@
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Curriculo Lattes</span>
-            <span class="small"><a href="{{ $teacher->resume_link ?? '#' }}">{{ $teacher->resume_link ?? 'nao informado' }}</a></span>
+            <span class="small"><a href="{{ $teacher->resume_link ?? '#' }}" target="_blank">{{ $teacher->resume_link ?? 'nao informado' }}</a></span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Midias Sociais</span>
