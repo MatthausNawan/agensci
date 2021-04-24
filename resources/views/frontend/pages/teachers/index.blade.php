@@ -32,7 +32,7 @@
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
                 @include('frontend.pages.teachers._partials.speakers',['speakers'=> $speakers,'title'=>'Palestrantes'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.calls',['calls'=> $calls,'title'=>'Chamadas de Publicações'])
+               {{-- @include('frontend.pages.teachers._partials.calls',['calls'=> $calls,'title'=>'Chamadas de Publicações'])--}}
             </div>
             <div class="col-md-3 col-sm-12">
                 <!-- TODO: produtos/servicos -->
@@ -56,42 +56,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script>
-    $('.carrousel-card').slick({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:false,
+        responsive:{
+            0:{
+                items:1
             },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
+            600:{
+                items:1
             },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+            1000:{
+                items:1
             }
-        ]
-    });
-
-    $('.carrousel').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true,
-    });
+        }
+    })
 </script>
 @endsection

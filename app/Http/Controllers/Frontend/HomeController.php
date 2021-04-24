@@ -66,23 +66,14 @@ class HomeController extends Controller
             'categories' => Category::all(),
             'se' => Segment::whereHas('events')->get(),
             'news' => Post::all(),
-            'jobs' => Job::all(),
+            'jobs' => Job::with('companyJob')->get(),
             'profiles' => StudentProfile::all()
         ]);
     }
 
     public function showCompaniesPage()
     {
-        return view('frontend.pages.companies.index', [
-            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->take(4)->get(),
-            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->take(4)->get(),
-            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->take(4)->get(),
-            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->take(4)->get(),
-            'segments' => Segment::all(),
-            'categories' => Category::all(),
-            'news' => Post::all(),
-            'calls' => Post::all(),
-        ]);
+        return view('frontend.pages.companies.register');
     }
 
     public function showAdvertisePage()
@@ -92,19 +83,19 @@ class HomeController extends Controller
 
     public function showPost($slug)
     {
-        $post = Post::where('slug',$slug)->firstOrFail();
+        $post = Post::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.pages.static.post-single',compact('post'));
+        return view('frontend.pages.static.post-single', compact('post'));
     }
 
     public function searchLink($category)
     {
         $category = Category::findOrFail($category);
 
-        $links = ExternalLik::orderBy('name','ASC')
+        $links = ExternalLik::orderBy('name', 'ASC')
             ->where('category_id', $category->id)
             ->paginate(10);
 
-        return view('frontend.pages.static.search-link',compact('links','category'));
+        return view('frontend.pages.static.search-link', compact('links', 'category'));
     }
 }
