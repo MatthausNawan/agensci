@@ -25,7 +25,7 @@
                     <tbody>
                         @foreach($speakers as $speaker)
                         <tr>
-                            <td><img src="{{ $speaker->photo->getUrl('thumb') }}" alt=""></td>
+                            <td><img src="{{ $speaker->photo ? $speaker->photo->getUrl('thumb') : '' }}" alt=""></td>
                             <td>{{ $speaker->name }}</td>
                             <td>
                                 <a href="{{route('teachers.speakers.edit',$speaker->id)}}" class="btn btn-sm btn-dark">Ver</a>

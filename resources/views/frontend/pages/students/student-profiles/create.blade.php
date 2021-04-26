@@ -56,6 +56,30 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="speeches" class="required">Palestras</label>
+                        <textarea name="speeches" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('speeches')}}</textarea>
+                        @if($errors->has('speeches'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('speeches') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monitorings" class="required">Monitorias</label>
+                        <textarea name="monitorings" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('monitorings')}}</textarea>
+                        @if($errors->has('monitorings'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('monitorings') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="awards" class="required">Premiações</label>
+                        <textarea name="awards" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('awards')}}</textarea>
+                        @if($errors->has('awards'))
+                        <span class="help-block text-danger" role="alert">{{ $errors->first('awards') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
                         <label for="email" class="required">Email</label>
                         <input type="text" class="form-control" name="email" value="{{ old('email') }}">
                         @if($errors->has('email'))

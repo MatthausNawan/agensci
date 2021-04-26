@@ -11,7 +11,7 @@
         @include('frontend.pages.teachers._partials.dashboard')
         @include('frontend.pages.home._partials.external-links-icon',['title'=>'Programas de Estatística','links'=>$statistics_softwares])
         @include('frontend.pages.home._partials.external-links-icon',['title'=>'Aplicativos Úteis','links'=>$util_apps])
-        
+
     </div>
 
     <div class="col-md-9 col-sm-12 p-1">
@@ -20,7 +20,7 @@
             <div class="col-md-9 col-sm-12">
                 @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                
+
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
@@ -44,42 +44,44 @@
 
 @section('js')
 <script>
-    $('.carrousel-card').slick({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
+    // $('.carrousel-card').slick({
+    //     infinite: true,
+    //     slidesToShow: 4,
+    //     slidesToScroll: 4,
+    //     dots: true,
+    //     responsive: [{
+    //             breakpoint: 1024,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 3,
+    //                 infinite: true,
+    //                 dots: true
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 600,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 3
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 480,
+    //             settings: {
+    //                 slidesToShow: 1,
+    //                 slidesToScroll: 1
+    //             }
+    //         }
+    //     ]
+    // });
 
-    $('.carrousel').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true,
-    });
+    // $('.carrousel').slick({
+    //     infinite: true,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     dots: true,
+    // });
+        alert('oi');
+
 </script>
 @endsection

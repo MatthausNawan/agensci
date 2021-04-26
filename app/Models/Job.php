@@ -67,7 +67,7 @@ class Job extends Model
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function companies()
+    public function companyJob()
     {
         return $this->belongsTo(Company::class, 'company_id');
     }

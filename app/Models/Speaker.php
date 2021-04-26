@@ -17,6 +17,8 @@ class Speaker extends Model implements HasMedia
 
     protected $appends = [
         'photo',
+        'areas',
+        'speeches'
     ];
 
     protected $dates = [
@@ -31,6 +33,10 @@ class Speaker extends Model implements HasMedia
         'bio',
         'description',
         'areas',
+        'books',
+        'awards',
+        'speeches',
+        'articles',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -63,5 +69,17 @@ class Speaker extends Model implements HasMedia
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function getAreasAttribute()
+    {
+        $areas = explode(";", $this->attributes['areas']);
+        return $areas;
+    }
+
+    public function getSpeechesAttribute()
+    {
+        $speeches = explode(";", $this->attributes['speeches']);
+        return $speeches;
     }
 }

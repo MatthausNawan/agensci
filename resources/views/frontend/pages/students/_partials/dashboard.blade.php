@@ -11,7 +11,7 @@
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Curriculo Lattes</span>
-            <span class="small"><a href="{{ $student->lattes_link ?? '' }}">{{ $student->lattes_link ?? '' }}</a></span>
+            <span class="small"><a href="{{ $student->lattes_link ?? '' }}" target="_blank">{{ $student->lattes_link ?? '' }}</a></span>
         </div>
 
         <div class="border-bottom d-flex flex-column my-2">
