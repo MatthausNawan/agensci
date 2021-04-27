@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-3 d-flex flex-column">
                             <span>{{$job->company}}</span>
-                            <img src="{{ $job->companyJob->logo ? $job->companyJob->logo->getUrl() : ''}}" alt="" class="img-thumbnail" style="height: 100px; width:100px">
+                            {{--<img src="{{ $job->companyJob->logo ? $job->companyJob->logo->getUrl() : ''}}" alt="" class="img-thumbnail" style="height: 100px; width:100px">--}}
                         </div>
                         <div class="col-9">
 

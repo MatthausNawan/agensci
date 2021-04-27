@@ -1,7 +1,9 @@
 <div class="my-2">
-    <div class="d-flex flex-row border-bottom border-dark">
-    <h5 class="text-bold d-flex  mt-1">{{$title ?? 'Titulo'}}</h5>
-    <a href="#" class="p-1 btn-block text-right text-dark external-button"><span class="mr-3"><i class="fa fa-search"></i>Visualizar Todas</span></a>
+    <div class="d-flex flex-row justify-content-between border-bottom border-dark ">
+        <h5 class="text-bold">{{$title ?? 'Titulo'}}</h5>
+        <a href="#" class="p-1 text-dark external-button">
+            Visualizar Todas
+        </a>
     </div>
     <div class="my-2">
         <div class="owl-carousel owl-theme">

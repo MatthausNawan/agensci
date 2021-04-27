@@ -35,7 +35,9 @@ class HomeController extends Controller
                 'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
                 'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->latest()->first(),
                 'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->latest()->first(),
-                'featured_event' => Event::latest()->first()
+                'featured_event' => Event::latest()->first(),
+                'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
+                'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),
             ]
         );
     }
@@ -52,6 +54,8 @@ class HomeController extends Controller
             'news' => Post::all(),
             'calls' => Post::all(),
             'speakers' => Speaker::all(),
+            'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
+            'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),
         ]);
     }
 
@@ -67,7 +71,9 @@ class HomeController extends Controller
             'se' => Segment::whereHas('events')->get(),
             'news' => Post::all(),
             'jobs' => Job::with('companyJob')->get(),
-            'profiles' => StudentProfile::all()
+            'profiles' => StudentProfile::all(),
+            'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
+            'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),
         ]);
     }
 

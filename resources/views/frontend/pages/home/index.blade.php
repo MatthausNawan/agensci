@@ -57,9 +57,22 @@
                     {{--@include('frontend.pages.home._partials.card-slider-single',['manchete'=>$site_cientifica,'class'=>'carrousel','name'=>'site'])--}}
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 p-0">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        @include('frontend.pages.home._partials.products-and-services',['products'=>$products,'services'=>$services])
+                    </div>
+                </div>
                 <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
+
+                <div class="row">
+                    <div class="col-12 my-2">
+                        @include('frontend.pages.home._partials.newsletter')
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
 </div>

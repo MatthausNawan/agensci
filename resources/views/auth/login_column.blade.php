@@ -14,12 +14,12 @@
 
         <div class="d-flex flex-column">
             <button type="submit" class="btn btn-sm p-1 mb-1 btn-dark">Entrar</button>
-            <a href="#" class="btn btn-sm p-0 btn-outline-secondary">Esqueci senha</a>
+            <a href="{{ route('password.request') }}" class="btn btn-sm p-0 btn-outline-secondary">Esqueci senha</a>
         </div>
     </form>
 
+    @if(!isset($showBtn))
     <hr>
-
     <a href="{{ route($route) }}" class="btn btn-secondary btn-block btn-sm">Cadastre-se</a>
-
+    @endif
 </div>
