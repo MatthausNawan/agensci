@@ -20,11 +20,12 @@
             <div class="col-md-9 col-sm-12">
                 @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
+                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Chamdadas de Eventos'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
+                @include('frontend.pages.teachers._partials.promotion',['promotions'=>$promotions,'title'=>'Chamadas de Fomento'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
+                @include('frontend.pages.teachers._partials.promotion',['promotions'=>$promotions,'title'=>'Chamadas para Publicação'])
+                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
             </div>
             <div class="col-md-3 col-sm-12">
                 <!-- TODO: produtos/servicos -->
@@ -44,44 +45,25 @@
 
 @section('js')
 <script>
-    // $('.carrousel-card').slick({
-    //     infinite: true,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 4,
-    //     dots: true,
-    //     responsive: [{
-    //             breakpoint: 1024,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 3,
-    //                 infinite: true,
-    //                 dots: true
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 600,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 3
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 480,
-    //             settings: {
-    //                 slidesToShow: 1,
-    //                 slidesToScroll: 1
-    //             }
-    //         }
-    //     ]
-    // });
-
-    // $('.carrousel').slick({
-    //     infinite: true,
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     dots: true,
-    // });
-        alert('oi');
-
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:false,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    })
 </script>
 @endsection
+
+
+

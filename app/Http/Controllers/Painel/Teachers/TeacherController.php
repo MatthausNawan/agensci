@@ -9,11 +9,11 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Post;
+use App\Models\Promotion;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 
 class TeacherController extends Controller
 {
@@ -44,7 +44,7 @@ class TeacherController extends Controller
         $user = Auth::user();
         $profile = $user->teacher;
         $countries = Country::all();
-        return view('frontend.pages.teachers.profile', compact('profile','countries'));
+        return view('frontend.pages.teachers.profile', compact('profile', 'countries'));
     }
 
     public function updateProfile(Request $request)
@@ -72,7 +72,6 @@ class TeacherController extends Controller
     public function home()
     {
         $user = Auth::user();
-
         return view(
             'frontend.pages.teachers.painel',
             [
@@ -80,7 +79,8 @@ class TeacherController extends Controller
                 'statistics_softwares' => ExternalLik::where('category_id', Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->get(),
                 'util_apps' => ExternalLik::where('category_id', Category::C_APLICATIVOS_UTEIS)->take(5)->get(),
                 'teacher' => $user->teacher ?? false,
-                'posts' =>Post::latest()->take(5)->get()
+                'posts' => Post::latest()->take(5)->get(),
+                'promotions' => Promotion::all()
             ]
         );
     }

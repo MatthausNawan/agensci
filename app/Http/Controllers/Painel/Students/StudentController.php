@@ -8,6 +8,7 @@ use App\Http\Requests\StoreStudent;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\ExternalLik;
+use App\Models\Job;
 use App\Models\Post;
 use App\Models\Student;
 use App\Services\StudentService;
@@ -43,7 +44,7 @@ class StudentController extends Controller
         $user = Auth::user();
         $profile = $user->student;
         $countries = Country::all();
-        return view('frontend.pages.students.profile', compact('profile','countries'));
+        return view('frontend.pages.students.profile', compact('profile', 'countries'));
     }
 
     public function updateProfile(Request $request)
@@ -79,6 +80,7 @@ class StudentController extends Controller
                 'high_school_tvs' => ExternalLik::where('category_id', Category::C_TV_UNIVERSITARIAS)->take(5)->get(),
                 'high_school_radios' => ExternalLik::where('category_id', Category::C_RADIOS_UNIVERSITARIAS)->take(5)->get(),
                 'posts' => Post::latest()->take(5)->get(),
+                'jobs' => Job::with('companyJob')->get(),
                 'student' => $user->student
             ]
         );

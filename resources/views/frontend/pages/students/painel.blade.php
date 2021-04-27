@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-3 col-sm-12 p-1">
-        @include('frontend.pages.students._partials.dashboard')        
+        @include('frontend.pages.students._partials.dashboard')
         @include('frontend.pages.home._partials.external-links-icon',['title'=>'Tvs Universitárias','links'=>$high_school_tvs])
         @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$high_school_radios])
     </div>
@@ -19,8 +19,16 @@
             <div class="col-md-9 col-sm-12">
                 @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Chamdadas de Eventos'])
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+
+                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas Estágio/Trainee'])
+
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
+
+                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Concursos'])
 
             </div>
             <div class="col-md-3 col-sm-12">
@@ -42,42 +50,22 @@
 
 @section('js')
 <script>
-    $('.carrousel-card').slick({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:false,
+        responsive:{
+            0:{
+                items:1
             },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
+            600:{
+                items:1
             },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+            1000:{
+                items:1
             }
-        ]
-    });
-
-    $('.carrousel').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true,
-    });
+        }
+    })
 </script>
 @endsection
