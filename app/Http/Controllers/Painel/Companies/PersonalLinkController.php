@@ -69,7 +69,6 @@ class PersonalLinkController extends Controller
 
     public function destroy($id)
     {
-        dd("oi");
         $personalLink = PersonalLink::find($id);
         $personalLink->delete();
 
