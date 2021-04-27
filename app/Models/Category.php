@@ -44,6 +44,8 @@ class Category extends Model
     const C_APLICATIVOS_UTEIS = 16;
     const C_TV_UNIVERSITARIAS = 17;
     const C_RADIOS_UNIVERSITARIAS = 18;
+    const C_PRODUCTS = 20;
+    const C_SERVICES = 21;
 
 
 

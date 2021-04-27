@@ -18,8 +18,8 @@
         </div>
     </form>
 
+    @if(!isset($showBtn))
     <hr>
-
     <a href="{{ route($route) }}" class="btn btn-secondary btn-block btn-sm">Cadastre-se</a>
-
+    @endif
 </div>

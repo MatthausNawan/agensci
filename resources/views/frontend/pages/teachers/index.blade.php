@@ -34,9 +34,18 @@
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
                {{-- @include('frontend.pages.teachers._partials.calls',['calls'=> $calls,'title'=>'Chamadas de Publicações'])--}}
             </div>
-            <div class="col-md-3 col-sm-12">
-                <!-- TODO: produtos/servicos -->
+            <div class="col-md-3 col-sm-12 p-0">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        @include('frontend.pages.home._partials.products-and-services',['products'=>$products,'title'=>'','services'=>false,'header'=>false])
+                    </div>
+                </div>
                 <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        @include('frontend.pages.home._partials.products-and-services',['products'=>$services,'title'=>'','products'=>false,'header'=>false])
+                    </div>
+                </div>
             </div>
         </div>
     </div>
