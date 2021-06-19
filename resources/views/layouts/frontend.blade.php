@@ -70,9 +70,9 @@
     <footer class="bg-dark mt-1">
         <div class="container d-flex justify-content-between align-items-center">
             <nav class="nav">
-                <a class="p-3 text-white" href="#">Quem somos</a>
-                <a class="p-3 text-white" href="#">Termos de Uso</a>
-                <a class="p-3 text-white" href="#">Politica de Privacidade</a>
+                <a class="p-3 text-white" href="{{route('site.static.whoiam')}}">Quem somos</a>
+                <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>
+                <a class="p-3 text-white" href="{{ route('site.static.privacy') }}">Politica de Privacidade</a>
                 <a class="p-3 text-white" href="#">Contato</a>
             </nav>
         </div>

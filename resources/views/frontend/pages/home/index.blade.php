@@ -48,7 +48,7 @@
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
                 <div class="my-2">
-                   {{-- @include('frontend.pages.home._partials.card-slider-single',['manchete'=>$machete_cientifica,'class'=>'carrousel','name'=>'cientifica'])--}}
+                   @include('frontend.pages.home._partials.manchete-slider',['manchete'=>$machete_cientifica,'class'=>'carrousel','name'=>'cientifica'])
                 </div>
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">

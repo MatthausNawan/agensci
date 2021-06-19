@@ -27,12 +27,15 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
     Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 
-    Route::get('/noticia/{slug}','HomeController@showPost')->name('site.post');
+    Route::get('/noticia/{slug}', 'HomeController@showPost')->name('site.post');
 
-    Route::get('/pesquisar/categoria/{category}','HomeController@searchLink')->name('site.search-links');
+    Route::get('/pesquisar/categoria/{category}', 'HomeController@searchLink')->name('site.search-links');
 
     #statics
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
+    Route::view('/termos-de-uso', 'frontend.pages.static.terms')->name('site.static.terms');
+    Route::view('/quem-somos', 'frontend.pages.static.whoiam')->name('site.static.whoiam');
+    Route::view('/politica-de-privacidade', 'frontend.pages.static.privacy')->name('site.static.privacy');
 });
 
 Route::group(['prefix' => 'cadastro', 'namespace' => 'Painel'], function () {
