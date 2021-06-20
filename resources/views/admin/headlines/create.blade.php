@@ -48,6 +48,20 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.headline.fields.segment_helper') }}</span>
                         </div>
+
+                        <div class="form-group {{ $errors->has('magazine') ? 'has-error' : '' }}">
+                            <label for="magazine_id">{{ trans('cruds.headline.fields.magazine') }}</label>
+                            <select class="form-control select2" name="magazine_id" id="magazine_id">
+                                @foreach($magazines as $id => $magazine)
+                                    <option value="{{ $id }}" {{ old('magazine_id') == $id ? 'selected' : '' }}>{{ $magazine }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('magazine'))
+                                <span class="help-block" role="alert">{{ $errors->first('magazine') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.headline.fields.magazine_helper') }}</span>
+                        </div>
+
                         <div class="form-group {{ $errors->has('enabled') ? 'has-error' : '' }}">
                             <div>
                                 <input type="hidden" name="enabled" value="0">

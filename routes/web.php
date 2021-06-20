@@ -133,6 +133,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('headlines/ckmedia', 'HeadlineController@storeCKEditorImages')->name('headlines.storeCKEditorImages');
     Route::resource('headlines', 'HeadlineController');
 
+    //Magazines
+    Route::delete('magazines/destroy', 'MagazineController@massDestroy')->name('magazines.massDestroy');
+    Route::post('magazines/media', 'MagazineController@storeMedia')->name('magazines.storeMedia');
+    Route::post('magazines/ckmedia', 'MagazineController@storeCKEditorImages')->name('magazines.storeCKEditorImages');
+    Route::resource('magazines', 'MagazineController');
+
     // Companies
     Route::delete('companies/destroy', 'CompanyController@massDestroy')->name('companies.massDestroy');
     Route::post('companies/media', 'CompanyController@storeMedia')->name('companies.storeMedia');

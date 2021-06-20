@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 @section('content')
 <div class="content">
-    @can('headline_create')
+    @can('magazine_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route('admin.headlines.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.headline.title_singular') }}
+                <a class="btn btn-success" href="{{ route('admin.magazines.create') }}">
+                    {{ trans('global.add') }} {{ trans('cruds.magazine.title_singular') }}
                 </a>
             </div>
         </div>
@@ -14,35 +14,25 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ trans('cruds.headline.title_singular') }} {{ trans('global.list') }}
+                    {{ trans('cruds.magazine.title_singular') }} {{ trans('global.list') }}
                 </div>
                 <div class="panel-body">
-                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Headline">
+                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-magazine">
                         <thead>
                             <tr>
                                 <th width="10">
-
                                 </th>
                                 <th>
-                                    {{ trans('cruds.headline.fields.id') }}
+                                    {{ trans('cruds.magazine.fields.id') }}
                                 </th>
                                 <th>
-                                    {{ trans('cruds.headline.fields.title') }}
+                                    {{ trans('cruds.magazine.fields.logo') }}
                                 </th>
                                 <th>
-                                    {{ trans('cruds.headline.fields.banner') }}
+                                    {{ trans('cruds.magazine.fields.name') }}
                                 </th>
                                 <th>
                                     {{ trans('cruds.headline.fields.segment') }}
-                                </th>
-                                <th>
-                                    {{ trans('cruds.headline.fields.magazine') }}
-                                </th>
-                                <th>
-                                    {{ trans('cruds.headline.fields.enabled') }}
-                                </th>
-                                <th>
-                                    {{ trans('cruds.headline.fields.type') }}
                                 </th>
                                 <th>
                                     &nbsp;
@@ -64,11 +54,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('headline_delete')
+@can('magazine_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.headlines.massDestroy') }}",
+    url: "{{ route('admin.magazines.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -100,23 +90,20 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.headlines.index') }}",
+    ajax: "{{ route('admin.magazines.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'title', name: 'title' },
-{ data: 'banner', name: 'banner', sortable: false, searchable: false },
+      { data: 'id', name: 'id' },
+      { data: 'logo', name: 'logo', sortable: false, searchable: false },
+{ data: 'name', name: 'name' },
 { data: 'segment_name', name: 'segment.name' },
-{ data: 'magazine_name', name: 'magazine.name' },
-{ data: 'enabled', name: 'enabled' },
-{ data: 'type', name: 'type' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   };
-  let table = $('.datatable-Headline').DataTable(dtOverrideGlobals);
+  let table = $('.datatable-magazine').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

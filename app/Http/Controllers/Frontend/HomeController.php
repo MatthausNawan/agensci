@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\ExternalLik;
 use App\Models\Headline;
 use App\Models\Job;
+use App\Models\Magazine;
 use App\Models\Post;
 use App\Models\Promotion;
 use App\Models\Segment;
@@ -32,9 +33,11 @@ class HomeController extends Controller
                 'segments' => Segment::all(),
                 'categories' => Category::all(),
                 'se' => Segment::whereHas('events')->get(),
+                'sm' => Segment::whereHas('magazines')->get(),
                 'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
-                'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->latest()->first(),
-                'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->latest()->first(),
+                'magazines' => Magazine::whereHas('segment')->get()->groupBy('segment_id'),
+                'sites' => Magazine::whereHas('segment')->get()->groupBy('segment_id'),
+                'site_headline' => Headline::first(),
                 'featured_event' => Event::latest()->first(),
                 'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
                 'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),

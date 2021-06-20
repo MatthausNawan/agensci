@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyHeadlineRequest;
 use App\Http\Requests\StoreHeadlineRequest;
 use App\Http\Requests\UpdateHeadlineRequest;
 use App\Models\Headline;
+use App\Models\Magazine;
 use App\Models\Segment;
 use Gate;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class HeadlineController extends Controller
         abort_if(Gate::denies('headline_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Headline::with(['segment'])->select(sprintf('%s.*', (new Headline)->table));
+            $query = Headline::with(['segment','magazine'])->select(sprintf('%s.*', (new Headline)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -66,6 +67,10 @@ class HeadlineController extends Controller
                 return $row->segment ? $row->segment->name : '';
             });
 
+            $table->addColumn('magazine_name', function ($row) {
+                return $row->magazine ? $row->magazine->name : '';
+            });
+
             $table->editColumn('enabled', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->enabled ? 'checked' : null) . '>';
             });
@@ -73,7 +78,7 @@ class HeadlineController extends Controller
                 return $row->type ? Headline::TYPE_SELECT[$row->type] : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'banner', 'segment', 'enabled']);
+            $table->rawColumns(['actions', 'placeholder', 'banner', 'segment','magazine', 'enabled']);
 
             return $table->make(true);
         }
@@ -86,8 +91,9 @@ class HeadlineController extends Controller
         abort_if(Gate::denies('headline_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $segments = Segment::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $magazines = Magazine::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.headlines.create', compact('segments'));
+        return view('admin.headlines.create', compact('segments', 'magazines'));
     }
 
     public function store(StoreHeadlineRequest $request)
@@ -110,10 +116,11 @@ class HeadlineController extends Controller
         abort_if(Gate::denies('headline_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $segments = Segment::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $magazines = Magazine::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $headline->load('segment');
+        $headline->load('segment', 'magazine');
 
-        return view('admin.headlines.edit', compact('segments', 'headline'));
+        return view('admin.headlines.edit', compact('segments', 'headline', 'magazines'));
     }
 
     public function update(UpdateHeadlineRequest $request, Headline $headline)

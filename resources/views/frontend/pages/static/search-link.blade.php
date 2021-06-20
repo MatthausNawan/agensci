@@ -12,7 +12,6 @@
         <div class="card">
             <div class="card-header bg-dark">
                 <strong class="text-white">{{ $category->name }}</strong>
-                <span class="badge badge-secondary">{{$links->count()}}</span>
             </div>
             <div class="card-body">
             <table class="table table-condensed table-hover">
