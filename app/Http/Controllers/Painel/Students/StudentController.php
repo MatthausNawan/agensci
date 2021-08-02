@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreStudent;
 use App\Models\Category;
+use App\Models\Contest;
 use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Job;
@@ -76,11 +77,14 @@ class StudentController extends Controller
         return view(
             'frontend.pages.students.painel',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
-                'high_school_tvs' => ExternalLik::where('category_id', Category::C_TV_UNIVERSITARIAS)->take(5)->get(),
-                'high_school_radios' => ExternalLik::where('category_id', Category::C_RADIOS_UNIVERSITARIAS)->take(5)->get(),
-                'posts' => Post::latest()->take(5)->get(),
-                'jobs' => Job::with('companyJob')->get(),
+                'articles' => ExternalLik::type(Category::C_ARTIGOS)->randomAble(4)->get(),
+                'high_school_tvs' => ExternalLik::type(Category::C_TV_UNIVERSITARIAS)->randomAble(4)->get(),
+                'high_school_radios' => ExternalLik::type(Category::C_RADIOS_UNIVERSITARIAS)->randomAble(4)->get(),
+                'post' => Post::latest()->first(),
+                'job' => Job::with('companyJob')->where('type', Job::TYPE_EMPREGO)->first(),
+                'stage' => Job::with('companyJob')->where('type', Job::TYPE_ESTAGIO)->first(),
+                'trainee' => Job::with('companyJob')->where('type', Job::TYPE_TRAINEE)->first(),
+                'contests' => Contest::latest()->first(),
                 'student' => $user->student
             ]
         );

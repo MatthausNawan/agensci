@@ -19,6 +19,7 @@
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "livewire/livewire": "^2.5",
         "spatie/image-optimizer": "^1.4",
         "spatie/laravel-medialibrary": "^7.19",
         "yajra/laravel-datatables-oracle": "^9.9"

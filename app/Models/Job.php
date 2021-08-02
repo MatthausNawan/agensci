@@ -13,6 +13,10 @@ class Job extends Model
 
     public $table = 'jobs';
 
+    const TYPE_ESTAGIO = 1;
+    const TYPE_EMPREGO = 2;
+    const TYPE_TRAINEE = 3;
+
     const TYPE_SELECT = [
         '1' => 'Estágio',
         '2' => 'Emprego',
@@ -25,6 +29,8 @@ class Job extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    protected $casts = ['expiration_date'];
 
     protected $fillable = [
         'company',
@@ -58,8 +64,8 @@ class Job extends Model
 
     public function setExpirationDateAttribute($value)
     {
-        //$this->attributes['expiration_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
-        $this->attributes['expiration_date'] = $value ? Carbon::createFromFormat('Y-m-d', $value)->format('Y-m-d H:i:s') : null;
+        $this->attributes['expiration_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+        // $this->attributes['expiration_date'] = $value ? Carbon::createFromFormat('Y-m-d', $value)->format('Y-m-d H:i:s') : null;
     }
 
     public function creator()

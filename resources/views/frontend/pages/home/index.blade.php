@@ -31,7 +31,7 @@
     </div>
 
     <div class="col-md-9 col-sm-12">
-        @include('frontend.pages.home._partials.feature')
+        @livewire('home.feature-event')
 
 
         <div class="py-2">
@@ -48,13 +48,13 @@
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
                 <div class="my-2">
-                   @include('frontend.pages.home._partials.manchete-slider',['magazines'=>$magazines,'class'=>'carrousel','name'=>'cientifica'])
+                    @include('frontend.pages.home._partials.card-slider-single',['headline'=>$head_site])
                 </div>
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
                 <div class="my-2">
-                    @include('frontend.pages.home._partials.manchete-slider',['sites'=>$sites,'class'=>'carrousel','name'=>'site'])
+                    @include('frontend.pages.home._partials.card-slider-single',['headline'=>$head_magazine])
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 p-0">
@@ -67,7 +67,7 @@
 
                 <div class="row">
                     <div class="col-12 my-2">
-                        @include('frontend.pages.home._partials.newsletter')
+                        @livewire('home.news-letter')
                     </div>
                 </div>
             </div>

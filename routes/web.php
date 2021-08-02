@@ -19,13 +19,19 @@ Auth::routes();
 
 Route::redirect('/', 'layouts.frontend');
 
+Route::get('/ajaxCidades', 'Frontend\AjaxController@ajaxCidades');
+
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     #home
     Route::get('/', 'HomeController@home')->name('site.home');
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
-    Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
+
+    Route::get('/anuncie', 'AdvertController@create')->name('site.advertise.create');
+    Route::post('/anuncie', 'AdvertController@store')->name('site.advertise.store');
+    Route::get('/revisar/anuncio/{id}', 'AdvertController@review')->name('site.advertise.review');
+    Route::get('/confirmar/anuncio/{id}', 'AdvertController@confirm')->name('site.advertise.confirm');
 
     Route::get('/noticia/{slug}', 'HomeController@showPost')->name('site.post');
 

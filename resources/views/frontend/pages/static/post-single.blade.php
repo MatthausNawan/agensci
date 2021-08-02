@@ -12,9 +12,7 @@
     <div class=" col-lg-8">
         <div class="post">
             <div class="post-header d-flex flex-column">
-                <h2 class="font-weight-bold">{{$post->title ?? ''}}</h2>
-                <h5 class="font-weight-600">{{$post->subtitle ?? 'Subtitulo da Notícia'}}</h5>
-                <span class="font-weight-lighter my-2 border-top border-dark py-2">{{ $post->created_at->format('d/m/Y') }}</span>
+                <h2 class="font-weight-bold">{{$post->title ?? ''}}</h2>                                
             </div>
 
             <div class="post-img">
@@ -37,38 +35,18 @@
 
         <div class="posts-recomended mb-2">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
+                @forelse($relatedPosts as $relpost)
+                <a href="{{route('site.post',$relpost->slug)}}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
+                    <h5 class="mb-1">{{$relpost->title}}</h5>                    
                     </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small>And some small print.</small>
+                    <small class="mb-1">{{Str::limit($relpost->detail,70)}}</small>                    
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small class="text-muted">And some muted small print.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small class="text-muted">And some muted small print.</small>
-                </a>
+                @empty
+                <small>Nenhum post</small>
+                @endforelse                
             </div>
-        </div>
-
-        <img src="https://via.placeholder.com/400x100" class="img-fluid" alt="Responsive image">
-
-        <img src="https://via.placeholder.com/400x100" class="img-fluid my-2" alt="Responsive image">
-
-        <img src="https://via.placeholder.com/400x100" class="img-fluid" alt="Responsive image">
+        </div>        
     </div>
 </div>
 @endsection
