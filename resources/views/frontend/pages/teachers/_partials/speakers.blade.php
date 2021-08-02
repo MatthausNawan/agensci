@@ -5,7 +5,7 @@
     </div>
     <div class="my-2">
         <div class="owl-carousel owl-theme">
-            @foreach($speakers as $speaker)
+            
             <div class="card card-border-primary">
                 <div class="card-body">
                     <div class="row">
@@ -16,24 +16,20 @@
                             <span class="font-weight-bold">{{$speaker->name}}</span>
                             <div class="speaker-info d-flex flex-column">
                                 <span><i>{{ $speaker->description ?? '' }}</i></span>
-                                <span class="text-dark text-center border-bottom">Areas</span>
-                                <div class="speaker-areas d-flex flex-row">
+                                <span class="text-dark text-center border-bottom">Areas</span>                                
                                     @foreach($speaker->areas as $area)
-                                        <a class="badge badge-pill badge-dark m-2">{{$area}}</a>
-                                    @endforeach
-                                </div>
-                                <span class="text-dark text-center border-bottom">Palestras</span>
-                                <div class="speaker-areas d-flex flex-row">
+                                        <span>{{$area}},</span>
+                                    @endforeach                                
+                                <span class="text-dark text-center border-bottom">Palestras</span>                                
                                     @foreach($speaker->speeches as $speech)
-                                        <a class="badge badge-pill badge-dark m-2">{{$speech}}</a>
-                                    @endforeach
-                                </div>
+                                    <span>{{$speech}},</span>
+                                    @endforeach                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            
         </div>
     </div>
 </div>

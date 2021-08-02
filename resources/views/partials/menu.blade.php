@@ -203,6 +203,17 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('magazine_access')
+                            <li class="{{ request()->is("admin/magazines") || request()->is("admin/magazines/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.magazines.index") }}">
+                                    <i class="fa-fw fab fa-adversal">
+
+                                    </i>
+                                    <span>{{ trans('cruds.magazine.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
                         @can('headline_access')
                             <li class="{{ request()->is("admin/headlines") || request()->is("admin/headlines/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.headlines.index") }}">

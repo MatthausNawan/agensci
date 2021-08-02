@@ -19,20 +19,30 @@ Auth::routes();
 
 Route::redirect('/', 'layouts.frontend');
 
+Route::get('/ajaxCidades', 'Frontend\AjaxController@ajaxCidades');
+
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     #home
     Route::get('/', 'HomeController@home')->name('site.home');
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
-    Route::get('/anuncie', 'HomeController@showAdvertisePage')->name('site.advertise');
 
-    Route::get('/noticia/{slug}','HomeController@showPost')->name('site.post');
+    Route::get('/anuncie', 'AdvertController@create')->name('site.advertise.create');
+    Route::post('/anuncie', 'AdvertController@store')->name('site.advertise.store');
+    Route::get('/revisar/anuncio/{id}', 'AdvertController@review')->name('site.advertise.review');
+    Route::get('/confirmar/anuncio/{id}', 'AdvertController@confirm')->name('site.advertise.confirm');
 
-    Route::get('/pesquisar/categoria/{category}','HomeController@searchLink')->name('site.search-links');
+    Route::get('/noticia/{slug}', 'HomeController@showPost')->name('site.post');
 
+    Route::get('/pesquisar/categoria/{category}', 'HomeController@searchLink')->name('site.search-links');
+
+    Route::get('/procurar-eventos', 'EventController@search')->name('site.serach-event');
     #statics
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
+    Route::view('/termos-de-uso', 'frontend.pages.static.terms')->name('site.static.terms');
+    Route::view('/quem-somos', 'frontend.pages.static.whoiam')->name('site.static.whoiam');
+    Route::view('/politica-de-privacidade', 'frontend.pages.static.privacy')->name('site.static.privacy');
 });
 
 Route::group(['prefix' => 'cadastro', 'namespace' => 'Painel'], function () {
@@ -129,6 +139,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('headlines/media', 'HeadlineController@storeMedia')->name('headlines.storeMedia');
     Route::post('headlines/ckmedia', 'HeadlineController@storeCKEditorImages')->name('headlines.storeCKEditorImages');
     Route::resource('headlines', 'HeadlineController');
+
+    //Magazines
+    Route::delete('magazines/destroy', 'MagazineController@massDestroy')->name('magazines.massDestroy');
+    Route::post('magazines/media', 'MagazineController@storeMedia')->name('magazines.storeMedia');
+    Route::post('magazines/ckmedia', 'MagazineController@storeCKEditorImages')->name('magazines.storeCKEditorImages');
+    Route::resource('magazines', 'MagazineController');
 
     // Companies
     Route::delete('companies/destroy', 'CompanyController@massDestroy')->name('companies.massDestroy');

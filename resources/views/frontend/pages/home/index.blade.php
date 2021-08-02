@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 m-2">
-        <img src="https://via.placeholder.com/1200x200" alt="" class="img-rounded" width="100%" height="200">
+        <img src="https://via.placeholder.com/1200x90" alt="" class="img-rounded" width="100%" height="90">
     </div>
 </div>
 
@@ -31,11 +31,11 @@
     </div>
 
     <div class="col-md-9 col-sm-12">
-        @include('frontend.pages.home._partials.feature')
+        @livewire('home.feature-event')
 
 
         <div class="py-2">
-            <img src="https://via.placeholder.com/1000x200" alt="" class="img-fluid">
+            <img src="https://via.placeholder.com/1000x90" alt="" class="img-fluid">
         </div>
 
 
@@ -45,16 +45,16 @@
 
         <div class="row mt-2">
             <div class="col-md-8 col-sm-12">
-                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                <img src="https://via.placeholder.com/1033x200" alt="" class="img-fluid">
 
                 <div class="my-2">
-                   {{-- @include('frontend.pages.home._partials.card-slider-single',['manchete'=>$machete_cientifica,'class'=>'carrousel','name'=>'cientifica'])--}}
+                    @include('frontend.pages.home._partials.card-slider-single',['headline'=>$head_site])
                 </div>
 
-                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                <img src="https://via.placeholder.com/1033x200" alt="" class="img-fluid">
 
                 <div class="my-2">
-                    {{--@include('frontend.pages.home._partials.card-slider-single',['manchete'=>$site_cientifica,'class'=>'carrousel','name'=>'site'])--}}
+                    @include('frontend.pages.home._partials.card-slider-single',['headline'=>$head_magazine])
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 p-0">
@@ -67,7 +67,7 @@
 
                 <div class="row">
                     <div class="col-12 my-2">
-                        @include('frontend.pages.home._partials.newsletter')
+                        @livewire('home.news-letter')
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
 
 <div class="row">
     <div class="col-lg-12 m-2">
-        <img src="https://via.placeholder.com/1200x200" alt="" class="img-rounded" width="100%" height="200">
+        <img src="https://via.placeholder.com/1200x90" alt="" class="img-rounded" width="100%" height="90">
     </div>
 </div>
 @endsection

@@ -17,18 +17,29 @@
         @include('frontend.pages.students._partials.painel')
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
-                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
+                @if(isset($post))
+                    @include('frontend.pages.teachers._partials.news',['post'=>$post,'title'=>'Notícias'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Chamdadas de Eventos'])
+                
+                @if(isset($post))
+                    @include('frontend.pages.teachers._partials.news',['post'=>$post,'title'=>'Chamdadas de Eventos'])
+                @endif
+                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                
+                @if(isset($stage))
+                    @include('frontend.pages.students._partials.jobs',['job'=>$stage,'title'=>'Vagas Estágio/Trainee'])
+                @endif
+                
+                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @if($job)
+                    @include('frontend.pages.students._partials.jobs',['job'=>$job,'title'=>'Vagas de Emprego'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
 
-                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas Estágio/Trainee'])
-
-                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
-
-                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Concursos'])
+                @if($trainee)
+                    @include('frontend.pages.students._partials.jobs',['job'=>$trainee,'title'=>'Concursos'])
+                @endif
 
             </div>
             <div class="col-md-3 col-sm-12">

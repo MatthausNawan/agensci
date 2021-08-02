@@ -20,7 +20,7 @@
         </div>
         @endif
         @if($services)
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             @include('frontend.pages.home._partials.external-links',['links'=>$services])
         </div>
         @endif

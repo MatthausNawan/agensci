@@ -36,6 +36,9 @@
                                     {{ trans('cruds.headline.fields.segment') }}
                                 </th>
                                 <th>
+                                    {{ trans('cruds.headline.fields.magazine') }}
+                                </th>
+                                <th>
                                     {{ trans('cruds.headline.fields.enabled') }}
                                 </th>
                                 <th>
@@ -104,6 +107,7 @@
 { data: 'title', name: 'title' },
 { data: 'banner', name: 'banner', sortable: false, searchable: false },
 { data: 'segment_name', name: 'segment.name' },
+{ data: 'magazine_name', name: 'magazine.name' },
 { data: 'enabled', name: 'enabled' },
 { data: 'type', name: 'type' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
@@ -117,7 +121,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 });
 
 </script>

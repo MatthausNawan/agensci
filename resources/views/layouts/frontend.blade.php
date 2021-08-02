@@ -23,7 +23,9 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+    @livewireStyles
     @yield('styles')
     <style>
         .slick-prev:before,
@@ -42,7 +44,7 @@
                 <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
                 <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
                 <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
-                <a class="p-3 text-white" href="{{ route('site.advertise') }}">Anuncie</a>
+                <a class="p-3 text-white" href="{{ route('site.advertise.create') }}">Anuncie</a>
 
             </nav>
             @auth
@@ -60,8 +62,7 @@
     <form action="{{ route('logout') }}" id="logout-form" method="post" style="display:none">
         @csrf()
     </form>
-    <main role="main" class="container">
-        @include('layouts._partials.messages')
+    <main role="main" class="container">        
 
         @yield('content')
     </main>
@@ -70,9 +71,9 @@
     <footer class="bg-dark mt-1">
         <div class="container d-flex justify-content-between align-items-center">
             <nav class="nav">
-                <a class="p-3 text-white" href="#">Quem somos</a>
-                <a class="p-3 text-white" href="#">Termos de Uso</a>
-                <a class="p-3 text-white" href="#">Politica de Privacidade</a>
+                <a class="p-3 text-white" href="{{route('site.static.whoiam')}}">Quem somos</a>
+                <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>
+                <a class="p-3 text-white" href="{{ route('site.static.privacy') }}">Politica de Privacidade</a>
                 <a class="p-3 text-white" href="#">Contato</a>
             </nav>
         </div>
@@ -86,8 +87,10 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('js')
+    @livewireScripts
 </body>
 
 </html>

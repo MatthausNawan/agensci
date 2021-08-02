@@ -4,17 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Country;
 use App\Models\Event;
 use App\Models\ExternalLik;
 use App\Models\Headline;
 use App\Models\Job;
 use App\Models\Post;
-use App\Models\Promotion;
 use App\Models\Segment;
 use App\Models\Speaker;
 use App\Models\StudentProfile;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -23,21 +20,20 @@ class HomeController extends Controller
         return view(
             'frontend.pages.home.index',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
-                'uni_publicas' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_PUBLICAS)->take(4)->get(),
-                'uni_privadas' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_PRIVADAS)->take(4)->get(),
-                'uni_internacionais' => ExternalLik::where('category_id', Category::C_UNIVERSIDADES_INTERNACIONAIS)->take(4)->get(),
-                'orgaos_educacionais' => ExternalLik::where('category_id', Category::C_ORGAOS_EDUCACIONAIS)->get(),
-                'orgaos_pesquisas' => ExternalLik::where('category_id', Category::C_ORGAOS_DE_PESQUISA)->get(),
+                'articles' => ExternalLik::type(Category::C_ARTIGOS)->randomAble(4)->get(),
+                'uni_publicas' => ExternalLik::type(Category::C_UNIVERSIDADES_PUBLICAS)->randomAble(4)->get(),
+                'uni_privadas' => ExternalLik::type(Category::C_UNIVERSIDADES_PRIVADAS)->randomAble(4)->get(),
+                'uni_internacionais' => ExternalLik::type(Category::C_UNIVERSIDADES_INTERNACIONAIS)->randomAble(4)->get(),
+                'orgaos_educacionais' => ExternalLik::type(Category::C_ORGAOS_EDUCACIONAIS)->randomAble(4)->get(),
+                'orgaos_pesquisas' => ExternalLik::type(Category::C_ORGAOS_DE_PESQUISA)->randomAble(4)->get(),
                 'segments' => Segment::all(),
-                'categories' => Category::all(),
                 'se' => Segment::whereHas('events')->get(),
+                'sm' => Segment::whereHas('magazines')->get(),
                 'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
-                'machete_cientifica' => Headline::where('type', Headline::TYPE_MAGAZINE)->latest()->first(),
-                'site_cientifica' => Headline::where('type', Headline::TYPE_SITE)->latest()->first(),
-                'featured_event' => Event::latest()->first(),
-                'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
-                'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),
+                'head_site' => Headline::where('type', 'SITE')->inRandomOrder()->limit(1)->first(),
+                'head_magazine' => Headline::where('type', 'MAGAZINE')->inRandomOrder()->limit(1)->first(),
+                'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
+                'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
             ]
         );
     }
@@ -45,53 +41,50 @@ class HomeController extends Controller
     public function showTeachersPage()
     {
         return view('frontend.pages.teachers.index', [
-            'laboratorios' => ExternalLik::where("category_id", Category::C_LABORATORIOS_DE_PESQUISAS)->take(4)->get(),
-            'ongs' => ExternalLik::where("category_id", Category::C_ONGS)->take(4)->get(),
-            'sociedades' => ExternalLik::where("category_id", Category::C_SOCIEDADES)->take(4)->get(),
-            'conselhos' => ExternalLik::where("category_id", Category::C_CONSELHOS_DE_CLASSE)->take(4)->get(),
+            'laboratorios' => ExternalLik::type(Category::C_LABORATORIOS_DE_PESQUISAS)->randomAble(4)->get(),
+            'ongs' => ExternalLik::type(Category::C_ONGS)->randomAble(4)->get(),
+            'sociedades' => ExternalLik::type(Category::C_SOCIEDADES)->randomAble(4)->get(),
+            'conselhos' => ExternalLik::type(Category::C_CONSELHOS_DE_CLASSE)->randomAble(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
-            'news' => Post::all(),
-            'calls' => Post::all(),
-            'speakers' => Speaker::all(),
-            'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
-            'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),
+            'post' => Post::latest()->first(),
+            'calls' => Post::latest()->first(),
+            'speaker' => Speaker::latest()->first(),
+            'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
+            'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
         ]);
     }
 
     public function showStudentsPage()
     {
         return view('frontend.pages.students.index', [
-            'cursos' => ExternalLik::where("category_id", Category::C_CURSOS)->take(4)->get(),
-            'entidades' => ExternalLik::where("category_id", Category::C_ENTIDADES_ESTUDANTIS)->take(4)->get(),
-            'bibliotecas' => ExternalLik::where("category_id", Category::C_BIBLIOTECAS_DIGITAIS)->take(4)->get(),
-            'museus' => ExternalLik::where("category_id", Category::C_MUSEUS_DIGITAIS)->take(4)->get(),
+            'cursos' => ExternalLik::type(Category::C_CURSOS)->randomAble(4)->get(),
+            'entidades' => ExternalLik::type(Category::C_ENTIDADES_ESTUDANTIS)->randomAble(4)->get(),
+            'bibliotecas' => ExternalLik::type(Category::C_BIBLIOTECAS_DIGITAIS)->randomAble(4)->get(),
+            'museus' => ExternalLik::type(Category::C_MUSEUS_DIGITAIS)->randomAble(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
             'se' => Segment::whereHas('events')->get(),
             'news' => Post::all(),
             'jobs' => Job::with('companyJob')->get(),
             'profiles' => StudentProfile::all(),
-            'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->take(4)->get(),
-            'services' => ExternalLik::where('category_id', Category::C_SERVICES)->take(4)->get(),
+            'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
+            'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
         ]);
     }
 
     public function showCompaniesPage()
     {
-        return view('frontend.pages.companies.register');
-    }
-
-    public function showAdvertisePage()
-    {
-        return view('frontend.pages.advertise.index');
+        return view('frontend.pages.companies.login');
     }
 
     public function showPost($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.pages.static.post-single', compact('post'));
+        $relatedPosts = Post::where('author_id', $post->author_id)->get();
+
+        return view('frontend.pages.static.post-single', compact('post', 'relatedPosts'));
     }
 
     public function searchLink($category)

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\RandomOrder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -49,6 +50,16 @@ class ExternalLik extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function scopeRandomAble($query, $lenght)
+    {
+        return $query->inRandomOrder()->limit($lenght);
+    }
+
+    public function scopeType($query, $category)
+    {
+        return $query->where('category_id', $category);
     }
 
     public function getLogoAttribute()

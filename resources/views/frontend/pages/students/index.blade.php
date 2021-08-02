@@ -31,19 +31,26 @@
             <div class="col-md-9 col-sm-12">
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.news',['news'=>$news,'title'=>'Notícias'])
-
+                @if(isset($post))
+                    @include('frontend.pages.teachers._partials.news',['news'=>$news,'title'=>'Notícias'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.students._partials.profiles',['profiles'=> $profiles,'title'=>'Portifólios de Estudantes'])
-
+                @if(isset($post))
+                    @include('frontend.pages.students._partials.profiles',['profiles'=> $profiles,'title'=>'Portifólios de Estudantes'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas Estágio/Trainee'])
-
+                @if(isset($job))
+                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas Estágio/Trainee'])
+                @endif
+                    
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
-
+                @if(isset($job))
+                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Concursos'])
+                @if(isset($job))
+                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Concursos'])
+                @endif
             </div>
 
             <div class="col-md-3 col-sm-12 p-0">

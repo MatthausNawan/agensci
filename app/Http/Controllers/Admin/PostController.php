@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Spatie\MediaLibrary\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -92,7 +93,10 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request)
     {
-        $post = Post::create($request->all());
+        $data = $request->all();
+        $data['status'] = 5;
+        $data['slug'] = Str::kebab($request->title);
+        $post = Post::create($data);
 
         if ($request->input('banner', false)) {
             $post->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');

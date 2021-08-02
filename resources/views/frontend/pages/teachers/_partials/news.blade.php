@@ -1,25 +1,21 @@
 <div class="my-2">
     <div class="d-flex flex-row justify-content-between border-bottom border-dark ">
         <h5 class="text-bold">{{$title ?? 'Titulo'}}</h5>
-        <a href="#" class="p-1 text-dark external-button">
+       
+        <!-- <a href="#" class="p-1 text-dark external-button">
             Visualizar Todas
-        </a>
+        </a> -->
     </div>
-    <div class="my-2">
-        <div class="owl-carousel owl-theme">
-            @foreach($news as $new)
-                <div class="card">
-            <a href="{{ route('site.post',$new->slug) }}">
-                    <img src="{{$new->banner ? $new->banner->getUrl() : ''}}" alt="Card image cap" height="300px">
-                    <div class="news-info m-2">
-                        <a href="{{ route('site.post',$new->slug) }}" class="btn-link">
-                            <h4 class="text-dark">{{$new->title ?? 'titulo'}}</h4>
-                        </a>
-                    </div>
-            </a>
-                </div>
-            @endforeach
-        </div>
+    <div class="my-2">        
+        <div class="card">                           
+            <div class="posts-info m-2 d-flex flex-column">
+                <a href="{{ route('site.post',$post->slug) }}" class="btn-link">
+                    <h4 class="text-dark">{{$post->title ?? 'titulo'}}</h4>
+                </a>
+                <small class="mb-3">Postado em: {{ $post->created_at->format('d/m/Y') }}</small>
+                <span>{!! $post->detail !!}</span>
+            </div>            
+        </div>                   
     </div>
 </div>
 

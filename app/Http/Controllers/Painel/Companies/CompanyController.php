@@ -31,6 +31,11 @@ class CompanyController extends Controller
         return view('frontend.pages.companies.register', []);
     }
 
+    public function showLoginCompaniesPage()
+    {
+        return view('frontend.pages.companies.login');
+    }
+
     public function store(StoreCompanies $request)
     {
         $company = Company::create($request->all());

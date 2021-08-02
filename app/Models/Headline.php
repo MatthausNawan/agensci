@@ -38,10 +38,11 @@ class Headline extends Model implements HasMedia
         'details',
         'segment_id',
         'enabled',
+        'magazine_id',
         'type',
         'created_at',
         'updated_at',
-        'deleted_at',
+        'deleted_at'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -71,5 +72,10 @@ class Headline extends Model implements HasMedia
     public function segment()
     {
         return $this->belongsTo(Segment::class, 'segment_id');
+    }
+
+    public function magazine()
+    {
+        return $this->belongsTo(Magazine::class, 'magazine_id');
     }
 }
