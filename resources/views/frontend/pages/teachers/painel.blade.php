@@ -18,13 +18,24 @@
         @include('frontend.pages.teachers._partials.painel')
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
-                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Notícias'])
+                @if($post)
+                    @include('frontend.pages.teachers._partials.news',['post'=>$posts,'title'=>'Notícias'])
+                @endif                
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.news',['news'=>$posts,'title'=>'Chamdadas de Eventos'])
+                
+                @if($call_event)
+                    @include('frontend.pages.teachers._partials.news',['call_event'=>$call_event,'title'=>'Chamdadas de Eventos'])
+                @endif                
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.promotion',['promotions'=>$promotions,'title'=>'Chamadas de Fomento'])
+                
+                @if($foment)
+                    @include('frontend.pages.teachers._partials.promotion',['foment'=>$foment,'title'=>'Chamadas de Fomento'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.promotion',['promotions'=>$promotions,'title'=>'Chamadas para Publicação'])
+                
+                @if($call_post)
+                    @include('frontend.pages.teachers._partials.promotion',['call_post'=>$call_post,'title'=>'Chamadas para Publicação'])
+                @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
             </div>
             <div class="col-md-3 col-sm-12">

@@ -45,6 +45,42 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="" class="required">Categoria</label>
+                        <select name="category_id" id="" class="form-control">
+                            <option value="">Selecione</option>
+                            @foreach($categories as $category)
+                            <option value="{{  $category->id}}">{{$category->name}} </option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('category_id'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('category_id') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="required">País</label>
+                        <select name="country_id" id="" class="form-control">
+                            <option value="">Selecione</option>
+                            @foreach($countries as $country)
+                            <option value="{{  $country->id}}">{{$country->name}} </option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country_id'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('country_id') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="required">Estado</label>
+                        <select name="state_id" id="" class="form-control">
+                            <option value="">Selecione</option>
+                            @foreach($states as $state)
+                            <option value="{{  $state->id}}">{{$state->name}} </option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('state_id'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('state_id') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label for="location" class="required">Localização</label>
                         <input type="text" class="form-control" name="location">
                         @if($errors->has('location'))

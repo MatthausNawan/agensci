@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\Teacher\EventStoreRequest;
+use App\Models\Category;
+use App\Models\Country;
 use App\Models\Event;
 use App\Models\Segment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -33,7 +36,10 @@ class EventController extends Controller
     public function create()
     {
         $segments = Segment::all();
-        return view('frontend.pages.teachers.events.create', compact('segments'));
+        $countries = Country::all();
+        $states = DB::table('states')->get();
+        $categories = Category::where('type', 'EVENT')->get();
+        return view('frontend.pages.teachers.events.create', compact('segments', 'countries', 'states', 'categories'));
     }
 
     /**
@@ -66,7 +72,6 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -79,7 +84,10 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $segments = Segment::all();
-        return view('frontend.pages.teachers.events.edit', compact('event', 'segments'));
+        $countries = Country::all();
+        $states = DB::table('states')->get();
+        $categories = Category::where('type', 'EVENT')->get();
+        return view('frontend.pages.teachers.events.edit', compact('event', 'segments', 'countries', 'states', 'categories'));
     }
 
     /**
