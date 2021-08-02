@@ -62,8 +62,7 @@
     <form action="{{ route('logout') }}" id="logout-form" method="post" style="display:none">
         @csrf()
     </form>
-    <main role="main" class="container">
-        @include('layouts._partials.messages')
+    <main role="main" class="container">        
 
         @yield('content')
     </main>

@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
 
     Route::get('/pesquisar/categoria/{category}', 'HomeController@searchLink')->name('site.search-links');
 
+    Route::get('/procurar-eventos', 'EventController@search')->name('site.serach-event');
     #statics
     Route::view('/obrigado', 'frontend.pages.static.register-success')->name('site.static.success-register');
     Route::view('/termos-de-uso', 'frontend.pages.static.terms')->name('site.static.terms');

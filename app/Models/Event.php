@@ -99,4 +99,35 @@ class Event extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
+
+    public function scopeCategory($query, $category)
+    {
+        return $query->where('category_id', $category);
+    }
+    
+    public function scopeCountry($query, $country)
+    {
+        return $query->where('country_id', $country);
+    }
+    
+    public function scopeState($query, $state)
+    {
+        return $query->where('state_id', $state);
+    }
+
+    public function scopeArea($query, $segment)
+    {
+        return $query->where('segment_id', $segment);
+    }
+
+    public static function getEvents($request)
+    {
+        return  Event::when($request->has('q_category'), function ($query) use ($request) {
+            $query->orWhere('category_id', $request->q_category);
+        })->when($request->has('q_area'), function ($query) use ($request) {
+            $query->orWhere('segment_id', $request->q_area);
+        })->when($request->has('q_state'), function ($query) use ($request) {
+            $query->orWhere('state_id', $request->q_state);
+        })->get();
+    }
 }

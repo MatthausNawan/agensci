@@ -28,11 +28,17 @@
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.news',['news'=>$news,'title'=>'Notícias'])
+                @if($post)
+                    @include('frontend.pages.teachers._partials.news',['news'=>$post,'title'=>'Notícias'])
+                @endif
+                
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @include('frontend.pages.teachers._partials.speakers',['speakers'=> $speakers,'title'=>'Palestrantes'])
+                @if($speaker)
+                    @include('frontend.pages.teachers._partials.speakers',['speaker'=> $speaker,'title'=>'Palestrantes'])
+                @endif
+                
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-               {{-- @include('frontend.pages.teachers._partials.calls',['calls'=> $calls,'title'=>'Chamadas de Publicações'])--}}
+               {{-- @include('frontend.pages.teachers._partials.calls',['call'=> $call,'title'=>'Chamadas de Publicações'])--}}
             </div>
             <div class="col-md-3 col-sm-12 p-0">
                 <div class="row">
@@ -43,7 +49,7 @@
                 <img src="https://via.placeholder.com/300x800" class="img-fluid" alt="Responsive image">
                 <div class="row">
                     <div class="col-12 mt-2">
-                        @include('frontend.pages.home._partials.products-and-services',['products'=>$services,'title'=>'','products'=>false,'header'=>false])
+                        @include('frontend.pages.home._partials.products-and-services',['services'=>$services,'title'=>'','products'=>false,'header'=>false])
                     </div>
                 </div>
             </div>

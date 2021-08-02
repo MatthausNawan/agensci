@@ -32,8 +32,8 @@ class HomeController extends Controller
                 'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
                 'head_site' => Headline::where('type', 'SITE')->inRandomOrder()->limit(1)->first(),
                 'head_magazine' => Headline::where('type', 'MAGAZINE')->inRandomOrder()->limit(1)->first(),
-                'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->randomAble(4)->get(),
-                'services' => ExternalLik::where('category_id', Category::C_SERVICES)->randomAble(4)->get(),
+                'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
+                'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
             ]
         );
     }
@@ -47,11 +47,11 @@ class HomeController extends Controller
             'conselhos' => ExternalLik::type(Category::C_CONSELHOS_DE_CLASSE)->randomAble(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
-            'news' => Post::all(),
-            'calls' => Post::all(),
-            'speakers' => Speaker::all(),
-            'products' => ExternalLik::where('category_id', Category::C_PRODUCTS)->randomAble(4)->get(),
-            'services' => ExternalLik::where('category_id', Category::C_SERVICES)->randomAble(4)->get(),
+            'post' => Post::latest()->first(),
+            'calls' => Post::latest()->first(),
+            'speaker' => Speaker::latest()->first(),
+            'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
+            'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
         ]);
     }
 
@@ -75,7 +75,7 @@ class HomeController extends Controller
 
     public function showCompaniesPage()
     {
-        return view('frontend.pages.companies.register');
+        return view('frontend.pages.companies.login');
     }
 
     public function showPost($slug)
