@@ -17,28 +17,27 @@
         @include('frontend.pages.students._partials.painel')
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
-                @if(isset($post))
-                    @include('frontend.pages.teachers._partials.news',['post'=>$post,'title'=>'Notícias'])
+                @if(isset($posts))
+                    @include('frontend.pages.teachers._partials.news',['posts'=>$posts,'title'=>'Notícias'])
                 @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
                 
-                @if(isset($post))
-                    @include('frontend.pages.teachers._partials.news',['post'=>$post,'title'=>'Chamdadas de Eventos'])
+                @if(isset($event_calls))
+                    @include('frontend.pages.teachers._partials.event_calls',['event_calls'=>$event_calls,'title'=>'Chamdadas de Eventos'])
                 @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
                 
-                @if(isset($stage))
-                    @include('frontend.pages.students._partials.jobs',['job'=>$stage,'title'=>'Vagas Estágio/Trainee'])
+                @if(isset($jobs_st))
+                    @include('frontend.pages.students._partials.jobs_st',['jobs_st'=>$jobs_st,'title'=>'Vagas Estágio/Trainee'])
                 @endif
-                
+                    
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if($job)
-                    @include('frontend.pages.students._partials.jobs',['job'=>$job,'title'=>'Vagas de Emprego'])
+                @if(isset($jobs))
+                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
                 @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-
-                @if($trainee)
-                    @include('frontend.pages.students._partials.jobs',['job'=>$trainee,'title'=>'Concursos'])
+                @if(isset($contests))
+                    @include('frontend.pages.students._partials.contests',['contests'=>$contests,'title'=>'Concursos'])
                 @endif
 
             </div>
@@ -65,7 +64,7 @@
         loop:true,
         margin:10,
         nav:true,
-        dots:false,
+        dots:true,
         responsive:{
             0:{
                 items:1

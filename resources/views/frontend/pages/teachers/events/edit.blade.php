@@ -38,11 +38,47 @@
                         <select name="segment_id" id="" class="form-control">
                             <option value="">Selecione</option>
                             @foreach($segments as $segment)
-                            <option value="{{$segment->id}}">{{$segment->name}} </option>
+                            <option value="{{$segment->id}}" {{$event->segment_id == $segment->id ? 'selected' : ''}}>{{$segment->name}} </option>
                             @endforeach
                         </select>
                         @if($errors->has('segment_id'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('segment_id') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="required">Categoria</label>
+                        <select name="category_id" id="" class="form-control">
+                            <option value="">Selecione</option>
+                            @foreach($categories as $category)
+                            <option value="{{$category->id}}" {{$event->category_id == $category->id ? 'selected' : ''}}>{{$category->name}} </option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('category_id'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('category_id') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="required">País</label>
+                        <select name="country_id" id="" class="form-control">
+                            <option value="">Selecione</option>
+                            @foreach($countries as $country)
+                            <option value="{{$country->id}}" {{$event->country_id == $country->id ? 'selected' : ''}}>{{$country->name}} </option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country_id'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('country_id') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="required">Estado</label>
+                        <select name="state_id" id="" class="form-control">
+                            <option value="">Selecione</option>
+                            @foreach($states as $state)
+                            <option value="{{$state->id}}" {{$event->state_id == $state->id ? 'selected' : ''}}>{{$state->name}} </option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('state_id'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('state_id') }}</span>
                         @endif
                     </div>
                     <div class="form-group">

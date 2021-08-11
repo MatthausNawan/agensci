@@ -43,15 +43,15 @@
 
                     <div class="form-group {{ $errors->has('bio') ? 'has-error' : ''}}">
                         <label for="bio" class="required">Bio</label>
-                        <textarea name="bio" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="bio" id="" cols="30" rows="10" class="form-control">{{ $speaker->bio ?? old('bio') }}</textarea>
                         @if($errors->has('bio'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('bio') }}</span>
                         @endif
                     </div>
 
                     <div class="form-group">
-                        <label for="articles" class="required">Artigos</label>
-                        <textarea name="articles" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('articles')}}</textarea>
+                        <label for="articles" class="required">Artigos</label>                        
+                        <input type="text" data-role="tagsinput" name="articles">                        
                         @if($errors->has('articles'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('articles') }}</span>
                         @endif
@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="speeches" class="required">Palestras</label>
-                        <textarea name="speeches" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('speeches')}}</textarea>
+                        <input type="text" data-role="tagsinput" name="speeches">
                         @if($errors->has('speeches'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('speeches') }}</span>
                         @endif
@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <label for="books" class="required">Livros</label>
-                        <textarea name="books" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('books')}}</textarea>
+                        <input type="text" data-role="tagsinput" name="books">
                         @if($errors->has('books'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('books') }}</span>
                         @endif
@@ -75,7 +75,7 @@
 
                     <div class="form-group">
                         <label for="awards" class="required">Premiações</label>
-                        <textarea name="awards" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('awards')}}</textarea>
+                        <input type="text" data-role="tagsinput" name="awards">
                         @if($errors->has('awards'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('awards') }}</span>
                         @endif
@@ -83,7 +83,7 @@
 
                     <div class="form-group {{ $errors->has('areas') ? 'has-error' : ''}}">
                         <label for="areas" class="required">Areas de Atuação</label>
-                        <textarea name="areas" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; "></textarea>
+                        <input type="text" data-role="tagsinput" name="areas" class="tags">
                         @if($errors->has('areas'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('areas') }}</span>
                         @endif
@@ -100,8 +100,15 @@
 
 @endsection
 
+
+@section('styles')
+<link rel="stylesheet" href="{{asset('vendor/tag-input/tagsinput.css')}}">
+@endsection
+
 @section('js')
+<script src="{{ asset('vendor/tag-input/tagsinput.js') }}"></script>
 <script>
+
     Dropzone.options.photoDropzone = {
     url: '{{ route('teachers.storeMedia') }}',
     maxFilesize: 2, // MB

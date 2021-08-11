@@ -25,6 +25,12 @@ class Post extends Model implements HasMedia
         'deleted_at',
     ];
 
+    const STATUS_APROVED = 1;
+    const STATUS_PUBLISHED = 2;
+    const STATUS_DENIED = 3;
+    const STATUS_ARCHIVED = 4;
+    const STATUS_PROCESSING = 5;
+
     const STATUS_SELECT = [
         '1' => 'Aprovado',
         '2' => 'Publicado',
@@ -72,5 +78,11 @@ class Post extends Model implements HasMedia
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED)
+            ->where('enabled', true);
     }
 }

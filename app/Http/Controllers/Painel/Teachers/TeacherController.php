@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel\Teachers;
 
+use App\EventCall;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreTeacher;
@@ -10,6 +11,7 @@ use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Post;
 use App\Models\Promotion;
+use App\Models\PublishCall;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
@@ -75,12 +77,15 @@ class TeacherController extends Controller
         return view(
             'frontend.pages.teachers.painel',
             [
-                'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
-                'statistics_softwares' => ExternalLik::where('category_id', Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->get(),
-                'util_apps' => ExternalLik::where('category_id', Category::C_APLICATIVOS_UTEIS)->take(5)->get(),
+                'articles' => ExternalLik::type(Category::C_ARTIGOS)->randomAble(4)->get(),
+                'statistics_softwares' => ExternalLik::type(Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->randomAble(4)->get(),
+                'util_apps' => ExternalLik::type(Category::C_APLICATIVOS_UTEIS)->take(5)->randomAble(4)->get(),
                 'teacher' => $user->teacher ?? false,
-                'posts' => Post::latest()->take(5)->get(),
-                'promotions' => Promotion::all()
+                'posts' => Post::active()->latest()->take(5)->get(),
+                'foment_calls' => Promotion::latest()->take(5)->get(),
+                'publish_calls' => PublishCall::latest()->take(5)->get(),
+                'event_calls' => EventCall::latest()->take(10)->get(),
+                'foment' => null
             ]
         );
     }

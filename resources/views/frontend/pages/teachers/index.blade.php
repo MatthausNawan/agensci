@@ -28,17 +28,20 @@
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if($post)
-                    @include('frontend.pages.teachers._partials.news',['news'=>$post,'title'=>'Notícias'])
+                @if($posts)
+                    @include('frontend.pages.teachers._partials.news',['posts'=>$posts,'title'=>'Notícias'])
                 @endif
                 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if($speaker)
-                    @include('frontend.pages.teachers._partials.speakers',['speaker'=> $speaker,'title'=>'Palestrantes'])
+                @if($speakers)
+                    @include('frontend.pages.teachers._partials.speakers',['speakers'=> $speakers,'title'=>'Palestrantes'])
                 @endif
                 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-               {{-- @include('frontend.pages.teachers._partials.calls',['call'=> $call,'title'=>'Chamadas de Publicações'])--}}
+                @include('frontend.pages.teachers._partials.calls',['foment_calls'=> $foment_calls,'title'=>'Chamadas de Fomentos'])
+
+                <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
+                @include('frontend.pages.teachers._partials.publish_calls',['publish_calls'=> $publish_calls,'title'=>'Chamadas de Publicação'])
             </div>
             <div class="col-md-3 col-sm-12 p-0">
                 <div class="row">

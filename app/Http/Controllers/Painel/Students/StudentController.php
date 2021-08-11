@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel\Students;
 
+use App\EventCall;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreStudent;
@@ -80,11 +81,11 @@ class StudentController extends Controller
                 'articles' => ExternalLik::type(Category::C_ARTIGOS)->randomAble(4)->get(),
                 'high_school_tvs' => ExternalLik::type(Category::C_TV_UNIVERSITARIAS)->randomAble(4)->get(),
                 'high_school_radios' => ExternalLik::type(Category::C_RADIOS_UNIVERSITARIAS)->randomAble(4)->get(),
-                'post' => Post::latest()->first(),
-                'job' => Job::with('companyJob')->where('type', Job::TYPE_EMPREGO)->first(),
-                'stage' => Job::with('companyJob')->where('type', Job::TYPE_ESTAGIO)->first(),
-                'trainee' => Job::with('companyJob')->where('type', Job::TYPE_TRAINEE)->first(),
-                'contests' => Contest::latest()->first(),
+                'posts' => Post::latest()->take(5)->get(),
+                'event_calls' => EventCall::latest()->take(10)->get(),
+                'jobs' => Job::with('companyJob')->where('type', Job::TYPE_EMPREGO)->take(5)->get(),
+                'jobs_st' => Job::with('companyJob')->whereIn('type', [Job::TYPE_ESTAGIO,Job::TYPE_TRAINEE])->take(5)->get(),
+                'contests' => Contest::latest()->take(5)->get(),
                 'student' => $user->student
             ]
         );

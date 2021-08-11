@@ -5,31 +5,28 @@
     </div>
     <div class="my-2">
         <div class="owl-carousel owl-theme">
-            
-            <div class="card card-border-primary">
+            @foreach($speakers as $speaker)
+            <div class="card news-card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-4">
-                            <img src="{{ $speaker->photo ? $speaker->photo->getUrl() : ''}}" alt="" class="img-thumbnail img-fluid" style="height: 200px; width:200px">
+                        <div class="col-3">
+                            <img src="{{ $speaker->photo ? $speaker->photo->getUrl() : asset('images/avatar.png')}}" class="img-thumbnail">
                         </div>
-                        <div class="col-8">
+                        <div class="col-9">
                             <span class="font-weight-bold">{{$speaker->name}}</span>
                             <div class="speaker-info d-flex flex-column">
-                                <span><i>{{ $speaker->description ?? '' }}</i></span>
-                                <span class="text-dark text-center border-bottom">Areas</span>                                
-                                    @foreach($speaker->areas as $area)
-                                        <span>{{$area}},</span>
-                                    @endforeach                                
-                                <span class="text-dark text-center border-bottom">Palestras</span>                                
-                                    @foreach($speaker->speeches as $speech)
-                                    <span>{{$speech}},</span>
-                                    @endforeach                                
-                            </div>
+                                <span><i>{{ $speaker->description ?? '' }}</i></span>                                                        
+                                <span class="text-center border-bottom">Temas e Tópicos das Palestras</span>
+                                 <i>{{$speaker->speeches}}</i>
+                            </div>                            
                         </div>
-                    </div>
+                    </div>                      
                 </div>
+                <div class="card-footer p-0 m-0 text-center text-dark">
+                    <a href="">Ver todos</a>
+                </div> 
             </div>
-            
+            @endforeach
         </div>
     </div>
 </div>

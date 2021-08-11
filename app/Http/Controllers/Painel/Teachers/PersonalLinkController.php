@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Painel\Teachers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StorePermissionRequest;
+use App\Http\Requests\StoreUpdatePersonalLink;
 use App\Models\PersonalLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class PersonalLinkController extends Controller
         return view('frontend.pages.teachers.personal-links.create');
     }
 
-    public function store(StorePermissionRequest $request)
+    public function store(StoreUpdatePersonalLink $request)
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;

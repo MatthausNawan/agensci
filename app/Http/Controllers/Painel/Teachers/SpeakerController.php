@@ -41,8 +41,9 @@ class SpeakerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SpeakerStoreRequest $request)
+    public function store(Request $request)
     {
+        // dd($request->all());
         $data = $request->all();
         $data['creator_id'] = Auth::user()->id;
 

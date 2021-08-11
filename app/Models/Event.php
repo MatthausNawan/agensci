@@ -30,6 +30,9 @@ class Event extends Model implements HasMedia
 
     protected $fillable = [
         'segment_id',
+        'category_id',
+        'state_id',
+        'country_id',
         'title',
         'start_date',
         'end_date',
@@ -128,6 +131,11 @@ class Event extends Model implements HasMedia
             $query->orWhere('segment_id', $request->q_area);
         })->when($request->has('q_state'), function ($query) use ($request) {
             $query->orWhere('state_id', $request->q_state);
-        })->get();
+        })->enabled()->get();
+    }
+
+    public static function scopeEnabled($query)
+    {
+        return $query->where('enabled', true);
     }
 }

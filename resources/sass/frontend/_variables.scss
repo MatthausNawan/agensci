@@ -29,6 +29,7 @@ $teal: #20c997 !default;
 $cyan: #5bc0de !default;
 
 $agency-dark: #0e274c;
+$agency-blue: #364cc6;;
 $agency-light: #52647f;
 $agency-primary: #00abff;
 $agency-secondary: #b07b2d;
@@ -45,9 +46,10 @@ $danger: $red !default;
 $light: $agency-light !default;
 $dark: $agency-dark !default;
 $black: $black;
+$blue:$agency-blue !default;
 
 $theme-colors: (
-    "primary": $agency-primary,
+    "primary": $agency-blue,
     "secondary": $agency-secondary
 );
 
