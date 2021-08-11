@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel\Companies;
 
+use App\EventCall;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreCompanies;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\StudentProfile;
 use App\Services\CompanieService;
 use Spatie\MediaLibrary\Models\Media;
 use Gate;
@@ -56,6 +58,8 @@ class CompanyController extends Controller
             'frontend.pages.companies.painel',
             [
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
+                'students_profiles' => StudentProfile::all(),
+                'event_calls' => EventCall::latest()->take(10)->get(),
                 'company' => $user->company
             ]
         );
