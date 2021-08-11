@@ -79,7 +79,7 @@ class TeacherController extends Controller
                 'statistics_softwares' => ExternalLik::type(Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->randomAble(4)->get(),
                 'util_apps' => ExternalLik::type(Category::C_APLICATIVOS_UTEIS)->take(5)->randomAble(4)->get(),
                 'teacher' => $user->teacher ?? false,
-                'post' => Post::latest()->first(),
+                'posts' => Post::active()->latest()->take(5)->get(),
                 'call_event' => null,
                 'call_post' => null,
                 'foment' => null

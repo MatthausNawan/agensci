@@ -42,6 +42,14 @@ class Speaker extends Model implements HasMedia
         'deleted_at',
     ];
 
+    // protected $casts = [
+    //     'areas'=>'array',
+    //     'books'=>'array',
+    //     'awards'=>'array',
+    //     'speeches'=>'array',
+    //     'articles'=>'array'
+    // ];
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
@@ -71,15 +79,88 @@ class Speaker extends Model implements HasMedia
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function getAreasAttribute()
+    public function setArticlesAttribute($value)
     {
-        $areas = explode(";", $this->attributes['areas']);
-        return $areas;
+        $tags = explode(',',$value);        
+        $this->attributes['articles'] = json_encode($tags);
     }
 
-    public function getSpeechesAttribute()
+    public function getArticlesAttribute($value)
     {
-        $speeches = explode(";", $this->attributes['speeches']);
-        return $speeches;
+        if($value){
+            $tags = '';
+            foreach(json_decode($value) as $tag ){
+                $tags .= $tag. ",";
+            }
+            return $tags;
+        }        
+    }
+
+    public function setBooksAttribute($value)
+    {
+        $tags = explode(',',$value);        
+        $this->attributes['books'] = json_encode($tags);
+    }
+
+    public function getBooksAttribute($value)
+    {
+        if($value){
+            $tags = '';
+            foreach(json_decode($value) as $tag ){
+                $tags .= $tag. ",";
+            }
+            return $tags;
+        }        
+    }
+
+    public function setAwardsAttribute($value)
+    {
+        $tags = explode(',',$value);        
+        $this->attributes['awards'] = json_encode($tags);
+    }
+
+    public function getAwardsAttribute($value)
+    {
+        if($value){
+            $tags = '';
+            foreach(json_decode($value) as $tag ){
+                $tags .= $tag. ",";
+            }
+            return $tags;
+        }        
+    }
+
+    public function setSpeechesAttribute($value)
+    {
+        $tags = explode(',',$value);        
+        $this->attributes['speeches'] = json_encode($tags);
+    }
+
+    public function getSpeechesAttribute($value)
+    {
+        if($value){
+            $tags = '';
+            foreach(json_decode($value) as $tag ){
+                $tags .= $tag. ",";
+            }
+            return $tags;
+        }        
+    }
+
+    public function setAreasAttribute($value)
+    {
+        $tags = explode(',',$value);        
+        $this->attributes['areas'] = json_encode($tags);
+    }
+
+    public function getAreasAttribute($value)
+    {
+        if($value){
+            $tags = '';
+            foreach(json_decode($value) as $tag ){
+                $tags .= $tag. ",";
+            }
+            return $tags;
+        }        
     }
 }

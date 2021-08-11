@@ -19,7 +19,7 @@
         <div class="row mt-2">
             <div class="col-md-9 col-sm-12">
                 @if($post)
-                    @include('frontend.pages.teachers._partials.news',['post'=>$posts,'title'=>'Notícias'])
+                    @include('frontend.pages.teachers._partials.news',['post'=>$post,'title'=>'Notícias'])
                 @endif                
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
                 

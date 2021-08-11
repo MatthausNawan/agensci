@@ -10,7 +10,9 @@ body {
     background-color: #d2d4dd;
 }
 
-nav a :hover {
+
+
+nav a:hover {
     text-decoration: none;
 }
 
@@ -38,7 +40,7 @@ nav a :hover {
         text-decoration: none;
     }
 }
-.external-link-title {
+.external-link-title {    
     text-transform: uppercase;
 }
 
@@ -70,3 +72,44 @@ nav a :hover {
         border-color: #999;
     }
 }
+
+.news-card {
+    border-top: 5px solid $agency-blue;
+    border-bottom: 5px solid $agency-blue;
+    border-left: 2px solid $agency-blue;
+    border-right: 2px solid $agency-blue;
+    
+}
+
+.news-body {
+    color: #999;
+}
+
+.news-title {    
+    font-size: 20px;
+}
+
+.foment-label {
+    background-color: #c6cae2;
+    color:$agency-blue;
+    font-weight: bold;
+    font-size: 16px;
+    padding:2px;    
+}
+
+.foment-value {
+    font-weight: bold;
+    color:#000;
+    width: 100%;
+    padding-left: 4px;    
+    font-size: 16px;
+    a {
+        cursor: pointer;
+    }
+}
+
+.foment-label, .foment-value {
+    border: 2px solid $agency-blue;       
+}
+
+

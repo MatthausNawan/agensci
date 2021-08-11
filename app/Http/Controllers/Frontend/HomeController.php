@@ -9,6 +9,8 @@ use App\Models\ExternalLik;
 use App\Models\Headline;
 use App\Models\Job;
 use App\Models\Post;
+use App\Models\Promotion;
+use App\Models\PublishCall;
 use App\Models\Segment;
 use App\Models\Speaker;
 use App\Models\StudentProfile;
@@ -47,9 +49,10 @@ class HomeController extends Controller
             'conselhos' => ExternalLik::type(Category::C_CONSELHOS_DE_CLASSE)->randomAble(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
-            'post' => Post::latest()->first(),
-            'calls' => Post::latest()->first(),
-            'speaker' => Speaker::latest()->first(),
+            'posts' => Post::active()->latest()->take(5)->get(),
+            'foment_calls' => Promotion::latest()->take(5)->get(),
+            'publish_calls' => PublishCall::latest()->take(5)->get(),
+            'speakers' => Speaker::latest()->take(5)->get(),
             'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
             'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
         ]);
