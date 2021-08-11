@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel\Teachers;
 
+use App\EventCall;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreTeacher;
@@ -10,6 +11,7 @@ use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Post;
 use App\Models\Promotion;
+use App\Models\PublishCall;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
@@ -80,8 +82,9 @@ class TeacherController extends Controller
                 'util_apps' => ExternalLik::type(Category::C_APLICATIVOS_UTEIS)->take(5)->randomAble(4)->get(),
                 'teacher' => $user->teacher ?? false,
                 'posts' => Post::active()->latest()->take(5)->get(),
-                'call_event' => null,
-                'call_post' => null,
+                'foment_calls' => Promotion::latest()->take(5)->get(),
+                'publish_calls' => PublishCall::latest()->take(5)->get(),
+                'event_calls' => EventCall::latest()->take(10)->get(),
                 'foment' => null
             ]
         );

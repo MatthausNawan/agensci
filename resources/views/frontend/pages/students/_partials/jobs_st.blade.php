@@ -5,43 +5,47 @@
     </div>
     <div class="my-2">        
         <div class="owl-carousel owl-theme">
-            @foreach($jobs as $job)
+            @foreach($jobs_st as $job_st)
             <div class="card card-border-primary">
                 <div class="card-body">
-                    <div class="d-flex flex-row">
+                <div class="d-flex flex-row">
                         <span class="foment-label text-center">Empresa</span>
-                        <span class="foment-value text-center">{{ $job->company }}</span>
+                        <span class="foment-value text-center">{{ $job_st->company }}</span>
                         <span class="foment-value text-center">LOGO</span>
                     </div>
                     <div class="d-flex flex-column">
                         <div class="foment-data d-flex flex-row justify-content-start">
-                            <span class="foment-label ">Cargo</span>
-                            <span class="foment-value">{{ $job->ocuppation }}</span>
+                            <span class="foment-label ">Area</span>
+                            <span class="foment-value">{{ $job_st->area }}</span>
                         </div>    
                         <div class="foment-data d-flex flex-row justify-content-start">
-                            <span class="foment-label ">Endereço</span>
-                            <span class="foment-value">{{ $job->address }}</span>
+                            <span class="foment-label ">Perfil do estagiário</span>
+                            <span class="foment-value">{{ $job_st->profile }}</span>
                         </div>    
                         <div class="foment-data d-flex flex-row justify-content-start">
-                            <span class="foment-label ">Salario</span>
-                            <span class="foment-value">R$ {{ number_format($job->salary,2,',','.') }}</span>
+                            <span class="foment-label ">Formaçao</span>
+                            <span class="foment-value">{{ $job_st->formation }}</span>
                         </div> 
                         <div class="foment-data d-flex flex-row justify-content-start">
+                            <span class="foment-label ">Endereco</span>
+                            <span class="foment-value">{{ $job_st->address }}</span>
+                        </div>  
+                        <div class="foment-data d-flex flex-row justify-content-start">
                             <span class="foment-label ">Vagas</span>
-                            <span class="foment-value">{{ $job->qty_jobs }}</span>
+                            <span class="foment-value">{{ $job_st->qty_jobs }}</span>
                         </div>  
                         <div class="foment-data d-flex flex-row justify-content-start">
                             <span class="foment-label ">Aberta até:</span>
-                            <span class="foment-value">{{ $job->expiration_date->format('d/m/Y') }}</span>
+                            <span class="foment-value">{{ $job_st->expiration_date->format('d/m/Y') }}</span>
                         </div>  
                         <div class="foment-data d-flex flex-row justify-content-start">
                             <span class="foment-label">Link</span>
-                            <span class="foment-value"><a href="{{ $job->link }}" target="_blank">{{ $job->link }}</a> </span>
+                            <span class="foment-value"><a href="{{ $job_st->link }}" target="_blank">{{ $job_st->link }}</a> </span>
                         </div>                       
                     </div>
                 </div>
-            </div> 
-            @endforeach           
+            </div>            
+            @endforeach
         </div>
     </div>
 </div>

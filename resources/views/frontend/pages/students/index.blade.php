@@ -31,25 +31,25 @@
             <div class="col-md-9 col-sm-12">
 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if(isset($post))
-                    @include('frontend.pages.teachers._partials.news',['news'=>$news,'title'=>'Notícias'])
+                @if(isset($posts))
+                    @include('frontend.pages.teachers._partials.news',['posts'=>$posts,'title'=>'Notícias'])
                 @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if(isset($post))
-                    @include('frontend.pages.students._partials.profiles',['profiles'=> $profiles,'title'=>'Portifólios de Estudantes'])
+                @if(isset($students_profiles))
+                    @include('frontend.pages.students._partials.students_profiles',['students_profiles'=> $students_profiles,'title'=>'Portifólios de Estudantes'])
                 @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if(isset($job))
-                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas Estágio/Trainee'])
+                @if(isset($jobs_st))
+                    @include('frontend.pages.students._partials.jobs_st',['jobs_st'=>$jobs_st,'title'=>'Vagas Estágio/Trainee'])
                 @endif
                     
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if(isset($job))
+                @if(isset($jobs))
                     @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Vagas de Emprego'])
                 @endif
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
-                @if(isset($job))
-                    @include('frontend.pages.students._partials.jobs',['jobs'=>$jobs,'title'=>'Concursos'])
+                @if(isset($contests))
+                    @include('frontend.pages.students._partials.contests',['contests'=>$contests,'title'=>'Concursos'])
                 @endif
             </div>
 

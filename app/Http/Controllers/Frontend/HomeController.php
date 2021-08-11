@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Contest;
 use App\Models\Event;
 use App\Models\ExternalLik;
 use App\Models\Headline;
@@ -67,10 +68,12 @@ class HomeController extends Controller
             'museus' => ExternalLik::type(Category::C_MUSEUS_DIGITAIS)->randomAble(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
-            'se' => Segment::whereHas('events')->get(),
-            'news' => Post::all(),
-            'jobs' => Job::with('companyJob')->get(),
-            'profiles' => StudentProfile::all(),
+            // 'se' => Segment::whereHas('events')->get(),
+            'posts' => Post::all(),
+            'jobs' => Job::with('companyJob')->where('type', Job::TYPE_EMPREGO)->take(5)->get(),
+            'jobs_st' => Job::with('companyJob')->whereIn('type', [Job::TYPE_ESTAGIO,Job::TYPE_TRAINEE])->take(5)->get(),
+            'contests' => Contest::latest()->take(5)->get(),
+            'students_profiles' => StudentProfile::all(),
             'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
             'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
         ]);
