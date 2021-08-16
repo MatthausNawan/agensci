@@ -3,48 +3,48 @@
     <div class="data d-flex flex-column">
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">CNPJ</span>
-            <span class="small">{{$company->cnpj}}</span>
+            <span class="small">{{$company->cnpj ?? ''}}</span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Email</span>
-            <span class="small">{{$company->email}}</span>
+            <span class="small">{{$company->email ?? ''}}</span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Site</span>
             <span class="small">
-                <a target="_blank" href="{{$company->site}}">{{$company->site}}</a>
+                <a target="_blank" href="{{$company->site ?? ''}}">{{$company->site ?? ''}}</a>
             </span>
         </div>
 
         <div class="border-bottom d-flex flex-column my-2">
             <span class="text-strong">Midias Sociais</span>
             <div class="socials">
-                @if ($company->facebook)
+                @if (isset($company->facebook))
                     <a target="_blank" href="{{$company->facebook}}">
                         <img src="{{asset('images/social_media/facebook.png')}}" width="30px" alt="Facebook">
                     </a>
                 @endif
-                @if ($company->twitter)
+                @if (isset($company->twitter))
                     <a target="_blank" href="{{$company->twitter}}">
                         <img src="{{asset('images/social_media/twitter.png')}}" width="30px" alt="Twitter">
                     </a>
                 @endif
-                @if ($company->instagram)
+                @if (isset($company->instagram))
                     <a target="_blank" href="{{$company->instagram}}">
                         <img src="{{asset('images/social_media/instagram.png')}}" width="30px" alt="Instagram">
                     </a>
                 @endif
-                @if ($company->linkedin)
+                @if (isset($company->linkedin))
                     <a target="_blank" href="{{$company->linkedin}}">
                         <img src="{{asset('images/social_media/linkedin.png')}}" width="30px" alt="Linkedin">
                     </a>
                 @endif
-                @if ($company->youtube)
+                @if (isset($company->youtube))
                     <a target="_blank" href="{{$company->youtube}}">
                         <img src="{{asset('images/social_media/youtube.png')}}" width="30px" alt="Youtube">
                     </a>
                 @endif
-                @if ($company->whatsapp)
+                @if (isset($company->whatsapp))
                     <a target="_blank" href="https://api.whatsapp.com/send?phone={{$company->whatsapp}}">
                         <img src="{{asset('images/social_media/whatsapp.png')}}" width="30px" alt="Whatsapp">
                     </a>

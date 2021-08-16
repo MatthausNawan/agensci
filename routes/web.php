@@ -187,6 +187,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Contests
     Route::delete('contests/destroy', 'ContestController@massDestroy')->name('contests.massDestroy');
     Route::resource('contests', 'ContestController');
+
+    Route::delete('adverts/destroy', 'AdvertsController@massDestroy')->name('adverts.massDestroy');
+    Route::resource('adverts', 'AdvertsController');
+
+    // Local Advertisement
+    Route::delete('local-advertisements/destroy', 'LocalAdvertisementController@massDestroy')->name('local-advertisements.massDestroy');
+    Route::resource('local-advertisements', 'LocalAdvertisementController');
+
+    // Publish Call
+    Route::delete('publish-calls/destroy', 'PublishCallController@massDestroy')->name('publish-calls.massDestroy');
+    Route::resource('publish-calls', 'PublishCallController', ['except' => ['show']]);
+
+    // Event Call
+    Route::delete('event-calls/destroy', 'EventCallController@massDestroy')->name('event-calls.massDestroy');
+    Route::resource('event-calls', 'EventCallController');
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
