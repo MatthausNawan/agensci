@@ -350,10 +350,86 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 86,
-                'title' => 'area_administrativa_access',
+                'title' => 'advert_create',
             ],
             [
                 'id'    => 87,
+                'title' => 'advert_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'advert_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'advert_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'advert_access',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'local_advertisement_create',
+            ],
+            [
+                'id'    => 92,
+                'title' => 'local_advertisement_edit',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'local_advertisement_show',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'local_advertisement_delete',
+            ],
+            [
+                'id'    => 95,
+                'title' => 'local_advertisement_access',
+            ],
+            [
+                'id'    => 96,
+                'title' => 'publish_call_create',
+            ],
+            [
+                'id'    => 97,
+                'title' => 'publish_call_edit',
+            ],
+            [
+                'id'    => 98,
+                'title' => 'publish_call_delete',
+            ],
+            [
+                'id'    => 99,
+                'title' => 'publish_call_access',
+            ],
+            [
+                'id'    => 100,
+                'title' => 'event_call_create',
+            ],
+            [
+                'id'    => 101,
+                'title' => 'event_call_edit',
+            ],
+            [
+                'id'    => 102,
+                'title' => 'event_call_show',
+            ],
+            [
+                'id'    => 103,
+                'title' => 'event_call_delete',
+            ],
+            [
+                'id'    => 104,
+                'title' => 'event_call_access',
+            ],
+            [
+                'id'    => 105,
+                'title' => 'home_access',
+            ],
+            [
+                'id'    => 106,
                 'title' => 'profile_password_edit',
             ],
         ];

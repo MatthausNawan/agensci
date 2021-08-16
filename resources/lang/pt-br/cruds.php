@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'userManagement'     => [
-        'title'          => 'Gestão de Usuários',
-        'title_singular' => 'Gestão de Usuários',
+    'userManagement' => [
+        'title'          => 'Gerenciar Usuários',
+        'title_singular' => 'Gerenciar Usuários',
     ],
-    'permission'         => [
+    'permission' => [
         'title'          => 'Permissões',
         'title_singular' => 'Permissão',
         'fields'         => [
@@ -21,7 +21,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'role'               => [
+    'role' => [
         'title'          => 'Regras',
         'title_singular' => 'Regras',
         'fields'         => [
@@ -39,7 +39,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'user'               => [
+    'user' => [
         'title'          => 'Usuários',
         'title_singular' => 'Usuário',
         'fields'         => [
@@ -73,7 +73,7 @@ return [
             'verification_token_helper' => ' ',
         ],
     ],
-    'segment'            => [
+    'segment' => [
         'title'          => 'Áreas',
         'title_singular' => 'Área',
         'fields'         => [
@@ -89,7 +89,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'category'           => [
+    'category' => [
         'title'          => 'Categorias',
         'title_singular' => 'Categoria',
         'fields'         => [
@@ -105,30 +105,11 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'type'               => 'Tipo',
+            'type_helper'        => ' ',
         ],
     ],
-
-    'magazine'           => [
-        'title'          => 'Revistas',
-        'title_singular' => 'Revista',
-        'fields'         => [
-            'id'                 => 'ID',
-            'id_helper'          => ' ',
-            'name'               => 'Nome',
-            'name_helper'        => ' ',
-            'description'        => 'Descrição',
-            'description_helper' => ' ',
-            'created_at'         => 'Created at',
-            'created_at_helper'  => ' ',
-            'updated_at'         => 'Updated at',
-            'updated_at_helper'  => ' ',
-            'logo'              => 'Logo',
-            'logo_helper'       => ' ',
-            'deleted_at'         => 'Deleted at',
-            'deleted_at_helper'  => ' ',
-        ],
-    ],
-    'country'            => [
+    'country' => [
         'title'          => 'Países',
         'title_singular' => 'Paíse',
         'fields'         => [
@@ -146,7 +127,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'event'              => [
+    'event' => [
         'title'          => 'Eventos',
         'title_singular' => 'Evento',
         'fields'         => [
@@ -156,20 +137,14 @@ return [
             'segment_helper'              => ' ',
             'title'                       => 'Título',
             'title_helper'                => ' ',
-            'link'                        => 'Link do Evento',
-            'link_helper'                 => ' ',
-            'start_date'                  => 'Data Inicio',
+            'start_date'                  => 'Data',
             'start_date_helper'           => ' ',
-            'end_date'                    => 'Data Termino',
-            'end_date_helper'             => ' ',
-            'subscripition_period'        => 'Período de Inscrição/Submissão',
+            'subscripition_period'        => 'Período de Inscrição',
             'subscripition_period_helper' => ' ',
             'banner'                      => 'Banner',
             'banner_helper'               => ' ',
             'enabled'                     => 'Mostrar no Site?',
             'enabled_helper'              => ' ',
-            'location'                    => 'Localização',
-            'location_helper'             => ' ',
             'details'                     => 'Details',
             'details_helper'              => ' ',
             'created_at'                  => 'Created at',
@@ -182,7 +157,7 @@ return [
             'creator_helper'              => ' ',
         ],
     ],
-    'headline'           => [
+    'headline' => [
         'title'          => 'Manchetes',
         'title_singular' => 'Manchete',
         'fields'         => [
@@ -196,8 +171,6 @@ return [
             'banner_helper'     => ' ',
             'segment'           => 'Segmento',
             'segment_helper'    => ' ',
-            'magazine'           => 'Revista/Site',
-            'magazine_helper'    => ' ',
             'enabled'           => 'Mostrar no Site?',
             'enabled_helper'    => ' ',
             'type'              => 'Tipo',
@@ -210,7 +183,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'company'            => [
+    'company' => [
         'title'          => 'Empresas',
         'title_singular' => 'Empresa',
         'fields'         => [
@@ -232,7 +205,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'externalLik'        => [
+    'externalLik' => [
         'title'          => 'LInks Externos',
         'title_singular' => 'LInks Externo',
         'fields'         => [
@@ -256,7 +229,7 @@ return [
             'logo_helper'       => ' ',
         ],
     ],
-    'post'               => [
+    'post' => [
         'title'          => 'Noticias',
         'title_singular' => 'Noticia',
         'fields'         => [
@@ -282,7 +255,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'speaker'            => [
+    'speaker' => [
         'title'          => 'Palestrantes',
         'title_singular' => 'Palestrante',
         'fields'         => [
@@ -308,7 +281,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'promotion'          => [
+    'promotion' => [
         'title'          => 'Fomentos',
         'title_singular' => 'Fomento',
         'fields'         => [
@@ -336,7 +309,7 @@ return [
             'deleted_at_helper'          => ' ',
         ],
     ],
-    'studentProfile'     => [
+    'studentProfile' => [
         'title'          => 'Portifolios de Estudantes',
         'title_singular' => 'Portifolios de Estudante',
         'fields'         => [
@@ -370,7 +343,7 @@ return [
             'deleted_at_helper'      => ' ',
         ],
     ],
-    'job'                => [
+    'job' => [
         'title'          => 'Vagas',
         'title_singular' => 'Vaga',
         'fields'         => [
@@ -404,7 +377,7 @@ return [
             'deleted_at_helper'      => ' ',
         ],
     ],
-    'contest'            => [
+    'contest' => [
         'title'          => 'Concursos',
         'title_singular' => 'Concurso',
         'fields'         => [
@@ -430,24 +403,180 @@ return [
             'deleted_at_helper'   => ' ',
         ],
     ],
-    'areaProfessor'      => [
+    'areaProfessor' => [
         'title'          => 'Area Professor',
         'title_singular' => 'Area Professor',
     ],
-    'areaEstudante'      => [
+    'areaEstudante' => [
         'title'          => 'Area Estudante',
         'title_singular' => 'Area Estudante',
     ],
-    'areaEmpresa'        => [
+    'areaEmpresa' => [
         'title'          => 'Area Empresas',
         'title_singular' => 'Area Empresa',
     ],
-    'cadastrosBase'      => [
+    'cadastrosBase' => [
         'title'          => 'Cadastros Base',
         'title_singular' => 'Cadastros Base',
     ],
-    'areaAdministrativa' => [
-        'title'          => 'Area Administrativa',
-        'title_singular' => 'Area Administrativa',
+    'advert' => [
+        'title'          => 'Anuncios',
+        'title_singular' => 'Anuncio',
+        'fields'         => [
+            'id'                           => 'ID',
+            'id_helper'                    => ' ',
+            'created_at'                   => 'Created at',
+            'created_at_helper'            => ' ',
+            'updated_at'                   => 'Updated at',
+            'updated_at_helper'            => ' ',
+            'deleted_at'                   => 'Deleted at',
+            'deleted_at_helper'            => ' ',
+            'social_name'                  => 'Razao Social',
+            'social_name_helper'           => ' ',
+            'fantasy_name'                 => 'Nome Fantasia',
+            'fantasy_name_helper'          => ' ',
+            'social_number'                => 'CPF/CNPJ',
+            'social_number_helper'         => ' ',
+            'phone'                        => 'Telefone',
+            'phone_helper'                 => ' ',
+            'mobile'                       => 'Celular',
+            'mobile_helper'                => ' ',
+            'zipcode'                      => 'CEP',
+            'zipcode_helper'               => ' ',
+            'state'                        => 'ESTADO',
+            'state_helper'                 => ' ',
+            'contact_name'                 => 'Nome Resp.',
+            'contact_name_helper'          => ' ',
+            'contact_phone'                => 'Telefone Resp.',
+            'contact_phone_helper'         => ' ',
+            'contact_mobile'               => 'Celular Resp.',
+            'contact_mobile_helper'        => ' ',
+            'contact_email'                => 'Email Resp.',
+            'contact_email_helper'         => ' ',
+            'contact_social_number'        => 'cpf/cnpj Resp.',
+            'contact_social_number_helper' => ' ',
+            'reach_states'                 => 'Alcance/Estados',
+            'reach_states_helper'          => ' ',
+            'reach_cities'                 => 'Alcance/Cidades',
+            'reach_cities_helper'          => ' ',
+            'reach_categories'             => 'Alcance/Categorias',
+            'reach_categories_helper'      => ' ',
+            'reach_segments'               => 'Alcance/Areas',
+            'reach_segments_helper'        => ' ',
+            'reach_genres'                 => 'Alcance/Sexo',
+            'reach_genres_helper'          => ' ',
+            'advertising_place'            => 'Local do Anuncio',
+            'advertising_place_helper'     => ' ',
+            'total_price'                  => 'Custo Anuncio',
+            'total_price_helper'           => ' ',
+            'status'                       => 'Status',
+            'status_helper'                => ' ',
+            'reject_reason'                => 'Motivo Rejeição',
+            'reject_reason_helper'         => ' ',
+            'media_type'                   => 'Tipo de Midia',
+            'media_type_helper'            => ' ',
+            'media_link'                   => 'Link',
+            'media_link_helper'            => ' ',
+            'media_file'                   => 'Upload',
+            'media_file_helper'            => ' ',
+            'start_at'                     => 'Começa em',
+            'start_at_helper'              => ' ',
+            'end_at'                       => 'Termina em',
+            'end_at_helper'                => ' ',
+            'enabled'                      => 'Ativo?',
+            'enabled_helper'               => ' ',
+        ],
+    ],
+    'localAdvertisement' => [
+        'title'          => 'Locais de Anuncios',
+        'title_singular' => 'Locais de Anuncio',
+        'fields'         => [
+            'id'                      => 'ID',
+            'id_helper'               => ' ',
+            'name'                    => 'Nome',
+            'name_helper'             => ' ',
+            'page'                    => 'Pagina',
+            'page_helper'             => ' ',
+            'location'                => 'Lugar',
+            'location_helper'         => ' ',
+            'country_percent'         => '% por País',
+            'country_percent_helper'  => ' ',
+            'genre_percent'           => '% por Sexo',
+            'genre_percent_helper'    => ' ',
+            'category_percent'        => '% por Categoria',
+            'category_percent_helper' => ' ',
+            'area_percent'            => '% por Area',
+            'area_percent_helper'     => ' ',
+            'days_percent'            => 'Diária',
+            'days_percent_helper'     => ' ',
+            'created_at'              => 'Created at',
+            'created_at_helper'       => ' ',
+            'updated_at'              => 'Updated at',
+            'updated_at_helper'       => ' ',
+            'deleted_at'              => 'Deleted at',
+            'deleted_at_helper'       => ' ',
+        ],
+    ],
+    'publishCall' => [
+        'title'          => 'Chamadas de Publicação',
+        'title_singular' => 'Chamadas de Publicação',
+        'fields'         => [
+            'id'                       => 'ID',
+            'id_helper'                => ' ',
+            'magazine'                 => 'Revista',
+            'magazine_helper'          => ' ',
+            'issn'                     => 'ISSN',
+            'issn_helper'              => ' ',
+            'qualis'                   => 'Qualis',
+            'qualis_helper'            => ' ',
+            'frequency'                => 'Periodicidade',
+            'frequency_helper'         => ' ',
+            'dossie'                   => 'Dossiê',
+            'dossie_helper'            => ' ',
+            'theme'                    => 'Tema',
+            'theme_helper'             => ' ',
+            'organizatin'              => 'Organização',
+            'organizatin_helper'       => ' ',
+            'submission_period'        => 'Periodo de Submissão',
+            'submission_period_helper' => ' ',
+            'link'                     => 'Link',
+            'link_helper'              => ' ',
+            'is_active'                => 'Ativo?',
+            'is_active_helper'         => ' ',
+            'created_at'               => 'Created at',
+            'created_at_helper'        => ' ',
+            'updated_at'               => 'Updated at',
+            'updated_at_helper'        => ' ',
+            'deleted_at'               => 'Deleted at',
+            'deleted_at_helper'        => ' ',
+        ],
+    ],
+    'eventCall' => [
+        'title'          => 'Chamadas de Eventos',
+        'title_singular' => 'Chamadas de Evento',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'title'             => 'Titulo',
+            'title_helper'      => ' ',
+            'media'             => 'Media',
+            'media_helper'      => 'Inserir Código de Incorporação',
+            'media_type'        => 'Tipo de Mídia',
+            'media_type_helper' => ' ',
+            'event'             => 'Evento',
+            'event_helper'      => ' ',
+            'creator'           => 'Criado Por',
+            'creator_helper'    => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
+    'home' => [
+        'title'          => 'Home',
+        'title_singular' => 'Home',
     ],
 ];

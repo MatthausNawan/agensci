@@ -98,6 +98,39 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('promotion_access')
+                            <li class="{{ request()->is("admin/promotions") || request()->is("admin/promotions/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.promotions.index") }}">
+                                    <i class="fa-fw far fa-address-card">
+
+                                    </i>
+                                    <span>{{ trans('cruds.promotion.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('publish_call_access')
+                            <li class="{{ request()->is("admin/publish-calls") || request()->is("admin/publish-calls/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.publish-calls.index") }}">
+                                    <i class="fa-fw fas fa-cogs">
+
+                                    </i>
+                                    <span>Chamadas de Publicações</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('event_call_access')
+                            <li class="{{ request()->is("admin/event-calls") || request()->is("admin/event-calls/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.event-calls.index") }}">
+                                    <i class="fa-fw fas fa-bullhorn">
+
+                                    </i>
+                                    <span>Chamadas de Evento</span>
+
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcan
@@ -203,28 +236,6 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('magazine_access')
-                            <li class="{{ request()->is("admin/magazines") || request()->is("admin/magazines/*") ? "active" : "" }}">
-                                <a href="{{ route("admin.magazines.index") }}">
-                                    <i class="fa-fw fab fa-adversal">
-
-                                    </i>
-                                    <span>{{ trans('cruds.magazine.title') }}</span>
-
-                                </a>
-                            </li>
-                        @endcan
-                        @can('headline_access')
-                            <li class="{{ request()->is("admin/headlines") || request()->is("admin/headlines/*") ? "active" : "" }}">
-                                <a href="{{ route("admin.headlines.index") }}">
-                                    <i class="fa-fw fab fa-adversal">
-
-                                    </i>
-                                    <span>{{ trans('cruds.headline.title') }}</span>
-
-                                </a>
-                            </li>
-                        @endcan
                         @can('external_lik_access')
                             <li class="{{ request()->is("admin/external-liks") || request()->is("admin/external-liks/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.external-liks.index") }}">
@@ -236,26 +247,13 @@
                                 </a>
                             </li>
                         @endcan
-                    </ul>
-                </li>
-            @endcan
-            @can('area_administrativa_access')
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa-fw fas fa-exchange-alt">
-
-                        </i>
-                        <span>{{ trans('cruds.areaAdministrativa.title') }}</span>
-                        <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        @can('promotion_access')
-                            <li class="{{ request()->is("admin/promotions") || request()->is("admin/promotions/*") ? "active" : "" }}">
-                                <a href="{{ route("admin.promotions.index") }}">
-                                    <i class="fa-fw far fa-address-card">
+                        @can('local_advertisement_access')
+                            <li class="{{ request()->is("admin/local-advertisements") || request()->is("admin/local-advertisements/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.local-advertisements.index") }}">
+                                    <i class="fa-fw fab fa-adversal">
 
                                     </i>
-                                    <span>{{ trans('cruds.promotion.title') }}</span>
+                                    <span>Locais de Anuncios</span>
 
                                 </a>
                             </li>
@@ -268,6 +266,33 @@
                                     </i>
                                     <span>{{ trans('cruds.contest.title') }}</span>
 
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
+            @can('home_access')
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa-fw fas fa-home">
+
+                        </i>
+                        <span>Home</span>
+                        <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @can('headline_access')
+                            <li class="{{ request()->is("admin/headlines") || request()->is("admin/headlines/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.headlines.index") }}">                                    
+                                    <span>{{ trans('cruds.headline.title') }}</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('advert_access')
+                            <li class="{{ request()->is("admin/adverts") || request()->is("admin/adverts/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.adverts.index") }}">                                    
+                                    <span>Anúncios</span>
                                 </a>
                             </li>
                         @endcan

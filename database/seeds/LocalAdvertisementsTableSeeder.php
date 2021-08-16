@@ -16,7 +16,7 @@ class LocalAdvertisementsTableSeeder extends Seeder
         $places = [
             [
                 'name' => 'Página Home Topo',
-                'page' => 'Home',
+                'page' => 'HOME',
                 'location' => 'Topo',
                 'price' => 2.00,
                 'country_percent' => 0.6,
@@ -29,7 +29,7 @@ class LocalAdvertisementsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Página Professor Lateral 1',
-                'page' => 'Professor',
+                'page' => 'TEACHER',
                 'location' => 'Lateral 1',
                 'price' => 6.00,
                 'country_percent' => 0.2,
@@ -42,7 +42,7 @@ class LocalAdvertisementsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Página Estudante Lateral 1',
-                'page' => 'Estudante',
+                'page' => 'STUDENT',
                 'location' => 'Flutuante',
                 'price' => 5.00,
                 'country_percent' => 0.2,
@@ -55,8 +55,21 @@ class LocalAdvertisementsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Base Página Esdutante Restrita',
-                'page' => 'Estudante Restrita',
+                'page' => 'ESTUDENT_RESTRICT',
                 'location' => 'Base',
+                'price' => 9.00,
+                'country_percent' => 0.2,
+                'genre_percent' => 0.3,
+                'category_percent' => 0.5,
+                'area_percent' => 0.20,
+                'days_percent' => 0.18,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Pagina Padrão',
+                'page' => 'DEFAULT',
+                'location' => 'Topo',
                 'price' => 9.00,
                 'country_percent' => 0.2,
                 'genre_percent' => 0.3,
