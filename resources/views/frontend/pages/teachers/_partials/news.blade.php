@@ -1,34 +1,34 @@
-<div class="my-2">
-    <div class="d-flex flex-row justify-content-between border-bottom border-dark ">
-        <h5 class="text-bold">{{$title ?? 'Titulo'}}</h5>
-       
-        <!-- <a href="#" class="p-1 text-dark external-button">
-            Visualizar Todas
-        </a> -->
-    </div>
-    <div class="my-2">
+<div class="agency-card my-2">    
+    <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>        
+    <div class="my-2">        
         <div class="owl-carousel owl-theme">
-        @foreach($posts as $post)        
-            <div class="card news-card">                           
-                <div class="posts-info m-2 d-flex flex-column">
-                    <div class="d-flex flex-row justify-content-between news-header border-bottom">
-                        <a href="{{ route('site.post',$post->slug) }}" class="btn-link">
-                            <h6 class="text-dark">Notícia - {{$post->author->name ?? ''}}</h6>
-                        </a>
-                        <small class="mb-3">Postado em: {{ $post->created_at->format('d/m/Y') }}</small>
-                    </div>
+            @foreach($posts as $post)        
+                <div class="agency-card mx-1">                           
+                    <div class="posts-info m-2 d-flex flex-column">
+                        <div class="d-flex flex-row justify-content-between border-bottom">
+                            <a href="{{ route('site.post',$post->slug) }}" class="btn-link">
+                                <h6 class="text-white"><span class="text-uppercase">Notícia</span> - {{$post->author->name ?? ''}}</h6>
+                            </a>
+                            <small class="mb-3">{{ $post->created_at->format('d/m/Y') }}</small>
+                        </div>
+                        
+                        <div class="bg-white p-3 d-fle flex-column">
+                            <h3 class="agency-card-title">{{ $post->title ?? ''}}</h3>
+                            <span class="agency-card-text text-justify">{!! Str::limit($post->detail,250) !!}</span>
+                            <a href="{{ route('site.post',$post->slug) }}" class="text-right mr-2 external-button">Continue Lendo</a>
+                        </div>
+                    </div>                  
+                </div>    
+            @endforeach   
+        </div> 
+        <!-- <div class="agency-card-nav-news d-flex flex-row justify-content-between align-self-center px-2 mb-1"> -->
+                    <!-- <a href="" class="text-white" id="owl-post-prev"><i class="fa fa-chevron-left pr-3"></i></a> -->
                     
-                    <h3 class="news-title mt-2">{{ $post->title ?? ''}}</h3>
-                    <span class="news-body text-justify">{!! Str::limit($post->detail,500) !!}</span>
-                    <a href="{{ route('site.post',$post->slug) }}" class="text-right mr-2 text-dark ">Continue Lendo</a>
-                </div>  
-                <div class="card-footer p-0 m-0 text-center text-dark">
-                    <a href="">Ver todas</a>
-                </div>          
-            </div>    
-        @endforeach   
-        </div>            
+                    <!-- <a href="" class="text-white " id="owl-post-next"><i class="fa fa-chevron-right pl-3"></i></a> -->
+        <!-- </div>            -->
     </div>
 </div>
+
+
 
 

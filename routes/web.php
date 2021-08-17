@@ -35,6 +35,9 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
 
     Route::get('/noticia/{slug}', 'HomeController@showPost')->name('site.post');
 
+    Route::view('/noticias', 'frontend.pages.static.post_list');
+    Route::view('/chamadas-de-publicacao', 'frontend.pages.static.lists.publish_calls');
+
     Route::get('/pesquisar/categoria/{category}', 'HomeController@searchLink')->name('site.search-links');
 
     Route::get('/procurar-eventos', 'EventController@search')->name('site.serach-event');

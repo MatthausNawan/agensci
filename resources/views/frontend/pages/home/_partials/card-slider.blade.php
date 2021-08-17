@@ -2,11 +2,11 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         @foreach($se as $seg)
         <li class="nav-item">
-            <a class="nav-link bg-light text-white {{ $loop->first ? 'active' : 'ml-1' }}" id="{{$seg->id}}-tab" data-toggle="tab" href="#tab{{$seg->id}}" role="tab" aria-controls="{{$seg->id}}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{$seg->name}}</a>
+            <a class="nav-link {{ $loop->first ? 'active' : 'ml-1' }}" id="{{$seg->id}}-tab" data-toggle="tab" href="#tab{{$seg->id}}" role="tab" aria-controls="{{$seg->id}}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{$seg->name}}</a>
         </li>
         @endforeach
     </ul>
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="myTabContent">        
         @foreach($events as $key => $event)
         <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab{{$key}}" role="tabpanel" aria-labelledby="{{$key}}-tab">
             <!-- <div class="card-group {{ $event->count() >= 4 ? $class : ' '  }}"> -->
@@ -28,6 +28,6 @@
                 @endforeach
             </div>
         </div>
-        @endforeach
+        @endforeach        
     </div>
 </div>

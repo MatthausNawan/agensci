@@ -1,16 +1,10 @@
-<div class="my-2">    
-    <div class="my-2">
+<div class="agency-card">    
+    <span class="agency-card-title text-center d-block">{{$title ?? 'Titulo'}}</span>        
+            
         <div class="owl-carousel owl-theme">
             @foreach($publish_calls as $publish_call)
-            <div class="card news-card">                           
-                <div class="posts-info m-2 d-flex flex-column">
-                    <div class="d-flex flex-row justify-content-between news-header border-bottom">
-                        <a href="#" class="btn-link">
-                            <h6 class="text-dark">Chamada de Publicação</h6>
-                        </a>
-                        <small class="mb-3">{{ $publish_call->created_at->format('d/m/Y') }}</small>
-                    </div>
-                    
+            <div class="agency-card mx-1">                           
+                <div class=" d-flex flex-column">
                     <div class="d-flex flex-column mt-2">
                         <div class="foment-data d-flex flex-row justify-content-start">
                             <span class="foment-label ">Revista</span>
@@ -47,12 +41,9 @@
                             <span class="foment-value"><a href="{{ $publish_call->link }}" target="_blank">{{ Str::limit($publish_call->link,30) }}</a> </span>
                         </div>
                     </div>
-                </div>  
-                <div class="card-footer p-0 m-0 text-center text-dark">
-                    <a href="">Ver todas</a>
-                </div>          
+                </div>                      
             </div>    
             @endforeach
         </div>
-    </div>
+    
 </div>

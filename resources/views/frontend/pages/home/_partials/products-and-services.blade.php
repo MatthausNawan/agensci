@@ -5,10 +5,10 @@
     <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
         @if($products)
-        <a class="nav-item bg-light text-white nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Produtos</a>
+        <a class="nav-item nav-link active border-bottom-0" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Produtos</a>
         @endif
         @if($services)
-        <a class="nav-item bg-light text-white nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Serviços</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Serviços</a>
         @endif
 
     </div>

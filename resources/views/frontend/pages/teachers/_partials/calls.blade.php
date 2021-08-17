@@ -1,17 +1,10 @@
-<div class="my-2">    
-    <div class="my-2">
+<div class="agency-card">    
+    <span class="agency-card-title text-center d-block">{{$title ?? 'Titulo'}}</span>   
         <div class="owl-carousel owl-theme">
             @foreach($foment_calls as $call)
-            <div class="card news-card">                           
-                <div class="posts-info m-2 d-flex flex-column">
-                    <div class="d-flex flex-row justify-content-between news-header border-bottom">
-                        <a href="#" class="btn-link">
-                            <h6 class="text-dark">Chamada de Fomento</h6>
-                        </a>
-                        <small class="mb-3">{{ $call->created_at->format('d/m/Y') }}</small>
-                    </div>
-                    
-                    <div class="d-flex flex-column mt-2">
+            <div class="agency-card mx-1">      
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-column">
                         <div class="foment-data d-flex flex-row justify-content-start">
                             <span class="foment-label ">Orgao/Entidade</span>
                             <span class="foment-value">{{ $call->entity }}</span>

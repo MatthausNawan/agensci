@@ -1,15 +1,14 @@
-<div class="my-2">
-    <div class="d-flex flex-row border-bottom border-dark">
-    <h5 class="text-bold d-flex  mt-1">{{$title ?? 'Titulo'}}</h5>
-    <!-- <a href="#" class="p-1 btn-block text-right text-dark external-button"><span class="mr-3"><i class="fa fa-search"></i>Visualizar Todas</span></a> -->
-    </div>
-    <div class="my-2">
+<div class="agency-card my-2">    
+    <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>        
+    <div class="my-2">        
         <div class="owl-carousel owl-theme">
-            @foreach($students_profiles as $profile)
-            <div class="card news-card">
-                <div class="card-body">                    
-                    <div class="row">                       
-                        <div class="col-9">                            
+            @foreach($students_profiles as $profile)            
+                <div class="agency-card d-flex flex-column bg-white">                    
+                    <div class="row d-flex flex-row">
+                        <div class="col-2">
+                            <img src="{{ $profile->photo ? $profile->photo->getUrl() : asset('images/avatar.png')}}" alt="" class="" style="width:100%;height:100%" >
+                        </div>                       
+                        <div class="col-10">                            
                             <div class="d-flex flex-column">
                                 <div class="foment-data d-flex flex-row justify-content-start">
                                     <span class="foment-label ">Nome</span>
@@ -25,18 +24,18 @@
                                 </div> 
                                 <div class="foment-data d-flex flex-row justify-content-start">
                                     <span class="foment-label">Lattes</span>
-                                    <span class="foment-value"><a href="{{ $profile->lattes_link }}">{{ Str::limit($profile->lattes_link,30) }}</a> </span>
+                                    <span class="foment-value"><a href="{{ $profile->lattes_link }}">{{ $profile->lattes_link }}</a> </span>
                                 </div>                              
                             </div>
                         </div>
-                        <div class="col-3">
-                            <img src="{{ $profile->photo ? $profile->photo->getUrl() : asset('images/avatar.png')}}" alt="" class="img-thumbnail p-0 m-0" >
-                        </div>
+                        
                     </div>
                     <div class="row">
+                        <div class="col-12">
                         <div class="foment-data d-flex flex-row justify-content-start">
-                            <span class="foment-label">Perfil</span>
+                            
                             <div class="d-flex flex-column foment-value">
+                                <span class="font-weight-bold">Perfil</span>
                                 <span class="">{{$profile->bio}}</span>
                                 <small class="text-right">
                                     <span class="text-dark">Enviar Mensagem</span>
@@ -46,10 +45,10 @@
                                 </small>
                             </div>
                         </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
+                </div>                         
+            @endforeach            
+        </div>       
     </div>
 </div>

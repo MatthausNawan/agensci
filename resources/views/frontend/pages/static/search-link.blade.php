@@ -1,6 +1,6 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
-@section('content')
+@section('page_content')
 <div class="row">
     <div class="col-lg-12 my-2 text-center">
         <img src="https://via.placeholder.com/1000x100" alt="" class="img-rounded">
