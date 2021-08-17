@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Painel\Teachers;
 
-use App\EventCall;
+use App\Models\EventCall;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreTeacher;
