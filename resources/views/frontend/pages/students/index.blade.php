@@ -83,7 +83,8 @@
         loop:true,
         margin:10,
         nav:true,
-        dots:true,
+        navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+        dots:false,        
         responsive:{
             0:{
                 items:1
@@ -95,6 +96,7 @@
                 items:1
             }
         }
-    })
+    })   
+
 </script>
 @endsection

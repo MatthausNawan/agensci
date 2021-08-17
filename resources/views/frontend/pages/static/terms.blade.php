@@ -1,9 +1,10 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 
-@section('content')
+@section('page_content')
 <div class="row">
     <div class="col-lg-12">
+        <div class="links-wrapper p-2">
         <h2>TERMOS E CONDIÇÕES DE USO</h2>
         <h4>1. Aceitação dos Termos e Condições de Uso</h4>
         <p class="text-justify">A utilização do site <a href="{{ env("APP_URL") }}">Equipe AgenSci.com</a> está condicionada à aceitação na totalidade dos termos e condições de uso abaixo descritos. Portanto, é necessário a sua leitura e aceitação para o registro no site e cadastro de eventos.</p>
@@ -56,6 +57,7 @@
 
         <p class="text-justify">Muito Obrigado.</p>
         <p class="text-justify">Equipe<strong><a href="{{ env("APP_URL") }}"> AgenSci.com</a></strong></p>
+        </div>
     </div>
 </div>
 @endsection

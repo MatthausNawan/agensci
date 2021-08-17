@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label class="required" for="nome">Nome:</label>
-                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') ?? '' }}">
+                    <input type="text" name="name" class="form-control form-control-sm {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') ?? '' }}">
                     @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="sexo">Sexo:</label>
-                        <select class="form-control" name="genre">
+                        <select class="form-control form-control-sm" name="genre">
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
                             <option value="OTHER">Outro</option>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="Data de nascimento">Data de nascimento:</label>
-                        <input type="date" class="form-control" name="birth_date" value="{{ old('birth_date') }}">
+                        <input type="date" class="form-control form-control-sm" name="birth_date" value="{{ old('birth_date') }}">
                         @if($errors->has('birth_date'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('birth_date') }}
