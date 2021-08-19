@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <label class="required" for="nome">Nome:</label>
-                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $profile->name ?? old('name') ?? '' }}">
+                    <input type="text" name="name" class="form-control form-control-sm {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $profile->name ?? old('name') ?? '' }}">
                     @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="sexo">Sexo:</label>
-                        <select class="form-control" name="genre">
+                        <select class="form-control form-control-sm" name="genre">
                             <option value="M" {{ $profile->genre == 'M' ? 'selected' : ''}}>Masculino</option>
                             <option value="F" {{ $profile->genre == 'F' ? 'selected' : ''}}>Feminino</option>
                             <option value="OTHER" {{ $profile->genre == 'OTHER' ? 'selected' : ''}}>Outro</option>
@@ -39,14 +39,14 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="Data de nascimento">Data de nascimento:</label>
-                        <input type="date" class="form-control" name="birth_date" value="{{ $profile->birth_date ?? date('Y-m-d') }}" s>
+                        <input type="date" class="form-control form-control-sm" name="birth_date" value="{{ $profile->birth_date ?? date('Y-m-d') }}" s>
                     </div>
                 </div>
 
 
                 <div class="form-group">
                     <label class="required" for="formacao">Formação:</label>
-                    <input type="text" name="formation" class="form-control {{ $errors->has('formation') ? 'is-invalid' : '' }}" value="{{ $profile->formation ?? old('formation') ?? '' }}">
+                    <input type="text" name="formation" class="form-control form-control-sm {{ $errors->has('formation') ? 'is-invalid' : '' }}" value="{{ $profile->formation ?? old('formation') ?? '' }}">
                     @if($errors->has('formation'))
                     <div class="invalid-feedback">
                         {{ $errors->first('formation') }}
@@ -56,7 +56,7 @@
 
                 <div class="form-group">
                     <label class="required" for="pos graduacao">Pós-graduação:</label>
-                    <input type="text" name="speciality" class="form-control {{ $errors->has('speciality') ? 'is-invalid' : '' }}" value="{{ $profile->speciality ?? old('speciality') ?? '' }}">
+                    <input type="text" name="speciality" class="form-control form-control-sm {{ $errors->has('speciality') ? 'is-invalid' : '' }}" value="{{ $profile->speciality ?? old('speciality') ?? '' }}">
                     @if($errors->has('speciality'))
                     <div class="invalid-feedback">
                         {{ $errors->first('speciality') }}
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <label class="required" for="Área de atuação">Área de atuação(Lattes):</label>
-                    <input type="text" name="occupation_lattes" class="form-control {{ $errors->has('occupation_lattes') ? 'is-invalid' : '' }}" value="{{ $profile->occupation_lattes ?? old('occupation_lattes') ?? '' }}">
+                    <input type="text" name="occupation_lattes" class="form-control form-control-sm {{ $errors->has('occupation_lattes') ? 'is-invalid' : '' }}" value="{{ $profile->occupation_lattes ?? old('occupation_lattes') ?? '' }}">
                     @if($errors->has('occupation_lattes'))
                     <div class="invalid-feedback">
                         {{ $errors->first('occupation_lattes') }}
@@ -77,7 +77,7 @@
 
                 <div class="form-group">
                     <label class="required" for="curriculo lattes">Curriculo lattes:</label>
-                    <input type="text" name="resume_link" class="form-control {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ $profile->resume_link ?? old('resume_link') ?? '' }}">
+                    <input type="text" name="resume_link" class="form-control form-control-sm {{ $errors->has('resume_link') ? 'is-invalid' : '' }}" value="{{ $profile->resume_link ?? old('resume_link') ?? '' }}">
                     @if($errors->has('resume_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('resume_link') }}
@@ -87,7 +87,7 @@
 
                 <div class="form-group">
                     <label class="required" for="profissao">Profissão:</label>
-                    <input type="text" name="profession" class="form-control {{ $errors->has('profession') ? 'is-invalid' : '' }}" value="{{ $profile->profession ?? old('profession') ?? '' }}">
+                    <input type="text" name="profession" class="form-control form-control-sm {{ $errors->has('profession') ? 'is-invalid' : '' }}" value="{{ $profile->profession ?? old('profession') ?? '' }}">
                     @if($errors->has('profession'))
                     <div class="invalid-feedback">
                         {{ $errors->first('profession') }}
@@ -97,7 +97,7 @@
 
                 <div class="form-group">
                     <label class="required" for="conselho de classes">Conselho de classe:</label>
-                    <input type="text" name="class_council" class="form-control {{ $errors->has('class_council') ? 'is-invalid' : '' }}" value="{{ $profile->class_council ?? old('class_council') ?? '' }}">
+                    <input type="text" name="class_council" class="form-control form-control-sm {{ $errors->has('class_council') ? 'is-invalid' : '' }}" value="{{ $profile->class_council ?? old('class_council') ?? '' }}">
                     @if($errors->has('class_council'))
                     <div class="invalid-feedback">
                         {{ $errors->first('class_council') }}
@@ -107,7 +107,7 @@
 
                 <div class="form-group">
                     <label class="required" for="instituição">Instituição trabalha:</label>
-                            <input type="text" name="institution_works" class="form-control {{ $errors->has('institution_works') ? 'is-invalid' : '' }}" value="{{ $profile->institution_works ?? old('institution_works') ?? '' }}">
+                            <input type="text" name="institution_works" class="form-control form-control-sm {{ $errors->has('institution_works') ? 'is-invalid' : '' }}" value="{{ $profile->institution_works ?? old('institution_works') ?? '' }}">
                     @if($errors->has('institution_works'))
                     <div class="invalid-feedback">
                         {{ $errors->first('institution_works') }}
@@ -117,7 +117,7 @@
 
                 <div class="form-group">
                     <label class="required" for="cargo">Cargo/função:</label>
-                    <input type="text" name="office" class="form-control {{ $errors->has('office') ? 'is-invalid' : '' }}" value="{{ $profile->office ?? old('office') ?? '' }}">
+                    <input type="text" name="office" class="form-control form-control-sm {{ $errors->has('office') ? 'is-invalid' : '' }}" value="{{ $profile->office ?? old('office') ?? '' }}">
                     @if($errors->has('office'))
                     <div class="invalid-feedback">
                         {{ $errors->first('office') }}
@@ -128,7 +128,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label class="required" for="matricula">Matricula:</label>
-                        <input type="text" name="enrollment_number" class="form-control {{ $errors->has('enrollment_number') ? 'is-invalid' : '' }}" value="{{ $profile->enrollment_number ?? old('enrollment_number') ?? '' }}">
+                        <input type="text" name="enrollment_number" class="form-control form-control-sm {{ $errors->has('enrollment_number') ? 'is-invalid' : '' }}" value="{{ $profile->enrollment_number ?? old('enrollment_number') ?? '' }}">
                         @if($errors->has('enrollment_number'))
                         <div class="invalid-feedback">
                             {{ $errors->first('enrollment_number') }}
@@ -138,7 +138,7 @@
 
                     <div class="form-group col-6">
                         <label class="required" for="cpf">CPF:</label>
-                        <input type="text" name="cpf" class="cpf form-control {{ $errors->has('cpf') ? 'is-invalid' : '' }}" value="{{ $profile->cpf ??  old('cpf') ?? '' }}" placeholder="000.000.000-99">
+                        <input type="text" name="cpf" class="cpf form-control form-control-sm {{ $errors->has('cpf') ? 'is-invalid' : '' }}" value="{{ $profile->cpf ??  old('cpf') ?? '' }}" placeholder="000.000.000-99">
                         @if($errors->has('cpf'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cpf') }}
@@ -151,7 +151,7 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label class="required" for="celular">Celular:</label>
-                        <input type="text" name="cell_number" class="mobile form-control {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" value="{{ $profile->cell_number ?? old('cell_number') ?? '' }}" placeholder="(DDD)99999-9999">
+                        <input type="text" name="cell_number" class="mobile form-control form-control-sm {{ $errors->has('cell_number') ? 'is-invalid' : '' }}" value="{{ $profile->cell_number ?? old('cell_number') ?? '' }}" placeholder="(DDD)99999-9999">
                         @if($errors->has('cell_number'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cell_number') }}
@@ -160,7 +160,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="required" for="whatsapp">Whatsapp:</label>
-                        <input type="text" name="whatsapp" class="mobile form-control {{ $errors->has('whatsapp') ? 'is-invalid' : '' }}" value="{{ $profile->whatsapp ?? old('whatsapp') ?? '' }}" placeholder="(DDD)99999-9999">
+                        <input type="text" name="whatsapp" class="mobile form-control form-control-sm {{ $errors->has('whatsapp') ? 'is-invalid' : '' }}" value="{{ $profile->whatsapp ?? old('whatsapp') ?? '' }}" placeholder="(DDD)99999-9999">
                         @if($errors->has('whatsapp'))
                         <div class="invalid-feedback">
                             {{ $errors->first('whatsapp') }}
@@ -172,7 +172,7 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label class="required" for="nome">CEP:</label>
-                        <input type="text" id="cep" name="postal_code" class="cep form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" value="{{ $profile->postal_code ?? old('postal_code') ?? '' }}" placeholder="00.000-000">
+                        <input type="text" id="cep" name="postal_code" class="cep form-control form-control-sm {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" value="{{ $profile->postal_code ?? old('postal_code') ?? '' }}" placeholder="00.000-000">
                         @if($errors->has('postal_code'))
                         <div class="invalid-feedback">
                             {{ $errors->first('postal_code') }}
@@ -181,7 +181,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="required" for="bairro">Bairro:</label>
-                        <input type="text" id="bairro" name="district" class="form-control {{ $errors->has('district') ? 'is-invalid' : '' }}" value="{{ $profile->district ??  old('district') ?? '' }}">
+                        <input type="text" id="bairro" name="district" class="form-control form-control-sm {{ $errors->has('district') ? 'is-invalid' : '' }}" value="{{ $profile->district ??  old('district') ?? '' }}">
                         @if($errors->has('district'))
                         <div class="invalid-feedback">
                             {{ $errors->first('district') }}
@@ -193,7 +193,7 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label class="required" for="pais">País:</label>
-                        <select name="country" id="" class="form-control">
+                        <select name="country" id="" class="form-control form-control-sm">
                                 <option value="">Selecione...</option>
                             @foreach($countries as $country)
                                 <option value="{{ $country->name }}" {{ $profile->country == $country->name ? 'selected' : ''}}>{{ $country->name}}</option>
@@ -207,7 +207,7 @@
                     </div>
                     <div class="form-group  col-md-4">
                         <label class="required" for="uf">UF:</label>
-                        <input type="text" id="uf" name="uf" class="form-control {{ $errors->has('uf') ? 'is-invalid' : '' }}" value="{{ $profile->uf ?? old('uf') ?? '' }}">
+                        <input type="text" id="uf" name="uf" class="form-control form-control-sm {{ $errors->has('uf') ? 'is-invalid' : '' }}" value="{{ $profile->uf ?? old('uf') ?? '' }}">
                         @if($errors->has('uf'))
                         <div class="invalid-feedback">
                             {{ $errors->first('uf') }}
@@ -216,7 +216,7 @@
                     </div>
                     <div class="form-group  col-md-4">
                         <label class="required" for="cidade">Cidade:</label>
-                        <input type="text" id="cidade" name="city" class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" value="{{ $profile->city ?? old('city') ?? '' }}">
+                        <input type="text" id="cidade" name="city" class="form-control form-control-sm {{ $errors->has('city') ? 'is-invalid' : '' }}" value="{{ $profile->city ?? old('city') ?? '' }}">
                         @if($errors->has('city'))
                         <div class="invalid-feedback">
                             {{ $errors->first('city') }}
@@ -227,11 +227,11 @@
 
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <input type="text" class="form-control" name="linkedin" placeholder="Link do Likedin" value="{{ $profile->linkedin ?? old('linkedin') }}">
-                        <input type="text" class="form-control" name="facebook" placeholder="Link do Facebook" value="{{ $profile->facebook ?? old('facebook') }}">
-                        <input type="text" class="form-control" name="instagram" placeholder="Link do Instagram" value="{{$profile->instagram ??  old('instagram') }}">
-                        <input type="text" class="form-control" name="twitter" placeholder="Link do Twitter" value="{{ $profile->twitter ?? old('twitter') }}">
-                        <input type="text" class="form-control" name="youtube" placeholder="Link do Canal do YouTube" value="{{ $profile->youtube ?? old('youtube') }}">
+                        <input type="text" class="form-control form-control-sm" name="linkedin" placeholder="Link do Likedin" value="{{ $profile->linkedin ?? old('linkedin') }}">
+                        <input type="text" class="form-control form-control-sm" name="facebook" placeholder="Link do Facebook" value="{{ $profile->facebook ?? old('facebook') }}">
+                        <input type="text" class="form-control form-control-sm" name="instagram" placeholder="Link do Instagram" value="{{$profile->instagram ??  old('instagram') }}">
+                        <input type="text" class="form-control form-control-sm" name="twitter" placeholder="Link do Twitter" value="{{ $profile->twitter ?? old('twitter') }}">
+                        <input type="text" class="form-control form-control-sm" name="youtube" placeholder="Link do Canal do YouTube" value="{{ $profile->youtube ?? old('youtube') }}">
                     </div>
                 </div>
 
@@ -254,7 +254,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="razao" class="required">Nova Senha</label>
-                        <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="deve ter no mínino 8 caracteres">
+                        <input type="password" class="form-control form-control-sm {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="deve ter no mínino 8 caracteres">
                         @if($errors->has('password'))
                         <div class="invalid-feedback">
                             {{ $errors->first('password') }}
@@ -263,7 +263,7 @@
                     </div>
                     <div class="form-group">
                         <label for="razao">Repetir Nova Senha</label>
-                        <input type="password" class="form-control" name="password_confirmation">
+                        <input type="password" class="form-control form-control-sm" name="password_confirmation">
                     </div>
                 </div>
                 <div class="card-footer">

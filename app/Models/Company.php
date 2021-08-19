@@ -80,4 +80,9 @@ class Company extends Model implements HasMedia
 
         return $file;
     }
+
+    public function scopeRandomAble($query, $lenght)
+    {
+        return $query->inRandomOrder()->limit($lenght);
+    }
 }

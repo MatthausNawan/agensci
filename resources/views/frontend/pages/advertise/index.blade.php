@@ -2,18 +2,11 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12 m-2">
-        <img src="https://via.placeholder.com/1200x90" alt="" class="img-rounded" width="100%" height="90">
-    </div>
-</div>
-
-<div class="row">
+<div class="row mb-5">
     <div class="col-lg-10 offset-lg-1">
         <div class="card">
-            <div class="card-header bg-dark">
-                <div class="card-title text-white">Anuncie Aqui</div>
-                
+            <div class="card-header">
+                <div class="card-title">Anuncie Aqui: {{Session::get('local_ads')->name }}</div>                
             </div>
             <div class="card-body">
                 <small>Campos com <span class="text-danger">*</span> são obrigatórios</small>
@@ -206,7 +199,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('advertising_place_id') ? 'is-invalid' : '' }}">
+                    {{--<div class="form-group {{ $errors->has('advertising_place_id') ? 'is-invalid' : '' }}">
                         <label for="place" class="required">Selecione o Local que deseja anunciar</label>
                         <select name="advertising_place_id" class="form-control input-lg {{ $errors->has('advertising_place_id') ? 'is-invalid' : '' }}">
                             @foreach($locals as $local)
@@ -218,39 +211,41 @@
                                 {{ $errors->first('advertising_place_id') }}
                             </div>
                         @endif
-                    </div>
+                    </div>--}}
 
-                    <div class="row">
-                        <div class="form-group col-4">
-                            <label for="media" class="required">Tipo de Anúncio</label>
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="inlineradio1" value="VIDEO" name="media_type">
-                                    <label class="form-check-label" for="inlineradio1">Video</label>
+                    <div x-data="{ radioValue: 'image' }">
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="media" class="required">Tipo de Anúncio</label>
+                                <div class="form-group" >
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input"  x-model="radioValue" type="radio" id="inlineradio1" value="video" name="media_type" >
+                                        <label class="form-check-label" for="inlineradio1">Video</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" x-model="radioValue" type="radio" id="inlineradio2" value="image" name="media_type" checked="true">
+                                        <label class="form-check-label" for="inlineradio2">Imagem</label>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="inlineradio2" value="IMAGE" name="media_type">
-                                    <label class="form-check-label" for="inlineradio2">Imagem</label>
-                                </div>
+                                @if($errors->has('media_type'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('media_type') }}
+                                    </div>
+                                @endif
                             </div>
-                            @if($errors->has('media_type'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('media_type') }}
-                                </div>
-                            @endif
+                        </div>
+
+                        <div class="form-group" x-show="radioValue!='image' && radioValue!=null">
+                            <label for="embed">Códio de Incorporação (Apenas Video)</label>
+                            <textarea name="media_embed" id="embed" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group" x-show="radioValue!='video' && radioValue!=null">
+                            <label for="media">Imagem</label>
+                            <input type="file" name="media_file" id="media_file" class="form-control">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="embed">Códio de Incorporação (Apenas Video)</label>
-                        <textarea name="media_embed" id="embed" cols="30" rows="5" class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="media">Imagem</label>
-                        <input type="file" name="media_file" id="media_file" class="form-control">
-                    </div>
-
+                    <span x-text="radioValue"></span>
                     <div class="form-group">
                         <label for="link" class="required">Url</label>
                         <input type="text" name="media_link" class="form-control {{ $errors->has('media_link') ? 'is-invalid' : '' }}">

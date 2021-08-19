@@ -25,6 +25,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
     @livewireStyles
     @yield('styles')
     <style>
@@ -36,48 +37,54 @@
 </head>
 
 <body>
-    <div class="nav-scroller bg-dark">
-        <div class="container d-flex flex-row">
-            <nav class="nav d-flex justify-content-start align-items-center">
-                <img src="{{ asset('assets/images/logo-branco.png')}}" alt="agency-logo" class="nav-logo">
-                <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
-                <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
-                <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
-                <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
-                <a class="p-3 text-white" href="{{ route('site.advertise.create') }}">Anuncie</a>
+    <header>
+        <div class="nav-scroller bg-dark">
+            <div class="container d-flex flex-row">
+                <nav class="nav d-flex justify-content-start align-items-center">
+                    <img src="{{ asset('assets/images/logo-branco.png')}}" alt="agency-logo" class="nav-logo">
+                    <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
+                    <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
+                    <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
+                    <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
+                    <a class="p-3 text-white" href="{{ route('site.advertise.map') }}">Anuncie</a>
 
-            </nav>
-            @auth
-                <nav class="nav d-flex justify-content-start align-items-center ml-auto">
-                    @if(count(Request::segments()) < 2)
-                    <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
-                    @endif
-                    <a class="btn text-secondary">{{ Auth::user()->name }}</a>
-                    <a class="btn text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
                 </nav>
-            @endauth
+                @auth
+                    <nav class="nav d-flex justify-content-start align-items-center ml-auto">
+                        @if(count(Request::segments()) < 2)
+                        <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
+                        @endif
+                        <a class="btn text-secondary">{{ Auth::user()->name }}</a>
+                        <a class="btn text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
+                    </nav>
+                @endauth
+            </div>
         </div>
-    </div>
+    </header>
+
 
     <form action="{{ route('logout') }}" id="logout-form" method="post" style="display:none">
         @csrf()
     </form>
-    <main role="main" class="container">        
-
-        @yield('content')
+    <main role="main" class="flex-shrink-0">        
+        <div class="container">
+            @yield('content')
+        </div>        
     </main>
-
-
-    <footer class="bg-dark mt-1">
-        <div class="container d-flex justify-content-between align-items-center">
-            <nav class="nav">
+               
+               
+    <footer class="footer mt-auto py-3">
+        <nav class="navbar fixed-bottom bg-dark p-0">
+            <div class="container d-flex justify-content-start">
                 <a class="p-3 text-white" href="{{route('site.static.whoiam')}}">Quem somos</a>
                 <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>
                 <a class="p-3 text-white" href="{{ route('site.static.privacy') }}">Politica de Privacidade</a>
                 <a class="p-3 text-white" href="#">Contato</a>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </footer>
+    
+    
 
     <script src="{{ asset('frontend/js/jquery.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>

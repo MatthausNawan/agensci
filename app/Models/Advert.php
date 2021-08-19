@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\AdversitmentService;
 use \DateTimeInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,12 @@ class Advert extends Model
         'FINISHED'  => 'Finalizado',
         'REJECTED'  => 'REJEITADO',
     ];
+
+    const STATUS_CREATED = 'CREATED';
+    const STATUS_CONFIRMED = 'CONFIRMED';
+    const STATUS_PUBLISHED = 'PUBLISHED';
+    const STATUS_FINISHED = 'FINISHED';
+    const STATUS_REJECTED = 'REJECTED';
 
     public $table = 'advertisements';
 
@@ -72,28 +79,68 @@ class Advert extends Model
         return $this->belongsTo(LocalAdvertisement::class, 'advertising_place_id');
     }
 
-    public function getStartAtAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
+    protected $casts = [
+        'reach_states'=> 'json',
+        'reach_cities'=> 'json',
+        'reach_categories'=> 'json',
+        'reach_segments'=> 'json',
+        'reach_genres'=> 'json'
+    ];
 
-    public function setStartAtAttribute($value)
-    {
-        $this->attributes['start_at'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    }
+    // public function getStartAtAttribute($value)
+    // {
+    //     return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    // }
 
-    public function getEndAtAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
+    // public function setStartAtAttribute($value)
+    // {
+    //     $this->attributes['start_at'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    // }
 
-    public function setEndAtAttribute($value)
-    {
-        $this->attributes['end_at'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    }
+    // public function getEndAtAttribute($value)
+    // {
+    //     return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    // }
 
-    protected function serializeDate(DateTimeInterface $date)
+    // public function setEndAtAttribute($value)
+    // {
+    //     $this->attributes['end_at'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    // }
+
+    // protected function serializeDate(DateTimeInterface $date)
+    // {
+    //     return $date->format('Y-m-d H:i:s');
+    // }
+    public function getEstimatedPrice()
     {
-        return $date->format('Y-m-d H:i:s');
+        $local = LocalAdvertisement::find($this->advertising_place_id);
+        $adversitmentService = new AdversitmentService($local);
+        
+        $total = $local->price;
+
+        if (count($this->reach_states) > 0) {
+            $totalStates = intval(count($this->reach_states));
+            $total += $adversitmentService->getValuePerStates($totalStates);
+        }
+
+        if (count($this->reach_categories) > 0) {
+            $totalCategories = intval(count($this->reach_categories));
+            $total += $adversitmentService->getValuePerCategories($totalCategories);
+        }
+
+        if (count($this->reach_segments) > 0) {
+            $totalSegments = intval(count($this->reach_segments));
+            $total += $adversitmentService->getValuePerArea($totalSegments);
+        }
+
+        if (count($this->reach_genres) > 0) {
+            $totalGenres = intval(count($this->reach_genres));
+            $total += $adversitmentService->getValueGenres($totalGenres);
+        }
+
+        $totalPerDays = $adversitmentService->getValuePerDays($this->start_at, $this->end_at);
+        $total += $totalPerDays;
+
+        return $total;
     }
 }

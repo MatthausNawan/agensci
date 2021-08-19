@@ -6,11 +6,13 @@
 
 @import "./inputs";
 
+main > .container {
+    padding: 70px 15px 0;
+}
+
 body {
     background-color: #d2d4dd;
 }
-
-
 
 nav a:hover {
     text-decoration: none;
@@ -181,3 +183,22 @@ nav a:hover {
     color: #000;
     font-weight: bold;    
 }
+
+.agency-post-title {
+    color:#000;
+    font-size: 16px;
+    text-transform: uppercase;    
+}
+.agency-post-text {
+    color:#999;
+    line-height: 1.6;
+}
+
+// .map-ul {
+//     border:2px solid $agency-blue;
+// }
+
+// .map-content {
+//     border: 2px solid $agency-blue;
+// }
+

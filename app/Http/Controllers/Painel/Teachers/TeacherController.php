@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreTeacher;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Post;
@@ -80,6 +81,9 @@ class TeacherController extends Controller
                 'articles' => ExternalLik::type(Category::C_ARTIGOS)->randomAble(4)->get(),
                 'statistics_softwares' => ExternalLik::type(Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->randomAble(4)->get(),
                 'util_apps' => ExternalLik::type(Category::C_APLICATIVOS_UTEIS)->take(5)->randomAble(4)->get(),
+                'partners_companies' => Company::where('is_partner', true)->randomAble(4)->get(),
+                'support_companies' => Company::where('is_supporter', true)->randomAble(4)->get(),
+                'sponsorship_companies' => Company::where('is_sponsorship', true)->randomAble(4)->get(),
                 'teacher' => $user->teacher ?? false,
                 'posts' => Post::active()->latest()->take(5)->get(),
                 'foment_calls' => Promotion::latest()->take(5)->get(),

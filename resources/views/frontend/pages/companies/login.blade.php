@@ -8,9 +8,12 @@
 </div>
 
 <div class="row">
-    <div class="col-4 offset-4">
+    <div class="col-4">
      @include('auth.login_column',['title'=>'Painel da Empresa','route'=>'site.companies.register'])
     </div>    
+    <div class="col-8">
+        @include('frontend.pages.companies._partials.painel')
+    </div>
 </div>
 @endsection
 

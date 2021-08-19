@@ -1,5 +1,5 @@
-<div class="agency-card my-2">    
-    <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>        
+<div class="agency-card">    
+    <!-- <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>         -->
     <div class="my-2">        
         <div class="owl-carousel owl-theme">
             @foreach($posts as $post)        
@@ -12,9 +12,9 @@
                             <small class="mb-3">{{ $post->created_at->format('d/m/Y') }}</small>
                         </div>
                         
-                        <div class="bg-white p-3 d-fle flex-column">
-                            <h3 class="agency-card-title">{{ $post->title ?? ''}}</h3>
-                            <span class="agency-card-text text-justify">{!! Str::limit($post->detail,250) !!}</span>
+                        <div class="bg-white p-3 d-flex flex-column">
+                            <h3 class="agency-post-title">{{ $post->title ?? ''}}</h3>
+                            <span class="agency-post-text text-justify">{!! Str::limit($post->detail,250) !!}</span>
                             <a href="{{ route('site.post',$post->slug) }}" class="text-right mr-2 external-button">Continue Lendo</a>
                         </div>
                     </div>                  

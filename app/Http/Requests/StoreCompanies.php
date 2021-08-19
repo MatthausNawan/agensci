@@ -37,8 +37,7 @@ class StoreCompanies extends FormRequest
             'phone' => 'required|max:20',
             'cell_number'  => 'required|max:20',
             'requester_name'  => 'required|max:255',
-            // 'requester_cpf'  => 'required|max:255',
-            // 'request_date'  => 'required',
+            'requester_cpf'  => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ];
@@ -47,7 +46,7 @@ class StoreCompanies extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'O campo :attribute é obrigatório',
+            'required' => 'Este campo é obrigatório',
             'max' => 'O campo :attribute é muito longo',
             'email' => 'O campo :attribute deve ser um e-mail válido',
             'unique' => 'O campo :attribute digitado já está em uso, utilize outro',

@@ -78,7 +78,10 @@ class StudentController extends Controller
         return view(
             'frontend.pages.students.painel',
             [
-                'articles' => ExternalLik::type(Category::C_ARTIGOS)->randomAble(4)->get(),
+                'exams' => ExternalLik::type(Category::C_EXAMES_PADRONIZADOS)->randomAble(4)->get(),
+                'scholarships_grants' => ExternalLik::type(Category::C_BOLSAS_AUXILIOS)->randomAble(4)->get(),
+                'statistics_softwares' => ExternalLik::type(Category::C_PROGRAMAS_DE_ESTATISTICAS)->take(5)->randomAble(4)->get(),
+                'util_apps' => ExternalLik::type(Category::C_APLICATIVOS_UTEIS)->take(5)->randomAble(4)->get(),
                 'high_school_tvs' => ExternalLik::type(Category::C_TV_UNIVERSITARIAS)->randomAble(4)->get(),
                 'high_school_radios' => ExternalLik::type(Category::C_RADIOS_UNIVERSITARIAS)->randomAble(4)->get(),
                 'posts' => Post::latest()->take(5)->get(),
