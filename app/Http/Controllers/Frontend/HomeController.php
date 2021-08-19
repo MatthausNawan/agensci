@@ -50,7 +50,7 @@ class HomeController extends Controller
             'conselhos' => ExternalLik::type(Category::C_CONSELHOS_DE_CLASSE)->randomAble(4)->get(),
             'segments' => Segment::all(),
             'categories' => Category::all(),
-            'posts' => Post::active()->latest()->take(5)->get(),
+            'posts' => Post::latest()->take(5)->get(),
             'foment_calls' => Promotion::latest()->take(5)->get(),
             'publish_calls' => PublishCall::latest()->take(5)->get(),
             'speakers' => Speaker::latest()->take(5)->get(),

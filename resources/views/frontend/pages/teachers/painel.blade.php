@@ -40,9 +40,9 @@
             </div>
             <div class="col-md-3 col-sm-12">
                 <!-- TODO: produtos/servicos -->
-                @include('frontend.pages.home._partials.external-links',['title'=>'Empresas Apoiadoras','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links',['title'=>'Empresas Parceiras','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links',['title'=>'Empresas Patrocinadoras','links'=>$articles])
+                @include('frontend.pages.home._partials.external-links',['title'=>'Empresas Apoiadoras','links'=>$support_companies])
+                @include('frontend.pages.home._partials.external-links',['title'=>'Empresas Parceiras','links'=>$partners_companies])
+                @include('frontend.pages.home._partials.external-links',['title'=>'Empresas Patrocinadoras','links'=>$sponsorship_companies])
             </div>
         </div>
     </div>
@@ -61,6 +61,7 @@
         margin:10,
         nav:true,
         dots:false,
+        navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
         responsive:{
             0:{
                 items:1

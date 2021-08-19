@@ -28,8 +28,10 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
 
+    Route::view('/anuncie/selecionar-local', 'frontend.pages.static.map')->name('site.advertise.map');
     Route::get('/anuncie', 'AdvertController@create')->name('site.advertise.create');
     Route::post('/anuncie', 'AdvertController@store')->name('site.advertise.store');
+    
     Route::get('/revisar/anuncio/{id}', 'AdvertController@review')->name('site.advertise.review');
     Route::get('/confirmar/anuncio/{id}', 'AdvertController@confirm')->name('site.advertise.confirm');
 

@@ -46,9 +46,9 @@ class Category extends Model
     const C_RADIOS_UNIVERSITARIAS = 18;
     const C_PRODUCTS = 20;
     const C_SERVICES = 21;
-
-
-
+    const C_EXAMES_PADRONIZADOS = 22;
+    const C_BOLSAS_AUXILIOS = 23;
+    
 
 
     protected function serializeDate(DateTimeInterface $date)

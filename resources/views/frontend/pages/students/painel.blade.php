@@ -16,7 +16,7 @@
     <div class="col-md-9 col-sm-12 p-1">
         @include('frontend.pages.students._partials.painel')
         <div class="row mt-2">
-            <div class="col-md-9 col-sm-12">
+            <div class="col-md-8 col-sm-12 ">
                 @if(isset($posts))
                     @include('frontend.pages.teachers._partials.news',['posts'=>$posts,'title'=>'Notícias'])
                 @endif
@@ -41,12 +41,23 @@
                 @endif
 
             </div>
-            <div class="col-md-3 col-sm-12">
+            <div class="col-md-4 col-sm-12 pl-0">
                 <!-- TODO: produtos/servicos -->
-                @include('frontend.pages.home._partials.external-links-icon',['title'=>'Exames Padronizados','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links',['title'=>'Bolsas e Auxílios','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links-icon',['title'=>'Aplicativos Úteis','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links-icon',['title'=>'Programas de Estatisticas','links'=>$articles])
+                @if($exams)
+                    @include('frontend.pages.home._partials.external-links-icon',['title'=>'Exames Padronizados','links'=>$exams])
+                @endif
+
+                @if($scholarships_grants)
+                    @include('frontend.pages.home._partials.external-links-icon',['title'=>'Bolsas & Auxílios','links'=>$scholarships_grants])
+                @endif
+
+                @if(isset($util_apps))
+                    @include('frontend.pages.home._partials.external-links-icon',['title'=>'Aplicativos Úteis','links'=>$util_apps])
+                @endif
+
+                @if(isset($statistics_softwares))
+                    @include('frontend.pages.home._partials.external-links-icon',['title'=>'Programas de Estatisticas','links'=>$statistics_softwares])
+                @endif
             </div>
         </div>
     </div>
@@ -60,22 +71,23 @@
 
 @section('js')
 <script>
-    // $('.owl-carousel').owlCarousel({
-    //     loop:true,
-    //     margin:10,
-    //     nav:true,
-    //     dots:true,
-    //     responsive:{
-    //         0:{
-    //             items:1
-    //         },
-    //         600:{
-    //             items:1
-    //         },
-    //         1000:{
-    //             items:1
-    //         }
-    //     }
-    // })
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:false,
+        navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    })
 </script>
 @endsection

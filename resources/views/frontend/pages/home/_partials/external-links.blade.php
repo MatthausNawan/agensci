@@ -12,7 +12,6 @@
                 </a>
             </div>
             @endforeach
-        </div>
-        <a href="{{ route('site.search-links',$links->first()->category_id) }}" class="p-1 btn-block text-right external-button"><span class="mr-3"><i class="fa fa-search"></i>Visualizar Todas</span></a>
+        </div>        
     </div>
 </div>

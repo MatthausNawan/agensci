@@ -13,6 +13,8 @@
             <a href="{{$link->site }}" class="ml-1 small align-self-center external-button" target="_blank"><span>{{$link->name}}</span></a>
         </div>
         @endforeach
-        <a href="{{ route('site.search-links',$links->first()->category_id) }}" class="p-1 btn-block text-right  external-button"><span class="mr-3"><i class="fa fa-search"></i>Visualizar Todas</span></a>
+        @if($links->count() > 0)
+            <a href="{{ route('site.search-links',$links->first()->category_id) }}" class="p-1 btn-block text-right  external-button"><span class="mr-3"><i class="fa fa-search"></i>Visualizar Todas</span></a>
+        @endif
     </div>
 </div>

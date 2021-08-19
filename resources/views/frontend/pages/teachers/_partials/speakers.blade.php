@@ -1,8 +1,9 @@
-<div class="agency-card my-2">    
-    <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>
+<div class="agency-card">    
+    <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>        
+            
     <div class="owl-carousel owl-theme">
         @foreach($speakers as $speaker)
-            <div class="agency-card m-1">
+            <div class="agency-card mx-1">    
                 <div class="row links-wrapper p-3">
                     <div class="col-lg-3">
                         <img src="{{ $speaker->photo ? $speaker->photo->getUrl() : asset('images/avatar.png')}}" class="img-thumbnail">
