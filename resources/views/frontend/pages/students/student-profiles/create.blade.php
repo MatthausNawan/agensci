@@ -3,29 +3,26 @@
 
 @section('content')
 
-<div class="row">
-    @include('frontend.pages.students._partials.menu')
-</div>
 
-<div class="row my-4">
-    <div class="col-lg-6 offset-3">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="title"> Cadastrar Portfolio</h4>
-            </div>
+    @include('frontend.pages.students._partials.menu')
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="links-wrapper">            
             <form action="{{route('students.student-profiles.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="course_name" class="required">Curso</label>
-                        <input type="text" class="form-control" name="course_name" value="{{ old('course_name') }}" placeholder="ex: Bacharelado em Administração">
+                        <input type="text" class="form-control form-control-sm" name="course_name" value="{{ old('course_name') }}" placeholder="ex: Bacharelado em Administração">
                         @if($errors->has('course_name'))
                             <span class="text-danger" role="alert">{{ $errors->first('course_name') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="title" class="required">Periodo</label>
-                        <input type="text" class="form-control" name="period" value="{{ old('period') }}" placeholder="ex: 2 Período">
+                        <input type="text" class="form-control form-control-sm" name="period" value="{{ old('period') }}" placeholder="ex: 2 Período">
                         @if($errors->has('period'))
                             <span class="text-danger" role="alert">{{ $errors->first('period') }}</span>
                         @endif
@@ -33,7 +30,7 @@
 
                     <div class="form-group">
                         <label for="university_name" class="required">Nome da Universidade</label>
-                        <input type="text" class="form-control" name="university_name" value="{{ old('university_name') }}">
+                        <input type="text" class="form-control form-control-sm" name="university_name" value="{{ old('university_name') }}">
                         @if($errors->has('university_name'))
                             <span class="text-danger" role="alert">{{ $errors->first('university_name') }}</span>
                         @endif
@@ -41,7 +38,7 @@
 
                     <div class="form-group">
                         <label for="lattes_link" class="required">Link Curriculo Lattes</label>
-                        <input type="text" class="form-control" name="lattes_link" value="{{ old('lattes_link') }}">
+                        <input type="text" class="form-control form-control-sm" name="lattes_link" value="{{ old('lattes_link') }}">
                         @if($errors->has('lattes_link'))
                             <span class="text-danger" role="alert">{{ $errors->first('lattes_link') }}</span>
                         @endif
@@ -49,7 +46,7 @@
 
                     <div class="form-group">
                         <label for="bio" class="required">Descrição</label>
-                        <textarea name="bio" id="" cols="30" rows="10" class="form-control">{{old('bio')}}</textarea>
+                        <textarea name="bio" id="" cols="30" rows="10" class="form-control form-control-sm">{{old('bio')}}</textarea>
                         @if($errors->has('bio'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('bio') }}</span>
                         @endif
@@ -57,7 +54,7 @@
 
                     <div class="form-group">
                         <label for="speeches" class="required">Palestras</label>
-                        <textarea name="speeches" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('speeches')}}</textarea>
+                        <input type="text" data-role="tagsinput" name="speachees" class="form-control form-control-sm">                        
                         @if($errors->has('speeches'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('speeches') }}</span>
                         @endif
@@ -65,7 +62,7 @@
 
                     <div class="form-group">
                         <label for="monitorings" class="required">Monitorias</label>
-                        <textarea name="monitorings" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('monitorings')}}</textarea>
+                        <input type="text" data-role="tagsinput" name="monitorings" class="form-control form-control-sm">                                                
                         @if($errors->has('monitorings'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('monitorings') }}</span>
                         @endif
@@ -73,92 +70,23 @@
 
                     <div class="form-group">
                         <label for="awards" class="required">Premiações</label>
-                        <textarea name="awards" id="" cols="30" rows="10" class="form-control" placeholder="Para separar utilize ponto e virgula ; ">{{old('awards')}}</textarea>
+                        <input type="text" data-role="tagsinput" name="awards" class="form-control form-control-sm">                                                                        
                         @if($errors->has('awards'))
                         <span class="help-block text-danger" role="alert">{{ $errors->first('awards') }}</span>
                         @endif
                     </div>
-
-                    <div class="form-group">
-                        <label for="email" class="required">Email</label>
-                        <input type="text" class="form-control" name="email" value="{{ old('email') }}">
-                        @if($errors->has('email'))
-                            <span class="text-danger" role="alert">{{ $errors->first('email') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone" class="required">Telefone</label>
-                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
-                        @if($errors->has('phone'))
-                            <span class="text-danger" role="alert">{{ $errors->first('phone') }}</span>
-                        @endif
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
-                </div>
+                    <button type="submit" class="btn text-black border rounded">Cadastrar</button>
+                </div>                
             </form>
         </div>
     </div>
 </div>
+@endsection
 
-
+@section('styles')
+<link rel="stylesheet" href="{{asset('vendor/tag-input/tagsinput.css')}}">
 @endsection
 
 @section('js')
-<script>
-    Dropzone.options.photoDropzone = {
-    url: '{{ route('students.storeMedia') }}',
-    maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
-    maxFiles: 1,
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    params: {
-      size: 2,
-      width: 4096,
-      height: 4096
-    },
-    success: function (file, response) {
-      $('form').find('input[name="photo"]').remove()
-      $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      if (file.status !== 'error') {
-        $('form').find('input[name="photo"]').remove()
-        this.options.maxFiles = this.options.maxFiles + 1
-      }
-    },
-    init: function () {
-@if(isset($studentProfile) && $studentProfile->photo)
-      var file = {!! json_encode($studentProfile->photo) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
-    error: function (file, response) {
-        if ($.type(response) === 'string') {
-            var message = response //dropzone sends it's own error messages in string
-        } else {
-            var message = response.errors.file
-        }
-        file.previewElement.classList.add('dz-error')
-        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-        _results = []
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            node = _ref[_i]
-            _results.push(node.textContent = message)
-        }
-        return _results
-    }
-}
-</script>
-
+<script src="{{ asset('vendor/tag-input/tagsinput.js') }}"></script>
 @endsection('js')

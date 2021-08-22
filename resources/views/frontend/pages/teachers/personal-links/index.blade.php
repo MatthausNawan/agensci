@@ -3,18 +3,16 @@
 
 @section('content')
 
-<div class="row">
-    @include('frontend.pages.teachers._partials.menu')
-</div>
+
+@include('frontend.pages.teachers._partials.menu')
+
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <a href="{{ route('teachers.personal-links.create') }}" class="btn btn-secondary">Adicionar Link</a>
-            </div>
+        <div class="card">    
             <div class="card-body">
-                <table class="table table-bordered table-striped table-hover">
+                <a href="{{ route('teachers.personal-links.create') }}" class="btn btn-sm text-black border rounded mb-2">Adicionar Link</a>
+                <table class="table-hover w-100" border="1">
                     <thead>
                         <tr>
                             <td>Imagem</td>
@@ -24,10 +22,9 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach($personalLinks as $personalLink)
                         <tr>
-                            <td><img src="{{$personalLink->photo->getUrl()}}" alt="{{ $personalLink->title ?? '' }}" style="width:50px; height:60px"></td>
+                            <td><img src="{{$personalLink->photo->getUrl()}}" alt="{{ $personalLink->title ?? '' }}" style="width:45px; height:45px"></td>
                             <td>{{ $personalLink->title ?? '' }}</td>
                             <td><a href="{{ $personalLink->link ?? '' }}" target="_blank">{{ $personalLink->link ?? '' }}</a></td>
                             <td>

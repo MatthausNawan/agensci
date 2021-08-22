@@ -1,19 +1,18 @@
-<div class="col-lg-12 py-1">
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{route('students.home')}}">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Meus Eventos<span class="badge badge-secondary">em breve</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Galeria de Fotos<span class="badge badge-secondary">em breve</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ route('students.meus-links.index') }}">Links Importantes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{route('students.student-profiles.index')}}">Portfólio</a>
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-lg-12 py-2">
+        <ul class="links-wrapper nav">
+            <li class="nav-item">
+                <a class="nav-link text-black py-0 px-1 px-2 text-capitalize" href="{{route('students.home')}}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black py-0 px-1 px-2 text-capitalize" href="{{route('students.student-events.index')}}">Meus Eventos</a>
+            </li>           
+            <li class="nav-item">
+                <a class="nav-link text-black py-0 px-1 px-2 text-capitalize" href="{{ route('students.meus-links.index') }}">Links  Importantes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black py-0 px-1 px-2 text-capitalize" href="{{route('students.student-profiles.create')}}">Portfólio</a>
+            </li>
+        </ul>
+    </div>
 </div>

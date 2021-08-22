@@ -1,21 +1,21 @@
 <div class="links-wrapper p-2">
-    <h6>Olá, {{Auth::user()->name ?? 'Professor'}}</h6>
+    <h6 class="text-dark">Olá, {{Auth::user()->name ?? 'Professor'}}</h6>
     @if($teacher)
     <div class="data d-flex flex-column">
         <div class="border-bottom d-flex flex-column my-2">
-            <span class="text-strong">Instituição</span>
+            <span class="text-strong text-black">Instituição</span>
             <span class="small">{{ $teacher->institution_works ?? 'nao informado' }}</span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
-            <span class="text-strong">Email</span>
+            <span class="text-strong text-black">Email</span>
             <span class="small">{{$teacher->email ?? 'nao informado'}}
         </div>
         <div class="border-bottom d-flex flex-column my-2">
-            <span class="text-strong">Curriculo Lattes</span>
+            <span class="text-strong text-blak">Curriculo Lattes</span>
             <span class="small"><a href="{{ $teacher->resume_link ?? '#' }}" target="_blank">{{ $teacher->resume_link ?? 'nao informado' }}</a></span>
         </div>
         <div class="border-bottom d-flex flex-column my-2">
-            <span class="text-strong">Midias Sociais</span>
+            <span class="text-strong text-black">Midias Sociais</span>
             <div class="socials">
                 @if ($teacher->facebook)
                     <a target="_blank" href="{{$teacher->facebook}}">
@@ -48,8 +48,10 @@
                     </a>
                 @endif
             </div>
+            
         </div>
     </div>
+    <a href="{{route('teachers.profile')}}" class="btn btn-transparent text-black btn-sm pull-right">Meu Cadastro</a>
     @endif
-    <a href="{{route('teachers.profile')}}" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
+    
 </div>

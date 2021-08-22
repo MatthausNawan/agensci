@@ -76,6 +76,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
         Route::resource('meus-links', 'PersonalLinkController');
         Route::resource('student-profiles', 'StudentProfileController');
+        Route::resource('student-events', 'StudentEventController');
         Route::post('students/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 
@@ -100,6 +101,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
         Route::resource('posts', 'PostController');
         Route::resource('events', 'EventController');
         Route::resource('personal-links', 'PersonalLinkController');
+        Route::resource('event-calls', 'EventCallController');
 
         Route::post('teachers/ckmedia', 'PostController@storeCKEditorImages')->name('teachers.storeCKEditorImages');
         Route::post('teachers/media', 'PersonalLinkController@storeMedia')->name('storeMedia');

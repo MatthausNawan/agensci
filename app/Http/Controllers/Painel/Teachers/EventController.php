@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\Teacher\EventStoreRequest;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Country;
 use App\Models\Event;
 use App\Models\Segment;
@@ -39,7 +40,9 @@ class EventController extends Controller
         $countries = Country::all();
         $states = DB::table('states')->get();
         $categories = Category::where('type', 'EVENT')->get();
-        return view('frontend.pages.teachers.events.create', compact('segments', 'countries', 'states', 'categories'));
+        $companies = Company::AvailableToEvents();
+        
+        return view('frontend.pages.teachers.events.create', compact('segments', 'countries', 'states', 'categories', 'companies'));
     }
 
     /**
@@ -51,6 +54,7 @@ class EventController extends Controller
     public function store(EventStoreRequest $request)
     {
         $data = $request->all();
+        
         $data['creator_id'] = Auth::user()->id;
         $data['enabled'] = false;
 

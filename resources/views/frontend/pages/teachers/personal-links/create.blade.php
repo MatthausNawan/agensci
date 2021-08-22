@@ -3,26 +3,22 @@
 
 @section('content')
 
-<div class="row">
-    @include('frontend.pages.teachers._partials.menu')
-</div>
+@include('frontend.pages.teachers._partials.menu')
 
-<div class="row my-4">
-    <div class="col-lg-6 offset-3">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="title"> Cadastrar Link</h4>
-            </div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">            
             <form action="{{route('teachers.personal-links.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title" class="required">Nome</label>
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control form-control-sm" name="title">
                     </div>
                     <div class="form-group">
                         <label for="title" class="required">Link</label>
-                        <input type="text" class="form-control" name="link">
+                        <input type="text" class="form-control form-control-sm" name="link">
                     </div>
 
                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">

@@ -6,9 +6,9 @@
 
 @import "./inputs";
 
-main > .container {
-    padding: 70px 15px 0;
-}
+// main > .container {
+//     padding: 20px 15px 0;
+// }
 
 body {
     background-color: #d2d4dd;
@@ -194,11 +194,34 @@ nav a:hover {
     line-height: 1.6;
 }
 
-// .map-ul {
-//     border:2px solid $agency-blue;
-// }
+.panel-header {
+    background-color:$agency-blue;
+    color:#fff;
+    text-align:'center'; 
+}
 
-// .map-content {
-//     border: 2px solid $agency-blue;
-// }
+.text-black {
+    color:#000;
+    font-size:14px;
+    font-weight:bold;
+}
 
+.event-detail {
+    font-size: 12px;
+    color:#000;
+    font-weight: bold;
+}
+
+table >thead > tr {
+    background-color: #ccc;
+    text-align: center;
+}
+
+table > tbody > tr {
+    text-align: center;
+    cursor: pointer;
+    td {
+        font-size: 13px;
+        font-weight: 300;
+    }
+}

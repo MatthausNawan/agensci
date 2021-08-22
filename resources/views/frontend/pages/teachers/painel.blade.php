@@ -3,6 +3,13 @@
 @section('content')
 
 <div class="row">
+    <div class="col-12 text-center panel-header">
+    Agenda Cientifica
+    </div>
+</div> 
+
+
+<div class="row">
     @include('frontend.pages.teachers._partials.menu')
 </div>
 
