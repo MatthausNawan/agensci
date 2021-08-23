@@ -3,8 +3,8 @@
 @include('frontend.pages.teachers._partials.menu')
 
 <div class="row">
-    <div class="col-lg-6">
-        <div class="card">            
+    <div class="col-lg-12">
+        <div class="links-wrapper">            
             <form action="{{ route('teachers.events.update',$event->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
@@ -56,7 +56,7 @@
 
                     
                     <div class="row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-3">
                             <label for="" class="required">País</label>
                             <select name="country_id" id="" class="form-control form-control-sm">
                                 <option value="">Selecione</option>
@@ -68,7 +68,7 @@
                                 <span class="help-block text-danger" role="alert">{{ $errors->first('country_id') }}</span>
                             @endif
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-3">
                             <label for="" class="required">Estado</label>
                             <select name="state_id" id="" class="form-control form-control-sm">
                                 <option value="">Selecione</option>
@@ -80,14 +80,16 @@
                                 <span class="help-block text-danger" role="alert">{{ $errors->first('state_id') }}</span>
                             @endif
                         </div>
+
+                        <div class="form-group col-6">
+                            <label for="location" class="required">Localização</label>
+                            <input type="text" class="form-control form-control-sm" name="location" value="{{$event->location ?? old('location')}}">
+                            @if($errors->has('location'))
+                                <span class="help-block text-danger" role="alert">{{ $errors->first('location') }}</span>
+                            @endif
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="location" class="required">Localização</label>
-                        <input type="text" class="form-control form-control-sm" name="location" value="{{$event->location ?? old('location')}}">
-                        @if($errors->has('location'))
-                            <span class="help-block text-danger" role="alert">{{ $errors->first('location') }}</span>
-                        @endif
-                    </div>
+                    
                     <div class="form-group">
                         <label for="link" class="required">Link</label>
                         <input type="text" class="form-control form-control-sm" name="link" value="{{$event->link ?? old('link')}}">
@@ -97,7 +99,14 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-6">
+                            <label for="link" class="required">Link</label>
+                            <input type="text" class="form-control form-control-sm" name="link" value="{{$event->link ?? old('link')}}">
+                            @if($errors->has('link'))
+                                <span class="help-block text-danger" role="alert">{{ $errors->first('link') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group col-lg-3">
                             <label for="start_date" class="required">Data Inicio Evento</label>
                             <input type="text" class="form-control form-control-sm date" name="start_date" value="{{$event->start_date ?? old('start_date')}}">
                             @if($errors->has('start_date'))
@@ -105,7 +114,7 @@
                             @endif
                         </div>
 
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-3">
                             <label for="end_date" class="required">Data Final Evento</label>
                             <input type="text" class="form-control form-control-sm date" name="end_date" value="{{$event->end_date ?? old('end_date')}}">
                             @if($errors->has('end_date'))
@@ -124,16 +133,20 @@
                     </div>
 
                     <div class="form-group">
+                        <input type="hidden" name="is_collaborate_event" value="0">
+                        <input type="checkbox" name="is_collaborate_event" id="is_collaborate_event" value="1" {{ $event->is_collaborate_event || old('is_collaborate_event', 0) === 1 ? 'checked' : '' }}>                    
+                        <label for="is_collaborate_event">Evento Colaborado?</label>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="details" class="required">Detalhes</label>
                         <textarea name="details" id="" cols="30" rows="10" class="form-control form-control-sm">{{$event->details ?? old('details')}}</textarea>
                         @if($errors->has('details'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('details') }}</span>
                         @endif
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-outline-danger">Atualizar</button>
-                </div>
+                    <button type="submit" class="btn text-black border rounded">Atualizar</button>
+                </div>                
             </form>
         </div>
     </div>

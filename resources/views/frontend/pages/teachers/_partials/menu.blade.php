@@ -11,7 +11,7 @@
                 <a class="nav-link text-black py-0 px-2 text-capitalize" href="{{route('teachers.posts.create')}}">Cadastrar Noticias</a>
             </li>
             <li class="nav-item py-0">
-                <a class="nav-link text-black py-0 px-2 text-capitalize" href="#">Palestrante</a>
+                <a class="nav-link text-black py-0 px-2 text-capitalize" href="{{ route('teachers.speakers.create') }}">Palestrante</a>
             </li>
             <li class="nav-item py-0">
                 <a class="nav-link text-black py-0 px-2 text-capitalize" href="{{ route('teachers.event-calls.index')}}">Chamada de Eventos</a>
@@ -23,7 +23,7 @@
                 <a class="nav-link text-black py-0 px-2 text-capitalize" href="{{route('teachers.events.index')}}">Meus Eventos</a>
             </li>  
             <li class="nav-item py-0">
-                <a class="nav-link text-black py-0 px-2 text-capitalize" href="#">Eventos Colaborados</a>
+                <a class="nav-link text-black py-0 px-2 text-capitalize" href="{{ route('teachers.events.index',['colaborados'=>true]) }}">Eventos Colaborados</a>
             </li>                 
         </ul>
     </div>

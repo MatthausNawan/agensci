@@ -23,9 +23,14 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::where('creator_id', Auth::user()->id)->get();
+        $onlyCollaborateEvents = $request->colaborados ?? null;
+        if ($onlyCollaborateEvents) {
+            $events = Event::where('creator_id', Auth::user()->id)->collaborates()->get();
+        } else {
+            $events = Event::where('creator_id', Auth::user()->id)->get();
+        }
         return view('frontend.pages.teachers.events.index', compact('events'));
     }
 
@@ -104,7 +109,6 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
         $data['creator_id'] = Auth::user()->id;
 
         $event =  Event::find($id);

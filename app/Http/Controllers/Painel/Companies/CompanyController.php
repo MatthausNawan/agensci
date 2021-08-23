@@ -8,7 +8,10 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreCompanies;
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Event;
 use App\Models\ExternalLik;
+use App\Models\Job;
+use App\Models\PersonalLink;
 use Illuminate\Http\Request;
 use App\Models\StudentProfile;
 use App\Services\CompanieService;
@@ -54,6 +57,11 @@ class CompanyController extends Controller
         return view(
             'frontend.pages.companies.painel',
             [
+                'links' => PersonalLink::where('user_id', Auth::user()->id)->get(),
+                'jobs' => Job::where('creator_id', Auth::user()->id)->where('type', Job::TYPE_EMPREGO)->take(4)->get(),
+                'stages' => Job::where('creator_id', Auth::user()->id)->where('type', Job::TYPE_ESTAGIO)->take(4)->get(),
+                'trainees' => Job::where('creator_id', Auth::user()->id)->where('type', Job::TYPE_TRAINEE)->take(4)->get(),
+                'events' => Event::randomAble(4)->get(),
                 'articles' => ExternalLik::where('category_id', Category::C_ARTIGOS)->get(),
                 'students_profiles' => StudentProfile::all(),
                 'event_calls' => EventCall::latest()->take(10)->get(),
@@ -74,8 +82,9 @@ class CompanyController extends Controller
     {
         $user = Auth::user();
         $company = $user->company;
-
+       
         $company->update($request->all());
+       
 
         if ($request->input('logo', false)) {
             if (!$company->logo || $request->input('logo') !== $company->logo->file_name) {

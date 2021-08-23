@@ -1,5 +1,8 @@
 <div class="agency-card">    
-    <span class="agency-card-title text-center d-block">{{$title ?? 'Titulo'}}</span>                   
+    <div class="card-header d-flex flex-row justify-content-between">
+        <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>
+        <a href="" class="text-white"><i class="fa fa-search"></i>visualizar todas</a>        
+    </div>
     <div class="owl-carousel owl-theme">
         @foreach($promotions as $promotion)            
             <div class="agency-card mx-1">

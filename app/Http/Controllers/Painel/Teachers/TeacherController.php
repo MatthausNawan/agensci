@@ -9,7 +9,9 @@ use App\Http\Requests\StoreTeacher;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Country;
+use App\Models\Event;
 use App\Models\ExternalLik;
+use App\Models\PersonalLink;
 use App\Models\Post;
 use App\Models\Promotion;
 use App\Models\PublishCall;
@@ -84,6 +86,9 @@ class TeacherController extends Controller
                 'partners_companies' => Company::where('is_partner', true)->randomAble(4)->get(),
                 'support_companies' => Company::where('is_supporter', true)->randomAble(4)->get(),
                 'sponsorship_companies' => Company::where('is_sponsorship', true)->randomAble(4)->get(),
+                'events' => Event::where('creator_id', Auth::user()->id)->randomAble(4)->get(),
+                'collaborate_events' => Event::where('creator_id', Auth::user()->id)->randomAble(4)->collaborates()->get(),
+                'links' => PersonalLink::where('user_id', Auth::user()->id)->get(),
                 'teacher' => $user->teacher ?? false,
                 'posts' => Post::active()->latest()->take(5)->get(),
                 'foment_calls' => Promotion::latest()->take(5)->get(),

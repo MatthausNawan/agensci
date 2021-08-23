@@ -1,17 +1,11 @@
 @extends('layouts.frontend')
-
-
 @section('content')
-
+@include('frontend.pages.teachers._partials.menu')
 <div class="row">
-    @include('frontend.pages.teachers._partials.menu')
-</div>
-
-<div class="row my-4">
-    <div class="col-lg-6 offset-3">
-        <div class="card">
+    <div class="col-lg-6">
+        <div class="links-wrapper">
             <div class="card-header">
-                <h4 class="title"> Editar Link</h4>
+                <label for="Editar Link<">Editar Link</label>
             </div>
             <form action="{{route('teachers.personal-links.update',$personalLink->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -31,16 +25,9 @@
                             <div class="needsclick dropzone" id="photo-dropzone">
                         </div>                      
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Atualizar</button>                    
-                </div>
-            </form>
-            <form action="{{route('teachers.personal-links.destroy',$personalLink->id) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-transparent pull-right"><i class="fa fa-trash"></i></a>
-            </form>
+                    <button type="submit" class="btn border rounded">Atualizar</button>                    
+                </div>                
+            </form>            
         </div>
     </div>
 </div>

@@ -9,15 +9,16 @@
 <div class="row">
     <div class="col-md-3 col-sm-12 p-1">
         @include('frontend.pages.companies._partials.dashboard')
-
-        {{--@include('frontend.pages.home._partials.external-links-icon',['title'=>'Links Importantes','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links',['title'=>'Tvs Universitárias','links'=>$articles])
-        @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$articles])--}}
+        @include('frontend.pages.companies._partials.links',['title'=>'Links Importantes','links'=>$links,''])        
+        @include('frontend.pages.companies._partials.jobs',['title'=>'Estagios Cadastrados','stages'=>$jobs,''])
+        @include('frontend.pages.companies._partials.jobs',['title'=>'Treiness Cadastrados','trainees'=>$jobs,''])
+        @include('frontend.pages.companies._partials.jobs',['title'=>'Empregos Cadastrados','jobs'=>$jobs,''])
     </div>
 
-    <div class="col-md-9 col-sm-12 p-1">        
+    <div class="col-md-9 col-sm-12 p-1">
+        @include('frontend.pages.companies._partials.painel')        
         <div class="row mt-2">
-            <div class="col-md-9 col-sm-12">                
+            <div class="col-md-8 col-sm-12">                
                 @if($event_calls)
                     @include('frontend.pages.teachers._partials.event_calls',['event_calls'=>$event_calls,'title'=>'Chamdadas de Eventos'])
                 @endif               
@@ -27,12 +28,10 @@
                 @endif 
                 <img src="https://via.placeholder.com/1033x300" alt="" class="img-fluid">
             </div>
-            <div class="col-md-3 col-sm-12">
-                <!-- TODO: produtos/servicos -->
-                @include('frontend.pages.home._partials.external-links-icon',['title'=>'Exames Padronizados','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links',['title'=>'Bolsas e Auxílios','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links-icon',['title'=>'Aplicativos Úteis','links'=>$articles])
-                @include('frontend.pages.home._partials.external-links-icon',['title'=>'Programas de Estatisticas','links'=>$articles])
+            <div class="col-md-4 col-sm-12">                
+                @include('frontend.pages.companies._partials.events',['title'=>'Eventos Apoiados','events'=>$events,''])
+                @include('frontend.pages.companies._partials.events',['title'=>'Eventos Patrocinados','events'=>$events,''])
+                @include('frontend.pages.companies._partials.events',['title'=>'Eventos Parceiros','events'=>$events,''])
             </div>
         </div>
     </div>

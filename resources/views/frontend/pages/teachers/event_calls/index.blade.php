@@ -15,9 +15,9 @@
                     <table class="w-100 table-hover mt-2" border="1">
                         <thead>
                             <tr>                                
-                                <td>Titulo</td>                                
-                                <td>Evento </td>
-                                <td>Acões</td>
+                                <th>Titulo</th>                                
+                                <th>Evento </th>
+                                <th>Acões</th>
                             </tr>
                         </thead>
                         <tbody>

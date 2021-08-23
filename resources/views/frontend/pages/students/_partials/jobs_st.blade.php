@@ -1,13 +1,20 @@
 <div class="agency-card my-2">    
-    <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>        
+    <div class="card-header d-flex flex-row justify-content-between">
+        <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>
+        <a href="" class="text-white"><i class="fa fa-search"></i>visualizar todas</a>        
+    </div> 
     <div class="my-2">        
         <div class="owl-carousel owl-theme">
             @foreach($jobs_st as $job_st)            
                 <div class="agency-card mx-1">
-                <div class="d-flex flex-row">
+                    <div class="d-flex flex-row">
                         <span class="foment-label text-center">Empresa</span>
-                        <span class="foment-value text-center">{{ $job_st->company }}</span>
-                        <span class="foment-value text-center">LOGO</span>
+                        <span class="foment-value text-center">
+                            <span>{{ $job_st->company }}</span>
+                        </span>
+                        <span class="foment-value text-center d-flex justify-content-center">
+                            <img src="{{ $job_st->companyJob->logo ? $job_st->companyJob->logo->getUrl('thumb') : '' }}" alt="" style="height:50px; width:50px;">
+                        </span>
                     </div>
                     <div class="d-flex flex-column">
                         <div class="foment-data d-flex flex-row justify-content-start">

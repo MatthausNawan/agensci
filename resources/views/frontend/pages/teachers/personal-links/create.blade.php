@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="card">            
+        <div class="links-wrapper">            
             <form action="{{route('teachers.personal-links.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
@@ -30,10 +30,8 @@
                         @endif
                         <span class="help-block">{{ trans('cruds.speaker.fields.photo_helper') }}</span>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
-                </div>
+                    <button type="submit" class="btn text-black border rounded">Cadastrar</button>
+                </div>                
             </form>
         </div>
     </div>

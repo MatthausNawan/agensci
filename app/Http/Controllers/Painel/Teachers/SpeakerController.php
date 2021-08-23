@@ -31,8 +31,13 @@ class SpeakerController extends Controller
      */
     public function create()
     {
-        $segments = Segment::all();
-        return view('frontend.pages.teachers.speakers.create', compact('segments'));
+        $speaker = Speaker::where('creator_id', Auth::user()->id)->first();
+
+        if (!$speaker) {
+            return view('frontend.pages.teachers.speakers.create');
+        } else {
+            return view('frontend.pages.teachers.speakers.edit', compact('speaker'));
+        }
     }
 
     /**
@@ -53,7 +58,7 @@ class SpeakerController extends Controller
             $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
         }
 
-        return redirect()->route('teachers.speakers.index');
+        return redirect()->route('teachers.speakers.create');
     }
 
 
@@ -98,7 +103,7 @@ class SpeakerController extends Controller
             $speaker->photo->delete();
         }
 
-        return redirect()->route('teachers.speakers.index');
+        return redirect()->route('teachers.speakers.create');
     }
 
     /**

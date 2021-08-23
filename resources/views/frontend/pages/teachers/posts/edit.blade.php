@@ -1,44 +1,49 @@
 @extends('layouts.frontend')
+
+
 @section('content')
-@include('frontend.pages.teachers._partials.menu')
+
 <div class="row">
-    <div class="col-lg-6">
-        <div class="links-wrapper">            
-            <form action="{{ route('teachers.event-calls.store') }}" method="post" enctype="multipart/form-data">
+    @include('frontend.pages.teachers._partials.menu')
+</div>
+
+<div class="row my-4">
+    <div class="col-lg-10 offset-1">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="title"> Editar Notícia</h4>
+            </div>
+            <form action="{{ route('teachers.posts.update',$post->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title" class="required">Titulo</label>
-                        <input type="text" class="form-control form-control-sm" name="title">
+                        <input type="text" class="form-control" name="title" value="{{ $post->title ?? old('title') }}">
                         @if($errors->has('title'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('title') }}</span>
                         @endif
-                    </div>                    
-                    
-                    <div class="form-group {{ $errors->has('media_type') ? 'has-error' : '' }}">
-                        <label for="media" class="required">Tipo de Mídia</label>
-                        <select name="media_type" class="form-control form-control-sm">
-                            <option value="YT_EMBED_VIDEO" selected>Códio de Incorpoaração do Youtube.</option>
-                        </select>
                     </div>
-
-                    <div class="form-group {{ $errors->has('media') ? 'has-error' : '' }}">
-                        <label for="media" class="required">Codigo de Incorporação</label>
-                        <textarea class="form-control form-control-sm" name="media" id="media" cols="5" rows="5">{!! old('media') !!}</textarea>
-                        @if($errors->has('media'))
-                            <span class="help-block" role="alert">{{ $errors->first('media') }}</span>
-                        @endif                        
-                    </div>
-
-                    <div class="form-group {{ $errors->has('event_id') ? 'has-error' : '' }}">
-                        <label for="event_id" class="required">Vincular ao Evento</label>
-                        <select name="event_id" id="" class="form-control form-control-sm">
-                            @foreach($events as $event)
-                                <option value="{{$event->id }}">{{ $event->title ?? ''}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>                
+                    <div class="form-group {{ $errors->has('detail') ? 'has-error' : '' }}">
+                            <label for="detail">{{ trans('cruds.post.fields.detail') }}</label>
+                            <textarea class="form-control" rows="10" name="detail" id="detail">{!!$post->detail ?? old('detail') !!}</textarea>
+                            @if($errors->has('detail'))
+                                <span class="help-block" role="alert">{{ $errors->first('detail') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.post.fields.detail_helper') }}</span>
+                        </div>
+                        <div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
+                            <label for="banner">{{ trans('cruds.post.fields.banner') }}</label>
+                            <div class="needsclick dropzone" id="banner-dropzone">
+                            </div>
+                            @if($errors->has('banner'))
+                                <span class="help-block" role="alert">{{ $errors->first('banner') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.post.fields.banner_helper') }}</span>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -48,8 +53,9 @@
 
 @endsection
 
-
 @section('js')
+
+
 <script>
     Dropzone.options.bannerDropzone = {
     url: '{{ route('teachers.storeMedia') }}',

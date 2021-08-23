@@ -9,20 +9,20 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">            
+        <div class="links-wrapper">            
             <form action="{{ route('teachers.events.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="row">
-                    <div class="form-group col-6 {{ $errors->has('banner') ? 'has-error' : '' }}">
-                        <label for="banner">{{ trans('cruds.event.fields.banner') }}</label>
-                        <div class="needsclick dropzone" id="banner-dropzone">
+                        <div class="form-group col-12 {{ $errors->has('banner') ? 'has-error' : '' }}">
+                            <label for="banner">{{ trans('cruds.event.fields.banner') }}</label>
+                            <div class="needsclick dropzone" id="banner-dropzone">
+                            </div>
+                            @if($errors->has('banner'))
+                                <span class="help-block" role="alert">{{ $errors->first('banner') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.event.fields.banner_helper') }}</span>
                         </div>
-                        @if($errors->has('banner'))
-                            <span class="help-block" role="alert">{{ $errors->first('banner') }}</span>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.event.fields.banner_helper') }}</span>
-                    </div>
                     </div>
                     <div class="form-group">
                         <label for="title" class="required">Titulo</label>
@@ -124,47 +124,25 @@
                             <span class="help-block text-danger" role="alert">{{ $errors->first('subscription_period') }}</span>
                         @endif
                     </div>
-
-                    <div class="form-group">
-                        <label for="title">Empresas Colaboradoras</label>
-                        <select name="companies[]" id="companies" class="select2 form-control" multiple="multiple">
-                           @forelse($companies as $company)
-                                <option value="{{$company->id }}">{{ $company->name ?? '' }}</option>
-                           @empty
-                                <option value="" disabled>Nenhuma Empresa disponível</option>
-                           @endforelse
-                        </select>
+                    <div class="div" x-data="{collaborate:false}">
+                        <div class="form-group">
+                            <input type="checkbox" x-model="collaborate" value="1" name="is_collaborate_event" id="is_collaborate_event">
+                            <label for="is_collaborate_event">Evento Colaborado?</label>
+                        </div>
+                        <div class="form-group" x-show="collaborate">
+                            <label for="title" >Empresas Colaboradoras</label>
+                            <select name="companies[]" id="companies" class="select2 form-control" multiple="multiple">
+                            @forelse($companies as $company)
+                                    <option value="{{$company->id }}">{{ $company->name ?? '' }}</option>
+                            @empty
+                                    <option value="" disabled>Nenhuma Empresa disponível</option>
+                            @endforelse
+                            </select>
+                        </div>                  
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="title">Empresas Parceiras</label>
-                        <select name="partner_companies[]" id="companies" class="select2 form-control form-control-sm" multiple="multiple">
-                            <option value="1">Empresa 1</option>
-                            <option value="2">Empresa 3</option>
-                            <option value="3">Empresa 2</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="title">Empresas Patrocinadoras</label>
-                        <select name="sponsoship_companies[]" id="companies" class="select2 form-control form-control-sm" multiple="multiple">
-                            <option value="1">Empresa 1</option>
-                            <option value="2">Empresa 3</option>
-                            <option value="3">Empresa 2</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="title">Empresas Apoiadoras</label>
-                        <select name="support_companies[]" id="companies" class="select2 form-control form-control-sm" multiple="multiple">
-                            <option value="1">Empresa 1</option>
-                            <option value="2">Empresa 3</option>
-                            <option value="3">Empresa 2</option>
-                        </select>
-                    </div> -->                    
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
-                </div>
+                               
+                    <button type="submit" class="btn text-black rounded border">Cadastrar</button>
+                </div>                
             </form>
         </div>
     </div>

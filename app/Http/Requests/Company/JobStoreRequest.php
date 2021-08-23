@@ -26,10 +26,10 @@ class JobStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'type'              => 'required',
-            'ocuppation'        => 'required',
+            // 'type'              => 'required',
+            // 'ocuppation'        => 'required',
             'qty_jobs'          => 'required',
-            'salary'            => 'required',
+            // 'salary'            => 'required',
             'expiration_date'   => 'required',
             'link'              => 'required'
         ];

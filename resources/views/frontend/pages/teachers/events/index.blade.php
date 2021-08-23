@@ -19,7 +19,8 @@
                             <th>Titulo</th>
                             <th>Segmento</th>
                             <th>Inicio</th>
-                            <th>Data Encerramento</th>
+                            <th>Fim</th>
+                            <th>Colaborado?</th>
                             <th>Ativo</th>
                             <th>Acões</th>
                         </tr>
@@ -32,6 +33,7 @@
                             <td>{{ $event->segment->name }}</td>
                             <td>{{ $event->start_date }}</td>
                             <td>{{ $event->end_date }}</td>
+                            <td>{{$event->is_collaborate_event? 'Sim' : 'Não'}}</td>
                             <td>{{ $event->enabled ? 'Sim' : 'Não' }}</td>
                             <td>
                                 <a href="{{route('teachers.events.edit',$event->id)}}" class="btn btn-outline-danger btn-sm">Ver</a>
