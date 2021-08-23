@@ -9,12 +9,11 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <a href="{{ route('students.meus-links.create') }}" class="btn btn-secondary">Adicionar Link</a>
-            </div>
+        <div class="links-wrapper">          
+            
             <div class="card-body">
-                <table class="table table-condensed table-striped table-hover">
+                <a href="{{ route('students.meus-links.create') }}" class="btn text-black border rounded mb-2">Adicionar Link</a>
+                <table class="w-100 table-hover" border="1">
                     <thead>
                         <tr>
                             <th>Imagem</th>
@@ -31,7 +30,7 @@
                             <td>{{ $personalLink->title ?? '' }}</td>
                             <td><a href="{{ $personalLink->link ?? '' }}" target="_blank">{{ $personalLink->link ?? '' }}</a></td>
                             <td>
-                                <a href="{{ route('students.meus-links.edit',$personalLink->id) }}" class="btn btn-sm btn-dark">Ver</a>
+                                <a href="{{ route('students.meus-links.edit',$personalLink->id) }}" class="btn btn-sm btn-outline-danger">Ver</a>
                             </td>
                         </tr>
                         @endforeach

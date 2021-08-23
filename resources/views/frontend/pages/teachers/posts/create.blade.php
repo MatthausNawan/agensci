@@ -1,40 +1,18 @@
 @extends('layouts.frontend')
-
-
 @section('content')
+@include('frontend.pages.teachers._partials.menu')
 
 <div class="row">
-    @include('frontend.pages.teachers._partials.menu')
-</div>
-
-<div class="row my-4">
-    <div class="col-lg-10 offset-1">
-        <div class="card">
+    <div class="col-lg-10">
+        <div class="links-wrapper">
             <div class="card-header">
-                <h4 class="title"> Cadastrar Notícia</h4>
+                <label for="">Cadastrar Notícia</label>
             </div>
             <form action="{{ route('teachers.posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="title" class="required">Titulo</label>
-                        <input type="text" class="form-control" name="title">
-                        @if($errors->has('title'))
-                            <span class="help-block text-danger" role="alert">{{ $errors->first('title') }}</span>
-                        @endif
-                    </div>
-
-                        <div class="form-group {{ $errors->has('detail') ? 'has-error' : '' }}">
-                        <label for="detail" class="required">{{ trans('cruds.post.fields.detail') }}</label>
-                        <textarea class="form-control" name="detail" id="detail">{!! old('detail') !!}</textarea>
-                        @if($errors->has('detail'))
-                            <span class="help-block" role="alert">{{ $errors->first('detail') }}</span>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.post.fields.detail_helper') }}</span>
-                    </div>
-
                     <div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
-                        <label for="banner" class="required">{{ trans('cruds.post.fields.banner') }}</label>
+                        <label for="banner" class="required">Foto Destaque</label>
                         <div class="needsclick dropzone" id="banner-dropzone">
                         </div>
                         @if($errors->has('banner'))
@@ -42,10 +20,27 @@
                         @endif
                         <span class="help-block">{{ trans('cruds.post.fields.banner_helper') }}</span>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
-                </div>
+
+                    <div class="form-group">
+                        <label for="title" class="required">Titulo</label>
+                        <input type="text" class="form-control form-control-sm" name="title">
+                        @if($errors->has('title'))
+                            <span class="help-block text-danger" role="alert">{{ $errors->first('title') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group {{ $errors->has('detail') ? 'has-error' : '' }}">
+                        <label for="detail" class="required">{{ trans('cruds.post.fields.detail') }}</label>
+                        <textarea class="form-control form-control-sm" name="detail" id="detail" cols="2" rows="4">{!! old('detail') !!}</textarea>
+                        @if($errors->has('detail'))
+                            <span class="help-block" role="alert">{{ $errors->first('detail') }}</span>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.post.fields.detail_helper') }}</span>
+                    </div>
+
+                    
+                    <button type="submit" class="btn text-black rounded border">Cadastrar</button>
+                </div>                
             </form>
         </div>
     </div>

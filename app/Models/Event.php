@@ -41,13 +41,16 @@ class Event extends Model implements HasMedia
         'location',
         'link',
         'details',
+        'is_collaborate_event',
         'creator_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-
+    protected $casts = [
+        'is_collaborate_event' => 'false'
+    ];
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -137,5 +140,15 @@ class Event extends Model implements HasMedia
     public static function scopeEnabled($query)
     {
         return $query->where('enabled', true);
+    }
+
+    public function scopeRandomAble($query, $lenght)
+    {
+        return $query->inRandomOrder()->limit($lenght);
+    }
+
+    public function scopeCollaborates($query)
+    {
+        return $query->where('is_collaborate_event', true);
     }
 }

@@ -1,29 +1,22 @@
 @extends('layouts.frontend')
-
-
 @section('content')
-
-<div class="row">
-    @include('frontend.pages.teachers._partials.menu')
-</div>
+@include('frontend.pages.teachers._partials.menu')
 
 <div class="row">
     <div class="col-lg-7 col-sm-12">
         <form method="POST" action="{{ route('teachers.profile.update') }}" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="card">
-                <div class="card-header bg-dark">
-                    <span class="text-white">Minha Conta</span>
-                </div>
+            <div class="links-wrapper">                
                 <div class="card-body">
+                    <label for="Minha Conta" class="border-bottom">Minha Conta</label>
 
                 <div class="form-group">
                     <label class="required" for="nome">Nome:</label>
                     <input type="text" name="name" class="form-control form-control-sm {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $profile->name ?? old('name') ?? '' }}">
                     @if($errors->has('name'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $rrors->first('name') }}
                     </div>
                     @endif
                 </div>
@@ -235,23 +228,18 @@
                     </div>
                 </div>
 
-            </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-dark btn-block">Atualizar Dados</button>
-                </div>
+                <button type="submit" class="btn text-black rounded border">Atualizar Dados</button>
+            </div>                
             </div>
         </form>
     </div>
 
     <div class="col-lg-5 col-sm-12">
-        <div class="card">
+        <div class="links-wrapper">
             <form action="{{ route('profile.password.update') }}?redirect=painel" method="post">
-                @csrf
-
-                <div class="card-header bg-dark">
-                    <span class="text-white">Atualizar Senha</span>
-                </div>
+                @csrf                
                 <div class="card-body">
+                    <label for="">Atualizar Senha</label>
                     <div class="form-group">
                         <label for="razao" class="required">Nova Senha</label>
                         <input type="password" class="form-control form-control-sm {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="deve ter no mínino 8 caracteres">
@@ -265,21 +253,17 @@
                         <label for="razao">Repetir Nova Senha</label>
                         <input type="password" class="form-control form-control-sm" name="password_confirmation">
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-dark btn-block">Atualizar Senha</button>
+                    <button type="submit" class="btn text-black border rounded">Atualizar Senha</button>
                 </div>
             </form>
         </div>
 
-        <div class="card mt-3">
+        <div class="links-wrapper mt-3">
             <form method="POST" action="{{ route('teachers.profile.update') }}" enctype="multipart/form-data">
                 @csrf
-                @method('put')
-                <div class="card-header bg-dark">
-                    <span class="text-white">Avatar</span>
-                </div>
+                @method('put')                
                 <div class="card-body">
+                    <label for="">Foto</label>
                     <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
                         <div class="needsclick dropzone" id="logo-dropzone">
                         </div>
@@ -287,10 +271,8 @@
                             <span class="help-block" role="alert">{{ $errors->first('logo') }}</span>
                         @endif
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary btn-block">Atualizar Logo</button>
-                </div>
+                    <button type="submit" class="btn text-black rounded border">Atualizar Logo</button>
+                </div>                
             </form>
         </div>
     </div>

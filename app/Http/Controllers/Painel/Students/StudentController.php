@@ -11,8 +11,10 @@ use App\Models\Contest;
 use App\Models\Country;
 use App\Models\ExternalLik;
 use App\Models\Job;
+use App\Models\PersonalLink;
 use App\Models\Post;
 use App\Models\Student;
+use App\Models\StudentEvent;
 use App\Services\StudentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,6 +86,8 @@ class StudentController extends Controller
                 'util_apps' => ExternalLik::type(Category::C_APLICATIVOS_UTEIS)->take(5)->randomAble(4)->get(),
                 'high_school_tvs' => ExternalLik::type(Category::C_TV_UNIVERSITARIAS)->randomAble(4)->get(),
                 'high_school_radios' => ExternalLik::type(Category::C_RADIOS_UNIVERSITARIAS)->randomAble(4)->get(),
+                'events' => StudentEvent::where('creator_id', Auth::user()->id)->randomAble(4)->get(),
+                'links' => PersonalLink::where('user_id', Auth::user()->id)->get(),
                 'posts' => Post::latest()->take(5)->get(),
                 'event_calls' => EventCall::latest()->take(10)->get(),
                 'jobs' => Job::with('companyJob')->where('type', Job::TYPE_EMPREGO)->take(5)->get(),

@@ -1,5 +1,8 @@
 <div class="agency-card">    
-    <!-- <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>         -->
+    <div class="card-header d-flex flex-row justify-content-between">
+        <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>
+        <a href="" class="text-white"><i class="fa fa-search"></i>visualizar todas</a>        
+    </div>
     <div class="my-2">        
         <div class="owl-carousel owl-theme">
             @foreach($posts as $post)        
@@ -7,7 +10,7 @@
                     <div class="posts-info m-2 d-flex flex-column">
                         <div class="d-flex flex-row justify-content-between border-bottom">
                             <a href="{{ route('site.post',$post->slug) }}" class="btn-link">
-                                <h6 class="text-white"><span class="text-uppercase">Notícia</span> - {{$post->author->name ?? ''}}</h6>
+                                <h6 class="text-white"><span class="text-uppercase">Autor(a):</span>{{$post->author->name ?? ''}}</h6>
                             </a>
                             <small class="mb-3">{{ $post->created_at->format('d/m/Y') }}</small>
                         </div>

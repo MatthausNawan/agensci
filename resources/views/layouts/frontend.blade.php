@@ -73,8 +73,8 @@
     </main>
                
                
-    <footer class="footer mt-auto py-3">
-        <nav class="navbar fixed-bottom bg-dark p-0">
+    <footer class="footer mt-auto">
+        <nav class="navbar bg-dark p-0">
             <div class="container d-flex justify-content-start">
                 <a class="p-3 text-white" href="{{route('site.static.whoiam')}}">Quem somos</a>
                 <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>

@@ -9,6 +9,8 @@
 .owl-theme .owl-nav {
   margin-top: 10px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
   -webkit-tap-highlight-color: transparent; }
   .owl-theme .owl-nav [class*='owl-'] {
     color: #FFF;

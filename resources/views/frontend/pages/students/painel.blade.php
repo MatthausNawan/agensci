@@ -2,13 +2,19 @@
 
 @section('content')
 
-<div class="row">
+
+<div class="row mt-2">
+    <div class="col-12 text-center panel-header">
+        Agenda Cientifica
+    </div>
     @include('frontend.pages.students._partials.menu')
 </div>
 
 <div class="row">
     <div class="col-md-3 col-sm-12 p-1">
         @include('frontend.pages.students._partials.dashboard')
+        @include('frontend.pages.students._partials.links',['title'=>'Links Importantes','links'=>$links,''])
+        @include('frontend.pages.students._partials.events',['title'=>'Meus Eventos','events'=>$events,''])
         @include('frontend.pages.home._partials.external-links-icon',['title'=>'Tvs Universitárias','links'=>$high_school_tvs])
         @include('frontend.pages.home._partials.external-links-icon',['title'=>'Radios Universitárias','links'=>$high_school_radios])
     </div>

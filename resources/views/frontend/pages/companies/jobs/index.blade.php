@@ -1,46 +1,38 @@
 @extends('layouts.frontend')
-
-
 @section('content')
-
-<div class="row">
-    @include('frontend.pages.companies._partials.menu')
-</div>
+@include('frontend.pages.companies._partials.menu')
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <a href="{{ route('companies.jobs.create') }}" class="btn btn-secondary">Adicionar Vaga </a>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered table-striped table-hover">
+        <div class="card">            
+            <div class="card-body">                
+                <table class="w-100 table-hover" border="1">
                     <thead>
                         <tr>
-                            <td>Codigo</td>
-                            <td>Empresa</td>
-                            <td>Área</td>
-                            <td>Tipo</td>
-                            <td>Formação</td>
-                            <td>Salário</td>
-                            <td>Vagas</td>
-                            <td>Data de Expiração</td>
-                            <td>Acões</td>
+                            <th>Codigo</th>
+                            <th>Empresa</th>
+                            <th>Área/Ocupação</th>
+                            <th>Tipo</th>
+                            <th>Formação</th>
+                            <th>Salário</th>
+                            <th>Vagas</th>
+                            <th>Data de Expiração</th>
+                            <th>Acões</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($jobs as $job)
                         <tr>
                             <td>{{ $job->id}}</td>
-                            <td>{{ $job->companies->name }}</td>
-                            <td>{{ $job->area }}</td>
+                            <td>{{ $job->companyJob->name }}</td>
+                            <td>{{ $job->area ?? $job->ocuppation }}</td>
                             <td>{{ App\Models\Job::TYPE_SELECT[$job->type] }}</td>
                             <td>{{ $job->formation }}</td>
-                            <td>{{ $job->salary }}</td>
+                            <td>{{ $job->salary ?? '--'}}</td>
                             <td>{{ $job->qty_jobs }}</td>
-                            <td>{{ $job->expiration_date }}</td>
+                            <td>{{ $job->expiration_date->format('d/m/Y') }}</td>
                             <td>
-                                <a href="{{route('companies.jobs.edit',$job->id)}}" class="btn btn-sm btn-dark">Editar</a>
+                                <a href="{{route('companies.jobs.edit',$job->id)}}" class="btn btn-sm btn-outline-danger">Ver</a>
                             </td>
                         </tr>
                         @endforeach

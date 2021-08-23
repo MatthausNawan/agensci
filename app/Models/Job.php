@@ -13,14 +13,14 @@ class Job extends Model
 
     public $table = 'jobs';
 
-    const TYPE_ESTAGIO = 1;
-    const TYPE_EMPREGO = 2;
-    const TYPE_TRAINEE = 3;
+    const TYPE_ESTAGIO = 'estagio';
+    const TYPE_EMPREGO = 'emprego';
+    const TYPE_TRAINEE = 'trainee';
 
     const TYPE_SELECT = [
-        '1' => 'Estágio',
-        '2' => 'Emprego',
-        '3' => 'Treinee'
+        'estagio' => 'Estágio',
+        'emprego' => 'Emprego',
+        'trainee' => 'Treinee'
     ];
 
     protected $dates = [
@@ -30,7 +30,7 @@ class Job extends Model
         'deleted_at',
     ];
 
-    protected $casts = ['expiration_date'];
+    // protected $casts = ['expiration_date'];
 
     protected $fillable = [
         'company',

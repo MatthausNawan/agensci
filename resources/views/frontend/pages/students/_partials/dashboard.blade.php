@@ -49,6 +49,8 @@
                 @endif
             </div>
         </div>
+        <div class="">
+            <a href="{{route('students.profile.update')}}" class="btn border rounded btn-block btn-sm pull-right">Meu Cadastro</a>
+        </div>
     </div>
-    <a href="{{route('students.profile.update')}}" class="btn btn-secondary btn-block btn-sm">Meu Cadastro</a>
 </div>

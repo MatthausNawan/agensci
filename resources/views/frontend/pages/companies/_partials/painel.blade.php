@@ -1,5 +1,3 @@
 <div class="card">
-    <div class="card-body p-5">
-        <h3>Painel virtual empresas</h3>
-    </div>
+    <img src="{{ asset('images/painel-company.png') }}" width="100%" height="auto"/>
 </div>

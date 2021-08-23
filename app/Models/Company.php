@@ -85,4 +85,12 @@ class Company extends Model implements HasMedia
     {
         return $query->inRandomOrder()->limit($lenght);
     }
+
+    public function scopeAvailableToEvents($query)
+    {
+        return $query->orWhere('is_partner', true)
+                ->orWhere('is_supporter', true)
+                ->orWhere('is_sponsorship', true)
+                ->get();
+    }
 }

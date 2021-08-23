@@ -1,49 +1,26 @@
 @extends('layouts.frontend')
-
-
 @section('content')
+@include('frontend.pages.teachers._partials.menu')
 
 <div class="row">
-    @include('frontend.pages.teachers._partials.menu')
-</div>
-
-<div class="row my-4">
-    <div class="col-lg-6 offset-3">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="title"> Cadastrar Palestrante</h4>
-            </div>
+    <div class="col-lg-6">
+        <div class="links-wrapper">            
             <form action="{{ route('teachers.speakers.store') }}" method="post" enctype="multipart/form-data">
             @csrf
               <div class="card-body">
-                    <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
-                        <label for="photo" class="required">Foto</label>
-                        <div class="needsclick dropzone" id="photo-dropzone">
-                        </div>
-                        @if($errors->has('photo'))
-                            <span class="help-block" role="alert">{{ $errors->first('photo') }}</span>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.speaker.fields.photo_helper') }}</span>
-                    </div>
-                    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-                        <label for="title" class="required">Nome</label>
-                        <input type="text" class="form-control" name="name">
-                        @if($errors->has('name'))
-                            <span class="help-block text-danger" role="alert">{{ $errors->first('name') }}</span>
-                        @endif
-                    </div>
-
+                    <small for="">Informe seus dados como Palestrante</small>                                        
                     <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
                         <label for="title" class="required">Descricão Curta</label>
                         <input type="text" class="form-control" name="description">
                         @if($errors->has('description'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('description') }}</span>
                         @endif
+                        <span class="help-block">Insira um nome curto para ficar visível no site</span>
                     </div>
 
                     <div class="form-group {{ $errors->has('bio') ? 'has-error' : ''}}">
-                        <label for="bio" class="required">Bio</label>
-                        <textarea name="bio" id="" cols="30" rows="10" class="form-control">{{ $speaker->bio ?? old('bio') }}</textarea>
+                        <label for="bio" class="required">Descrição</label>
+                        <textarea name="bio" id="" cols="30" rows="6" class="form-control">{{ $speaker->bio ?? old('bio') }}</textarea>
                         @if($errors->has('bio'))
                             <span class="help-block text-danger" role="alert">{{ $errors->first('bio') }}</span>
                         @endif
@@ -88,10 +65,8 @@
                             <span class="help-block text-danger" role="alert">{{ $errors->first('areas') }}</span>
                         @endif
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-secondary">Cadastrar</button>
-                </div>
+                    <button type="submit" class="btn text-black rounded border">Cadastrar</button>
+                </div>                
             </form>
         </div>
     </div>

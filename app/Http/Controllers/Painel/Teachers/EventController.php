@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\Teacher\EventStoreRequest;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Country;
 use App\Models\Event;
 use App\Models\Segment;
@@ -22,9 +23,14 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::where('creator_id', Auth::user()->id)->get();
+        $onlyCollaborateEvents = $request->colaborados ?? null;
+        if ($onlyCollaborateEvents) {
+            $events = Event::where('creator_id', Auth::user()->id)->collaborates()->get();
+        } else {
+            $events = Event::where('creator_id', Auth::user()->id)->get();
+        }
         return view('frontend.pages.teachers.events.index', compact('events'));
     }
 
@@ -39,7 +45,9 @@ class EventController extends Controller
         $countries = Country::all();
         $states = DB::table('states')->get();
         $categories = Category::where('type', 'EVENT')->get();
-        return view('frontend.pages.teachers.events.create', compact('segments', 'countries', 'states', 'categories'));
+        $companies = Company::AvailableToEvents();
+        
+        return view('frontend.pages.teachers.events.create', compact('segments', 'countries', 'states', 'categories', 'companies'));
     }
 
     /**
@@ -51,6 +59,7 @@ class EventController extends Controller
     public function store(EventStoreRequest $request)
     {
         $data = $request->all();
+        
         $data['creator_id'] = Auth::user()->id;
         $data['enabled'] = false;
 
@@ -100,7 +109,6 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
         $data['creator_id'] = Auth::user()->id;
 
         $event =  Event::find($id);
