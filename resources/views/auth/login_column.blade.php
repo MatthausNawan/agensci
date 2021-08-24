@@ -1,7 +1,7 @@
 <div class="links-wrapper p-2">
     <h6 class="font-weight-lighter">{{$title ?? 'Fazer Login'}}</h6>
     <div class="border rounded p-2">
-        <form action="{{ route('login') }}" method="post">
+        <form action="{{ route('login') }}" method="post" autocomplete="off">
             @csrf
             <div class="form-group">
                 <div class="label font-weight-bold">E-mail</div>

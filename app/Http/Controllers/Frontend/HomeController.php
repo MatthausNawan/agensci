@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Contest;
@@ -15,6 +16,7 @@ use App\Models\PublishCall;
 use App\Models\Segment;
 use App\Models\Speaker;
 use App\Models\StudentProfile;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -102,5 +104,12 @@ class HomeController extends Controller
             ->paginate(10);
 
         return view('frontend.pages.static.search-link', compact('links', 'category'));
+    }
+
+    public function contact(Request $request)
+    {
+        Contact::create($request->all());
+
+        return redirect()->back()->with('contact_flash', 'Mensagem Enviada com Sucesso!');
     }
 }

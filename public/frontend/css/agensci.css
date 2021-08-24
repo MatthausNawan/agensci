@@ -11166,5 +11166,21 @@ table > tbody > tr td {
   font-weight: bold;
 }
 
+.contact-label {
+  color: #364cc6;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.contact-small {
+  color: #999;
+  margin-left: 20px;
+  font-weight: normal;
+}
+
+.contact-border {
+  border: 2px solid #364cc6;
+}
+
 
 /*# sourceMappingURL=agensci.css.map*/

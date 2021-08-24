@@ -65,12 +65,16 @@ class EventController extends Controller
 
         $event = Event::create($data);
 
+        if ($request->companies) {
+            $event->createCollaborators($request->companies);
+        }
+        
         if ($request->input('banner', false)) {
             $event->addMedia(storage_path('tmp/uploads/' . $request->input('banner')))->toMediaCollection('banner');
         }
 
         return redirect()->route('teachers.events.index')
-        ->with('message', trans('Evento cadastrado com sucesso!'));
+                        ->with('message', trans('Evento cadastrado com sucesso!'));
     }
 
     /**

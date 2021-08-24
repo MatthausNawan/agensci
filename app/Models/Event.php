@@ -151,4 +151,28 @@ class Event extends Model implements HasMedia
     {
         return $query->where('is_collaborate_event', true);
     }
+
+    public function companies()
+    {
+        return $this->hasHany(Company::class, 'company_id');
+    }
+
+    public function createCollaborators($collaborators)
+    {
+        foreach ($collaborators as $collaborator) {
+            if (!$company = Company::find($collaborator)) {
+                continue;
+            };
+
+            EventCompany::create(
+                [
+                    'event_id' => $this->id,
+                    'event_title' => $this->title,
+                    'company_name' => $company->fantasy_name,
+                    'company_id' => $company->id
+                ]
+            );
+        }
+        return true;
+    }
 }
