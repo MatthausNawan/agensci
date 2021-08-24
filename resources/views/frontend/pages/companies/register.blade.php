@@ -10,13 +10,10 @@
     <div class="col-lg-8 offset-lg-2">
         <form method="POST" action="{{ route('site.companies.store') }}" enctype="multipart/form-data" class="form-register">
             @csrf
-            <div class="card">
-                <div class="card-header">
+            <div class="links-wrapper">                
+                <div class="card-body">
                     <span class="card-title">Cadastre sua Empresa</span>
                     <small>Campos com <span class="text-danger">*</span> são obrigatórios</small>
-                </div>
-                <div class="card-body">
-                    
                     <div class="form-group">
                         <label for="razao" class="required">Razão social:</label>
                         <input type="text" name="name" class="form-control form-control-sm {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', '') }}">
@@ -205,25 +202,16 @@
                     </div>
                 @endif
             </div>
-            <div class="form-group">
-                <label for="razao" class="required">Senha</label>
-                <input type="password" class="form-control form-control-sm {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="deve ter no mínino 8 caracteres">
-            </div>
-            <div class="form-group">
-                <label for="razao">Repetir Senha</label>
-                <input type="password" class="form-control form-control-sm" name="password_confirmation">
-            </div>
+                <div class="form-group">
+                    <label for="razao" class="required">Senha</label>
+                    <input type="password" class="form-control form-control-sm {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="deve ter no mínino 8 caracteres">
                 </div>
-
-
-           
-                
-            
-            
-            <div class="card-footer">
-                <button type="submit" class="btn btn-dark btn-block">Cadastrar</button>
+                <div class="form-group">
+                    <label for="razao">Repetir Senha</label>
+                    <input type="password" class="form-control form-control-sm" name="password_confirmation">
+                </div>
+                <button type="submit" class="btn text-black border rounded">Cadastrar</button>
             </div>
-            
         </form>
     </div>
 </div>

@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
+    Route::post('/contato', 'HomeController@contact')->name('site.contact');
 
     Route::view('/anuncie/selecionar-local', 'frontend.pages.static.map')->name('site.advertise.map');
     Route::get('/anuncie', 'AdvertController@create')->name('site.advertise.create');
@@ -48,6 +49,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::view('/termos-de-uso', 'frontend.pages.static.terms')->name('site.static.terms');
     Route::view('/quem-somos', 'frontend.pages.static.whoiam')->name('site.static.whoiam');
     Route::view('/politica-de-privacidade', 'frontend.pages.static.privacy')->name('site.static.privacy');
+    Route::view('/contato', 'frontend.pages.static.contact')->name('site.static.contact');
 });
 
 Route::group(['prefix' => 'cadastro', 'namespace' => 'Painel'], function () {
@@ -63,8 +65,6 @@ Route::group(['prefix' => 'cadastro', 'namespace' => 'Painel'], function () {
     Route::get('empresas', 'Companies\CompanyController@showRegisterCompaniesPage')->name('site.companies.register');
     Route::post('empresas', 'Companies\CompanyController@store')->name('site.companies.store');
 });
-
-
 
 Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
@@ -85,6 +85,8 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
         Route::get('/', 'CompanyController@home')->name('home');
         Route::get('/minha-conta', 'CompanyController@getProfile')->name('profile');
         Route::put('/minha-conta', 'CompanyController@updateProfile')->name('profile.update');
+        Route::get('/colaboracao-academica', 'CompanyController@showCollaborationPage')->name('profile.collaborate');
+        Route::post('/colaboracao-academica', 'CompanyController@updateCollaborationPreferences')->name('profile.collaborate.update');
         Route::resource('jobs', 'JobController');
         Route::resource('personal-links', 'PersonalLinkController');
 
@@ -107,7 +109,6 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
         Route::post('teachers/media', 'PersonalLinkController@storeMedia')->name('storeMedia');
     });
 });
-
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');

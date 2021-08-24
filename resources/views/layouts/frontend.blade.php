@@ -67,7 +67,7 @@
         @csrf()
     </form>
     <main role="main" class="flex-shrink-0">        
-        <div class="container">
+        <div class="container mt-1">
             @yield('content')
         </div>        
     </main>
@@ -79,7 +79,7 @@
                 <a class="p-3 text-white" href="{{route('site.static.whoiam')}}">Quem somos</a>
                 <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>
                 <a class="p-3 text-white" href="{{ route('site.static.privacy') }}">Politica de Privacidade</a>
-                <a class="p-3 text-white" href="#">Contato</a>
+                <a class="p-3 text-white" href="{{route('site.static.contact')}}">Contato</a>
             </div>
         </nav>
     </footer>

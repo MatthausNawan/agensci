@@ -19,10 +19,7 @@
         </div>
         <div class="my-2">
             <img src="https://via.placeholder.com/300x500" class="img-fluid" alt="Responsive image">
-        </div>
-        <div class="my-2">
-            <img src="https://via.placeholder.com/300x500" class="img-fluid" alt="Responsive image">
-        </div>
+        </div>        
     </div>
 </div>
 @endsection

@@ -100,4 +100,20 @@ class CompanyController extends Controller
 
         return  redirect()->back()->with('success', 'Dados Atualizados!');
     }
+
+    public function showCollaborationPage()
+    {
+        $user = Auth::user();
+        $profile = $user->company;
+        return view('frontend.pages.companies.collaborator.create', compact('profile'));
+    }
+
+    public function updateCollaborationPreferences(Request $request)
+    {
+        $user = Auth::user();
+        $profile = $user->company;
+        $profile->update($request->all());
+
+        return view('frontend.pages.companies.collaborator.create', compact('profile'));
+    }
 }

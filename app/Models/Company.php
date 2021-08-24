@@ -53,6 +53,9 @@ class Company extends Model implements HasMedia
         'requester_name',
         'requester_cpf',
         'request_date',
+        'is_supporter',
+        'is_partner',
+        'is_sponsorship',
         'signature',
         'stamp',
     ];

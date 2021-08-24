@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventCompany extends Model
 {
-    protected $fillable =
-    [
+    protected $fillable = [
         'event_id',
         'company_id',
         'event_title',
-        'company_title',
+        'company_name',
         'type'
     ];
 
