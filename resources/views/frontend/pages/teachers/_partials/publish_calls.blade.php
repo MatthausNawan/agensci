@@ -7,7 +7,7 @@
     <div class="owl-carousel owl-theme">
         @foreach($publish_calls as $publish_call)
         <div class="agency-card mx-1">                           
-            <div class=" d-flex flex-column">
+            <div class="d-flex flex-column">
                 <div class="d-flex flex-column mt-2">
                     <div class="foment-data d-flex flex-row justify-content-start">
                         <span class="foment-label ">Revista</span>

@@ -6,7 +6,7 @@
     <div class="owl-carousel owl-theme">
         @foreach($promotions as $promotion)            
             <div class="agency-card mx-1">
-                <div class="col-9">dfs
+                <div class="col-9">
                     <div class="promotion-infos d-flex flex-column">
                         <span><strong>Orgão/Entidade:</strong> {{ $promotion->entity ?? ''}}</span>
                         <span><strong>Tipo:</strong> {{ $promotion->type ?? ''}}</span>
