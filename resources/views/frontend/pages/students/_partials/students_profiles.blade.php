@@ -1,7 +1,7 @@
 <div class="agency-card my-2">    
     <div class="card-header d-flex flex-row justify-content-between">
         <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>
-        <a href="" class="text-white"><i class="fa fa-search"></i>visualizar todas</a>        
+        <a href="{{ route('site.viewAll.student-profiles') }}" class="text-white"><i class="fa fa-search"></i>visualizar todas</a>        
     </div>   
     <div class="my-2">        
         <div class="owl-carousel owl-theme">

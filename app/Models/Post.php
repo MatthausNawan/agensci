@@ -85,4 +85,23 @@ class Post extends Model implements HasMedia
         return $query->where('status', self::STATUS_PUBLISHED)
             ->where('enabled', true);
     }
+
+    public function scopefilteredData($query,$request)
+    {        
+        if($request->sort == 'asc'){
+            return $query->oldest();
+        }
+        
+        if($request->sort == 'desc'){
+            return $query->latest();
+        }
+
+        if($request->sort == 'a-z'){
+            return $query->orderBy('title','asc');
+        }
+
+        if($request->sort == 'z-a'){
+            return $query->orderBy('title','desc');
+        }
+    }
 }

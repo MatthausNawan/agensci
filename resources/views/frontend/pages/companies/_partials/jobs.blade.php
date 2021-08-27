@@ -1,9 +1,10 @@
 <div class="external_links">
     <div class="links-wrapper py-2">
-        <small class="font-weight-bold d-flex mb-1">
-            <span class="ml-3 external-link-title">{{ $title }}</span>
-        </small>
-
+        @if(isset($title))
+            <small class="font-weight-bold d-flex mb-1">
+                <span class="ml-3 external-link-title">{{ $title }}</span>
+            </small>
+        @endif
         @foreach($jobs as $job)
         <div class="image m-2 d-flex flex-row border-bottom">
             <a href="{{$job->site }}" target="_blank">

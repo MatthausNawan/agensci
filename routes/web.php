@@ -38,7 +38,15 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
 
     Route::get('/noticia/{slug}', 'HomeController@showPost')->name('site.post');
 
-    Route::view('/noticias', 'frontend.pages.static.post_list');
+    Route::get('/ver-todos/empregos', 'ListAllController@viewAllJobs')->name('site.viewAll.jobs');
+    Route::get('/ver-todas/noticias', 'ListAllController@viewAllPosts')->name('site.viewAll.posts');
+    Route::get('/ver-todos/palestrantes', 'ListAllController@viewAllSpeakers')->name('site.viewAll.speakers');
+    Route::get('/ver-todas/chamadas-de-fomento', 'ListAllController@viewAllFomentCalls')->name('site.viewAll.promotions');
+    Route::get('/ver-todas/chamadas-de-publicacao', 'ListAllController@viewAllPublishCalls')->name('site.viewAll.publish-calls');
+    Route::get('/ver-todas/portifolios-estudantes', 'ListAllController@viewAllStudentProfiles')->name('site.viewAll.student-profiles');
+    Route::get('/ver-todas/concursos', 'ListAllController@viewAllContests')->name('site.viewAll.contests');
+    Route::get('/ver-todas/chamada-de-eventos', 'ListAllController@viewAllEventCalls')->name('site.viewAll.event-calls');
+
     Route::view('/chamadas-de-publicacao', 'frontend.pages.static.lists.publish_calls');
 
     Route::get('/pesquisar/categoria/{category}', 'HomeController@searchLink')->name('site.search-links');

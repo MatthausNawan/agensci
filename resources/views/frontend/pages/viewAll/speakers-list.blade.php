@@ -1,11 +1,32 @@
-<div class="agency-card">    
-    <div class="card-header d-flex flex-row justify-content-between">
-        <span class="agency-card-title text-center">{{$title ?? 'Titulo'}}</span>        
-        <a href="{{ route('site.viewAll.speakers') }}" class="text-white"><i class="fa fa-search"></i>visualizar todos</a>       
-    </div>
-    <div class="owl-carousel owl-theme">
-        @foreach($speakers as $speaker)
-            <div class="agency-card mx-1">    
+@extends('layouts.default')
+
+
+@section('page_content')
+
+<h2>Notícias</h2>
+
+<div class="col-12">
+    <form action="" method="get" class="form-inline d-flex justify-content-end">
+        <div class="form-group">
+            <div class="input-group">
+                <label for="">Ordenar</label>
+                <select name="sort" id="" class="form-control">
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                    <option value="asc">Novos</option>
+                    <option value="desc">Antigos</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+        </div>
+    </form>
+</div>
+
+
+@foreach($speakers as $speaker)
+<div class="agency-card mx-1">    
                 <div class="row links-wrapper p-3">
                     <div class="col-lg-3">
                         <img src="{{ $speaker->photo ? $speaker->photo->getUrl() : asset('images/avatar.png')}}" class="img-thumbnail">
@@ -22,6 +43,6 @@
                     </div>  
                 </div>              
             </div>
-        @endforeach
-    </div>    
-</div>
+@endforeach
+{{$speakers->links()}}
+@endsection
