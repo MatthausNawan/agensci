@@ -16,7 +16,7 @@
 
 
     <link href="{{ asset('frontend/css/agensci.css') }}" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <!-- <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}"> -->
     <link rel="stylesheet" href="{{asset('owl/assets/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('owl/assets/owl.theme.default.css')}}">
@@ -80,15 +80,17 @@
                 <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>
                 <a class="p-3 text-white" href="{{ route('site.static.privacy') }}">Politica de Privacidade</a>
                 <a class="p-3 text-white" href="{{route('site.static.contact')}}">Contato</a>
-            </div>
+            </div>            
+            
         </nav>
+
     </footer>
     
     
 
     <script src="{{ asset('frontend/js/jquery.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
-    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{asset('owl/owl.carousel.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>

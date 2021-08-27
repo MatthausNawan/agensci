@@ -1,6 +1,6 @@
 <div class="links-wrapper">
     @if(!isset($header))
-    <h5 class="font-weight-bold border-bottom border-dark">Empresas Anunciantes</h5>
+        <h5 class="font-weight-bold border-bottom border-dark">Empresas Anunciantes</h5>
     @endif
     <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">

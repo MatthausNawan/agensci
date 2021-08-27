@@ -88,7 +88,7 @@
 
 @section('js')
 <script>
- $('.owl-carousel').owlCarousel({
+    $('.owl-carousel').owlCarousel({
         loop:true,
         margin:8,
         nav:true,
@@ -106,5 +106,11 @@
             }
         }
     })
+    $('.multiple-items').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll:1,
+        arrows:false
+    });
 </script>
 @endsection

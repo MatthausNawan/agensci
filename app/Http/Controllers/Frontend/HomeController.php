@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\ExternalLik;
 use App\Models\Headline;
 use App\Models\Job;
+use App\Models\Magazine;
 use App\Models\Post;
 use App\Models\Promotion;
 use App\Models\PublishCall;
@@ -35,8 +36,8 @@ class HomeController extends Controller
                 'se' => Segment::whereHas('events')->get(),
                 'sm' => Segment::whereHas('magazines')->get(),
                 'events' => Event::whereHas('segment')->get()->groupBy('segment_id'),
-                'head_site' => Headline::where('type', 'SITE')->inRandomOrder()->limit(1)->first(),
-                'head_magazine' => Headline::where('type', 'MAGAZINE')->inRandomOrder()->limit(1)->first(),
+                'head_magazines' => Magazine::whereHas('segment')->get()->groupBy('segment_id'),
+                'site_magazines' => Magazine::whereHas('segment')->get()->groupBy('segment_id'),
                 'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
                 'services' => ExternalLik::type(Category::C_SERVICES)->randomAble(4)->get(),
             ]
