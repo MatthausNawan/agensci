@@ -38,4 +38,23 @@ class PublishCall extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopefilteredData($query,$request)
+    {        
+        if($request->sort == 'asc'){
+            return $query->oldest();
+        }
+        
+        if($request->sort == 'desc'){
+            return $query->latest();
+        }
+
+        if($request->sort == 'a-z'){
+            return $query->orderBy('magazine','asc');
+        }
+
+        if($request->sort == 'z-a'){
+            return $query->orderBy('magazine','desc');
+        }
+    }
 }
