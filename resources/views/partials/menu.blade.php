@@ -282,6 +282,13 @@
                         <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
+                        @can('magazine_access')
+                            <li class="{{ request()->is("admin/magazines") || request()->is("admin/magazines/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.magazines.index") }}">                                    
+                                    <span>Revistas</span>
+                                </a>
+                            </li>
+                        @endcan
                         @can('headline_access')
                             <li class="{{ request()->is("admin/headlines") || request()->is("admin/headlines/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.headlines.index") }}">                                    
