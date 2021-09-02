@@ -6,7 +6,7 @@
         </li>
         @endforeach
     </ul>
-    <div class="tab-content" id="myTabContent">        
+    <div class="tab-content" id="myTabContent">
         @foreach($events as $key => $event)
         <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab{{$key}}" role="tabpanel" aria-labelledby="{{$key}}-tab">
             <!-- <div class="card-group {{ $event->count() >= 4 ? $class : ' '  }}"> -->
@@ -20,7 +20,7 @@
                             <span class="details-text">Data Evento: {{$e->start_date }}</span>
                             <span class="details-text">Local: {{ $e->location ?? 'Local do Evento' }}</span>
                             @if($e->link)
-                                <span class="details-text">Link:<a href="{{ $e->link ?? ''}}" target="_blank"> {{ $e->link ?? ''}}</a></span>
+                            <span class="details-text">Link:<a href="{{ $e->link ?? ''}}" target="_blank"> {{ $e->link ?? ''}}</a></span>
                             @endif
                         </div>
                     </div>
@@ -28,6 +28,6 @@
                 @endforeach
             </div>
         </div>
-        @endforeach        
+        @endforeach
     </div>
 </div>

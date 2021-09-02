@@ -96,11 +96,12 @@ class HomeController extends Controller
         return view('frontend.pages.static.post-single', compact('post', 'relatedPosts'));
     }
 
-    public function searchLink($category)
+    public function searchLink(Request $request, $category)
     {
+
         $category = Category::findOrFail($category);
 
-        $links = ExternalLik::orderBy('name', 'ASC')
+        $links = ExternalLik::filteredData($request)
             ->where('category_id', $category->id)
             ->paginate(10);
 

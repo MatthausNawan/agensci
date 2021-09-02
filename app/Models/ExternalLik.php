@@ -74,4 +74,23 @@ class ExternalLik extends Model implements HasMedia
 
         return $file;
     }
+
+    public function scopefilteredData($query, $request)
+    {
+        if ($request->sort == 'asc') {
+            return $query->oldest();
+        }
+
+        if ($request->sort == 'desc') {
+            return $query->latest();
+        }
+
+        if ($request->sort == 'a-z') {
+            return $query->orderBy('name', 'asc');
+        }
+
+        if ($request->sort == 'z-a') {
+            return $query->orderBy('name', 'desc');
+        }
+    }
 }

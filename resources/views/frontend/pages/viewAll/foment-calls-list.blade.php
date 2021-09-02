@@ -7,19 +7,19 @@
     <h2>Chamadas de Fomentos</h2>
     <div class="col-12">
         <form action="" method="get" class="form-inline d-flex justify-content-end">
-            <div class="form-group">
+            <div class="form-group mx-1">
                 <div class="input-group">
-                    <label for="" class="mr-2">Ordenar</label>
-                    <select name="sort" id="" class="form-control">
-                        <option value="a-z">A-Z</option>
-                        <option value="z-a">Z-A</option>
-                        <option value="asc">Novos</option>
-                        <option value="desc">Antigos</option>
+                    <label for="">Ordenar</label>
+                    <select name="sort" id="" class="form-control form-control-sm">
+                        <option value="a-z" {{Request::get('sort')=='a-z' ? 'selected' : ''}}>A-Z</option>
+                        <option value="z-a" {{Request::get('sort')=='z-a' ? 'selected' : ''}}>Z-A</option>
+                        <option value="asc" {{Request::get('sort')=='asc' ? 'selected' : ''}}>Novos</option>
+                        <option value="desc" {{Request::get('sort')=='desc' ? 'selected' : ''}}>Antigos</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+                <button type="submit" class="mx-1 btn btn-sm btn-black rounded border"><i class="fa fa-filter"></i>Filtrar</button>
             </div>
         </form>
     </div>
@@ -29,8 +29,8 @@
 
 
 @foreach($promotions as $call)
-    <div class="links-wrapper">
-    <div class="agency-card mx-1 my-2">                    
+<div class="links-wrapper">
+    <div class="agency-card mx-1 my-2">
         <div class="foment-data d-flex flex-row justify-content-start">
             <span class="foment-label ">Orgao/Entidade</span>
             <span class="foment-value">{{ $call->entity }}</span>
@@ -50,9 +50,9 @@
         <div class="foment-data d-flex flex-row justify-content-start">
             <span class="foment-label">Edital</span>
             <span class="foment-value"><a href="{{ $call->edital_link }}">{{ Str::limit($call->edital_link,30) }}</a> </span>
-        </div>                                                        
-    </div>   
-    </div> 
+        </div>
+    </div>
+</div>
 @endforeach
 {{$promotions->links()}}
 @endsection
