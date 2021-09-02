@@ -74,7 +74,7 @@ class HomeController extends Controller
             // 'se' => Segment::whereHas('events')->get(),
             'posts' => Post::all(),
             'jobs' => Job::with('companyJob')->where('type', Job::TYPE_EMPREGO)->take(5)->get(),
-            'jobs_st' => Job::with('companyJob')->whereIn('type', [Job::TYPE_ESTAGIO,Job::TYPE_TRAINEE])->take(5)->get(),
+            'jobs_st' => Job::with('companyJob')->whereIn('type', [Job::TYPE_ESTAGIO, Job::TYPE_TRAINEE])->take(5)->get(),
             'contests' => Contest::latest()->take(5)->get(),
             'students_profiles' => StudentProfile::all(),
             'products' => ExternalLik::type(Category::C_PRODUCTS)->randomAble(4)->get(),
@@ -107,10 +107,14 @@ class HomeController extends Controller
         return view('frontend.pages.static.search-link', compact('links', 'category'));
     }
 
+    public function showContactPage()
+    {
+        return view('frontend.pages.static.contact');
+    }
+
     public function contact(Request $request)
     {
         Contact::create($request->all());
-
         return redirect()->back()->with('contact_flash', 'Mensagem Enviada com Sucesso!');
     }
 }

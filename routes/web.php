@@ -27,12 +27,13 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::get('/professores', 'HomeController@showTeachersPage')->name('site.teachers');
     Route::get('/estudantes', 'HomeController@showStudentsPage')->name('site.students');
     Route::get('/empresas', 'HomeController@showCompaniesPage')->name('site.companies');
+    Route::get('/contato', 'HomeController@showContactPage')->name('site.static.contact');
     Route::post('/contato', 'HomeController@contact')->name('site.contact');
 
     Route::view('/anuncie/selecionar-local', 'frontend.pages.static.map')->name('site.advertise.map');
     Route::get('/anuncie', 'AdvertController@create')->name('site.advertise.create');
     Route::post('/anuncie', 'AdvertController@store')->name('site.advertise.store');
-    
+
     Route::get('/revisar/anuncio/{id}', 'AdvertController@review')->name('site.advertise.review');
     Route::get('/confirmar/anuncio/{id}', 'AdvertController@confirm')->name('site.advertise.confirm');
 
@@ -57,7 +58,6 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function () {
     Route::view('/termos-de-uso', 'frontend.pages.static.terms')->name('site.static.terms');
     Route::view('/quem-somos', 'frontend.pages.static.whoiam')->name('site.static.whoiam');
     Route::view('/politica-de-privacidade', 'frontend.pages.static.privacy')->name('site.static.privacy');
-    Route::view('/contato', 'frontend.pages.static.contact')->name('site.static.contact');
 });
 
 Route::group(['prefix' => 'cadastro', 'namespace' => 'Painel'], function () {
