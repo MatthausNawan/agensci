@@ -40,23 +40,26 @@
     <header>
         <div class="nav-scroller bg-dark">
             <div class="container d-flex flex-row">
-                <nav class="nav d-flex justify-content-start align-items-center">
+                <nav class="nav d-flex flew-row justify-content-start align-items-center">
                     <img src="{{ asset('assets/images/logo-branco.png')}}" alt="agency-logo" class="nav-logo">
                     <a class="p-3 text-white" href="{{ route('site.home') }}">Home</a>
                     <a class="p-3 text-white" href="{{ route('site.teachers') }}">Professores</a>
                     <a class="p-3 text-white" href="{{ route('site.students') }}">Estudantes</a>
                     <a class="p-3 text-white" href="{{ route('site.companies') }}">Empresas</a>
                     <a class="p-3 text-white" href="{{ route('site.advertise.map') }}">Anuncie</a>
-
                 </nav>
+                <div class="input-serach align-self-center ml-auto">
+                    <form action="">
+                        <input type="search" class="form-control form-control-sm border-0 bg-gray" placeholder="Pesquise no site">
+                    </form>
+                </div>
                 @auth
-                    <nav class="nav d-flex justify-content-start align-items-center ml-auto">
-                        @if(count(Request::segments()) < 2)
-                        <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
+                <nav class="nav d-flex justify-content-start align-items-center ml-auto">
+                    @if(count(Request::segments()) < 2) <a class="btn btn-secondary btn-sm" href="{{Auth::user()->painel['route']}}">Painel</a>
                         @endif
-                        <a class="btn text-secondary">{{ Auth::user()->name }}</a>
-                        <a class="btn text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
-                    </nav>
+                        <a class="btn btn-sm text-white">{{ Auth::user()->name }}</a>
+                        <a class="btn btn-sm text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
+                </nav>
                 @endauth
             </div>
         </div>
@@ -66,13 +69,13 @@
     <form action="{{ route('logout') }}" id="logout-form" method="post" style="display:none">
         @csrf()
     </form>
-    <main role="main" class="flex-shrink-0">        
+    <main role="main" class="flex-shrink-0">
         <div class="container mt-1">
             @yield('content')
-        </div>        
+        </div>
     </main>
-               
-               
+
+
     <footer class="footer mt-auto">
         <nav class="navbar bg-dark p-0">
             <div class="container d-flex justify-content-start">
@@ -80,13 +83,33 @@
                 <a class="p-3 text-white" href="{{route('site.static.terms')}}">Termos de Uso</a>
                 <a class="p-3 text-white" href="{{ route('site.static.privacy') }}">Politica de Privacidade</a>
                 <a class="p-3 text-white" href="{{route('site.static.contact')}}">Contato</a>
-            </div>            
-            
+
+                <div class="ml-auto socials">
+                    <a target="_blank" href="">
+                        <img src="{{asset('images/social_media/facebook.png')}}" width="30px" alt="Facebook">
+                    </a>
+                    <a target="_blank" href="">
+                        <img src=" {{asset('images/social_media/twitter.png')}}" width="30px" alt="Twitter">
+                    </a>
+                    <a target="_blank" href="}">
+                        <img src="{{asset('images/social_media/instagram.png')}}" width="30px" alt="Instagram">
+                    </a>
+                    <a target="_blank" href="">
+                        <img src="{{asset('images/social_media/linkedin.png')}}" width="30px" alt="Linkedin">
+                    </a>
+                    <a target="_blank" href="">
+                        <img src=" {{asset('images/social_media/youtube.png')}}" width="30px" alt="Youtube">
+                    </a>
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=">
+                        <img src="{{asset('images/social_media/whatsapp.png')}}" width="30px" alt="Whatsapp">
+                    </a>
+                </div>
+            </div>
         </nav>
 
     </footer>
-    
-    
+
+
 
     <script src="{{ asset('frontend/js/jquery.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
