@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
     <div class="my-2">
-        <img src="https://via.placeholder.com/1080x100" alt="" class="img-rounded">
+        <img src="https://via.placeholder.com/1920x200" alt="" class="img-rounded w-100">
     </div>
 </div>
 
@@ -14,12 +14,13 @@
     </div>
 
     <div class="col-lg-4">
+        @include('frontend.pages.home._partials.recent-post')
         <div class="my-2">
-            <img src="https://via.placeholder.com/300x500" class="img-fluid" alt="Responsive image">
+            <img src="https://via.placeholder.com/300x500" class="img-fluid w-100" alt="Responsive image">
         </div>
         <div class="my-2">
-            <img src="https://via.placeholder.com/300x500" class="img-fluid" alt="Responsive image">
-        </div>        
+            <img src="https://via.placeholder.com/300x500" class="img-fluid w-100" alt="Responsive image">
+        </div>
     </div>
 </div>
 @endsection
